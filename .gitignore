@@ -1,3 +1,5 @@
 *.pro.user*
 .directory
 build
+.qmake.stash
+tests/Makefile
