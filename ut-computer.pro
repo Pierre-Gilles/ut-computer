@@ -13,15 +13,28 @@ TEMPLATE = app
 
 
 SOURCES += \
-            src/main.cpp\
-            src/mainwindow.cpp
+    src/main.cpp\
+    src/mainwindow.cpp
 
 HEADERS  += \
-            headers/mainwindow.h
+    headers/mainwindow.h
 
-FORMS    += \
-            views/mainwindow.ui
+FORMS += \
+    views/mainwindow.ui
 
 DISTFILES += \
     .gitignore \
     README.md
+
+# Set two different directories for debug and release
+CONFIG(debug, debug|release) {
+    DESTDIR = $$PWD/build/debug
+}
+CONFIG(release, debug|release) {
+    DESTDIR = $$PWD/build/release
+}
+# Set different directories for different types of file, using the DESTIR debug or release depending on the build type
+OBJECTS_DIR = $$DESTDIR/obj
+MOC_DIR = $$DESTDIR/moc
+RCC_DIR = $$DESTDIR/rcc
+UI_DIR = $$DESTDIR/ui

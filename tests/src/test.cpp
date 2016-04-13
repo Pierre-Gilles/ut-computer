@@ -1,5 +1,3 @@
-#include <QtTest/QtTest>
-#include <iostream>
 #include "headers/test.h"
 
 void TestQString::test1(){

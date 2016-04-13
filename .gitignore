@@ -3,3 +3,7 @@
 build
 .qmake.stash
 tests/Makefile
+
+
+#for the makefile of shadow builds :
+build-*
