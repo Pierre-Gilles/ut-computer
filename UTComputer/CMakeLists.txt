@@ -44,7 +44,7 @@ add_executable(ut-computer main.cpp ${SOURCE_FILES})
 set(TEST_FILES
         #ut-computer-tests/tests.h
         #ut-computer-tests/tests.cpp
-        ut-computer-tests/testG.cpp)
+        ut-computer-tests/testOperatorPlus.cpp)
 
 
 add_executable(ut-computer-tests ut-computer-tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})
