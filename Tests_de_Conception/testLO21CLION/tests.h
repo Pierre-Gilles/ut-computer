@@ -29,7 +29,7 @@ void testPlusOpertor();
 
 inline void runtests() {
     testLexer();
-    testNumericLiteral();
-    testPlusOpertor();
+    //testNumericLiteral();
+    //testPlusOpertor();
 }
 #endif //TESTLO21CLION_TESTS_H
