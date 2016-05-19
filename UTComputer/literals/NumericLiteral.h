@@ -9,7 +9,6 @@
 #include <math.h>
 #include <sstream> // for ostringstream
 #include "Literal.h"
-#include "../exceptions/UTComputerException.h"
 
 
 using namespace std;
@@ -135,7 +134,7 @@ public:
                     numerator*l.denominator + l.numerator*denominator,
                     denominator * l.denominator
             );
-            /* if the result is still a rationnal (or an integer after simplification) (2.5 + 1/2 gives 6/2 = 3)
+            /* if the result is still a rational (or an integer after simplification) (2.5 + 1/2 gives 6/2 = 3)
              * then we return the tmp result */
             if (tmp->isRational()) {
                 return tmp;

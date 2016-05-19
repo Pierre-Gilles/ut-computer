@@ -6,6 +6,7 @@
 #define TESTLO21CLION_LITERAL_H
 
 #include <string>
+#include "../exceptions/UTComputerException.h"
 
 using namespace std;
 class Literal {

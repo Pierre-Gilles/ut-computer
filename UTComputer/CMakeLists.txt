@@ -42,9 +42,8 @@ add_executable(ut-computer main.cpp ${SOURCE_FILES})
 
 # Tests
 set(TEST_FILES
-        #ut-computer-tests/tests.h
-        #ut-computer-tests/tests.cpp
-        ut-computer-tests/testOperatorPlus.cpp)
+        ut-computer-tests/operators-tests/tests_PlusOperator.cpp
+        ut-computer-tests/literals-tests/tests_ExpressionLiteral.cpp)
 
 
 add_executable(ut-computer-tests ut-computer-tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})

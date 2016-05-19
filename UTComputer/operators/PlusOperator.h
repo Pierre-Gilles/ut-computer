@@ -65,8 +65,13 @@ private:
         else if (comp_a != nullptr) {
             /* then b is not instance of ComplexLiteral and can only be instance of
                 *  ExpressionLiteral. If not, then b is an illegal argument for PlusOperator */
-            if (exp_b != nullptr)
-                return *exp_b + *comp_a; // ExpressionLiteral::operator+(ComplexLiteral &l) const
+            if (exp_b != nullptr) {
+                /* Addition between Complex and Expression is in fact addition between two Expression :
+                 *      We have to create a temporary Expression with the Complex::toString() function
+                 *      and then apply addition between the two Expression */
+                ExpressionLiteral tmp(comp_a->toString());
+                return tmp + *exp_b; // ExpressionLiteral::operator+(ExpressionLiteral &l) const
+            }
             else {
                 UTComputerException e(exp_b->toString());
                 e.insertBefore("Error in PlusOperator::applyOperator : second argument has invalid type.");
@@ -76,8 +81,13 @@ private:
         else if (comp_b != nullptr) {
             /* then a is not instance of ComplexLiteral and can only be instance of
                 *  ExpressionLiteral. If not, then a is an illegal argument for PlusOperator */
-            if (exp_a != nullptr)
-                return *exp_a + *comp_b; // ExpressionLiteral::operator+(ComplexLiteral &l) const
+            if (exp_a != nullptr) {
+                /* Addition between Complex and Expression is in fact addition between two Expression :
+                 *      We have to create a temporary Expression with the Complex::toString() function
+                 *      and then apply addition between the two Expression */
+                ExpressionLiteral tmp(comp_b->toString());
+                return *exp_a + tmp; // ExpressionLiteral::operator+(ComplexLiteral &l) const
+            }
             else {
                 UTComputerException e(exp_a->toString());
                 e.insertBefore("Error in PlusOperator::applyOperator : first argument is of invalid type.");

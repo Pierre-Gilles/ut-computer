@@ -1,11 +1,7 @@
-//
-// Created by Raphael on 15/05/2016.
-//
 
 #ifndef TESTLO21CLION_COMPLEXLITERAL_H
 #define TESTLO21CLION_COMPLEXLITERAL_H
 
-#include "Literal.h"
 #include "NumericLiteral.h"
 
 class ComplexLiteral : public Literal {
