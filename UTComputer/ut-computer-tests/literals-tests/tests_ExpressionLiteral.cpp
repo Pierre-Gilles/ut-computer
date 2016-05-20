@@ -193,6 +193,24 @@ TEST_F(Test_Expression_Literal, hasSamePriority) {
             EXPECT_TRUE(e.hasSamePriority(priority3[k], e.toString()));
     }
 
+
+
+    /* ========================================================== */
+    /*               TEST OF THROWN EXCEPTIONS                    */
+    /* ========================================================== */
+
+
+    // test that invalid operator "op" throws exception
+    EXPECT_THROW(e.hasSamePriority("",e.toString()),UTComputerException);
+    EXPECT_THROW(e.hasSamePriority("--",e.toString()),UTComputerException);
+
+
+    // test that invalid expression with no closing parenthesis throw exception
+    EXPECT_THROW(e.hasSamePriority("-","(1+1)+(1+1"),UTComputerException);
+    EXPECT_NO_THROW(e.hasSamePriority("-","(1+1)+(1+1)"));
+    EXPECT_THROW(e.hasSamePriority("-","(1+1"),UTComputerException);
+    EXPECT_NO_THROW(e.hasSamePriority("-","(1+1)"));
+
 }
 
 

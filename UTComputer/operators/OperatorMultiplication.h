@@ -56,9 +56,7 @@ private:
                     return tmp * *exp_b; // ExpressionLiteral::operator*(ExpressionLiteral &l) const
                 }
                 else {
-                    UTComputerException e(exp_b->toString());
-                    e.insertBefore("Error in OperatorMultiplication::applyOperator : second argument has invalid type.");
-                    throw e;
+                    throw UTComputerException("Error in OperatorMultiplication::applyOperator : second argument has invalid type.");
                 }
             }
 
@@ -74,19 +72,13 @@ private:
                     return *exp_a * tmp; // ExpressionLiteral::operator*(ComplexLiteral &l) const
                 }
                 else {
-                    UTComputerException e(exp_a->toString());
-                    e.insertBefore("Error in OperatorMultiplication::applyOperator : first argument is of invalid type.");
-                    throw e;
+                    throw UTComputerException("Error in OperatorMultiplication::applyOperator : first argument is of invalid type.");
                 }
             }
 
 
             // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-            UTComputerException e(a->toString());
-            e.insertBefore(" and ");
-            e.insertBefore(b->toString());
-            e.insertBefore("Error in OperatorMultiplication::applyOperator : invalid literal types for both arguments");
-            throw e;
+            throw UTComputerException("Error in OperatorMultiplication::applyOperator : invalid literal types for both arguments");
         }
         catch (UTComputerException e) {
             UTComputerException e1(e.getMessage());

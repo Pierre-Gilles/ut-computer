@@ -30,6 +30,10 @@ public:
         st.clear(); // remove all elements from the container
     }
 
+    int size() {
+        return (int)st.size(); // cast from "unsigned long int" in "int"
+    }
+
     Literal* top() {
         return st[0];
     }
@@ -43,9 +47,6 @@ public:
         st.push_front(l); // add element on top of the container
     }
 
-    int size() {
-        return (int)st.size(); // cast from "unsigned long int" in "int"
-    }
 
     /**
      * Function that fill the Literal* table arguments with the right ones and in
@@ -56,6 +57,8 @@ public:
             throw UTComputerException("Error in StackUTComputer::getArguments : arity superior to stack size");
 
         for (int i=0; i<arity; i++) {
+            if (st[arity-1-i] == nullptr)
+                throw UTComputerException("Error StackUTComputer::getArguments : at least one argument is null.");
             arguments[i] = st[arity-1-i];
         }
     }

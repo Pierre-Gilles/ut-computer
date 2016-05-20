@@ -89,13 +89,9 @@ public:
         string::const_iterator it = expression.cbegin();
         unsigned long int i=0;
         while (i < expression.size()) {
-//            cout << i << "  -  ";
             if (!inParenthesis) {
-//                cout << "!inParenthesis" << endl;
-//                cout << "substr  " << expression.substr(i,1) << endl;
                 // if there is an operator different than "op" in "expression"
                 if ( find(op_diff.begin(), op_diff.end(), expression.substr(i,1)) != op_diff.end() ) {
-//                    cout << expression.substr(i,i) << endl;
                     return false;
                 }
 
@@ -134,9 +130,7 @@ public:
 
                 if (expression[i] == ')') {
                     stackOfParenthesis.pop();
-//                    cout << "pop" << endl;
-                    if (stackOfParenthesis.empty()) {// we are out of parenthesis
-//                        cout << "we are out of parenthesis" << endl;
+                    if (stackOfParenthesis.empty()) { // we are out of parenthesis
                         inParenthesis = false;
                     }
                 }

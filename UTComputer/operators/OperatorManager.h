@@ -33,9 +33,7 @@ public:
 
         // Loop through op_vector and add the pair <key,Operator*> to the unordered_map
         for (int i=0; i<op_vector.size(); i++) {
-//            addOperator(op_vector[i]); // TODO works but need a unit test, not useful in constructor
-            pair<string, Operator*> operator_pair (op_vector[i]->getKey(), op_vector[i]);
-            op_map.insert(operator_pair);
+            addOperator(op_vector[i]);
         }
     }
 
@@ -62,7 +60,7 @@ public:
 
     bool addOperator(Operator *o) {
         if (operatorExists(o->getKey()))
-            return false;
+            throw UTComputerException("Error in OperatorManager::addOperator : operator key already exists.");
 
         pair<string, Operator*> operator_pair (o->getKey(), o);
         op_map.insert(operator_pair);

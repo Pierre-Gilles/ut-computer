@@ -259,3 +259,76 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Expression_6) {
     EXPECT_EQ(1, st.size());
     EXPECT_EQ("(1*1*1*1)+(1/1)", st.top()->toString());
 }
+
+
+
+
+/* ========================================================== */
+/*                   TEST THROWN EXCEPTIONS                   */
+/* ========================================================== */
+
+TEST_F(Test_Operator_Plus, Throw_Exception_Two_Arguments_Invalid) {
+    st.push(new NumericLiteral(2));
+    st.push(new NumericLiteral(2));
+    try {
+//        op_plus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_plus.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Plus, Throw_Exception_Null_Arguments) {
+    st.push(nullptr);
+    st.push(nullptr);
+    try {
+//        op_plus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_plus.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Plus, Throw_Exception_First_Argument_Invalid) {
+    st.push(new NumericLiteral(2));
+    st.push(new ComplexLiteral(new NumericLiteral(5)));
+    try {
+//        op_plus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_plus.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Plus, Throw_Exception_First_Argument_Is_Null) {
+    st.push(nullptr);
+    st.push(new ComplexLiteral(new NumericLiteral(5)));
+    try {
+//        op_plus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_plus.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Plus, Throw_Exception_Second_Argument_Invalid) {
+    st.push(new ComplexLiteral(new NumericLiteral(5)));
+    st.push(new NumericLiteral(2));
+    try {
+//        op_plus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_plus.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Plus, Throw_Exception_Second_Argument_Is_Null) {
+    st.push(new ComplexLiteral(new NumericLiteral(5)));
+    st.push(nullptr);
+    try {
+//        op_plus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_plus.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}

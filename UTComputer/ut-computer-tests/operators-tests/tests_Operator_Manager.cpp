@@ -17,12 +17,14 @@ public:
 };
 
 TEST_F(Test_Operator_Manager, Test_Operators_Instantiation) {
+    // test that every Operator* in op_vector is not null
     for (int i=0; i<op_manager.getOp_vector().size(); i++) {
         EXPECT_TRUE(op_manager.getOp_vector()[i] != nullptr);
     }
 }
 
 TEST_F(Test_Operator_Manager, Test_Copy_In_Map) {
+    // test that adress of all Operator* in op_vector is copied to op_map
     for (int i=0; i<op_manager.getOp_vector().size(); i++) {
         EXPECT_TRUE(op_manager.operatorExists(op_manager.getOp_vector()[i]->getKey()));
     }
@@ -71,3 +73,24 @@ TEST_F(Test_Operator_Manager, Test_Call_Operator_Execute_From_Map) {
         st.clear();
     }
 }
+
+TEST_F(Test_Operator_Manager, Test_function_addOperator_throw_exception) {
+    OperatorPlus *op_plus_test = new OperatorPlus;
+    OperatorMinus *op_minus_test = new OperatorMinus;
+    OperatorMultiplication *op_mlut_test = new OperatorMultiplication;
+    EXPECT_THROW(op_manager.addOperator(op_plus_test), UTComputerException);
+    EXPECT_THROW(op_manager.addOperator(op_minus_test), UTComputerException);
+    EXPECT_THROW(op_manager.addOperator(op_mlut_test), UTComputerException);
+}
+
+
+
+
+
+
+
+
+
+
+
+
