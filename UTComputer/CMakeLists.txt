@@ -13,37 +13,49 @@ include_directories(/usr/local/include)
 #endif (APPLE)
 
 set(SOURCE_FILES
-        literals/LiteralFactory.cpp
-        literals/LiteralFactory.h
-        literals/Literal.cpp
-        literals/Literal.h
-        operators/OperatorManager.cpp
-        operators/OperatorManager.h
+        exceptions/UTComputerException.cpp
+        exceptions/UTComputerException.h
         lexer/Lexer.cpp
         lexer/Lexer.h
         stack/StackUTComputer.cpp
         stack/StackUTComputer.h
-        operators/Operator.cpp
-        operators/Operator.h
-        operators/PlusOperator.cpp
-        operators/PlusOperator.h
-        literals/ComplexLiteral.cpp
-        literals/ComplexLiteral.h
+        literals/LiteralFactory.cpp
+        literals/LiteralFactory.h
+        literals/Literal.cpp
+        literals/Literal.h
         literals/NumericLiteral.cpp
         literals/NumericLiteral.h
-        literals/ExpressionLiteral.cpp
-        literals/ExpressionLiteral.h
+        literals/ComplexLiteral.cpp
+        literals/ComplexLiteral.h
         literals/StringLiteral.cpp
         literals/StringLiteral.h
-        exceptions/UTComputerException.cpp
-        exceptions/UTComputerException.h)
+        literals/ExpressionLiteral.cpp
+        literals/ExpressionLiteral.h
+        literals/ProgramLiteral.cpp
+        literals/ProgramLiteral.h
+        literals/AtomLiteral.cpp
+        literals/AtomLiteral.h
+        operators/OperatorManager.cpp
+        operators/OperatorManager.h
+        operators/Operator.cpp
+        operators/Operator.h
+        operators/OperatorPlus.cpp
+        operators/OperatorPlus.h
+        operators/OperatorMinus.cpp
+        operators/OperatorMinus.h
+        operators/OperatorMultiplication.cpp
+        operators/OperatorMultiplication.h)
+
 
 add_executable(ut-computer main.cpp ${SOURCE_FILES})
 
 # Tests
 set(TEST_FILES
-        ut-computer-tests/operators-tests/tests_PlusOperator.cpp
-        ut-computer-tests/literals-tests/tests_ExpressionLiteral.cpp)
+        ut-computer-tests/operators-tests/tests_OperatorPlus.cpp
+        ut-computer-tests/operators-tests/tests_OperatorMinus.cpp
+        ut-computer-tests/operators-tests/test_OperatorMultiplication.cpp
+        ut-computer-tests/literals-tests/tests_ExpressionLiteral.cpp
+        )
 
 
 add_executable(ut-computer-tests ut-computer-tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})

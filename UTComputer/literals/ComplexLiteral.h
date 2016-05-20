@@ -67,6 +67,20 @@ public:
                 new NumericLiteral(*im) // default copy constructor OK for NumericLiteral
         );
     }
+
+    ComplexLiteral * operator-(ComplexLiteral &l) const {
+        return new ComplexLiteral(
+                *(real) - *(l.real),
+                *(im) - *(l.im)
+        );
+    }
+
+    ComplexLiteral * operator*(ComplexLiteral &l) const {
+        return new ComplexLiteral(
+                *(real) * *(l.real),
+                *(im) * *(l.im)
+        );
+    }
 };
 
 

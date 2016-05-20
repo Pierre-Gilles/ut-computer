@@ -58,6 +58,9 @@ private:
     }
 
 public:
+
+
+
     NumericLiteral(double numerator = 0, double denominator = 1) :
             Literal(),
             numerator(numerator),
@@ -134,18 +137,12 @@ public:
                     numerator*l.denominator + l.numerator*denominator,
                     denominator * l.denominator
             );
-            /* if the result is still a rational (or an integer after simplification) (2.5 + 1/2 gives 6/2 = 3)
-             * then we return the tmp result */
-            if (tmp->isRational()) {
-                return tmp;
-            }
-            /* But if we have a result looking like 8.5/2, then we must return a real literal with the numerator
-             * set to numerator/denominator*/
-            else {
-                tmp->numerator = tmp->numerator/tmp->denominator;
-                tmp->denominator = 1;
-                return tmp;
-            }
+            tmp->numerator = tmp->numerator/tmp->denominator;
+            tmp->denominator = 1;
+            return tmp;
+
+            /* It was also possible to return a rational or an integer (after simplification)
+             * but the it's clearly specified in the project that addition with real always return a real literal */
         }
 
         /* In general, we return a new numeric literal with the normal plus operation */
@@ -155,7 +152,53 @@ public:
         );
     }
 
+    NumericLiteral * operator-(NumericLiteral &l) const {
+        /* if one is a real literal and the other a rational literal, we must return a
+         * real literal with the result of the operation in the numerator attribute
+         * and set the denominator to 1 */
+        if ( (isReal() && l.isRational()) || (isRational() && l.isReal()) ) {
+            NumericLiteral *tmp = new NumericLiteral(
+                    numerator*l.denominator - l.numerator*denominator,
+                    denominator * l.denominator
+            );
+            tmp->numerator = tmp->numerator/tmp->denominator;
+            tmp->denominator = 1;
+            return tmp;
 
+            /* It was also possible to return a rational or an integer (after simplification)
+             * but the it's clearly specified in the project that difference with real always return a real literal */
+        }
+
+        /* In general, we return a new numeric literal with the normal plus operation */
+        return new NumericLiteral(
+                numerator*l.denominator - l.numerator*denominator,
+                denominator * l.denominator
+        );
+    }
+
+    NumericLiteral * operator*(NumericLiteral &l) const {
+        /* if one is a real literal and the other a rational literal, we must return a
+         * real literal with the result of the operation in the numerator attribute
+         * and set the denominator to 1 */
+        if ( (isReal() && l.isRational()) || (isRational() && l.isReal()) ) {
+            NumericLiteral *tmp = new NumericLiteral(
+                    numerator*l.numerator,
+                    denominator * l.denominator
+            );
+            tmp->numerator = tmp->numerator/tmp->denominator;
+            tmp->denominator = 1;
+            return tmp;
+
+            /* It was also possible to return a rational or an integer (after simplification)
+             * but the it's clearly specified in the project that multiplication with real always return a real literal */
+        }
+
+        /* In general, we return a new numeric literal with the normal multiplication operation */
+        return new NumericLiteral(
+                numerator*l.numerator,
+                denominator * l.denominator
+        );
+    }
 
 
 };

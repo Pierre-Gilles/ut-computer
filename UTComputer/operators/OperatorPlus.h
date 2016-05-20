@@ -12,12 +12,11 @@
 
 using namespace std;
 
-class PlusOperator : public Operator {
+class OperatorPlus : public Operator {
 
 public:
-    PlusOperator(int nb) : Operator(nb, "+") { }
-
-    virtual ~PlusOperator() { }
+    OperatorPlus() : Operator(2, "+") { }
+    virtual ~OperatorPlus() { }
 
 private:
 
@@ -36,12 +35,12 @@ private:
             e1.insertBefore(arguments[1]->toString());
             e1.insertBefore(" and ");
             e1.insertBefore(arguments[0]->toString());
-            e1.insertBefore("Error in applying PlusOperator on ");
+            e1.insertBefore("Error in applying OperatorPlus on ");
             throw e1;
         }
     }
 
-    /* PlusOperator applies to
+    /* OperatorPlus applies to
      *      - two ComplexLiterals
      *      - two ExpressionLiteral
      *      - an ExpressionLiteral and a ComplexLiteral */
@@ -64,7 +63,7 @@ private:
         // if one of the two elements is not instance of ComplexLiteral
         else if (comp_a != nullptr) {
             /* then b is not instance of ComplexLiteral and can only be instance of
-                *  ExpressionLiteral. If not, then b is an illegal argument for PlusOperator */
+                *  ExpressionLiteral. If not, then b is an illegal argument for OperatorPlus */
             if (exp_b != nullptr) {
                 /* Addition between Complex and Expression is in fact addition between two Expression :
                  *      We have to create a temporary Expression with the Complex::toString() function
@@ -74,13 +73,13 @@ private:
             }
             else {
                 UTComputerException e(exp_b->toString());
-                e.insertBefore("Error in PlusOperator::applyOperator : second argument has invalid type.");
+                e.insertBefore("Error in OperatorPlus::applyOperator : second argument has invalid type.");
                 throw e;
             }
         }
         else if (comp_b != nullptr) {
             /* then a is not instance of ComplexLiteral and can only be instance of
-                *  ExpressionLiteral. If not, then a is an illegal argument for PlusOperator */
+                *  ExpressionLiteral. If not, then a is an illegal argument for OperatorPlus */
             if (exp_a != nullptr) {
                 /* Addition between Complex and Expression is in fact addition between two Expression :
                  *      We have to create a temporary Expression with the Complex::toString() function
@@ -90,7 +89,7 @@ private:
             }
             else {
                 UTComputerException e(exp_a->toString());
-                e.insertBefore("Error in PlusOperator::applyOperator : first argument is of invalid type.");
+                e.insertBefore("Error in OperatorPlus::applyOperator : first argument is of invalid type.");
                 throw e;
             }
         }
@@ -98,7 +97,7 @@ private:
             UTComputerException e(a->toString());
             e.insertBefore(" and ");
             e.insertBefore(b->toString());
-            e.insertBefore("Error in PlusOperator::applyOperator : invalid literal types for both arguments");
+            e.insertBefore("Error in OperatorPlus::applyOperator : invalid literal types for both arguments");
             throw e;
         }
     }

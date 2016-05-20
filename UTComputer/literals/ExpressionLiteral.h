@@ -15,17 +15,39 @@
 
 class ExpressionLiteral : public StringLiteral {
 
+private:
+
+    string constructNewExpression(const string &op, ExpressionLiteral &l) const {
+        // Parameter of type "ExpressionLiteral &l" and not "const ExpressionLiteral &l" because of the non const toString() method
+        // use of const_cast<ExpressionLiteral*>(this)->toString() in order to use the non const method toString() in a const method
+        string newExpression = "";
+
+        if ( hasSamePriority(op, const_cast<ExpressionLiteral*>(this)->toString()) ) {
+            newExpression.insert(0, const_cast<ExpressionLiteral*>(this)->toString());
+        }
+        else {
+            newExpression.insert(0, "(" + const_cast<ExpressionLiteral*>(this)->toString() + ")");
+        }
+
+        newExpression.insert(newExpression.length(), op);
+        if ( hasSamePriority(op, l.toString()) ) {
+            newExpression.insert(newExpression.length(), l.toString());
+        }
+        else {
+            newExpression.insert(newExpression.length(), "(" + l.toString() + ")");
+        }
+        return newExpression;
+    }
+
 public:
 
     ExpressionLiteral(const string &value) : StringLiteral(value) { }
 
     virtual ~ExpressionLiteral() { }
 
-
-
     bool hasSamePriority(const string &op, const string &expression) const {
         bool inParenthesis = false;
-        vector<string> priority0 = {"<", ">", "<=", ">=", "=", "!="};
+        vector<string> priority0 = {"<", ">", "<=", ">=", "=", "!=", "AND", "OR", "NOT"};
         vector<string> priority1 = {"+", "-"};
         vector<string> priority2 = {"*", "/"};
         vector<string> priority3 = {"$"};
@@ -78,11 +100,27 @@ public:
                 }
 
                 // special for operator <= >= !=
-                if (expression[i] == '=')
-                    if (i != 0 && (expression[i-1] == '<' || expression[i-1] == '>' || expression[i-1] == '!') ) {
-                        if ( find(op_diff.begin(), op_diff.end(), expression.substr(i-1,2)) != op_diff.end() )
+                if (expression[i] == '=') {
+                    if (i != 0 && (expression[i - 1] == '<' || expression[i - 1] == '>' || expression[i - 1] == '!')) {
+                        if (find(op_diff.begin(), op_diff.end(), expression.substr(i - 1, 2)) != op_diff.end())
                             return false;
                     }
+                }
+
+                // special for operator AND OR NOT
+                if (expression[i] == 'A' || expression[i] == 'N') {
+                    if (i != expression.length()-3) {
+                        if (find(op_diff.begin(), op_diff.end(), expression.substr(i, 3)) != op_diff.end())
+                            return false;
+                    }
+                }
+                if (expression[i] == 'O') {
+                    if (i != expression.length()-2) {
+                        if (find(op_diff.begin(), op_diff.end(), expression.substr(i, 2)) != op_diff.end())
+                            return false;
+                    }
+                }
+
 
                 if (expression[i] == '(') {
                     inParenthesis = true;
@@ -113,31 +151,17 @@ public:
     }
 
     ExpressionLiteral* operator+(ExpressionLiteral &l) const {
-        // use of const_cast<ExpressionLiteral*>(this)->toString() in order to use a non const method (toString) in a const method
-        string newExpression = "";
-
-
-        if ( hasSamePriority("+", const_cast<ExpressionLiteral*>(this)->toString()) ) {
-            newExpression.insert(0, const_cast<ExpressionLiteral*>(this)->toString());
-        }
-        else {
-            newExpression.insert(0, "(" + const_cast<ExpressionLiteral*>(this)->toString() + ")");
-        }
-
-        newExpression.insert(newExpression.length(), "+");
-        if ( hasSamePriority("+", l.toString()) ) {
-            newExpression.insert(newExpression.length(), l.toString());
-        }
-        else {
-            newExpression.insert(newExpression.length(), "(" + l.toString() + ")");
-        }
-        return new ExpressionLiteral(newExpression);
+        return new ExpressionLiteral(constructNewExpression("+", l));
     }
 
-//    ExpressionLiteral* operator+(ComplexLiteral &l) const {
-//        ExpressionLiteral tmp(l.toString());
-//        return this->operator+(tmp);
-//    }
+    ExpressionLiteral* operator-(ExpressionLiteral &l) const {
+        return new ExpressionLiteral(constructNewExpression("-", l));
+    }
+
+    ExpressionLiteral* operator*(ExpressionLiteral &l) const {
+        return new ExpressionLiteral(constructNewExpression("*", l));
+    }
+
 };
 
 

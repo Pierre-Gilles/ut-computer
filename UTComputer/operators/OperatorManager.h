@@ -7,8 +7,9 @@
 #include <iostream>
 #include <stack>
 #include <unordered_map>
-#include "../literals/Literal.h"
 #include <string>
+
+#include "../literals/Literal.h"
 #include "Operator.h"
 
 using namespace std;

@@ -14,6 +14,9 @@ protected:
     Literal() { }
 public:
     virtual ~Literal() {  }
+
+    /* toString() will be used by subclasses in const method but we cannot declare it as const and at the same time
+     * as virtual pure */
     virtual string toString() = 0;
 };
 
