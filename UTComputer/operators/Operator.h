@@ -47,9 +47,7 @@ public:
         Literal* result;
 
         try {
-            result = executeSpecificOperator(st); /* call to private executeSpecificOperator()
-                                                    * we may not need to pass the stack
-                                                    * but maybe some specifics operators we'll need the stack */
+            result = executeSpecificOperator(st);
         } catch (UTComputerException e) {
             UTComputerException e1(e.getMessage());
             e1.insertBefore("Error in Operator::executeSpecificOperator --> ");

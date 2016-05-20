@@ -11,28 +11,62 @@
 
 #include "../literals/Literal.h"
 #include "Operator.h"
+#include "OperatorPlus.h"
+#include "OperatorMinus.h"
+#include "OperatorMultiplication.h"
 
 using namespace std;
 
+
 class OperatorManager {
-    unordered_map<string, Operator*> op_manager;
+    vector<Operator*> op_vector;
+    unordered_map<string, Operator*> op_map;
 
 public:
 
     OperatorManager() {
+        // dynamically instantiate one time each operator and store them in a vector
+        op_vector.insert(op_vector.begin(), new OperatorPlus);
+        op_vector.insert(op_vector.begin(), new OperatorMinus);
+        op_vector.insert(op_vector.begin(), new OperatorMultiplication);
 
+
+        // Loop through op_vector and add the pair <key,Operator*> to the unordered_map
+        for (int i=0; i<op_vector.size(); i++) {
+//            addOperator(op_vector[i]); // TODO works but need a unit test, not useful in constructor
+            pair<string, Operator*> operator_pair (op_vector[i]->getKey(), op_vector[i]);
+            op_map.insert(operator_pair);
+        }
     }
 
-    virtual ~OperatorManager() { }
+    virtual ~OperatorManager() {
+        op_map.clear();
+        for (int i=0; i<op_vector.size(); i++) {
+            delete op_vector[i];
+        }
+        op_vector.clear();
+    }
 
+    const vector<Operator *> &getOp_vector() const {
+        return op_vector;
+    }
 
     bool operatorExists(const string &key) {
-        unordered_map<string, Operator*>::const_iterator found = op_manager.find(key);
-        return !(found == op_manager.cend());
+        unordered_map<string, Operator*>::const_iterator found = op_map.find(key);
+        return !(found == op_map.cend());
     }
 
     Operator* getOperator(const string &key) {
-        return op_manager[key];
+        return op_map[key];
+    }
+
+    bool addOperator(Operator *o) {
+        if (operatorExists(o->getKey()))
+            return false;
+
+        pair<string, Operator*> operator_pair (o->getKey(), o);
+        op_map.insert(operator_pair);
+        return true;
     }
 
 };
