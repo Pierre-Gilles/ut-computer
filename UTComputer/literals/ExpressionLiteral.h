@@ -39,6 +39,17 @@ private:
         return newExpression;
     }
 
+    int getWeightOperator(char ch) {
+        switch (ch) {
+            case '$': return 3;
+            case '/':
+            case '*': return 2;
+            case '+':
+            case '-': return 1;
+            default : return 0;
+        }
+    }
+
 public:
 
     ExpressionLiteral(const string &value) : StringLiteral(value) { }
@@ -142,6 +153,87 @@ public:
             throw UTComputerException("ExpressionLiteral::samePriority stack not empty means absence of closing parenthesis");
 
         return true; // we didn't found operators of different priority than "op"
+    }
+
+
+    string infixToPostfix(string infix){
+        stack<char> s;
+        string postfix;
+        int size = infix.length();
+        int weight;
+        int i = 0;
+        int k = 0;
+        char ch;
+
+        // iterate over the infix expression
+        while (i < size) {
+
+            ch = infix[i];
+            if (ch == '(') {
+                // simply push the opening parenthesis
+                s.push(ch);
+                i++;
+                continue;
+            }
+            if (ch == ')') {
+                // if we see a closing parenthesis,
+                // pop of all the elements and append it to
+                // the postfix expression till we encounter
+                // a opening parenthesis
+                while (!s.empty() && s.top() != '(') {
+                    postfix.push_back(s.top());
+                    k++;
+                    s.pop();
+
+                }
+                // pop off the opening parenthesis also
+                if (!s.empty()) {
+                    s.pop();
+                }
+                i++;
+                continue;
+            }
+            weight = getWeightOperator(ch);
+
+            if (weight == 0) {
+                // we saw an operand
+                // simply append it to postfix expression
+                postfix.push_back(ch);
+                k++;
+            }
+            else {
+                // we saw an operator
+                if (s.empty()) {
+                    // simply push the operator onto stack if
+                    // stack is empty
+                    s.push(ch);
+                }
+                else {
+                    // pop of all the operators from the stack and
+                    // append it to the postfix expression till we
+                    // see an operator with a lower precedence that
+                    // the current operator
+                    while (!s.empty() && s.top() != '(' &&
+                           weight <= getWeightOperator(s.top())) {
+                        postfix.push_back(s.top());
+                        k++;
+                        s.pop();
+
+                    }
+                    // push the current operator onto stack
+                    s.push(ch);
+                }
+            }
+            i++;
+        }
+        // pop of the remaining operators present in the stack
+        // and append it to postfix expression
+        while (!s.empty()) {
+            postfix.push_back(s.top());
+            s.pop();
+        }
+
+        return postfix;
     }
 
     ExpressionLiteral* operator+(ExpressionLiteral &l) const {
