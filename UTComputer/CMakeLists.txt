@@ -58,7 +58,7 @@ set(TEST_FILES
         ut-computer-tests/operators-tests/tests_OperatorPlus.cpp
         ut-computer-tests/operators-tests/tests_OperatorMinus.cpp
         ut-computer-tests/operators-tests/tests_OperatorMultiplication.cpp
-        )
+        ut-computer-tests/lexer-tests/tests_Lexer.cpp.cpp)
 
 
 add_executable(ut-computer-tests ut-computer-tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})
