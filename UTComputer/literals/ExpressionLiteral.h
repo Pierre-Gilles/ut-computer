@@ -181,6 +181,11 @@ public:
                 // the postfix expression till we encounter
                 // a opening parenthesis
                 while (!s.empty() && s.top() != '(') {
+
+                    // if character is an operator, we add a space before
+                    if(getWeightOperator(s.top()) > 0){
+                        postfix.push_back(' ');
+                    }
                     postfix.push_back(s.top());
                     k++;
                     s.pop();
@@ -206,6 +211,7 @@ public:
                 if (s.empty()) {
                     // simply push the operator onto stack if
                     // stack is empty
+
                     s.push(ch);
                 }
                 else {
@@ -215,6 +221,8 @@ public:
                     // the current operator
                     while (!s.empty() && s.top() != '(' &&
                            weight <= getWeightOperator(s.top())) {
+
+                        postfix.push_back(' ');
                         postfix.push_back(s.top());
                         k++;
                         s.pop();
@@ -229,6 +237,7 @@ public:
         // pop of the remaining operators present in the stack
         // and append it to postfix expression
         while (!s.empty()) {
+            postfix.push_back(' ');
             postfix.push_back(s.top());
             s.pop();
         }

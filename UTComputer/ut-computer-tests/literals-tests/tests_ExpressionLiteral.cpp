@@ -216,7 +216,7 @@ TEST_F(Test_Expression_Literal, hasSamePriority) {
 TEST_F(Test_Expression_Literal, infixToPostix) {
     ExpressionLiteral e("");
     string result = e.infixToPostfix("(3 + 3) * 5 - 12");
-    ASSERT_EQ(result, "3  3+  5 * 12-");
+    ASSERT_EQ(result, "3  3 +  5  * 12 -");
 }
 
 
