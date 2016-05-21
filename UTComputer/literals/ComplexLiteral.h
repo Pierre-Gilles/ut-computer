@@ -25,7 +25,9 @@ public:
 
     virtual ~ComplexLiteral() {
         delete real;
+        real = nullptr;
         delete im;
+        im = nullptr;
     }
 
     NumericLiteral *getReal() const {

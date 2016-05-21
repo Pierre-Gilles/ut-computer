@@ -72,6 +72,8 @@ public:
     }
 
 
+    virtual ~NumericLiteral() { }
+
     double getNumerator() const {
         return numerator;
     }

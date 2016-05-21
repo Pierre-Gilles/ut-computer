@@ -35,9 +35,15 @@ TEST_F(Test_StackUTComputer_Class, Test_Top_Function) {
 
 TEST_F(Test_StackUTComputer_Class, Test_Pop_Function) {
     ComplexLiteral *test = new ComplexLiteral(new NumericLiteral(2));
+    ComplexLiteral *test2 = nullptr;
     st.push(test);
     EXPECT_EQ(1, st.size());
     st.pop();
     EXPECT_EQ(0, st.size());
-    // TODO test that ComplexLiteral *test has been deleted if such a test is possible
+    // expect death when accessing a deleted pointer
+    EXPECT_DEATH(test->toString(), ".*"); // ".*" match any error code
+}
+
+TEST_F(Test_StackUTComputer_Class, Test_getArguments_Function) {
+
 }

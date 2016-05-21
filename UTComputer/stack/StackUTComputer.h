@@ -26,6 +26,7 @@ public:
     virtual ~StackUTComputer() {
         for (int i=0; i<st.size(); i++) {
             delete st[i]; // delete each dynamically created object
+            st[i] = nullptr;
         }
         st.clear(); // remove all elements from the container
     }
@@ -40,6 +41,7 @@ public:
 
     void pop() {
         delete st[0]; // delete the dynamically created object
+        st[0] = nullptr;
         st.pop_front(); // remove top element from the container
     }
 
@@ -79,6 +81,7 @@ public:
     void clear() {
         for (int i=0; i<st.size(); i++) {
             delete st[i]; // delete each dynamically created object
+            st[i] = nullptr;
         }
         st.clear(); // remove all elements from the container
     }

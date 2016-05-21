@@ -41,6 +41,7 @@ public:
         op_map.clear();
         for (int i=0; i<op_vector.size(); i++) {
             delete op_vector[i];
+            op_vector[i] = nullptr;
         }
         op_vector.clear();
     }
