@@ -193,7 +193,7 @@ TEST_F(Test_Operator_Plus, Complex_Plus_Expression) {
     st.push(new ExpressionLiteral("1+1"));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("(1/3)+1+1", st.top()->toString());
+    EXPECT_EQ("'(1/3)+1+1'", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Plus, Expression_Plus_Complex) {
@@ -201,7 +201,7 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Complex) {
     st.push(new ComplexLiteral(new NumericLiteral(1,3)));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("1+1+(1/3)", st.top()->toString());
+    EXPECT_EQ("'1+1+(1/3)'", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Plus, Expression_Plus_Expression) {
@@ -209,7 +209,7 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Expression) {
     st.push(new ExpressionLiteral("1+1"));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("1+1+1+1", st.top()->toString());
+    EXPECT_EQ("'1+1+1+1'", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Plus, Expression_Plus_Expression_1) {
@@ -217,7 +217,7 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Expression_1) {
     st.push(new ExpressionLiteral("1*1"));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("1+1+(1*1)", st.top()->toString());
+    EXPECT_EQ("'1+1+(1*1)'", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Plus, Expression_Plus_Expression_2) {
@@ -225,7 +225,7 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Expression_2) {
     st.push(new ExpressionLiteral("1+1"));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("(1<1)+1+1", st.top()->toString());
+    EXPECT_EQ("'(1<1)+1+1'", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Plus, Expression_Plus_Expression_3) {
@@ -233,7 +233,7 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Expression_3) {
     st.push(new ExpressionLiteral("1*1"));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("(1AND1)+(1*1)", st.top()->toString());
+    EXPECT_EQ("'(1AND1)+(1*1)'", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Plus, Expression_Plus_Expression_4) {
@@ -241,7 +241,7 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Expression_4) {
     st.push(new ExpressionLiteral("1/1"));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("(1<1)+(1*1)+(1/1)", st.top()->toString());
+    EXPECT_EQ("'(1<1)+(1*1)+(1/1)'", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Plus, Expression_Plus_Expression_5) {
@@ -249,7 +249,7 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Expression_5) {
     st.push(new ExpressionLiteral("1/1"));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("((1<1)*(1*1))+(1/1)", st.top()->toString());
+    EXPECT_EQ("'((1<1)*(1*1))+(1/1)'", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Plus, Expression_Plus_Expression_6) {
@@ -257,7 +257,7 @@ TEST_F(Test_Operator_Plus, Expression_Plus_Expression_6) {
     st.push(new ExpressionLiteral("1/1"));
     op_plus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("(1*1*1*1)+(1/1)", st.top()->toString());
+    EXPECT_EQ("'(1*1*1*1)+(1/1)'", st.top()->toString());
 }
 
 

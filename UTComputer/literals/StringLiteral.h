@@ -27,7 +27,7 @@ public:
     }
 
     virtual string toString() override {
-        return value;
+        return "'" + value + "'";
     }
 
 

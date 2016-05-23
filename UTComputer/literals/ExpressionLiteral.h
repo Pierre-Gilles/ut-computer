@@ -23,18 +23,18 @@ private:
         string newExpression = "";
 
         if ( hasSamePriority(op, const_cast<ExpressionLiteral*>(this)->toString()) ) {
-            newExpression.insert(0, const_cast<ExpressionLiteral*>(this)->toString());
+            newExpression.insert(0, const_cast<ExpressionLiteral*>(this)->getValue());
         }
         else {
-            newExpression.insert(0, "(" + const_cast<ExpressionLiteral*>(this)->toString() + ")");
+            newExpression.insert(0, "(" + const_cast<ExpressionLiteral*>(this)->getValue() + ")");
         }
 
         newExpression.insert(newExpression.length(), op);
         if ( hasSamePriority(op, l.toString()) ) {
-            newExpression.insert(newExpression.length(), l.toString());
+            newExpression.insert(newExpression.length(), l.getValue());
         }
         else {
-            newExpression.insert(newExpression.length(), "(" + l.toString() + ")");
+            newExpression.insert(newExpression.length(), "(" + l.getValue() + ")");
         }
         return newExpression;
     }
