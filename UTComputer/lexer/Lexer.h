@@ -131,7 +131,7 @@ public:
         } else if(actualMode == ExpressionLocked){
             throw UTComputerException("LexerUTComputer::split - Missing end of expression");
         } else if(actualMode == ProgLocked ){
-            throw UTComputerException("Lexec::split - Missing end of program");
+            throw UTComputerException("LexerUTComputer::split - Missing end of program");
         }
         return result;
     }

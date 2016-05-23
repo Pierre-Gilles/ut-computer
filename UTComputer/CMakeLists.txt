@@ -51,14 +51,15 @@ add_executable(ut-computer main.cpp ${SOURCE_FILES})
 
 # Tests
 set(TEST_FILES
-        ut-computer-tests/literals-tests/tests_ExpressionLiteral.cpp
+        ut-computer-tests/lexer-tests/tests_Lexer.cpp.cpp
         ut-computer-tests/stack-tests/tests_StackUTComputer.cpp
+        ut-computer-tests/literals-tests/tests_ExpressionLiteral.cpp
         ut-computer-tests/operators-tests/tests_Operator.cpp
         ut-computer-tests/operators-tests/tests_Operator_Manager.cpp
         ut-computer-tests/operators-tests/tests_OperatorPlus.cpp
         ut-computer-tests/operators-tests/tests_OperatorMinus.cpp
         ut-computer-tests/operators-tests/tests_OperatorMultiplication.cpp
-        ut-computer-tests/lexer-tests/tests_Lexer.cpp.cpp)
+        )
 
 
 add_executable(ut-computer-tests ut-computer-tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})

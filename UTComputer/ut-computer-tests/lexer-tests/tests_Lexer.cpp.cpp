@@ -16,8 +16,8 @@ public:
 };
 
 
-TEST_F(Test_Lexer_Class, Test_Thrown_Exceptions_In_Execute_Function) {
-    vector<string> result = lx.split("3 3 + 5 * '3 3 +' 4 +");
-    vector<string> expected = {"3", "3", "+", "5", "*", "'3 3 +'", "4", "+"};
+TEST_F(Test_Lexer_Class, Test_Lexer_split_function) {
+    vector<string> result = lx.split("3 3 + 5 * '3+3' 4 +");
+    vector<string> expected = {"3", "3", "+", "5", "*", "'3+3'", "4", "+"};
     ASSERT_EQ(result, expected);
 }
