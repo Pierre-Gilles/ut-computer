@@ -45,6 +45,14 @@ public:
         st.pop_front(); // remove top element from the container
     }
 
+    void clear() {
+        for (int i=0; i<st.size(); i++) {
+            delete st[i]; // delete each dynamically created object
+            st[i] = nullptr;
+        }
+        st.clear(); // remove all elements from the container
+    }
+
     void push(Literal* l) {
         st.push_front(l); // add element on top of the container
     }
@@ -78,13 +86,6 @@ public:
         }
     }
 
-    void clear() {
-        for (int i=0; i<st.size(); i++) {
-            delete st[i]; // delete each dynamically created object
-            st[i] = nullptr;
-        }
-        st.clear(); // remove all elements from the container
-    }
 };
 
 
