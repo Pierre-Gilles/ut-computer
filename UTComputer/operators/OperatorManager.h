@@ -14,6 +14,7 @@
 #include "OperatorPlus.h"
 #include "OperatorMinus.h"
 #include "OperatorMultiplication.h"
+#include "OperatorDivision.h"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ public:
         op_vector.insert(op_vector.begin(), new OperatorPlus);
         op_vector.insert(op_vector.begin(), new OperatorMinus);
         op_vector.insert(op_vector.begin(), new OperatorMultiplication);
+        op_vector.insert(op_vector.begin(), new OperatorDivision);
 
 
         // Loop through op_vector and add the pair <key,Operator*> to the unordered_map

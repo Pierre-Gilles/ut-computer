@@ -123,7 +123,7 @@ TEST_F(Test_Operator_Multiplication, ComplexInt_Mult_ComplexInt) {
     st.push(new ComplexLiteral(new NumericLiteral(2), new NumericLiteral(2)));
     op_mult.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("4$6", st.top()->toString());
+    EXPECT_EQ("-2$10", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Multiplication, ComplexReal_Mult_ComplexReal) {
@@ -132,7 +132,7 @@ TEST_F(Test_Operator_Multiplication, ComplexReal_Mult_ComplexReal) {
     st.push(new ComplexLiteral(new NumericLiteral(2.2), new NumericLiteral(1.2)));
     op_mult.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("2.42$3.72", st.top()->toString());
+    EXPECT_EQ("-1.3$8.14", st.top()->toString());
 }
 
 TEST_F(Test_Operator_Multiplication, ComplexRational_Mult_ComplexRational) {
@@ -141,7 +141,7 @@ TEST_F(Test_Operator_Multiplication, ComplexRational_Mult_ComplexRational) {
     st.push(new ComplexLiteral(new NumericLiteral(1,3), new NumericLiteral(2,4)));
     op_mult.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("2/9$3/8", st.top()->toString());
+    EXPECT_EQ("-11/72$7/12", st.top()->toString());
 }
 
 

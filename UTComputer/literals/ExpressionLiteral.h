@@ -257,6 +257,10 @@ public:
         return new ExpressionLiteral(constructNewExpression("*", l));
     }
 
+    ExpressionLiteral* operator/(ExpressionLiteral &l) const {
+        return new ExpressionLiteral(constructNewExpression("/", l));
+    }
+
 };
 
 

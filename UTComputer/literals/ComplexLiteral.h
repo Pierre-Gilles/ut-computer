@@ -78,10 +78,83 @@ public:
     }
 
     ComplexLiteral * operator*(ComplexLiteral &l) const {
-        return new ComplexLiteral(
-                *(real) * *(l.real),
-                *(im) * *(l.im)
-        );
+
+        // if both complex are not really complex numbers
+        if (im->getNumerator() == 0 && l.im->getNumerator() == 0)
+            return new ComplexLiteral(*real * *l.real);
+
+
+        // Formula :  { (real*l.real) - (im*l.im) }   +   { i(real*l.im +im*l.real) }
+
+        // Calculate real part
+        NumericLiteral *part_real_tmp1 =  *(real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *part_real_tmp2 =  *(im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *real_part_result = *part_real_tmp1 - *part_real_tmp2; // return au new NumericLiteral because of operator-() overload in NumericLiteral
+
+        // Calculate imaginary part
+        NumericLiteral *part_im_tmp1 =  *(real) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *part_im_tmp2 =  *(im) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *im_part_result = *part_im_tmp1 + *part_im_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
+
+        // delete all temporary results
+        delete part_real_tmp1;
+        delete part_real_tmp2;
+        delete part_im_tmp1;
+        delete part_im_tmp2;
+
+        // return new Complex
+        return new ComplexLiteral(real_part_result, im_part_result);
+    }
+
+
+    ComplexLiteral * operator/(ComplexLiteral &l) const {
+        // if both complex are not really complex numbers
+        if (im->getNumerator() == 0 && l.im->getNumerator() == 0)
+            return new ComplexLiteral(*real / *l.real);
+
+        /* Formula :
+         *  - real part : (real*l.real + im*l.im) / (l.real*l.real + l.im*l.im)
+         *  - im part   : (im*l.real - real*l.im) / (l.real*l.real + l.im*l.im)
+         *  */
+
+        // Calculate common denominator
+        NumericLiteral *common_den_tmp1 =  *(l.real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *common_den_tmp2 =  *(l.im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *common_den_result =  *common_den_tmp1 + *common_den_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
+
+        // throw exception if common denominator value is 0
+        if (common_den_result->getNumerator() == 0 || common_den_result->getDenominator() == 0) {
+            delete common_den_tmp1;
+            delete common_den_tmp2;
+            delete common_den_result;
+            throw UTComputerException("Error ComplexLiteral::operator/(ComplexLiteral &l : common denominator is 0.");
+        }
+
+        // Calculate real part
+        NumericLiteral *real_part_tmp1 =  *(real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *real_part_tmp2 =  *(im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *real_part_num_tmp = *real_part_tmp1 + *real_part_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
+        NumericLiteral *real_part_result = *real_part_num_tmp / *common_den_result; // return au new NumericLiteral because of operator/() overload in NumericLiteral
+
+        // Calculate imaginary part
+        NumericLiteral *im_part_tmp1 =  *(im) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *im_part_tmp2 =  *(real) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        NumericLiteral *im_part_num_tmp = *im_part_tmp1 - *im_part_tmp2; // return au new NumericLiteral because of operator-() overload in NumericLiteral
+        NumericLiteral *im_part_result = *im_part_num_tmp / *common_den_result; // return au new NumericLiteral because of operator/() overload in NumericLiteral
+
+        // delete all temporary results
+        delete common_den_tmp1;
+        delete common_den_tmp2;
+        delete common_den_result;
+        delete real_part_tmp1;
+        delete real_part_tmp2;
+        delete real_part_num_tmp;
+        delete im_part_tmp1;
+        delete im_part_tmp2;
+        delete im_part_num_tmp;
+
+        // return new Complex
+        return new ComplexLiteral(real_part_result, im_part_result);
     }
 };
 

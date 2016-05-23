@@ -57,7 +57,7 @@ private:
                     return tmp - *exp_b; // ExpressionLiteral::operator-(ExpressionLiteral &l) const
                 }
                 else {
-                    throw UTComputerException("Error in OperatorPlus::applyOperator : second argument has invalid type.");
+                    throw UTComputerException("Error in OperatorPlus::executeSpecificOperator : second argument has invalid type.");
                 }
             }
 
@@ -73,12 +73,12 @@ private:
                     return *exp_a - tmp; // ExpressionLiteral::operator-(ComplexLiteral &l) const
                 }
                 else {
-                    throw UTComputerException("Error in OperatorPlus::applyOperator : first argument is of invalid type.");
+                    throw UTComputerException("Error in OperatorPlus::executeSpecificOperator : first argument is of invalid type.");
                 }
             }
 
             // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-            throw UTComputerException("Error in OperatorPlus::applyOperator : invalid literal types for both arguments");
+            throw UTComputerException("Error in OperatorPlus::executeSpecificOperator : invalid literal types for both arguments");
 
         }
         catch (UTComputerException e) {

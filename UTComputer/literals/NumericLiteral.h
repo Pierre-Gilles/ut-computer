@@ -61,14 +61,16 @@ public:
 
 
 
-    NumericLiteral(double numerator = 0, double denominator = 1) :
+    NumericLiteral(double num = 0, double den = 1) :
             Literal(),
-            numerator(numerator),
-            denominator(denominator) {
+            numerator(num),
+            denominator(den) {
+        if (den == 0.0)
+            throw UTComputerException("Error NumericLiteral::constructor :  denominator can't be 0.");
+
         double intpart;
-        if (modf(numerator, &intpart) == 0.0) { // then numerator is an int and we can apply simplification to it
+        if (modf(num, &intpart) == 0.0 && modf(den, &intpart)==0) // then numerator and denominator is an int and we can apply simplification to it
             simplification();
-        }
     }
 
 
@@ -78,16 +80,18 @@ public:
         return numerator;
     }
 
-    void setNumerator(double numerator) {
-        NumericLiteral::numerator = numerator;
+    void setNumerator(double num) {
+        NumericLiteral::numerator = num;
     }
 
     double getDenominator() const {
         return denominator;
     }
 
-    void setDenominator(double denominator) {
-        NumericLiteral::denominator = denominator;
+    void setDenominator(double den) {
+        if (den == 0.0)
+            throw UTComputerException("Error NumericLiteral::setNumerator :  denominator can't be 0.");
+        NumericLiteral::denominator = den;
     }
 
 
@@ -126,6 +130,7 @@ public:
             sting_stream << numerator;
             return sting_stream.str();
         }
+        cerr << numerator << "  " << denominator << endl;
         throw UTComputerException("Error NumericLiteral::toString() : literal isn't integer nor rational nor real");
     }
 
@@ -179,10 +184,10 @@ public:
     }
 
     NumericLiteral * operator*(NumericLiteral &l) const {
-        /* if one is a real literal and the other a rational literal, we must return a
+        /* if one of the arguments is real, we must return a
          * real literal with the result of the operation in the numerator attribute
          * and set the denominator to 1 */
-        if ( (isReal() && l.isRational()) || (isRational() && l.isReal()) ) {
+        if (isReal() || l.isReal()) {
             NumericLiteral *tmp = new NumericLiteral(
                     numerator*l.numerator,
                     denominator * l.denominator
@@ -190,15 +195,36 @@ public:
             tmp->numerator = tmp->numerator/tmp->denominator;
             tmp->denominator = 1;
             return tmp;
-
-            /* It was also possible to return a rational or an integer (after simplification)
-             * but the it's clearly specified in the project that multiplication with real always return a real literal */
         }
 
         /* In general, we return a new numeric literal with the normal multiplication operation */
         return new NumericLiteral(
                 numerator*l.numerator,
                 denominator * l.denominator
+        );
+    }
+
+    NumericLiteral * operator/(NumericLiteral &l) const {
+        if (denominator == 0.0 || l.denominator == 0.0)
+            throw UTComputerException("Error NumericLiteral::operator/(NumericLiteral &l) : one of the denominators is 0.");
+
+        /* if one of the arguments is real, we must return a
+         * real literal with the result of the operation in the numerator attribute
+         * and set the denominator to 1 */
+        if (isReal() || l.isReal()) {
+            NumericLiteral *tmp = new NumericLiteral(
+                    numerator*l.denominator,
+                    denominator * l.numerator
+            );
+            tmp->numerator = tmp->numerator/tmp->denominator;
+            tmp->denominator = 1;
+            return tmp;
+        }
+
+        /* In general, we return a new numeric literal with the normal division operation */
+        return new NumericLiteral(
+                numerator*l.denominator,
+                denominator * l.numerator
         );
     }
 
