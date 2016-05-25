@@ -8,10 +8,10 @@
 
 #include "../literals/Literal.h"
 #include "Operator.h"
-#include "OperatorPlus.h"
-#include "OperatorMinus.h"
-#include "OperatorMultiplication.h"
-#include "OperatorDivision.h"
+#include "classic_operators/OperatorPlus.h"
+#include "classic_operators/OperatorMinus.h"
+#include "classic_operators/OperatorMultiplication.h"
+#include "classic_operators/OperatorDivision.h"
 
 using namespace std;
 

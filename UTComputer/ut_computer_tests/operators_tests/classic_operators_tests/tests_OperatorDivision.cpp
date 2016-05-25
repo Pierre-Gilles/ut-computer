@@ -1,7 +1,7 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
-#include "../../operators/OperatorDivision.h"
+#include "../../../operators/classic_operators/OperatorDivision.h"
 
 
 

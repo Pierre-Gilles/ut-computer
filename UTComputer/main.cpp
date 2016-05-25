@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "stack/StackUTComputer.h"
-#include "operators/OperatorPlus.h"
+#include "operators/classic_operators/OperatorPlus.h"
 using namespace std;
 
 

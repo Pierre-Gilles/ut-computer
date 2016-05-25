@@ -1,9 +1,9 @@
 #ifndef UTCOMPUTER_OPERATORMULTIPLICATION_H
 #define UTCOMPUTER_OPERATORMULTIPLICATION_H
 
-#include "Operator.h"
-#include "../literals/ComplexLiteral.h"
-#include "../literals/ExpressionLiteral.h"
+#include "../Operator.h"
+#include "../../literals/ComplexLiteral.h"
+#include "../../literals/ExpressionLiteral.h"
 
 class OperatorMultiplication : public Operator {
 

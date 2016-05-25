@@ -161,6 +161,29 @@ bool NumericLiteral::operator!=(const NumericLiteral &l) const {
     return ( !(*this==l) );
 }
 
+bool NumericLiteral::operator&&(const NumericLiteral &l) const {
+    // if one of the NumericLiteral is 0, then AND return false
+    if (numerator == 0.0 || l.numerator == 0.0)
+        return false;
+    else
+        return true;
+}
+
+bool NumericLiteral::operator||(const NumericLiteral &l) const {
+    // if one of the NumericLiteral is not 0, then AND return true
+    if (numerator != 0.0 || l.numerator != 0.0)
+        return true;
+    else
+        return false;
+}
+
+bool NumericLiteral::operator!() const {
+    if (numerator == 0.0) // then !false = true
+        return true;
+    else // !true = false
+        return false;
+}
+
 
 
 

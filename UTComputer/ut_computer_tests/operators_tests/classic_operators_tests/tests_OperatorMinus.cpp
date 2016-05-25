@@ -1,14 +1,14 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
-#include "../../operators/OperatorMultiplication.h"
+#include "../../../operators/classic_operators/OperatorMinus.h"
 
 
 
-class Test_Operator_Multiplication : public ::testing::Test {
+class Test_Operator_Minus : public ::testing::Test {
 protected:
     StackUTComputer st;
-    OperatorMultiplication op_mult;
+    OperatorMinus op_minus;
 
 public:
     virtual void SetUp() { }
@@ -18,123 +18,131 @@ public:
 };
 
 /* ========================================================== */
-/* Multiplication between two ComplexLiteral without imaginary part */
+/* Difference between two ComplexLiteral without imaginary part */
 /* ========================================================== */
 
 
-TEST_F(Test_Operator_Multiplication, Integer_Mult_Integer_Gives_Integer) {
+TEST_F(Test_Operator_Minus, Integer_Minus_Integer_Gives_Integer) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(3.0)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("6", st.top()->toString());
+    EXPECT_EQ("-1", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Integer_Mult_Rational_Gives_Rational) {
+TEST_F(Test_Operator_Minus, Integer_Minus_Rational_Gives_Rational) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(5.0)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2,3)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("10/3", st.top()->toString());
+    EXPECT_EQ("13/3", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Integer_Mult_Real_Gives_Real) {
-    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(3.0)))));
+TEST_F(Test_Operator_Minus, Integer_Minus_Real_Gives_Real) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.0)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.5)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("1.5", st.top()->toString());
+    EXPECT_EQ("0.5", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Rational_Mult_Integer_Gives_Rational) {
-    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(4,3)))));
+TEST_F(Test_Operator_Minus, Rational_Minus_Integer_Gives_Rational) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2,3)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(5.0)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("20/3", st.top()->toString());
+    EXPECT_EQ("-13/3", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Rational_Mult_Rational_Gives_Rational) {
+TEST_F(Test_Operator_Minus, Rational_Minus_Rational_Gives_Rational) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1,3)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2,3)))));
-    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2,3)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("4/9", st.top()->toString());
+    EXPECT_EQ("-1/3", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Rational_Mult_Real_Gives_Real) {
+TEST_F(Test_Operator_Minus, Rational_Minus_Rational_Gives_Integer) {
+    /* rational - rational = integer (by simplification) */
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(3,2)))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(5,2)))));
+    op_minus.execute(&st);
+    EXPECT_EQ(1, st.size());
+    EXPECT_EQ("-1", st.top()->toString());
+}
+
+TEST_F(Test_Operator_Minus, Rational_Minus_Real_Gives_Real) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1,2)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.1)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("0.05", st.top()->toString());
+    EXPECT_EQ("0.4", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Real_Mult_Rational_Gives_Real) {
+TEST_F(Test_Operator_Minus, Real_Minus_Rational_Gives_Real) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.5)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1,4)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("0.375", st.top()->toString());
+    EXPECT_EQ("1.25", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Real_Mult_Rational_Gives_Integer) {
+TEST_F(Test_Operator_Minus, Real_Minus_Rational_Gives_Integer) {
     /* real - rational = integer by simplification */
-    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.5)))));
-    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2,5)))));
-    op_mult.execute(&st);
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.5)))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1,2)))));
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
     EXPECT_EQ("1", st.top()->toString());
 }
 
-// Not sure if possible
-/*TEST_F(Test_Operator_Multiplication, Real_Mult_Real_Gives_Integer) {
+TEST_F(Test_Operator_Minus, Real_Minus_Real_Gives_Integer) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.5)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.5)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
     EXPECT_EQ("1", st.top()->toString());
-}*/
+}
 
-TEST_F(Test_Operator_Multiplication, Real_Mult_Real_Gives_Real) {
+TEST_F(Test_Operator_Minus, Real_Minus_Real_Gives_Real) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.5)))));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.6)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("0.3", st.top()->toString());
+    EXPECT_EQ("-0.1", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Real_Mult_Integer_Gives_Real) {
+TEST_F(Test_Operator_Minus, Real_Minus_Integer_Gives_Real) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.5)))));
-    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(3.0)))));
-    op_mult.execute(&st);
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.0)))));
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("1.5", st.top()->toString());
+    EXPECT_EQ("-0.5", st.top()->toString());
 }
 
 
 /* ========================================================== */
-/* Multiplication between two ComplexLiteral with imaginary part  */
+/* Difference between two ComplexLiteral with imaginary part  */
 /* ========================================================== */
 
-TEST_F(Test_Operator_Multiplication, ComplexInt_Mult_ComplexInt) {
-    /* Multiplication between two complex with integer parts */
+TEST_F(Test_Operator_Minus, ComplexInt_Minus_ComplexInt) {
+    /* Difference between two complex with integer parts */
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
-            shared_ptr<NumericLiteral>(new NumericLiteral(2.0)),
+            shared_ptr<NumericLiteral>(new NumericLiteral(1.0)),
             shared_ptr<NumericLiteral>(new NumericLiteral(3.0))
     )));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
             shared_ptr<NumericLiteral>(new NumericLiteral(2.0)),
-            shared_ptr<NumericLiteral>(new NumericLiteral(2.0))
+            shared_ptr<NumericLiteral>(new NumericLiteral(1.0))
     )));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("-2$10", st.top()->toString());
+    EXPECT_EQ("-1$2", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, ComplexReal_Mult_ComplexReal) {
-    /* Multiplication between two complex with real parts */
-    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
+TEST_F(Test_Operator_Minus, ComplexReal_Minus_ComplexReal) {
+    /* Difference between two complex with real parts */
+        st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
             shared_ptr<NumericLiteral>(new NumericLiteral(1.1)),
             shared_ptr<NumericLiteral>(new NumericLiteral(3.1))
     )));
@@ -142,14 +150,14 @@ TEST_F(Test_Operator_Multiplication, ComplexReal_Mult_ComplexReal) {
             shared_ptr<NumericLiteral>(new NumericLiteral(2.2)),
             shared_ptr<NumericLiteral>(new NumericLiteral(1.2))
     )));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("-1.3$8.14", st.top()->toString());
+    EXPECT_EQ("-1.1$1.9", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, ComplexRational_Mult_ComplexRational) {
-    /* Multiplication between two complex with rational parts */
-    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
+TEST_F(Test_Operator_Minus, ComplexRational_Minus_ComplexRational) {
+    /* Difference between two complex with rational parts */
+        st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
             shared_ptr<NumericLiteral>(new NumericLiteral(2,3)),
             shared_ptr<NumericLiteral>(new NumericLiteral(3,4))
     )));
@@ -157,87 +165,87 @@ TEST_F(Test_Operator_Multiplication, ComplexRational_Mult_ComplexRational) {
             shared_ptr<NumericLiteral>(new NumericLiteral(1,3)),
             shared_ptr<NumericLiteral>(new NumericLiteral(2,4))
     )));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("-11/72$7/12", st.top()->toString());
+    EXPECT_EQ("1/3$1/4", st.top()->toString());
 }
 
 
 /* ========================================================== */
-/* Multiplication between a ComplexLiteral and an ExpressionLiteral */
+/* Difference between a ComplexLiteral and an ExpressionLiteral */
 /* ========================================================== */
 
 
-TEST_F(Test_Operator_Multiplication, Complex_Mult_Expression) {
+TEST_F(Test_Operator_Minus, Complex_Minus_Expression) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1,3)))));
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'1/3*(1+1)'", st.top()->toString());
+    EXPECT_EQ("'(1/3)-1+1'", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Expression_Mult_Complex) {
+TEST_F(Test_Operator_Minus, Expression_Minus_Complex) {
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1,3)))));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'(1+1)*1/3'", st.top()->toString());
+    EXPECT_EQ("'1+1-(1/3)'", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Expression_Mult_Expression) {
+TEST_F(Test_Operator_Minus, Expression_Minus_Expression) {
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'(1+1)*(1+1)'", st.top()->toString());
+    EXPECT_EQ("'1+1-1+1'", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Expression_Mult_Expression_1) {
+TEST_F(Test_Operator_Minus, Expression_Minus_Expression_1) {
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1*1")));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'(1+1)*1*1'", st.top()->toString());
+    EXPECT_EQ("'1+1-(1*1)'", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Expression_Mult_Expression_2) {
+TEST_F(Test_Operator_Minus, Expression_Minus_Expression_2) {
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1<1")));
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'(1<1)*(1+1)'", st.top()->toString());
+    EXPECT_EQ("'(1<1)-1+1'", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Expression_Mult_Expression_3) {
+TEST_F(Test_Operator_Minus, Expression_Minus_Expression_3) {
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1AND1")));
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1*1")));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'(1AND1)*1*1'", st.top()->toString());
+    EXPECT_EQ("'(1AND1)-(1*1)'", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Expression_Mult_Expression_4) {
+TEST_F(Test_Operator_Minus, Expression_Minus_Expression_4) {
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("(1<1)+(1*1)")));
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1/1")));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'((1<1)+(1*1))*1/1'", st.top()->toString());
+    EXPECT_EQ("'(1<1)+(1*1)-(1/1)'", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Expression_Mult_Expression_5) {
+TEST_F(Test_Operator_Minus, Expression_Minus_Expression_5) {
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("(1<1)*(1*1)")));
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1/1")));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'(1<1)*(1*1)*1/1'", st.top()->toString());
+    EXPECT_EQ("'((1<1)*(1*1))-(1/1)'", st.top()->toString());
 }
 
-TEST_F(Test_Operator_Multiplication, Expression_Mult_Expression_6) {
+TEST_F(Test_Operator_Minus, Expression_Minus_Expression_6) {
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("(1*1*1*1)")));
     st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1/1")));
-    op_mult.execute(&st);
+    op_minus.execute(&st);
     EXPECT_EQ(1, st.size());
-    EXPECT_EQ("'(1*1*1*1)*1/1'", st.top()->toString());
+    EXPECT_EQ("'(1*1*1*1)-(1/1)'", st.top()->toString());
 }
 
 
@@ -246,68 +254,73 @@ TEST_F(Test_Operator_Multiplication, Expression_Mult_Expression_6) {
 /*                   TEST THROWN EXCEPTIONS                   */
 /* ========================================================== */
 
-TEST_F(Test_Operator_Multiplication, Throw_Exception_Null_Arguments) {
+TEST_F(Test_Operator_Minus, Throw_Exception_Null_Arguments) {
     st.push(shared_ptr<ComplexLiteral>());
     st.push(shared_ptr<ComplexLiteral>());
     try {
-       //op_mult.execute(&st); // uncomment to get error message
-        ASSERT_THROW(op_mult.execute(&st), UTComputerException);
+        //op_minus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_minus.execute(&st), UTComputerException);
     } catch (UTComputerException e) {
         cerr << e.getMessage() << endl;
     }
 }
 
-TEST_F(Test_Operator_Multiplication, Throw_Exception_First_Argument_Is_Null) {
+TEST_F(Test_Operator_Minus, Throw_Exception_First_Argument_Is_Null) {
     st.push(shared_ptr<ComplexLiteral>());
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(5.0)))));
     try {
-       //op_mult.execute(&st); // uncomment to get error message
-        ASSERT_THROW(op_mult.execute(&st), UTComputerException);
+       //op_minus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_minus.execute(&st), UTComputerException);
     } catch (UTComputerException e) {
         cerr << e.getMessage() << endl;
     }
 }
 
-TEST_F(Test_Operator_Multiplication, Throw_Exception_Second_Argument_Is_Null) {
+TEST_F(Test_Operator_Minus, Throw_Exception_Second_Argument_Is_Null) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(5.0)))));
     st.push(shared_ptr<ComplexLiteral>());
     try {
-       //op_mult.execute(&st); // uncomment to get error message
-        ASSERT_THROW(op_mult.execute(&st), UTComputerException);
+       //op_minus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_minus.execute(&st), UTComputerException);
     } catch (UTComputerException e) {
         cerr << e.getMessage() << endl;
     }
 }
 
-TEST_F(Test_Operator_Multiplication, Throw_Exception_Two_Arguments_Invalid) {
+TEST_F(Test_Operator_Minus, Throw_Exception_Two_Arguments_Invalid) {
     st.push(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)));
     st.push(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)));
     try {
-       //op_mult.execute(&st); // uncomment to get error message
-        ASSERT_THROW(op_mult.execute(&st), UTComputerException);
+       //op_minus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_minus.execute(&st), UTComputerException);
     } catch (UTComputerException e) {
         cerr << e.getMessage() << endl;
     }
 }
 
-TEST_F(Test_Operator_Multiplication, Throw_Exception_First_Argument_Invalid) {
+
+
+TEST_F(Test_Operator_Minus, Throw_Exception_First_Argument_Invalid) {
     st.push(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)));
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(5.0)))));
     try {
-       //op_mult.execute(&st); // uncomment to get error message
-        ASSERT_THROW(op_mult.execute(&st), UTComputerException);
+       //op_minus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_minus.execute(&st), UTComputerException);
     } catch (UTComputerException e) {
         cerr << e.getMessage() << endl;
     }
 }
 
-TEST_F(Test_Operator_Multiplication, Throw_Exception_Second_Argument_Invalid) {
+
+
+TEST_F(Test_Operator_Minus, Throw_Exception_Second_Argument_Invalid) {
     st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(5.0)))));
     st.push(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)));
     try {
-       //op_mult.execute(&st); // uncomment to get error message
-        ASSERT_THROW(op_mult.execute(&st), UTComputerException);
+       //op_minus.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_minus.execute(&st), UTComputerException);
     } catch (UTComputerException e) {
         cerr << e.getMessage() << endl;
     }
 }
+

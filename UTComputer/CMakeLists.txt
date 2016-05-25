@@ -39,14 +39,18 @@ set(SOURCE_FILES
         operators/OperatorManager.h
         operators/Operator.cpp
         operators/Operator.h
-        operators/OperatorPlus.cpp
-        operators/OperatorPlus.h
-        operators/OperatorMinus.cpp
-        operators/OperatorMinus.h
-        operators/OperatorMultiplication.cpp
-        operators/OperatorMultiplication.h
-        operators/OperatorDivision.cpp
-        operators/OperatorDivision.h
+        operators/classic_operators/OperatorPlus.cpp
+        operators/classic_operators/OperatorPlus.h
+        operators/classic_operators/OperatorMinus.cpp
+        operators/classic_operators/OperatorMinus.h
+        operators/classic_operators/OperatorMultiplication.cpp
+        operators/classic_operators/OperatorMultiplication.h
+        operators/classic_operators/OperatorDivision.cpp
+        operators/classic_operators/OperatorDivision.h
+        operators/logical_operators/OperatorInferior.cpp
+        operators/logical_operators/OperatorInferior.h
+        operators/logical_operators/OperatorInferiorEqual.cpp
+        operators/logical_operators/OperatorInferiorEqual.h
         )
 
 
@@ -54,18 +58,19 @@ add_executable(ut-computer main.cpp ${SOURCE_FILES})
 
 # Tests
 set(TEST_FILES
-        ut-computer-tests/lexer-tests/tests_Lexer.cpp.cpp
-        ut-computer-tests/stack-tests/tests_StackUTComputer.cpp
-        ut-computer-tests/literals-tests/tests_ExpressionLiteral.cpp
-        ut-computer-tests/operators-tests/tests_Operator.cpp
-        ut-computer-tests/operators-tests/tests_Operator_Manager.cpp
-        ut-computer-tests/operators-tests/tests_OperatorPlus.cpp
-        ut-computer-tests/operators-tests/tests_OperatorMinus.cpp
-        ut-computer-tests/operators-tests/tests_OperatorMultiplication.cpp
-        ut-computer-tests/operators-tests/tests_OperatorDivision.cpp
+        ut_computer_tests/lexer_tests/tests_Lexer.cpp.cpp
+        ut_computer_tests/stack_tests/tests_StackUTComputer.cpp
+        ut_computer_tests/literals-tests/tests_ExpressionLiteral.cpp
+        ut_computer_tests/operators_tests/tests_Operator.cpp
+        ut_computer_tests/operators_tests/tests_Operator_Manager.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorPlus.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorMinus.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorMultiplication.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorDivision.cpp
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorInferior.cpp
         )
 
 
-add_executable(ut-computer-tests ut-computer-tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})
+add_executable(ut-computer-tests ut_computer_tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})
 target_link_libraries(ut-computer-tests /usr/local/lib/libgtest.a)
-#target_link_libraries(ut-computer-tests ${GTEST_LIBRARIES} pthread) // no need but keeping it just in case
+#target_link_libraries(ut_computer_tests ${GTEST_LIBRARIES} pthread) // no need but keeping it just in case

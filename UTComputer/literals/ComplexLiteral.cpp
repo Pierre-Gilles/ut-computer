@@ -104,7 +104,7 @@ shared_ptr<ComplexLiteral> ComplexLiteral::operator/(ComplexLiteral &l) const {
 
 
 
-// Logical Operators
+// Logical Operators apply only on non complex numbers : im and l.im must be 0
 bool ComplexLiteral::operator<(const ComplexLiteral &l) const {
     if (im->getNumerator() == 0 && l.im->getNumerator() == 0)
         return *real < *l.real;
@@ -140,4 +140,23 @@ bool ComplexLiteral::operator!=(const ComplexLiteral &l) const {
         return *real != *l.real;
     throw UTComputerException("Error ComplexLiteral::operator!= : comparing two complex numbers is impossible.");
 }
+
+bool ComplexLiteral::operator&&(const ComplexLiteral &l) const {
+    if (im->getNumerator() == 0 && l.im->getNumerator() == 0)
+        return *real && *l.real;
+    throw UTComputerException("Error ComplexLiteral::operator&&: comparing two complex numbers is impossible.");
+}
+
+bool ComplexLiteral::operator||(const ComplexLiteral &l) const {
+    if (im->getNumerator() == 0 && l.im->getNumerator() == 0)
+        return *real || *l.real;
+    throw UTComputerException("Error ComplexLiteral::operator|| : comparing two complex numbers is impossible.");
+}
+
+bool ComplexLiteral::operator!() const {
+    if (im->getNumerator() == 0)
+        return !(*real);
+    throw UTComputerException("Error ComplexLiteral::operator! : what is a NOT complex number ?.");
+}
+
 // ===============================================================================================================

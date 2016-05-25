@@ -1,17 +1,16 @@
-#ifndef TESTLO21CLION_PLUSOPERATOR_H
-#define TESTLO21CLION_PLUSOPERATOR_H
+#ifndef UTCOMPUTER_MINUSOPERATOR_H
+#define UTCOMPUTER_MINUSOPERATOR_H
 
-#include "Operator.h"
-#include "../literals/ComplexLiteral.h"
-#include "../literals/ExpressionLiteral.h"
+#include "../Operator.h"
+#include "../../literals/ComplexLiteral.h"
+#include "../../literals/ExpressionLiteral.h"
 
-
-
-class OperatorPlus : public Operator {
+class OperatorMinus : public Operator {
 
 public:
-    OperatorPlus() : Operator(2, "+") { }
-    virtual ~OperatorPlus() { }
+    OperatorMinus() : Operator(2, "-") { }
+    virtual ~OperatorMinus() { }
+
 
 
 
@@ -20,17 +19,20 @@ private:
     // ===============================================================================================================
     // ======================                 Implement Operator interface                  ==========================
     // ===============================================================================================================
+
     /* Tests done before in superclass :
      *      - test that pointer to stack is not null
      *      - test that stack contains enough Literal* (st.size() >= operator arity)
      *      - test that every Literal* unstacked isn't null
      *
-     * OperatorPlus applies to
+     * OperatorMinus applies to
      *      - two ComplexLiterals
      *      - two ExpressionLiteral
      *      - an ExpressionLiteral and a ComplexLiteral */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
-    // ===============================================================================================================
 
+    // ===============================================================================================================
 };
-#endif //TESTLO21CLION_PLUSOPERATOR_H
+
+
+#endif //UTCOMPUTER_MINUSOPERATOR_H

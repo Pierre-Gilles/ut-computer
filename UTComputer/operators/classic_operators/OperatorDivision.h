@@ -1,17 +1,17 @@
-#ifndef UTCOMPUTER_MINUSOPERATOR_H
-#define UTCOMPUTER_MINUSOPERATOR_H
+#ifndef UTCOMPUTER_OPERATORDIVISION_H
+#define UTCOMPUTER_OPERATORDIVISION_H
 
-#include "Operator.h"
-#include "../literals/ComplexLiteral.h"
-#include "../literals/ExpressionLiteral.h"
+#include "../Operator.h"
+#include "../../literals/ComplexLiteral.h"
+#include "../../literals/ExpressionLiteral.h"
 
-class OperatorMinus : public Operator {
+using namespace std;
+
+class OperatorDivision : public Operator {
 
 public:
-    OperatorMinus() : Operator(2, "-") { }
-    virtual ~OperatorMinus() { }
-
-
+    OperatorDivision() : Operator(2, "/") { }
+    virtual ~OperatorDivision() { }
 
 
 private:
@@ -25,7 +25,7 @@ private:
      *      - test that stack contains enough Literal* (st.size() >= operator arity)
      *      - test that every Literal* unstacked isn't null
      *
-     * OperatorMinus applies to
+     * OperatorDivision applies to
      *      - two ComplexLiterals
      *      - two ExpressionLiteral
      *      - an ExpressionLiteral and a ComplexLiteral */
@@ -35,4 +35,4 @@ private:
 };
 
 
-#endif //UTCOMPUTER_MINUSOPERATOR_H
+#endif //UTCOMPUTER_OPERATORDIVISION_H

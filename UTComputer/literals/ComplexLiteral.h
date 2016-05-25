@@ -87,6 +87,9 @@ public:
     bool operator<=(const ComplexLiteral &l) const;
     bool operator>=(const ComplexLiteral &l) const;
     bool operator!=(const ComplexLiteral &l) const;
+    bool operator&&(const ComplexLiteral &l) const;
+    bool operator||(const ComplexLiteral &l) const;
+    bool operator!() const;
     // ===============================================================================================================
 };
 

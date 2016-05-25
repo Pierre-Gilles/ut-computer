@@ -1,17 +1,16 @@
-#ifndef UTCOMPUTER_OPERATORDIVISION_H
-#define UTCOMPUTER_OPERATORDIVISION_H
+#ifndef UTCOMPUTER_OPERATORINFERIOREQUAL_H
+#define UTCOMPUTER_OPERATORINFERIOREQUAL_H
 
-#include "Operator.h"
-#include "../literals/ComplexLiteral.h"
-#include "../literals/ExpressionLiteral.h"
+#include "../Operator.h"
+#include "../../literals/ComplexLiteral.h"
 
-using namespace std;
+class OperatorInferiorEqual : public Operator {
 
-class OperatorDivision : public Operator {
 
 public:
-    OperatorDivision() : Operator(2, "/") { }
-    virtual ~OperatorDivision() { }
+
+    OperatorInferiorEqual() : Operator(2, "<=") {}
+    virtual ~OperatorInferiorEqual() {}
 
 
 private:
@@ -19,20 +18,18 @@ private:
     // ===============================================================================================================
     // ======================                 Implement Operator interface                  ==========================
     // ===============================================================================================================
-
     /* Tests done before in superclass :
      *      - test that pointer to stack is not null
      *      - test that stack contains enough Literal* (st.size() >= operator arity)
      *      - test that every Literal* unstacked isn't null
      *
-     * OperatorDivision applies to
-     *      - two ComplexLiterals
-     *      - two ExpressionLiteral
-     *      - an ExpressionLiteral and a ComplexLiteral */
+     * OperatorInferiorEqual applies to
+     *      - two ComplexLiterals with no imaginary parts
+     */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
-
     // ===============================================================================================================
+
 };
 
 
-#endif //UTCOMPUTER_OPERATORDIVISION_H
+#endif //UTCOMPUTER_OPERATORINFERIOREQUAL_H

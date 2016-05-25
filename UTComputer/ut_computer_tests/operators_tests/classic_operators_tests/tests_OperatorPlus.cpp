@@ -1,7 +1,7 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
-#include "../../operators/OperatorPlus.h"
+#include "../../../operators/classic_operators/OperatorPlus.h"
 
 
 

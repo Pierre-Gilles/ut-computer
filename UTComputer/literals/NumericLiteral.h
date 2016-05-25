@@ -96,6 +96,9 @@ public:
     bool operator<=(const NumericLiteral &l) const;
     bool operator>=(const NumericLiteral &l) const;
     bool operator!=(const NumericLiteral &l) const;
+    bool operator&&(const NumericLiteral &l) const;
+    bool operator||(const NumericLiteral &l) const;
+    bool operator!() const;
     // ===============================================================================================================
 
 
