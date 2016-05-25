@@ -18,22 +18,24 @@ private:
     double numerator;
     double denominator;
     void simplification() {
-        // si le numerateur est 0, le denominateur prend la valeur 1
+        if (!isRational())
+            throw UTComputerException("Error NumericLiteral::simplification : simplifiaction on non retional literal is impossible.");
+
+        // if numerator is 0, then set denominator to 1
         if (numerator == 0) {
-            denominator=1;
+            denominator = 1;
             return;
         }
 
-        /* un denominateur ne devrait pas être 0, si c’est le cas, on sort de la méthode */
+        // denominator can't be 0
         if (denominator == 0) {
-            return;
+            throw UTComputerException("Error NumericLiteral::simplification : denominator can't be 0.");
         }
 
-        /* utilisation de l’algorithme d’Euclide pour trouver le Plus Grand Commun
-         Denominateur (PGCD) entre le numerateur et le denominateur */
+        /* Use of Euclide algorithm to find // TODO PGCD en anglais ? */
         double a=numerator, b=denominator;
 
-        // on ne travaille qu’avec des valeurs positives...
+        // we only works with positiv values
         if (a<0)
             a=-a;
         if (b<0)
@@ -46,11 +48,11 @@ private:
                 b = b - a;
         }
 
-        // on divise le numerateur et le denominateur par le PGCD=a
+        // division of numerator and denominator by a, the PGCD
         numerator /= a;
         denominator /= a;
 
-        // si le denominateur est négatif, on fait passer le signe - au numérateur
+        // if denominator is negative, pass the negation to the numerator
         if (denominator < 0) {
             denominator = -denominator;
             numerator = -numerator;
@@ -68,10 +70,14 @@ public:
         if (den == 0.0)
             throw UTComputerException("Error NumericLiteral::constructor :  denominator can't be 0.");
 
-        double intpart;
-        if (modf(num, &intpart) == 0.0 && modf(den, &intpart)==0) // then numerator and denominator is an int and we can apply simplification to it
+        if (isRational()) // then numerator and denominator have "int" value and we can apply simplification to it
             simplification();
     }
+
+    NumericLiteral(const NumericLiteral* l) :
+            Literal(),
+            numerator(l->numerator),
+            denominator(l->denominator) { }
 
 
     virtual ~NumericLiteral() { }
@@ -130,20 +136,19 @@ public:
             sting_stream << numerator;
             return sting_stream.str();
         }
-        cerr << numerator << "  " << denominator << endl;
         throw UTComputerException("Error NumericLiteral::toString() : literal isn't integer nor rational nor real");
     }
 
 
-    NumericLiteral * operator+(NumericLiteral &l) const {
+    shared_ptr<NumericLiteral> operator+(NumericLiteral &l) const {
         /* if one is a real literal and the other a rational literal, we must return a
          * real literal with the result of the operation in the numerator attribute
          * and set the denominator to 1 */
-        if ( (isReal() && l.isRational()) || (isRational() && l.isReal()) ) {
-            NumericLiteral *tmp = new NumericLiteral(
+        if (isReal() || l.isReal()) {
+            shared_ptr<NumericLiteral> tmp(new NumericLiteral(
                     numerator*l.denominator + l.numerator*denominator,
                     denominator * l.denominator
-            );
+            ));
             tmp->numerator = tmp->numerator/tmp->denominator;
             tmp->denominator = 1;
             return tmp;
@@ -153,21 +158,21 @@ public:
         }
 
         /* In general, we return a new numeric literal with the normal plus operation */
-        return new NumericLiteral(
+        return shared_ptr<NumericLiteral>(new NumericLiteral(
                 numerator*l.denominator + l.numerator*denominator,
                 denominator * l.denominator
-        );
+        ));
     }
 
-    NumericLiteral * operator-(NumericLiteral &l) const {
+    shared_ptr<NumericLiteral> operator-(NumericLiteral &l) const {
         /* if one is a real literal and the other a rational literal, we must return a
          * real literal with the result of the operation in the numerator attribute
          * and set the denominator to 1 */
-        if ( (isReal() && l.isRational()) || (isRational() && l.isReal()) ) {
-            NumericLiteral *tmp = new NumericLiteral(
+        if (isReal() || l.isReal()) {
+            shared_ptr<NumericLiteral> tmp(new NumericLiteral(
                     numerator*l.denominator - l.numerator*denominator,
                     denominator * l.denominator
-            );
+            ));
             tmp->numerator = tmp->numerator/tmp->denominator;
             tmp->denominator = 1;
             return tmp;
@@ -177,55 +182,58 @@ public:
         }
 
         /* In general, we return a new numeric literal with the normal plus operation */
-        return new NumericLiteral(
+        return shared_ptr<NumericLiteral>(new NumericLiteral(
                 numerator*l.denominator - l.numerator*denominator,
                 denominator * l.denominator
-        );
+        ));
     }
 
-    NumericLiteral * operator*(NumericLiteral &l) const {
+    shared_ptr<NumericLiteral> operator*(NumericLiteral &l) const {
         /* if one of the arguments is real, we must return a
          * real literal with the result of the operation in the numerator attribute
          * and set the denominator to 1 */
         if (isReal() || l.isReal()) {
-            NumericLiteral *tmp = new NumericLiteral(
+            shared_ptr<NumericLiteral> tmp(new NumericLiteral(
                     numerator*l.numerator,
                     denominator * l.denominator
-            );
+            ));
             tmp->numerator = tmp->numerator/tmp->denominator;
             tmp->denominator = 1;
             return tmp;
         }
 
         /* In general, we return a new numeric literal with the normal multiplication operation */
-        return new NumericLiteral(
+        return shared_ptr<NumericLiteral>(new NumericLiteral(
                 numerator*l.numerator,
                 denominator * l.denominator
-        );
+        ));
     }
 
-    NumericLiteral * operator/(NumericLiteral &l) const {
+    shared_ptr<NumericLiteral> operator/(NumericLiteral &l) const {
         if (denominator == 0.0 || l.denominator == 0.0)
             throw UTComputerException("Error NumericLiteral::operator/(NumericLiteral &l) : one of the denominators is 0.");
+        
+        if (l.numerator == 0.0)
+            throw UTComputerException("Error NumericLiteral::operator/(NumericLiteral &l) : l is 0 and division by zero is impossible.");
 
         /* if one of the arguments is real, we must return a
          * real literal with the result of the operation in the numerator attribute
          * and set the denominator to 1 */
         if (isReal() || l.isReal()) {
-            NumericLiteral *tmp = new NumericLiteral(
+            shared_ptr<NumericLiteral> tmp(new NumericLiteral(
                     numerator*l.denominator,
                     denominator * l.numerator
-            );
+            ));
             tmp->numerator = tmp->numerator/tmp->denominator;
             tmp->denominator = 1;
             return tmp;
         }
 
         /* In general, we return a new numeric literal with the normal division operation */
-        return new NumericLiteral(
+        return shared_ptr<NumericLiteral>(new NumericLiteral(
                 numerator*l.denominator,
                 denominator * l.numerator
-        );
+        ));
     }
 
 

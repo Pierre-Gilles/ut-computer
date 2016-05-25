@@ -5,6 +5,8 @@
 #include "../literals/ComplexLiteral.h"
 #include "../literals/ExpressionLiteral.h"
 
+using namespace std;
+
 class OperatorDivision : public Operator {
 
 public:
@@ -23,12 +25,12 @@ private:
      *      - two ComplexLiterals
      *      - two ExpressionLiteral
      *      - an ExpressionLiteral and a ComplexLiteral */
-    virtual Literal* executeSpecificOperator(StackUTComputer *st) override {
+    virtual shared_ptr<Literal> executeSpecificOperator() override {
         /* Verification that we do not perform divisions by zero is made in ComplexLiteral and NumericLiteral
          * and exceptions raised are caught here */
         try {
-            Literal* a = arguments[0];
-            Literal* b = arguments[1];
+            Literal* a = arguments[0].get();
+            Literal* b = arguments[1].get();
             ComplexLiteral* comp_a = dynamic_cast<ComplexLiteral*>(a);
             ComplexLiteral* comp_b = dynamic_cast<ComplexLiteral*>(b);
             ExpressionLiteral* exp_a = dynamic_cast<ExpressionLiteral*>(a);

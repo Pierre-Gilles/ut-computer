@@ -245,20 +245,20 @@ public:
         return postfix;
     }
 
-    ExpressionLiteral* operator+(ExpressionLiteral &l) const {
-        return new ExpressionLiteral(constructNewExpression("+", l));
+    shared_ptr<ExpressionLiteral> operator+(ExpressionLiteral &l) const {
+        return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(constructNewExpression("+", l)));
     }
 
-    ExpressionLiteral* operator-(ExpressionLiteral &l) const {
-        return new ExpressionLiteral(constructNewExpression("-", l));
+    shared_ptr<ExpressionLiteral> operator-(ExpressionLiteral &l) const {
+        return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(constructNewExpression("-", l)));
     }
 
-    ExpressionLiteral* operator*(ExpressionLiteral &l) const {
-        return new ExpressionLiteral(constructNewExpression("*", l));
+    shared_ptr<ExpressionLiteral> operator*(ExpressionLiteral &l) const {
+        return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(constructNewExpression("*", l)));
     }
 
-    ExpressionLiteral* operator/(ExpressionLiteral &l) const {
-        return new ExpressionLiteral(constructNewExpression("/", l));
+    shared_ptr<ExpressionLiteral> operator/(ExpressionLiteral &l) const {
+        return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(constructNewExpression("/", l)));
     }
 
 };

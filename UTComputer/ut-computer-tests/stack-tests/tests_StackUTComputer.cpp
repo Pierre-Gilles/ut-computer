@@ -18,54 +18,76 @@ public:
     }
 };
 
+TEST_F(Test_StackUTComputer_Class, Test_shared_ptd_usage) {
+    shared_ptr<ComplexLiteral> test(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    EXPECT_EQ(1, test.use_count()); // pointer used by test only
+
+    st.push(test);
+    EXPECT_EQ(2, test.use_count()); // pointer used by test and stack
+
+    EXPECT_EQ(3, st.top().use_count()); // pointer used by test, stack and st.top()
+
+    EXPECT_EQ(2, test.use_count()); // pointer used by test and stack and no more by st.top()
+
+    st.pop();
+    EXPECT_EQ(1, test.use_count()); // pointer used by test because delete from stack
+
+    test.reset(); // say we don't want to use test anymore
+    EXPECT_EQ(0, test.use_count()); // pointer used by no one
+}
+
+
 
 TEST_F(Test_StackUTComputer_Class, Test_size_Function) {
-    ComplexLiteral *test = new ComplexLiteral(new NumericLiteral(2));
+    shared_ptr<ComplexLiteral> test(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
     st.push(test);
     EXPECT_EQ(1, st.size());
 }
 
+TEST_F(Test_StackUTComputer_Class, Test_pop_Function) {
+    shared_ptr<ComplexLiteral> test(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    st.push(test);
+    EXPECT_EQ(1, st.size());
+    st.pop();
+    EXPECT_EQ(0, st.size());
+}
+
 
 TEST_F(Test_StackUTComputer_Class, Test_top_Function) {
-    ComplexLiteral *test = new ComplexLiteral(new NumericLiteral(2));
+    shared_ptr<ComplexLiteral> test(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
     st.push(test);
     EXPECT_EQ("2", st.top()->toString());
     EXPECT_EQ(test, st.top());
 }
 
-TEST_F(Test_StackUTComputer_Class, Test_pop_Function) {
-    ComplexLiteral *test = new ComplexLiteral(new NumericLiteral(2));
-    st.push(test);
-    EXPECT_EQ(1, st.size());
-    st.pop();
-    EXPECT_EQ(0, st.size());
-    // expect death when accessing a deleted pointer
-    EXPECT_DEATH(test->toString(), ".*"); // ".*" match any error code
-}
+
 
 TEST_F(Test_StackUTComputer_Class, Test_clear_Function) {
-    ComplexLiteral *test1 = new ComplexLiteral(new NumericLiteral(2));
-    ComplexLiteral *test2 = new ComplexLiteral(new NumericLiteral(2));
-    ComplexLiteral *test3 = new ComplexLiteral(new NumericLiteral(2));
-    ComplexLiteral *test4 = new ComplexLiteral(new NumericLiteral(2));
+    shared_ptr<ComplexLiteral> test1(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    shared_ptr<ComplexLiteral> test2(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    shared_ptr<ComplexLiteral> test3(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    shared_ptr<ComplexLiteral> test4(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
     st.push(test1);
     st.push(test2);
     st.push(test3);
     st.push(test4);
     EXPECT_EQ(4, st.size());
+    EXPECT_EQ(2, test1.use_count());
+    EXPECT_EQ(2, test2.use_count());
+    EXPECT_EQ(2, test3.use_count());
+    EXPECT_EQ(2, test4.use_count());
     st.clear();
     EXPECT_EQ(0, st.size());
-
-    // expect death when accessing a deleted pointer
-    EXPECT_DEATH(test1->toString(), ".*"); // ".*" match any error code
-    EXPECT_DEATH(test2->toString(), ".*"); // ".*" match any error code
-    EXPECT_DEATH(test3->toString(), ".*"); // ".*" match any error code
-    EXPECT_DEATH(test4->toString(), ".*"); // ".*" match any error code
+    EXPECT_EQ(1, test1.use_count());
+    EXPECT_EQ(1, test2.use_count());
+    EXPECT_EQ(1, test3.use_count());
+    EXPECT_EQ(1, test4.use_count());
 }
 
 TEST_F(Test_StackUTComputer_Class, Test_getArguments_Function) {
     try {
-        Literal **arguments = new Literal*[10];
+        vector<shared_ptr<Literal>> arguments;
+        arguments.reserve(10);
 
         // should pass and raise no error or crash
         EXPECT_NO_THROW(st.getArguments(0, arguments));
@@ -76,31 +98,31 @@ TEST_F(Test_StackUTComputer_Class, Test_getArguments_Function) {
         EXPECT_THROW(st.getArguments(2,arguments),UTComputerException);
 
         // Stack.size() is two, but both arguments are null => exception raised
-        st.push(nullptr);
-        st.push(nullptr);
+        st.push(shared_ptr<Literal>());
+        st.push(shared_ptr<Literal>());
         // st.getArguments(2,arguments); // uncomment to get exception message
         EXPECT_THROW(st.getArguments(2,arguments),UTComputerException);
 
         // Stack.size() is two, but one argument is null => exception raised
         st.clear();
-        st.push(new ComplexLiteral(new NumericLiteral(2)));
-        st.push(nullptr);
-        // st.getArguments(2,arguments); // uncomment to get exception message
+        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
+        st.push(shared_ptr<Literal>());
+        //st.getArguments(2,arguments); // uncomment to get exception message
         EXPECT_THROW(st.getArguments(2,arguments),UTComputerException);
 
         // Stack.size() is two, but one argument is null => exception raised
         st.clear();
-        st.push(nullptr);
-        st.push(new ComplexLiteral(new NumericLiteral(2)));
-        // st.getArguments(2,arguments); // uncomment to get exception message
+        st.push(shared_ptr<Literal>());
+        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
+        //st.getArguments(2,arguments); // uncomment to get exception message
         EXPECT_THROW(st.getArguments(2,arguments),UTComputerException);
 
-        // Stack.size() is two, and no null arguments
+        //Stack.size() is two, and no null arguments
         st.clear();
-        st.push(new ComplexLiteral(new NumericLiteral(1)));
-        st.push(new ComplexLiteral(new NumericLiteral(2)));
+        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.0)))));
+        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
         EXPECT_NO_THROW(st.getArguments(2,arguments));
-        EXPECT_EQ("1", arguments[0]->toString());
+        EXPECT_EQ("1", arguments.at(0)->toString());
         EXPECT_EQ("2", arguments[1]->toString());
     }
     catch (UTComputerException e) {
@@ -109,49 +131,47 @@ TEST_F(Test_StackUTComputer_Class, Test_getArguments_Function) {
 }
 
 TEST_F(Test_StackUTComputer_Class, Test_deleteArguments_Function) {
-
     try {
-        Literal **arguments = new Literal*[10];
-
         // should pass and raise no error or crash
         EXPECT_NO_THROW(st.deleteArguments(0));
         EXPECT_NO_FATAL_FAILURE(st.deleteArguments(0));
 
         // Stack is empty, so deleteArguments with 2 as arity should raise exception
-        //st.deleteArguments(2); // uncomment to get exception message
+        //st.deleteArguments(2.0); // uncomment to get exception message
         EXPECT_THROW(st.deleteArguments(2),UTComputerException);
 
         // Stack.size() is two, but both arguments are null => no exception raised
-        st.push(nullptr);
-        st.push(nullptr);
+        st.push(shared_ptr<Literal>());
+        st.push(shared_ptr<Literal>());
         EXPECT_NO_THROW(st.deleteArguments(2));
 
         // Stack.size() is two, but one argument is null => no exception raised
         st.clear();
-        st.push(new ComplexLiteral(new NumericLiteral(2)));
-        st.push(nullptr);
+        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
+        st.push(shared_ptr<Literal>());
         EXPECT_NO_THROW(st.deleteArguments(2));
 
         // Stack.size() is two, but one argument is null => no exception raised
         st.clear();
-        st.push(nullptr);
-        st.push(new ComplexLiteral(new NumericLiteral(2)));
+        st.push(shared_ptr<Literal>());
+        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
         EXPECT_NO_THROW(st.deleteArguments(2));
 
         // Stack.size() is two, and no null arguments
         st.clear();
-        ComplexLiteral *test1 = new ComplexLiteral(new NumericLiteral(2));
-        ComplexLiteral *test2 = new ComplexLiteral(new NumericLiteral(2));
+        shared_ptr<ComplexLiteral> test1(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+        shared_ptr<ComplexLiteral> test2(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
         st.push(test1);
         st.push(test2);
+        EXPECT_EQ(2, test1.use_count());
+        EXPECT_EQ(2, test2.use_count());
+
         EXPECT_NO_THROW(st.deleteArguments(2));
-        // expect death when accessing a deleted pointer
-        EXPECT_DEATH(test1->toString(), ".*"); // ".*" match any error code
-        EXPECT_DEATH(test2->toString(), ".*"); // ".*" match any error code
+
+        EXPECT_EQ(1, test1.use_count());
+        EXPECT_EQ(1, test2.use_count());
     }
     catch (UTComputerException e) {
         cerr << e.getMessage() << endl;
     }
-
-
 }

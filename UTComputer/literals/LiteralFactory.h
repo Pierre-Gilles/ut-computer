@@ -17,31 +17,31 @@ class LiteralFactory {
 
 public:
     LiteralFactory() {
-        nb_literals = 7;
-        tabStaticCreateFunctions = new createFunction[nb_literals];
+//        nb_literals = 7;
+//        tabStaticCreateFunctions = new createFunction[nb_literals];
 //        tabStaticCreateFunctions[0] = &IntegerLiteral::create;
 //        tabStaticCreateFunctions[1] = &RealLiteral::create;
-        tabStaticCreateFunctions[2] = nullptr;
-        tabStaticCreateFunctions[3] = nullptr;
-        tabStaticCreateFunctions[4] = nullptr;
-        tabStaticCreateFunctions[5] = nullptr;
-        tabStaticCreateFunctions[6] = nullptr;
+//        tabStaticCreateFunctions[2] = nullptr;
+//        tabStaticCreateFunctions[3] = nullptr;
+//        tabStaticCreateFunctions[4] = nullptr;
+//        tabStaticCreateFunctions[5] = nullptr;
+//        tabStaticCreateFunctions[6] = nullptr;
 
     }
 
-    Literal* createLiteral(const string& s) {
-        Literal* tmp = nullptr;
-        for (int i=0; i<nb_literals; i++) {
-
-            if (tabStaticCreateFunctions[i] != nullptr) {
-                tmp = tabStaticCreateFunctions[i](s);
-                if (tmp != nullptr) {
-                    return tmp;
-                }
-            }
-        }
-        return tmp;
-    }
+//    Literal* createLiteral(const string& s) {
+//        Literal* tmp = nullptr;
+//        for (int i=0; i<nb_literals; i++) {
+//
+//            if (tabStaticCreateFunctions[i] != nullptr) {
+//                tmp = tabStaticCreateFunctions[i](s);
+//                if (tmp != nullptr) {
+//                    return tmp;
+//                }
+//            }
+//        }
+//        return tmp;
+//    }
 };
 
 

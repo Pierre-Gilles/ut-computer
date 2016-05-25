@@ -22,11 +22,10 @@ private:
      *      - two ComplexLiterals
      *      - two ExpressionLiteral
      *      - an ExpressionLiteral and a ComplexLiteral */
-    virtual Literal* executeSpecificOperator(StackUTComputer *st) override {
+    shared_ptr<Literal> executeSpecificOperator() override {
         try {
-            Literal* a = arguments[0];
-            Literal* b = arguments[1];
-
+            Literal* a = arguments[0].get();
+            Literal* b = arguments[1].get();
             ComplexLiteral* comp_a = dynamic_cast<ComplexLiteral*>(a);
             ComplexLiteral* comp_b = dynamic_cast<ComplexLiteral*>(b);
             ExpressionLiteral* exp_a = dynamic_cast<ExpressionLiteral*>(a);

@@ -3,47 +3,44 @@
 #define TESTLO21CLION_COMPLEXLITERAL_H
 
 #include "NumericLiteral.h"
+#include <memory>
+#include <cstddef>
+
+using namespace std;
 
 class ComplexLiteral : public Literal {
-    NumericLiteral *real;
-    NumericLiteral *im;
+    shared_ptr<NumericLiteral> real;
+    shared_ptr<NumericLiteral> im;
 public:
 
-
-    ComplexLiteral(NumericLiteral *r, NumericLiteral *i = new NumericLiteral(0)) : Literal(), real(r), im(i) {
+     ComplexLiteral(shared_ptr<NumericLiteral> r, shared_ptr<NumericLiteral> i = make_shared<NumericLiteral>(new NumericLiteral(0.0))) :
+            Literal(), real(r), im(i) {
         if (r == nullptr)
             throw "Error in ComplexLiteral constructor : real part is null";
-        if (i == nullptr)
-            throw "Error in ComplexLiteral constructor : im part is null";
     }
 
     ComplexLiteral(ComplexLiteral &l) {
-        real = new NumericLiteral(*l.real); // default copy constructor OK for NumericLiteral
-        im = new NumericLiteral(*l.im); // default copy constructor OK for NumericLiteral
+        real = shared_ptr<NumericLiteral>(new NumericLiteral(*l.real)); // default copy constructor OK for NumericLiteral
+        im = shared_ptr<NumericLiteral>(new NumericLiteral(*l.im)); // default copy constructor OK for NumericLiteral
     }
 
 
-    virtual ~ComplexLiteral() {
-        delete real;
-        real = nullptr;
-        delete im;
-        im = nullptr;
-    }
+    virtual ~ComplexLiteral() { }
 
-    NumericLiteral *getReal() const {
+    shared_ptr<NumericLiteral> getReal() const {
         return real;
     }
 
-    void setReal(NumericLiteral *real) {
-        ComplexLiteral::real = real;
+    void setReal(shared_ptr<NumericLiteral> r) {
+        real = r;
     }
 
-    NumericLiteral *getIm() const {
+    shared_ptr<NumericLiteral> getIm() const {
         return im;
     }
 
-    void setIm(NumericLiteral *im) {
-        ComplexLiteral::im = im;
+    void setIm(shared_ptr<NumericLiteral> i) {
+        im = i;
     }
 
     virtual string toString() override {
@@ -57,60 +54,55 @@ public:
         }
     }
 
-    ComplexLiteral * operator+(ComplexLiteral &l) const {
-        return new ComplexLiteral(
+    shared_ptr<ComplexLiteral> operator+(ComplexLiteral &l) const {
+        return shared_ptr<ComplexLiteral>(new ComplexLiteral(
                 *(real) + *(l.real),
                 *(im) + *(l.im)
-        );
+        ));
     }
-    ComplexLiteral * operator+(NumericLiteral &l) const {
-        return new ComplexLiteral(
+    shared_ptr<ComplexLiteral> operator+(NumericLiteral &l) const {
+        return shared_ptr<ComplexLiteral>(new ComplexLiteral(
                 *(real) + l, // call to NumericLiteral::operator+(NumericLiteral &l) const that returns a new NumericLiteral
-                new NumericLiteral(*im) // default copy constructor OK for NumericLiteral
-        );
+                im
+        ));
     }
 
-    ComplexLiteral * operator-(ComplexLiteral &l) const {
-        return new ComplexLiteral(
+    shared_ptr<ComplexLiteral> operator-(ComplexLiteral &l) const {
+        return shared_ptr<ComplexLiteral>(new ComplexLiteral(
                 *(real) - *(l.real),
                 *(im) - *(l.im)
-        );
+        ));
     }
 
-    ComplexLiteral * operator*(ComplexLiteral &l) const {
+    shared_ptr<ComplexLiteral> operator*(ComplexLiteral &l) const {
 
         // if both complex are not really complex numbers
         if (im->getNumerator() == 0 && l.im->getNumerator() == 0)
-            return new ComplexLiteral(*real * *l.real);
+            return shared_ptr<ComplexLiteral>(new ComplexLiteral(*real * *l.real));
 
 
         // Formula :  { (real*l.real) - (im*l.im) }   +   { i(real*l.im +im*l.real) }
 
         // Calculate real part
-        NumericLiteral *part_real_tmp1 =  *(real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *part_real_tmp2 =  *(im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *real_part_result = *part_real_tmp1 - *part_real_tmp2; // return au new NumericLiteral because of operator-() overload in NumericLiteral
+
+        shared_ptr<NumericLiteral> part_real_tmp1 =  *(real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> part_real_tmp2 =  *(im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> real_part_result = *part_real_tmp1 - *part_real_tmp2; // return au new NumericLiteral because of operator-() overload in NumericLiteral
 
         // Calculate imaginary part
-        NumericLiteral *part_im_tmp1 =  *(real) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *part_im_tmp2 =  *(im) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *im_part_result = *part_im_tmp1 + *part_im_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
-
-        // delete all temporary results
-        delete part_real_tmp1;
-        delete part_real_tmp2;
-        delete part_im_tmp1;
-        delete part_im_tmp2;
+        shared_ptr<NumericLiteral> part_im_tmp1 =  *(real) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> part_im_tmp2 =  *(im) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> im_part_result = *part_im_tmp1 + *part_im_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
 
         // return new Complex
-        return new ComplexLiteral(real_part_result, im_part_result);
+        return shared_ptr<ComplexLiteral>(new ComplexLiteral(real_part_result, im_part_result));
     }
 
 
-    ComplexLiteral * operator/(ComplexLiteral &l) const {
+    shared_ptr<ComplexLiteral> operator/(ComplexLiteral &l) const {
         // if both complex are not really complex numbers
         if (im->getNumerator() == 0 && l.im->getNumerator() == 0)
-            return new ComplexLiteral(*real / *l.real);
+            return shared_ptr<ComplexLiteral>(new ComplexLiteral(*real / *l.real));
 
         /* Formula :
          *  - real part : (real*l.real + im*l.im) / (l.real*l.real + l.im*l.im)
@@ -118,43 +110,29 @@ public:
          *  */
 
         // Calculate common denominator
-        NumericLiteral *common_den_tmp1 =  *(l.real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *common_den_tmp2 =  *(l.im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *common_den_result =  *common_den_tmp1 + *common_den_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
+        shared_ptr<NumericLiteral> common_den_tmp1 =  *(l.real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> common_den_tmp2 =  *(l.im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> common_den_result =  *common_den_tmp1 + *common_den_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
 
         // throw exception if common denominator value is 0
         if (common_den_result->getNumerator() == 0 || common_den_result->getDenominator() == 0) {
-            delete common_den_tmp1;
-            delete common_den_tmp2;
-            delete common_den_result;
             throw UTComputerException("Error ComplexLiteral::operator/(ComplexLiteral &l : common denominator is 0.");
         }
 
         // Calculate real part
-        NumericLiteral *real_part_tmp1 =  *(real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *real_part_tmp2 =  *(im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *real_part_num_tmp = *real_part_tmp1 + *real_part_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
-        NumericLiteral *real_part_result = *real_part_num_tmp / *common_den_result; // return au new NumericLiteral because of operator/() overload in NumericLiteral
+        shared_ptr<NumericLiteral> real_part_tmp1 =  *(real) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> real_part_tmp2 =  *(im) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> real_part_num_tmp = *real_part_tmp1 + *real_part_tmp2; // return au new NumericLiteral because of operator+() overload in NumericLiteral
+        shared_ptr<NumericLiteral> real_part_result = *real_part_num_tmp / *common_den_result; // return au new NumericLiteral because of operator/() overload in NumericLiteral
 
         // Calculate imaginary part
-        NumericLiteral *im_part_tmp1 =  *(im) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *im_part_tmp2 =  *(real) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
-        NumericLiteral *im_part_num_tmp = *im_part_tmp1 - *im_part_tmp2; // return au new NumericLiteral because of operator-() overload in NumericLiteral
-        NumericLiteral *im_part_result = *im_part_num_tmp / *common_den_result; // return au new NumericLiteral because of operator/() overload in NumericLiteral
-
-        // delete all temporary results
-        delete common_den_tmp1;
-        delete common_den_tmp2;
-        delete common_den_result;
-        delete real_part_tmp1;
-        delete real_part_tmp2;
-        delete real_part_num_tmp;
-        delete im_part_tmp1;
-        delete im_part_tmp2;
-        delete im_part_num_tmp;
+        shared_ptr<NumericLiteral> im_part_tmp1 =  *(im) * *(l.real); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> im_part_tmp2 =  *(real) * *(l.im); // return au new NumericLiteral because of operator*() overload in NumericLiteral
+        shared_ptr<NumericLiteral> im_part_num_tmp = *im_part_tmp1 - *im_part_tmp2; // return au new NumericLiteral because of operator-() overload in NumericLiteral
+        shared_ptr<NumericLiteral> im_part_result = *im_part_num_tmp / *common_den_result; // return au new NumericLiteral because of operator/() overload in NumericLiteral
 
         // return new Complex
-        return new ComplexLiteral(real_part_result, im_part_result);
+        return shared_ptr<ComplexLiteral>(new ComplexLiteral(real_part_result, im_part_result));
     }
 };
 

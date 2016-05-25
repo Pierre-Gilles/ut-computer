@@ -13,50 +13,52 @@ using namespace std;
 
 class Operator {
 protected:
-    int n;
+    int arity;
     string key;
-    Literal **arguments; // table of Literal*
-    virtual Literal* executeSpecificOperator(StackUTComputer* st) = 0;
+    vector<shared_ptr<Literal>> arguments; // vector of shared_ptr<Literal>
+    virtual shared_ptr<Literal> executeSpecificOperator() = 0;
 public:
 
-    Operator(int nb, string key) : n(nb), key(key) {
-        arguments = new Literal*[nb];
-        for (int i=0; i<nb; i++)
-            arguments[i] = nullptr;
+    Operator(int nb, string key) : arity(nb), key(key) {
+        arguments.reserve((unsigned long int)nb); // reserve space in vector
     }
-    virtual ~Operator() { }
+    virtual ~Operator() {
+
+    }
 
 
     int getArite() const {
-        return n;
+        return arity;
     }
 
     const string &getKey() const {
         return key;
     }
 
-    void execute(StackUTComputer* st) { // do not override
+    void execute(StackUTComputer *st) { // do not override ???
         if (st == nullptr)
             throw UTComputerException("Error in Operator::execute : pointer to stack is null");
 
-        if (st->size() < n)
+        if (st->size() < arity)
             throw UTComputerException("Error in Operator::execute : size of stack inferior to operator arity");
 
-        st->getArguments(n, arguments);
+        st->getArguments(arity, arguments);
 
-        Literal* result;
+        shared_ptr<Literal> result;
 
         try {
-            result = executeSpecificOperator(st);
+            result = executeSpecificOperator();
         } catch (UTComputerException e) {
             UTComputerException e1(e.getMessage());
             e1.insertBefore("Error in Operator::executeSpecificOperator --> ");
             throw e1;
         }
 
-        st->deleteArguments(n);
+        st->deleteArguments(arity);
         st->push(result);
     }
+
+
 };
 
 
