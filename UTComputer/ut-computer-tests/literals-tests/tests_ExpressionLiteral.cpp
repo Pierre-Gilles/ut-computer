@@ -214,13 +214,14 @@ TEST_F(Test_Expression_Literal, hasSamePriority) {
 }
 
 TEST_F(Test_Expression_Literal, infixToPostix) {
-    ExpressionLiteral e("");
-    string result = e.infixToPostfix("(3 + 3) * 5 - 12");
+    ExpressionLiteral e("(3 + 3) * 5 - 12");
+    string result = e.getPostfixExpression();
     ASSERT_EQ(result, "3  3 +  5  * 12 -");
 
     // TODO faire marcher infixToPostfix with this : let the test crash to see the result of the infixtopostfix function
-    string result2 = e.infixToPostfix("((1+2)*40)+SIN(3.2) - POW(5,X2)");
-    ASSERT_EQ(result2, "");
+    ExpressionLiteral e2("((1+2)*40)+SIN(3.2) - POW(5,X2)");
+    string result2 = e2.getPostfixExpression();
+//    ASSERT_EQ(result2, "");
 }
 
 

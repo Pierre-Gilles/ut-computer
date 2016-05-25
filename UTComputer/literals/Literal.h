@@ -1,7 +1,3 @@
-//
-// Created by Raphael on 13/05/2016.
-//
-
 #ifndef TESTLO21CLION_LITERAL_H
 #define TESTLO21CLION_LITERAL_H
 
@@ -17,7 +13,7 @@ public:
 
     /* toString() will be used by subclasses in const method but we cannot declare it as const and at the same time
      * as virtual pure */
-    virtual string toString() = 0;
+    virtual string toString() const = 0;
 };
 
 

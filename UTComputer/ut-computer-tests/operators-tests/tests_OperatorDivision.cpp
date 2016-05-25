@@ -352,7 +352,7 @@ TEST_F(Test_Operator_Division, Throw_Exception_Division_By_Zero) {
     try {
         st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.0)))));
         st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.0)))));
-        op_div.execute(&st); // uncomment to get error message
+        //op_div.execute(&st); // uncomment to get error message
         ASSERT_THROW(op_div.execute(&st), UTComputerException);
     }
     catch (UTComputerException e) {

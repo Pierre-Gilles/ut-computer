@@ -1,7 +1,3 @@
-//
-// Created by Raphael on 15/05/2016.
-//
-
 #ifndef TESTLO21CLION_OPERATOR_H
 #define TESTLO21CLION_OPERATOR_H
 
@@ -16,17 +12,24 @@ protected:
     int arity;
     string key;
     vector<shared_ptr<Literal>> arguments; // vector of shared_ptr<Literal>
-    virtual shared_ptr<Literal> executeSpecificOperator() = 0;
 public:
 
+    // ===============================================================================================================
+    // ======================               Constructors and Destructors                    ==========================
+    // ===============================================================================================================
     Operator(int nb, string key) : arity(nb), key(key) {
         arguments.reserve((unsigned long int)nb); // reserve space in vector
     }
-    virtual ~Operator() {
+    virtual ~Operator() { }
+    // ===============================================================================================================
 
-    }
 
 
+
+
+    // ===============================================================================================================
+    // ======================                       Getters and Setters                     ==========================
+    // ===============================================================================================================
     int getArite() const {
         return arity;
     }
@@ -34,30 +37,32 @@ public:
     const string &getKey() const {
         return key;
     }
+    // ===============================================================================================================
 
-    void execute(StackUTComputer *st) { // do not override ???
-        if (st == nullptr)
-            throw UTComputerException("Error in Operator::execute : pointer to stack is null");
 
-        if (st->size() < arity)
-            throw UTComputerException("Error in Operator::execute : size of stack inferior to operator arity");
 
-        st->getArguments(arity, arguments);
 
-        shared_ptr<Literal> result;
 
-        try {
-            result = executeSpecificOperator();
-        } catch (UTComputerException e) {
-            UTComputerException e1(e.getMessage());
-            e1.insertBefore("Error in Operator::executeSpecificOperator --> ");
-            throw e1;
-        }
+    // ===============================================================================================================
+    // ======================                       Class main services                     ==========================
+    // ===============================================================================================================
+    /*
+     * Adress of stack must not bu changed, but "st" do not point to a const stack : we use a constant pointer
+     * and not a pointer to constant
+     */
+    void execute(StackUTComputer * const st);
+    // ===============================================================================================================
 
-        st->deleteArguments(arity);
-        st->push(result);
-    }
 
+
+
+
+    // ===============================================================================================================
+    // ======================                   Interface for subclasses                    ==========================
+    // ===============================================================================================================
+private:
+    virtual shared_ptr<Literal> executeSpecificOperator() = 0;
+    // ===============================================================================================================
 
 };
 

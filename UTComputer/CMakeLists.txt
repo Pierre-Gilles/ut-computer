@@ -46,7 +46,8 @@ set(SOURCE_FILES
         operators/OperatorMultiplication.cpp
         operators/OperatorMultiplication.h
         operators/OperatorDivision.cpp
-        operators/OperatorDivision.h)
+        operators/OperatorDivision.h
+        )
 
 
 add_executable(ut-computer main.cpp ${SOURCE_FILES})

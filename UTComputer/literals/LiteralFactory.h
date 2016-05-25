@@ -1,7 +1,3 @@
-//
-// Created by Raphael on 13/05/2016.
-//
-
 #ifndef TESTLO21CLION_LITERALFACTORY_H
 #define TESTLO21CLION_LITERALFACTORY_H
 #include "Literal.h"

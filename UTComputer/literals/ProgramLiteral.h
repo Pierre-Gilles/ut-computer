@@ -9,8 +9,6 @@ class ProgramLiteral : public StringLiteral {
 public:
 
     ProgramLiteral(const string &value) : StringLiteral(value) { }
-
-
     virtual ~ProgramLiteral() { }
 };
 
