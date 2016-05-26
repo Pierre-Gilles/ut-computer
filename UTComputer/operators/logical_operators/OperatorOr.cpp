@@ -1,7 +1,4 @@
-#include "OperatorInferior.h"
-
-
-
+#include "OperatorOr.h"
 
 // ===============================================================================================================
 // ======================                 Implement Operator interface                  ==========================
@@ -11,10 +8,10 @@
  *      - test that stack contains enough Literal* (st.size() >= operator arity)
  *      - test that every Literal* unstacked isn't null
  *
- * OperatorInferior applies to
+ * OperatorOr applies to
  *      - two ComplexLiterals with no imaginary parts
  */
-shared_ptr<Literal> OperatorInferior::executeSpecificOperator() {
+shared_ptr<Literal> OperatorOr::executeSpecificOperator() {
     try {
         Literal* a = arguments[0].get();
         Literal* b = arguments[1].get();
@@ -23,7 +20,7 @@ shared_ptr<Literal> OperatorInferior::executeSpecificOperator() {
 
         // if the two literals are instance of ComplexLiteral
         if (comp_a != nullptr && comp_b != nullptr) {
-            if (*comp_a < *comp_b) // then return a ComplexLiteral set to "integer" with a value of 1
+            if (*comp_a || *comp_b) // then return a ComplexLiteral set to "integer" with a value of 1
                 return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(1.0)));
             else // then return a ComplexLiteral set to "integer" with a value of 0
                 return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(0.0)));
@@ -46,3 +43,5 @@ shared_ptr<Literal> OperatorInferior::executeSpecificOperator() {
 
 }
 // ===============================================================================================================
+
+

@@ -51,6 +51,20 @@ set(SOURCE_FILES
         operators/logical_operators/OperatorInferior.h
         operators/logical_operators/OperatorInferiorEqual.cpp
         operators/logical_operators/OperatorInferiorEqual.h
+        operators/logical_operators/OperatorSuperior.cpp
+        operators/logical_operators/OperatorSuperior.h
+        operators/logical_operators/OperatorSuperiorEqual.cpp
+        operators/logical_operators/OperatorSuperiorEqual.h
+        operators/logical_operators/OperatorEqual.cpp
+        operators/logical_operators/OperatorEqual.h
+        operators/logical_operators/OperatorDifferent.cpp
+        operators/logical_operators/OperatorDifferent.h
+        operators/logical_operators/OperatorAnd.cpp
+        operators/logical_operators/OperatorAnd.h
+        operators/logical_operators/OperatorOr.cpp
+        operators/logical_operators/OperatorOr.h
+        operators/logical_operators/OperatorNot.cpp
+        operators/logical_operators/OperatorNot.h
         )
 
 

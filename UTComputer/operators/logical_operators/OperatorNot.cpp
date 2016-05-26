@@ -1,5 +1,4 @@
-#include "OperatorInferior.h"
-
+#include "OperatorNot.h"
 
 
 
@@ -11,25 +10,23 @@
  *      - test that stack contains enough Literal* (st.size() >= operator arity)
  *      - test that every Literal* unstacked isn't null
  *
- * OperatorInferior applies to
- *      - two ComplexLiterals with no imaginary parts
+ * OperatorNot applies to
+ *      - a ComplexLiteral with no imaginary part
  */
-shared_ptr<Literal> OperatorInferior::executeSpecificOperator() {
+shared_ptr<Literal> OperatorNot::executeSpecificOperator() {
     try {
         Literal* a = arguments[0].get();
-        Literal* b = arguments[1].get();
         ComplexLiteral* comp_a = dynamic_cast<ComplexLiteral*>(a);
-        ComplexLiteral* comp_b = dynamic_cast<ComplexLiteral*>(b);
 
         // if the two literals are instance of ComplexLiteral
-        if (comp_a != nullptr && comp_b != nullptr) {
-            if (*comp_a < *comp_b) // then return a ComplexLiteral set to "integer" with a value of 1
+        if (comp_a != nullptr ) {
+            if (!(*comp_a)) // then return a ComplexLiteral set to "integer" with a value of 1
                 return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(1.0)));
             else // then return a ComplexLiteral set to "integer" with a value of 0
                 return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(0.0)));
         }
-        /* Note that the ComplexLiteral class throw exception if imaginary parts of both
-         * arguments are different from 0*/
+        /* Note that the ComplexLiteral class throw exception if imaginary parts the
+         * arguments is different from 0*/
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
         throw UTComputerException("Error in OperatorInferior::executeSpecificOperator : invalid literal types") ;
