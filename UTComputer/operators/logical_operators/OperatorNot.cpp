@@ -12,13 +12,15 @@
  *
  * OperatorNot applies to
  *      - a ComplexLiteral with no imaginary part
+ *      - one ExpressionLiteral returning NOT(exp1)
  */
 shared_ptr<Literal> OperatorNot::executeSpecificOperator() {
     try {
         Literal* a = arguments[0].get();
         ComplexLiteral* comp_a = dynamic_cast<ComplexLiteral*>(a);
+        ExpressionLiteral* exp_a = dynamic_cast<ExpressionLiteral*>(a);
 
-        // if the two literals are instance of ComplexLiteral
+        // if a is instance of ComplexLiteral
         if (comp_a != nullptr ) {
             if (!(*comp_a)) // then return a ComplexLiteral set to "integer" with a value of 1
                 return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(1.0)));
@@ -28,8 +30,16 @@ shared_ptr<Literal> OperatorNot::executeSpecificOperator() {
         /* Note that the ComplexLiteral class throw exception if imaginary parts the
          * arguments is different from 0*/
 
+        // if a is instance of ComplexLiteral
+        if (exp_a != nullptr) {
+            string newExpresion = "NOT(";
+            newExpresion += exp_a->getValue();
+            newExpresion += ")";
+            return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(newExpresion));
+        }
+
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-        throw UTComputerException("Error in OperatorInferior::executeSpecificOperator : invalid literal types") ;
+        throw UTComputerException("Error in OperatorNot::executeSpecificOperator : invalid literal types") ;
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
@@ -37,7 +47,7 @@ shared_ptr<Literal> OperatorNot::executeSpecificOperator() {
         e1.insertBefore(arguments[1]->toString());
         e1.insertBefore(" and ");
         e1.insertBefore(arguments[0]->toString());
-        e1.insertBefore("Error in applying OperatorPlus on ");
+        e1.insertBefore("Error in applying OperatorNot on ");
         throw e1;
     }
 

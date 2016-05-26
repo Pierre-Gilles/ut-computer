@@ -69,9 +69,9 @@ set(SOURCE_FILES
         operators/classic_operators/OperatorIntegerDivision.h
         operators/classic_operators/OperatorModulo.cpp
         operators/classic_operators/OperatorModulo.h
-        operators/logical_operators/OperatorNeg.cpp
-        operators/logical_operators/OperatorNeg.cpp
-        operators/logical_operators/OperatorNeg.h
+        operators/classic_operators/OperatorNeg.cpp
+        operators/classic_operators/OperatorNeg.cpp
+        operators/classic_operators/OperatorNeg.h
         )
 
 
@@ -97,6 +97,9 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorSuperiorEqual.cpp
         ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorEqual.cpp
         ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorDifferent.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorNeg.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorMod.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorIntegerDivision.cpp
         )
 
 

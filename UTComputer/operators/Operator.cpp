@@ -5,7 +5,7 @@
 // ======================                       Class main services                     ==========================
 // ===============================================================================================================
 /*
- * Adress of stack must not bu changed, but "st" do not point to a const stack : we use a constant pointer
+ * Adress of stack must not be changed, but "st" do not point to a const stack : we use a constant pointer
  * and not a pointer to constant
  */
 void Operator::execute(StackUTComputer * const st) { // do not override ???

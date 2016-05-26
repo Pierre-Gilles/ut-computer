@@ -23,7 +23,7 @@ private:
      *      - test that every Literal* unstacked isn't null
      *
      * OperatorEqual applies to
-     *      - two ComplexLiterals with no imaginary parts
+     *      - two ComplexLiterals
      */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
     // ===============================================================================================================

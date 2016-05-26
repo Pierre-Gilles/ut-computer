@@ -40,7 +40,7 @@ shared_ptr<Literal> OperatorInferior::executeSpecificOperator() {
         e1.insertBefore(arguments[1]->toString());
         e1.insertBefore(" and ");
         e1.insertBefore(arguments[0]->toString());
-        e1.insertBefore("Error in applying OperatorPlus on ");
+        e1.insertBefore("Error in applying OperatorInferior on ");
         throw e1;
     }
 

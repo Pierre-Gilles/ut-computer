@@ -3,6 +3,7 @@
 
 #include "../Operator.h"
 #include "../../literals/ComplexLiteral.h"
+#include "../../literals/ExpressionLiteral.h"
 
 
 class OperatorNot : public Operator {
@@ -25,6 +26,7 @@ private:
      *
      * OperatorNot applies to
      *      - a ComplexLiteral with no imaginary part
+     *      - one ExpressionLiteral returning NOT(exp1)
      */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
     // ===============================================================================================================

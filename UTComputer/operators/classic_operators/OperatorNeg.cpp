@@ -13,7 +13,8 @@
  *
  * OperatorNeg applies to
  *      - one ComplexLiteral
- *      - one ExpressionLiteral */
+ *      - one ExpressionLiteral
+ */
 shared_ptr<Literal> OperatorNeg::executeSpecificOperator() {
     try {
         Literal* a = arguments[0].get();

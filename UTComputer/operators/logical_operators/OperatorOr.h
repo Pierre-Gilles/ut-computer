@@ -9,7 +9,7 @@ class OperatorOr : public Operator {
 
 public:
 
-    OperatorOr() : Operator(2, "||") {}
+    OperatorOr() : Operator(2, "OR") {}
     virtual ~OperatorOr() {}
 
 private:
@@ -24,6 +24,7 @@ private:
      *
      * OperatorOr applies to
      *      - two ComplexLiterals with no imaginary parts
+     *      - two ExpressionLiteral returning OR(exp1,exp2)
      */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
     // ===============================================================================================================

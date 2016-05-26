@@ -24,7 +24,9 @@ private:
      *      - test that every Literal* unstacked isn't null
      *
      * OperatorNeg applies to
-     *      - two ComplexLiterals that are of "type" integer : no complex, no real nor rational */
+     *      - one ComplexLiteral
+     *      - one ExpressionLiteral
+     */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
     // ===============================================================================================================
 
