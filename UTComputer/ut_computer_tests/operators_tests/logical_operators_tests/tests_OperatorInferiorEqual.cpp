@@ -12,7 +12,9 @@ protected:
 
 public:
     virtual void SetUp() { }
-    virtual void TearDown() { }
+    virtual void TearDown() {
+        st.clear();
+    }
 };
 
 

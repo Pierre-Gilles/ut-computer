@@ -82,7 +82,15 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorMultiplication.cpp
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorDivision.cpp
         ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorInferior.cpp
-        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorInferiorEqual.cpp)
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorInferiorEqual.cpp
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorAnd.cpp
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorOr.cpp
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorNot.cpp
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorSuperior.cpp
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorSuperiorEqual.cpp
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorEqual.cpp
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorDifferent.cpp
+        )
 
 
 add_executable(ut-computer-tests ut_computer_tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})
