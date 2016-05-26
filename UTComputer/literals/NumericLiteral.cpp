@@ -35,17 +35,17 @@ string NumericLiteral::toString() const {
 
 // Classic operators
 
-shared_ptr<NumericLiteral> NumericLiteral::operator+(const NumericLiteral &l) const {
+NumericLiteral NumericLiteral::operator+(const NumericLiteral &l) const {
     /* if one is a real literal and the other a rational literal, we must return a
          * real literal with the result of the operation in the numerator attribute
          * and set the denominator to 1 */
     if (isReal() || l.isReal()) {
-        shared_ptr<NumericLiteral> tmp(new NumericLiteral(
+        NumericLiteral tmp = NumericLiteral(
                 numerator*l.denominator + l.numerator*denominator,
                 denominator * l.denominator
-        ));
-        tmp->numerator = tmp->numerator/tmp->denominator;
-        tmp->denominator = 1;
+        );
+        tmp.numerator = tmp.numerator/tmp.denominator;
+        tmp.denominator = 1;
         return tmp;
 
 /* It was also possible to return a rational or an integer (after simplification)
@@ -53,23 +53,23 @@ shared_ptr<NumericLiteral> NumericLiteral::operator+(const NumericLiteral &l) co
     }
 
 /* In general, we return a new numeric literal with the normal plus operation */
-    return shared_ptr<NumericLiteral>(new NumericLiteral(
+    return NumericLiteral(
             numerator*l.denominator + l.numerator*denominator,
             denominator * l.denominator
-    ));
+    );
 }
 
-shared_ptr<NumericLiteral> NumericLiteral::operator-(const NumericLiteral &l) const {
+NumericLiteral NumericLiteral::operator-(const NumericLiteral &l) const {
     /* if one is a real literal and the other a rational literal, we must return a
          * real literal with the result of the operation in the numerator attribute
          * and set the denominator to 1 */
     if (isReal() || l.isReal()) {
-        shared_ptr<NumericLiteral> tmp(new NumericLiteral(
+        NumericLiteral tmp = NumericLiteral(
                 numerator*l.denominator - l.numerator*denominator,
                 denominator * l.denominator
-        ));
-        tmp->numerator = tmp->numerator/tmp->denominator;
-        tmp->denominator = 1;
+        );
+        tmp.numerator = tmp.numerator/tmp.denominator;
+        tmp.denominator = 1;
         return tmp;
 
         /* It was also possible to return a rational or an integer (after simplification)
@@ -77,34 +77,34 @@ shared_ptr<NumericLiteral> NumericLiteral::operator-(const NumericLiteral &l) co
     }
 
     /* In general, we return a new numeric literal with the normal plus operation */
-    return shared_ptr<NumericLiteral>(new NumericLiteral(
+    return NumericLiteral(
             numerator*l.denominator - l.numerator*denominator,
             denominator * l.denominator
-    ));
+    );
 }
 
-shared_ptr<NumericLiteral> NumericLiteral::operator*(const NumericLiteral &l) const {
+NumericLiteral NumericLiteral::operator*(const NumericLiteral &l) const {
     /* if one of the arguments is real, we must return a
          * real literal with the result of the operation in the numerator attribute
          * and set the denominator to 1 */
     if (isReal() || l.isReal()) {
-        shared_ptr<NumericLiteral> tmp(new NumericLiteral(
+        NumericLiteral tmp = NumericLiteral(
                 numerator*l.numerator,
                 denominator * l.denominator
-        ));
-        tmp->numerator = tmp->numerator/tmp->denominator;
-        tmp->denominator = 1;
+        );
+        tmp.numerator = tmp.numerator/tmp.denominator;
+        tmp.denominator = 1;
         return tmp;
     }
 
     /* In general, we return a new numeric literal with the normal multiplication operation */
-    return shared_ptr<NumericLiteral>(new NumericLiteral(
+    return NumericLiteral(
             numerator*l.numerator,
             denominator * l.denominator
-    ));
+    );
 }
 
-shared_ptr<NumericLiteral> NumericLiteral::operator/(const NumericLiteral &l) const {
+NumericLiteral NumericLiteral::operator/(const NumericLiteral &l) const {
     if (denominator == 0.0 || l.denominator == 0.0)
         throw UTComputerException("Error NumericLiteral::operator/(NumericLiteral &l) : one of the denominators is 0.");
 
@@ -115,20 +115,20 @@ shared_ptr<NumericLiteral> NumericLiteral::operator/(const NumericLiteral &l) co
      * real literal with the result of the operation in the numerator attribute
      * and set the denominator to 1 */
     if (isReal() || l.isReal()) {
-        shared_ptr<NumericLiteral> tmp(new NumericLiteral(
+        NumericLiteral tmp = NumericLiteral(
                 numerator*l.denominator,
                 denominator * l.numerator
-        ));
-        tmp->numerator = tmp->numerator/tmp->denominator;
-        tmp->denominator = 1;
+        );
+        tmp.numerator = tmp.numerator/tmp.denominator;
+        tmp.denominator = 1;
         return tmp;
     }
 
     /* In general, we return a new numeric literal with the normal division operation */
-    return shared_ptr<NumericLiteral>(new NumericLiteral(
+    return NumericLiteral(
             numerator*l.denominator,
             denominator * l.numerator
-    ));
+    );
 }
 
 

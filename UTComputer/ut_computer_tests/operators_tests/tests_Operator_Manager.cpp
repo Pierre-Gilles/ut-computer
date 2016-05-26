@@ -76,8 +76,8 @@ TEST_F(Test_Operator_Manager, Test_Call_Operator_Execute_From_Map) {
     /* For each op_vector[i] test that the call to the operator->execute() function works */
     try {
         for (int i=0; i<listOperators.size(); i++) {
-            st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.0)))));
-            st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(4.0)))));
+            st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(1))));
+            st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(4))));
             op_manager.getOperator(listOperators[i])->execute(&st);
             EXPECT_EQ(1, st.size());
 

@@ -9,22 +9,19 @@
 using namespace std;
 
 class ComplexLiteral : public Literal {
-    shared_ptr<NumericLiteral> real;
-    shared_ptr<NumericLiteral> im;
+    NumericLiteral real;
+    NumericLiteral im;
 public:
 
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
-    ComplexLiteral(shared_ptr<NumericLiteral> r, shared_ptr<NumericLiteral> i = make_shared<NumericLiteral>(new NumericLiteral(0.0))) :
-            Literal(), real(r), im(i) {
-        if (r == nullptr)
-            throw "Error in ComplexLiteral constructor : real part is null";
-    }
+    ComplexLiteral(NumericLiteral r, NumericLiteral i = NumericLiteral(0.0)) :
+            Literal(), real(r), im(i) { }
 
     ComplexLiteral(ComplexLiteral &l) {
-        real = shared_ptr<NumericLiteral>(new NumericLiteral(*l.real)); // default copy constructor OK for NumericLiteral
-        im = shared_ptr<NumericLiteral>(new NumericLiteral(*l.im)); // default copy constructor OK for NumericLiteral
+        real = l.real; // default copy constructor OK for NumericLiteral
+        im = l.im; // default copy constructor OK for NumericLiteral
     }
 
     virtual ~ComplexLiteral() { }
@@ -38,19 +35,19 @@ public:
     // ======================                       Getters and Setters                     ==========================
     // ===============================================================================================================
 
-    shared_ptr<NumericLiteral> getReal() const {
+    const NumericLiteral & getReal() const {
         return real;
     }
 
-    void setReal(const shared_ptr<NumericLiteral> r) {
+    void setReal(const NumericLiteral &r) {
         real = r;
     }
 
-    shared_ptr<NumericLiteral> getIm() const {
+    const NumericLiteral & getIm() const {
         return im;
     }
 
-    void setIm(const shared_ptr<NumericLiteral> i) {
+    void setIm(const NumericLiteral &i) {
         im = i;
     }
     // ===============================================================================================================

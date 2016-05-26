@@ -21,9 +21,9 @@ shared_ptr<Literal> OperatorInferiorEqual::executeSpecificOperator() {
         // if the two literals are instance of ComplexLiteral
         if (comp_a != nullptr && comp_b != nullptr) {
             if (*comp_a <= *comp_b) // then return a ComplexLiteral set to "integer" with a value of 1
-                return shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.0))));
+                return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(1.0)));
             else // then return a ComplexLiteral set to "integer" with a value of 0
-                return shared_ptr<ComplexLiteral>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(0.0))));
+                return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(0.0)));
         }
         /* Note that the ComplexLiteral class throw exception if imaginary parts of both
          * arguments are different from 0*/

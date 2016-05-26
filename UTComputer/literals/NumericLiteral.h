@@ -31,11 +31,6 @@ public:
             simplification();
     }
 
-    NumericLiteral(const NumericLiteral* l) :
-            Literal(),
-            numerator(l->numerator),
-            denominator(l->denominator) { }
-
     virtual ~NumericLiteral() { }
     // ===============================================================================================================
 
@@ -84,10 +79,10 @@ public:
     // ======================                       Operators overload                      ==========================
     // ===============================================================================================================
     // Classic operators
-    shared_ptr<NumericLiteral> operator+(const NumericLiteral &l) const;
-    shared_ptr<NumericLiteral> operator-(const NumericLiteral &l) const;
-    shared_ptr<NumericLiteral> operator*(const NumericLiteral &l) const;
-    shared_ptr<NumericLiteral> operator/(const NumericLiteral &l) const;
+    NumericLiteral operator+(const NumericLiteral &l) const;
+    NumericLiteral operator-(const NumericLiteral &l) const;
+    NumericLiteral operator*(const NumericLiteral &l) const;
+    NumericLiteral operator/(const NumericLiteral &l) const;
 
     // Logical operators
     bool operator<(const NumericLiteral &l) const;

@@ -19,7 +19,7 @@ public:
 };
 
 TEST_F(Test_StackUTComputer_Class, Test_shared_ptd_usage) {
-    shared_ptr<ComplexLiteral> test(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    shared_ptr<ComplexLiteral> test(new ComplexLiteral(NumericLiteral(2)));
     EXPECT_EQ(1, test.use_count()); // pointer used by test only
 
     st.push(test);
@@ -39,13 +39,13 @@ TEST_F(Test_StackUTComputer_Class, Test_shared_ptd_usage) {
 
 
 TEST_F(Test_StackUTComputer_Class, Test_size_Function) {
-    shared_ptr<ComplexLiteral> test(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    shared_ptr<ComplexLiteral> test(new ComplexLiteral(NumericLiteral(2)));
     st.push(test);
     EXPECT_EQ(1, st.size());
 }
 
 TEST_F(Test_StackUTComputer_Class, Test_pop_Function) {
-    shared_ptr<ComplexLiteral> test(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    shared_ptr<ComplexLiteral> test(new ComplexLiteral(NumericLiteral(2)));
     st.push(test);
     EXPECT_EQ(1, st.size());
     st.pop();
@@ -54,7 +54,7 @@ TEST_F(Test_StackUTComputer_Class, Test_pop_Function) {
 
 
 TEST_F(Test_StackUTComputer_Class, Test_top_Function) {
-    shared_ptr<ComplexLiteral> test(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    shared_ptr<ComplexLiteral> test(new ComplexLiteral(NumericLiteral(2)));
     st.push(test);
     EXPECT_EQ("2", st.top()->toString());
     EXPECT_EQ(test, st.top());
@@ -63,10 +63,10 @@ TEST_F(Test_StackUTComputer_Class, Test_top_Function) {
 
 
 TEST_F(Test_StackUTComputer_Class, Test_clear_Function) {
-    shared_ptr<ComplexLiteral> test1(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
-    shared_ptr<ComplexLiteral> test2(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
-    shared_ptr<ComplexLiteral> test3(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
-    shared_ptr<ComplexLiteral> test4(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+    shared_ptr<ComplexLiteral> test1(new ComplexLiteral(NumericLiteral(2)));
+    shared_ptr<ComplexLiteral> test2(new ComplexLiteral(NumericLiteral(2)));
+    shared_ptr<ComplexLiteral> test3(new ComplexLiteral(NumericLiteral(2)));
+    shared_ptr<ComplexLiteral> test4(new ComplexLiteral(NumericLiteral(2)));
     st.push(test1);
     st.push(test2);
     st.push(test3);
@@ -105,7 +105,7 @@ TEST_F(Test_StackUTComputer_Class, Test_getArguments_Function) {
 
         // Stack.size() is two, but one argument is null => exception raised
         st.clear();
-        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
+        st.push(shared_ptr<Literal>(new ComplexLiteral(NumericLiteral(2))));
         st.push(shared_ptr<Literal>());
         //st.getArguments(2,arguments); // uncomment to get exception message
         EXPECT_THROW(st.getArguments(2,arguments),UTComputerException);
@@ -113,14 +113,14 @@ TEST_F(Test_StackUTComputer_Class, Test_getArguments_Function) {
         // Stack.size() is two, but one argument is null => exception raised
         st.clear();
         st.push(shared_ptr<Literal>());
-        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
+        st.push(shared_ptr<Literal>(new ComplexLiteral(NumericLiteral(2))));
         //st.getArguments(2,arguments); // uncomment to get exception message
         EXPECT_THROW(st.getArguments(2,arguments),UTComputerException);
 
         //Stack.size() is two, and no null arguments
         st.clear();
-        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(1.0)))));
-        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
+        st.push(shared_ptr<Literal>(new ComplexLiteral(NumericLiteral(1))));
+        st.push(shared_ptr<Literal>(new ComplexLiteral(NumericLiteral(2))));
         EXPECT_NO_THROW(st.getArguments(2,arguments));
         EXPECT_EQ("1", arguments.at(0)->toString());
         EXPECT_EQ("2", arguments[1]->toString());
@@ -137,7 +137,7 @@ TEST_F(Test_StackUTComputer_Class, Test_deleteArguments_Function) {
         EXPECT_NO_FATAL_FAILURE(st.deleteArguments(0));
 
         // Stack is empty, so deleteArguments with 2 as arity should raise exception
-        //st.deleteArguments(2.0); // uncomment to get exception message
+        //st.deleteArguments(2); // uncomment to get exception message
         EXPECT_THROW(st.deleteArguments(2),UTComputerException);
 
         // Stack.size() is two, but both arguments are null => no exception raised
@@ -147,20 +147,20 @@ TEST_F(Test_StackUTComputer_Class, Test_deleteArguments_Function) {
 
         // Stack.size() is two, but one argument is null => no exception raised
         st.clear();
-        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
+        st.push(shared_ptr<Literal>(new ComplexLiteral(NumericLiteral(2))));
         st.push(shared_ptr<Literal>());
         EXPECT_NO_THROW(st.deleteArguments(2));
 
         // Stack.size() is two, but one argument is null => no exception raised
         st.clear();
         st.push(shared_ptr<Literal>());
-        st.push(shared_ptr<Literal>(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0)))));
+        st.push(shared_ptr<Literal>(new ComplexLiteral(NumericLiteral(2))));
         EXPECT_NO_THROW(st.deleteArguments(2));
 
         // Stack.size() is two, and no null arguments
         st.clear();
-        shared_ptr<ComplexLiteral> test1(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
-        shared_ptr<ComplexLiteral> test2(new ComplexLiteral(shared_ptr<NumericLiteral>(new NumericLiteral(2.0))));
+        shared_ptr<ComplexLiteral> test1(new ComplexLiteral(NumericLiteral(2)));
+        shared_ptr<ComplexLiteral> test2(new ComplexLiteral(NumericLiteral(2)));
         st.push(test1);
         st.push(test2);
         EXPECT_EQ(2, test1.use_count());
