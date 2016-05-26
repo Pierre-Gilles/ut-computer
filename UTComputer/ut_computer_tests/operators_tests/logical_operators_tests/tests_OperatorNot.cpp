@@ -53,3 +53,6 @@ TEST_F(Test_Operator_Not, Not_0_Gives_1_equal_True) {
     EXPECT_EQ(1, st.size());
     EXPECT_EQ("1", st.top()->toString());
 }
+
+
+// TODO tester avec les expressions

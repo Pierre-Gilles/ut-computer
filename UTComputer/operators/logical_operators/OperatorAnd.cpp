@@ -20,6 +20,9 @@ shared_ptr<Literal> OperatorAnd::executeSpecificOperator() {
         Literal* b = arguments[1].get();
         ComplexLiteral* comp_a = dynamic_cast<ComplexLiteral*>(a);
         ComplexLiteral* comp_b = dynamic_cast<ComplexLiteral*>(b);
+        ExpressionLiteral* exp_a = dynamic_cast<ExpressionLiteral*>(a);
+        ExpressionLiteral* exp_b = dynamic_cast<ExpressionLiteral*>(b);
+
 
         // if the two literals are instance of ComplexLiteral
         if (comp_a != nullptr && comp_b != nullptr) {
@@ -30,6 +33,16 @@ shared_ptr<Literal> OperatorAnd::executeSpecificOperator() {
         }
         /* Note that the ComplexLiteral class throw exception if imaginary parts of both
          * arguments are different from 0*/
+
+        // if the two literals are instance of ComplexLiteral
+        if (exp_a != nullptr && exp_b != nullptr) {
+            string newExpresion = "AND(";
+            newExpresion += exp_a->getValue();
+            newExpresion += ",";
+            newExpresion += exp_b->getValue();
+            newExpresion += ")";
+            return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(newExpresion));
+        }
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
         throw UTComputerException("Error in OperatorInferior::executeSpecificOperator : invalid literal types") ;

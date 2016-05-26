@@ -2,6 +2,7 @@
 #define UTCOMPUTER_OPERATOROR_H
 #include "../Operator.h"
 #include "../../literals/ComplexLiteral.h"
+#include "../../literals/ExpressionLiteral.h"
 
 class OperatorOr : public Operator {
 

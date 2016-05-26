@@ -200,3 +200,6 @@ TEST_F(Test_Operator_Or, Superior_to_1_or_0_Gives_True) {
     EXPECT_EQ("1", st.top()->toString());
     st.clear();
 }
+
+
+// TODO tester avec les expressions

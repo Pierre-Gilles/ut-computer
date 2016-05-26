@@ -3,6 +3,7 @@
 
 #include "../Operator.h"
 #include "../../literals/ComplexLiteral.h"
+#include "../../literals/ExpressionLiteral.h"
 
 class OperatorAnd : public Operator {
 
