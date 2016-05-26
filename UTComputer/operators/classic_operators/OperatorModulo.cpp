@@ -1,5 +1,4 @@
-#include "OperatorDifferent.h"
-
+#include "OperatorModulo.h"
 
 
 // ===============================================================================================================
@@ -10,10 +9,9 @@
  *      - test that stack contains enough Literal* (st.size() >= operator arity)
  *      - test that every Literal* unstacked isn't null
  *
- * OperatorDifferent applies to
- *      - two ComplexLiterals with no imaginary parts
- */
-shared_ptr<Literal> OperatorDifferent::executeSpecificOperator() {
+ * OperatorModulo applies to
+ *      - two ComplexLiterals that are of "type" integer : no complex, no real nor rational */
+shared_ptr<Literal> OperatorModulo::executeSpecificOperator() {
     try {
         Literal* a = arguments[0].get();
         Literal* b = arguments[1].get();
@@ -22,14 +20,19 @@ shared_ptr<Literal> OperatorDifferent::executeSpecificOperator() {
 
         // if the two literals are instance of ComplexLiteral
         if (comp_a != nullptr && comp_b != nullptr) {
-            if (*comp_a != *comp_b) // then return a ComplexLiteral set to "integer" with a value of 1
-                return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(1.0)));
-            else // then return a ComplexLiteral set to "integer" with a value of 0
-                return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(0.0)));
+            if (comp_a->isInteger() && comp_b->isInteger()) {
+                int result = (int)comp_a->getReal().getNumerator() % (int)comp_b->getReal().getNumerator();
+                return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(result)));
+            }
+            else {
+                throw UTComputerException("Error in OperatorModulo::executeSpecificOperator : arguments must be integers.") ;
+            }
         }
 
+
+
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-        throw UTComputerException("Error in OperatorInferior::executeSpecificOperator : invalid literal types") ;
+        throw UTComputerException("Error in OperatorModulo::executeSpecificOperator : invalid literal types for both arguments") ;
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
@@ -37,10 +40,9 @@ shared_ptr<Literal> OperatorDifferent::executeSpecificOperator() {
         e1.insertBefore(arguments[1]->toString());
         e1.insertBefore(" and ");
         e1.insertBefore(arguments[0]->toString());
-        e1.insertBefore("Error in applying OperatorPlus on ");
+        e1.insertBefore("Error in applying OperatorModulo on ");
         throw e1;
     }
-
 }
 // ===============================================================================================================
 

@@ -76,6 +76,7 @@ public:
     shared_ptr<ComplexLiteral> operator-(ComplexLiteral &l) const;
     shared_ptr<ComplexLiteral> operator*(ComplexLiteral &l) const;
     shared_ptr<ComplexLiteral> operator/(ComplexLiteral &l) const;
+    shared_ptr<ComplexLiteral> negOperator() const;
 
     // Logical operators
     bool operator<(const ComplexLiteral &l) const;
@@ -87,6 +88,19 @@ public:
     bool operator&&(const ComplexLiteral &l) const;
     bool operator||(const ComplexLiteral &l) const;
     bool operator!() const;
+    // ===============================================================================================================
+
+
+
+
+
+    // ===============================================================================================================
+    // ======================                       Useful class functions                  ==========================
+    // ===============================================================================================================
+    bool isComplex() const;
+    bool isInteger() const;
+    bool isRational() const;
+    bool isReal() const;
     // ===============================================================================================================
 };
 

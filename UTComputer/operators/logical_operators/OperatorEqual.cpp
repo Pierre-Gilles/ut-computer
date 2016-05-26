@@ -27,8 +27,6 @@ shared_ptr<Literal> OperatorEqual::executeSpecificOperator() {
             else // then return a ComplexLiteral set to "integer" with a value of 0
                 return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(0.0)));
         }
-        /* Note that the ComplexLiteral class throw exception if imaginary parts of both
-         * arguments are different from 0*/
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
         throw UTComputerException("Error in OperatorInferior::executeSpecificOperator : invalid literal types") ;

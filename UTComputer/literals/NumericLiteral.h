@@ -83,6 +83,7 @@ public:
     NumericLiteral operator-(const NumericLiteral &l) const;
     NumericLiteral operator*(const NumericLiteral &l) const;
     NumericLiteral operator/(const NumericLiteral &l) const;
+    NumericLiteral negOperator() const;
 
     // Logical operators
     bool operator<(const NumericLiteral &l) const;
@@ -103,12 +104,12 @@ public:
     // ===============================================================================================================
     // ======================                       Useful class functions                  ==========================
     // ===============================================================================================================
-
-private:
-    void simplification();
     bool isInteger() const;
     bool isRational() const;
     bool isReal() const;
+private:
+    void simplification();
+
     // ===============================================================================================================
 
 

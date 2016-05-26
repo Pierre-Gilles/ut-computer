@@ -131,6 +131,10 @@ NumericLiteral NumericLiteral::operator/(const NumericLiteral &l) const {
     );
 }
 
+NumericLiteral NumericLiteral::negOperator() const {
+    return NumericLiteral(-numerator, denominator);
+}
+
 
 // Logical operators
 

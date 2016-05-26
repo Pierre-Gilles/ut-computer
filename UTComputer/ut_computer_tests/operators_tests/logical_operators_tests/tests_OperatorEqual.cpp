@@ -221,3 +221,7 @@ TEST_F(Test_Operator_Equal, Rational_Sup_Real_Gives_False) {
     EXPECT_EQ(1, st.size());
     EXPECT_EQ("0", st.top()->toString());
 }
+
+
+
+// TODO tester avec des complexes

@@ -105,52 +105,52 @@ shared_ptr<ComplexLiteral> ComplexLiteral::operator/(ComplexLiteral &l) const {
 }
 
 
+shared_ptr<ComplexLiteral> ComplexLiteral::negOperator() const {
+    return shared_ptr<ComplexLiteral>(new ComplexLiteral(real.negOperator(), im.negOperator()));
+}
+
 
 // Logical Operators apply only on non complex numbers : im and l.im must be 0
 bool ComplexLiteral::operator<(const ComplexLiteral &l) const {
-    if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
+    if (!isComplex() && !l.isComplex())
         return real < l.real;
     throw UTComputerException("Error ComplexLiteral::operator< : comparing two complex numbers is impossible.");
 }
 
 bool ComplexLiteral::operator==(const ComplexLiteral &l) const {
-    if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
-        return real == l.real;
-    throw UTComputerException("Error ComplexLiteral::operator== : comparing two complex numbers is impossible.");
+    return real == l.real && im == l.im;
 }
 
 bool ComplexLiteral::operator>(const ComplexLiteral &l) const {
-    if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
+    if (!isComplex() && !l.isComplex())
         return real > l.real;
     throw UTComputerException("Error ComplexLiteral::operator> : comparing two complex numbers is impossible.");
 }
 
 bool ComplexLiteral::operator<=(const ComplexLiteral &l) const {
-    if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
+    if (!isComplex() && !l.isComplex())
         return real <= l.real;
     throw UTComputerException("Error ComplexLiteral::operator<= : comparing two complex numbers is impossible.");
 }
 
 bool ComplexLiteral::operator>=(const ComplexLiteral &l) const {
-    if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
+    if (!isComplex() && !l.isComplex())
         return real >= l.real;
     throw UTComputerException("Error ComplexLiteral::operator>= : comparing two complex numbers is impossible.");
 }
 
 bool ComplexLiteral::operator!=(const ComplexLiteral &l) const {
-    if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
-        return real != l.real;
-    throw UTComputerException("Error ComplexLiteral::operator!= : comparing two complex numbers is impossible.");
+    return !(*this == l);
 }
 
 bool ComplexLiteral::operator&&(const ComplexLiteral &l) const {
-    if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
+    if (!isComplex() && !l.isComplex())
         return real && l.real;
     throw UTComputerException("Error ComplexLiteral::operator&&: comparing two complex numbers is impossible.");
 }
 
 bool ComplexLiteral::operator||(const ComplexLiteral &l) const {
-    if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
+    if (!isComplex() && !l.isComplex())
         return real || l.real;
     throw UTComputerException("Error ComplexLiteral::operator|| : comparing two complex numbers is impossible.");
 }
@@ -159,6 +159,35 @@ bool ComplexLiteral::operator!() const {
     if (im.getNumerator() == 0)
         return !(real);
     throw UTComputerException("Error ComplexLiteral::operator! : what is a NOT complex number ?.");
+}
+
+// ===============================================================================================================
+
+
+
+
+
+
+
+
+
+// ===============================================================================================================
+// ======================                       Useful class functions                  ==========================
+// ===============================================================================================================
+bool ComplexLiteral::isComplex() const {
+    return im.getNumerator() != 0.0;
+}
+
+bool ComplexLiteral::isInteger() const {
+    return (  !isComplex() && real.isInteger()  );
+}
+
+bool ComplexLiteral::isRational() const {
+    return (  !isComplex() && real.isRational()  );
+}
+
+bool ComplexLiteral::isReal() const {
+    return (  !isComplex() && real.isReal()  );
 }
 
 // ===============================================================================================================

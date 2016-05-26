@@ -1,4 +1,5 @@
-#include "OperatorDifferent.h"
+#include "OperatorNeg.h"
+
 
 
 
@@ -10,26 +11,31 @@
  *      - test that stack contains enough Literal* (st.size() >= operator arity)
  *      - test that every Literal* unstacked isn't null
  *
- * OperatorDifferent applies to
- *      - two ComplexLiterals with no imaginary parts
- */
-shared_ptr<Literal> OperatorDifferent::executeSpecificOperator() {
+ * OperatorNeg applies to
+ *      - one ComplexLiteral
+ *      - one ExpressionLiteral */
+shared_ptr<Literal> OperatorNeg::executeSpecificOperator() {
     try {
         Literal* a = arguments[0].get();
-        Literal* b = arguments[1].get();
         ComplexLiteral* comp_a = dynamic_cast<ComplexLiteral*>(a);
-        ComplexLiteral* comp_b = dynamic_cast<ComplexLiteral*>(b);
+        ExpressionLiteral* exp_a = dynamic_cast<ExpressionLiteral*>(a);
 
-        // if the two literals are instance of ComplexLiteral
-        if (comp_a != nullptr && comp_b != nullptr) {
-            if (*comp_a != *comp_b) // then return a ComplexLiteral set to "integer" with a value of 1
-                return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(1.0)));
-            else // then return a ComplexLiteral set to "integer" with a value of 0
-                return shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(0.0)));
+        // if instance of ComplexLiteral
+        if (comp_a != nullptr) {
+            return comp_a->negOperator();
+        }
+
+        //if instance of ExpressionLiteral
+        if (exp_a != nullptr) {
+            string newExpresion = "NEG(";
+            newExpresion += exp_a->getValue();
+            newExpresion += ")";
+            return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(newExpresion));
         }
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-        throw UTComputerException("Error in OperatorInferior::executeSpecificOperator : invalid literal types") ;
+        throw UTComputerException("Error in OperatorNeg::executeSpecificOperator : invalid literal type for argument");
+
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
@@ -37,11 +43,10 @@ shared_ptr<Literal> OperatorDifferent::executeSpecificOperator() {
         e1.insertBefore(arguments[1]->toString());
         e1.insertBefore(" and ");
         e1.insertBefore(arguments[0]->toString());
-        e1.insertBefore("Error in applying OperatorPlus on ");
+        e1.insertBefore("Error in applying OperatorNeg on ");
         throw e1;
     }
-
 }
-// ===============================================================================================================
 
+// ===============================================================================================================
 

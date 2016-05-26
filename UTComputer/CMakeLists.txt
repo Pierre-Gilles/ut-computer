@@ -65,7 +65,9 @@ set(SOURCE_FILES
         operators/logical_operators/OperatorOr.h
         operators/logical_operators/OperatorNot.cpp
         operators/logical_operators/OperatorNot.h
-        )
+        operators/classic_operators/OperatorIntegerDivision.cpp
+        operators/classic_operators/OperatorIntegerDivision.h
+        operators/classic_operators/OperatorModulo.cpp operators/classic_operators/OperatorModulo.h operators/classic_operators/OperatorNeg.cpp operators/classic_operators/OperatorNeg.cpp operators/classic_operators/OperatorNeg.h)
 
 
 add_executable(ut-computer main.cpp ${SOURCE_FILES})
