@@ -68,7 +68,7 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorMultiplication.cpp
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorDivision.cpp
         ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorInferior.cpp
-        )
+        ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorInferiorEqual.cpp)
 
 
 add_executable(ut-computer-tests ut_computer_tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})
