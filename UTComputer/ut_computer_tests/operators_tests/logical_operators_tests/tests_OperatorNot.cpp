@@ -55,4 +55,10 @@ TEST_F(Test_Operator_Not, Not_0_Gives_1_equal_True) {
 }
 
 
-// TODO tester avec les expressions
+TEST_F(Test_Operator_Not, Test_NOT_On_two_ExpressionLiteral) {
+    st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("3+SIN(3-2)*4")));
+    op_not.execute(&st);
+    EXPECT_EQ(1, st.size());
+    EXPECT_EQ("'NOT(3+SIN(3-2)*4)'", st.top()->toString());
+    st.clear();
+}

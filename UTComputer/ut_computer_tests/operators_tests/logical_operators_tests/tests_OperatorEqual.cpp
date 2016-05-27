@@ -224,4 +224,25 @@ TEST_F(Test_Operator_Equal, Rational_Sup_Real_Gives_False) {
 
 
 
-// TODO tester avec des complexes
+
+/* ========================================================== */
+/*              test if two complex are equals                */
+/* ========================================================== */
+
+
+TEST_F(Test_Operator_Equal, Complex_Equal_To_Complex_Gives_True) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5,2), NumericLiteral(3))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5,2), NumericLiteral(3))));
+    op_equal.execute(&st);
+    EXPECT_EQ(1, st.size());
+    EXPECT_EQ("1", st.top()->toString());
+}
+
+
+TEST_F(Test_Operator_Equal, Complex_Non_Equal_To_Complex_Gives_False) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5,2), NumericLiteral(3))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(4,2), NumericLiteral(3))));
+    op_equal.execute(&st);
+    EXPECT_EQ(1, st.size());
+    EXPECT_EQ("0", st.top()->toString());
+}

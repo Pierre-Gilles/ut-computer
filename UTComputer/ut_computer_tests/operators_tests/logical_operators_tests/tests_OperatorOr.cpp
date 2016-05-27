@@ -202,4 +202,11 @@ TEST_F(Test_Operator_Or, Superior_to_1_or_0_Gives_True) {
 }
 
 
-// TODO tester avec les expressions
+TEST_F(Test_Operator_Or, Test_OR_On_two_ExpressionLiteral) {
+    st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("3+SIN(3-2)*4")));
+    st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("4+7*8*2")));
+    op_or.execute(&st);
+    EXPECT_EQ(1, st.size());
+    EXPECT_EQ("'OR(3+SIN(3-2)*4,4+7*8*2)'", st.top()->toString());
+    st.clear();
+}
