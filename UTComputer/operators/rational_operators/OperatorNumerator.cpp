@@ -1,7 +1,4 @@
-#include "OperatorNeg.h"
-
-
-
+#include "OperatorNumerator.h"
 
 // ===============================================================================================================
 // ======================                 Implement Operator interface                  ==========================
@@ -11,22 +8,29 @@
  *      - test that stack contains enough Literal* (st.size() >= operator arity)
  *      - test that every Literal* unstacked isn't null
  *
- * OperatorNeg applies to
- *      - one ComplexLiteral
- *      - one ExpressionLiteral
+ * OperatorNumerator applies to
+ *      - a ComplexLiteral that is really only a rational
+ *      - an ExpressionLiteral
  */
-shared_ptr<Literal> OperatorNeg::executeSpecificOperator() {
+shared_ptr<Literal> OperatorNumerator::executeSpecificOperator() {
     try {
         Literal* a = arguments[0].get();
         ComplexLiteral* comp_a = dynamic_cast<ComplexLiteral*>(a);
         ExpressionLiteral* exp_a = dynamic_cast<ExpressionLiteral*>(a);
 
-        // if instance of ComplexLiteral
-        if (comp_a != nullptr) {
-            return comp_a->negOperator();
+        // if a is instance of ComplexLiteral
+        if (comp_a != nullptr ) {
+            double num;
+            if (comp_a->isRational() || comp_a->isInteger()) {
+                num = comp_a->getReal().getNumerator();
+                return shared_ptr<ComplexLiteral>(new ComplexLiteral(num));
+            }
+            else {
+                throw UTComputerException("Error in OperatorNumerator::executeSpecificOperator : argument must be a rational or integer.");
+            }
         }
 
-        //if instance of ExpressionLiteral
+        // if a is instance of ExpressionLiteral
         if (exp_a != nullptr) {
             string newExpresion = getKey();
             newExpresion += "(";
@@ -36,17 +40,14 @@ shared_ptr<Literal> OperatorNeg::executeSpecificOperator() {
         }
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-        throw UTComputerException("Error in OperatorNeg::executeSpecificOperator : invalid literal type for argument");
-
+        throw UTComputerException("Error in OperatorNumerator::executeSpecificOperator : invalid literal types") ;
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
         e1.insertBefore(" --> ");
         e1.insertBefore(arguments[0]->toString());
-        e1.insertBefore("Error in applying OperatorNeg on ");
+        e1.insertBefore("Error in applying OperatorNumerator on ");
         throw e1;
     }
 }
-
 // ===============================================================================================================
-

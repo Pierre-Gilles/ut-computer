@@ -30,9 +30,10 @@ shared_ptr<Literal> OperatorNot::executeSpecificOperator() {
         /* Note that the ComplexLiteral class throw exception if imaginary parts the
          * arguments is different from 0*/
 
-        // if a is instance of ComplexLiteral
+        // if a is instance of ExpressionLiteral
         if (exp_a != nullptr) {
-            string newExpresion = "NOT(";
+            string newExpresion = getKey();
+            newExpresion += "(";
             newExpresion += exp_a->getValue();
             newExpresion += ")";
             return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(newExpresion));
@@ -44,8 +45,6 @@ shared_ptr<Literal> OperatorNot::executeSpecificOperator() {
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
         e1.insertBefore(" --> ");
-        e1.insertBefore(arguments[1]->toString());
-        e1.insertBefore(" and ");
         e1.insertBefore(arguments[0]->toString());
         e1.insertBefore("Error in applying OperatorNot on ");
         throw e1;

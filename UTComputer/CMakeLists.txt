@@ -72,6 +72,10 @@ set(SOURCE_FILES
         operators/classic_operators/OperatorNeg.cpp
         operators/classic_operators/OperatorNeg.cpp
         operators/classic_operators/OperatorNeg.h
+        operators/rational_operators/OperatorNumerator.cpp
+        operators/rational_operators/OperatorNumerator.h
+        operators/rational_operators/OperateurDenominator.cpp
+        operators/rational_operators/OperateurDenominator.h
         )
 
 
@@ -100,6 +104,8 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorNeg.cpp
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorMod.cpp
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorIntegerDivision.cpp
+        ut_computer_tests/operators_tests/rational_operators_tests/tests_OperatorNumerator.cpp
+        ut_computer_tests/operators_tests/rational_operators_tests/tests_OperatorDenominator.cpp
         )
 
 

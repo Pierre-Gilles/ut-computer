@@ -33,7 +33,8 @@ shared_ptr<Literal> OperatorOr::executeSpecificOperator() {
          * arguments are different from 0*/
 
         if (exp_a != nullptr && exp_b != nullptr) {
-            string newExpresion = "OR(";
+            string newExpresion = getKey();
+            newExpresion += "(";
             newExpresion += exp_a->getValue();
             newExpresion += ",";
             newExpresion += exp_b->getValue();

@@ -35,9 +35,10 @@ shared_ptr<Literal> OperatorAnd::executeSpecificOperator() {
         /* Note that the ComplexLiteral class throw exception if imaginary parts of both
          * arguments are different from 0*/
 
-        // if the two literals are instance of ComplexLiteral
+        // if the two literals are instance of ExpressionLiteral
         if (exp_a != nullptr && exp_b != nullptr) {
-            string newExpresion = "AND(";
+            string newExpresion = getKey();
+            newExpresion += "(";
             newExpresion += exp_a->getValue();
             newExpresion += ",";
             newExpresion += exp_b->getValue();
