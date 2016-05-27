@@ -1,15 +1,15 @@
-#ifndef UTCOMPUTER_OPERATEURDENOMINATOR_H
-#define UTCOMPUTER_OPERATEURDENOMINATOR_H
+#ifndef UTCOMPUTER_OPERATORIM_H
+#define UTCOMPUTER_OPERATORIM_H
+
 #include "../Operator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
-
-class OperateurDenominator : public Operator {
+class OperatorIM : public Operator {
 
 public:
-    OperateurDenominator() : Operator(1, "DEN") { }
-    virtual ~OperateurDenominator() { }
+    OperatorIM() : Operator(1, "IM") { }
+    virtual ~OperatorIM() { }
 
 
 
@@ -23,8 +23,9 @@ private:
      *      - test that stack contains enough Literal* (st.size() >= operator arity)
      *      - test that every Literal* unstacked isn't null
      *
-     * OperateurDenominator applies to
-     *      - a ComplexLiteral that is really only a rational
+     * OperatorIM applies to
+     *      - one ComplexLiteral with or without imaginary part
+     *          - return either imaginary part or 0 if no imaginary part
      *      - an ExpressionLiteral
      */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
@@ -33,4 +34,4 @@ private:
 };
 
 
-#endif //UTCOMPUTER_OPERATEURDENOMINATOR_H
+#endif //UTCOMPUTER_OPERATORIM_H

@@ -17,8 +17,11 @@ public:
     virtual void SetUp() {
         listOperators = {"+", "-", "*", "/", "DIV", "MOD", "NEG",
                          "AND", "!=", "=", "<", "<=", "NOT", "OR", ">", ">=",
-                        "NUM", "DEN"};
-        // dynamically instantiate one time each operator and store them in the unordered_map
+                        "NUM", "DEN",
+                        "$", "RE", "IM"};
+        /* dynamically instantiate one time each operator and store them in the unordered_map */
+
+        // Classic Operators
         op_manager.addOperator(new OperatorPlus());
         op_manager.addOperator(new OperatorMinus());
         op_manager.addOperator(new OperatorMultiplication());
@@ -27,6 +30,7 @@ public:
         op_manager.addOperator(new OperatorModulo());
         op_manager.addOperator(new OperatorNeg());
 
+        // Logical Operators
         op_manager.addOperator(new OperatorAnd());
         op_manager.addOperator(new OperatorDifferent());
         op_manager.addOperator(new OperatorEqual());
@@ -37,8 +41,14 @@ public:
         op_manager.addOperator(new OperatorSuperior());
         op_manager.addOperator(new OperatorSuperiorEqual());
 
+        // Rational Operators
         op_manager.addOperator(new OperatorNumerator());
-        op_manager.addOperator(new OperateurDenominator());
+        op_manager.addOperator(new OperatorDenominator());
+
+        // Complex Operators
+        op_manager.addOperator(new OperatorDollar());
+        op_manager.addOperator(new OperatorIM());
+        op_manager.addOperator(new OperatorRE());
     }
     virtual void TearDown() {
         op_manager.~OperatorManager();
@@ -129,7 +139,16 @@ TEST_F(Test_Operator_Manager, Test_getOperator_Works) {
             EXPECT_TRUE( (dynamic_cast<OperatorNumerator*>(op_manager.getOperator("NUM"))) != nullptr );
 
         if (listOperators[i] == "DEN")
-            EXPECT_TRUE( (dynamic_cast<OperateurDenominator*>(op_manager.getOperator("DEN"))) != nullptr );
+            EXPECT_TRUE( (dynamic_cast<OperatorDenominator*>(op_manager.getOperator("DEN"))) != nullptr );
+
+        if (listOperators[i] == "$")
+            EXPECT_TRUE( (dynamic_cast<OperatorDollar*>(op_manager.getOperator("$"))) != nullptr );
+
+        if (listOperators[i] == "RE")
+            EXPECT_TRUE( (dynamic_cast<OperatorRE*>(op_manager.getOperator("RE"))) != nullptr );
+
+        if (listOperators[i] == "IM")
+            EXPECT_TRUE( (dynamic_cast<OperatorIM*>(op_manager.getOperator("IM"))) != nullptr );
 
         // Add if statements along the creation of new operators
     }
@@ -202,6 +221,15 @@ TEST_F(Test_Operator_Manager, Test_Call_Operator_Execute_From_Map) {
 
             if (listOperators[i] == "DEN")
                 EXPECT_EQ("1", st.top()->toString());
+
+            if (listOperators[i] == "$")
+                EXPECT_EQ("8$3", st.top()->toString());
+
+            if (listOperators[i] == "RE")
+                EXPECT_EQ("3", st.top()->toString()); // because st.top() is ComplexLiteral(NumericLiteral(3)) with no imaginary part
+
+            if (listOperators[i] == "IM")
+                EXPECT_EQ("0", st.top()->toString());
 
             // Add if statements along the creation of new operators
             st.clear();

@@ -74,8 +74,14 @@ set(SOURCE_FILES
         operators/classic_operators/OperatorNeg.h
         operators/rational_operators/OperatorNumerator.cpp
         operators/rational_operators/OperatorNumerator.h
-        operators/rational_operators/OperateurDenominator.cpp
-        operators/rational_operators/OperateurDenominator.h
+        operators/rational_operators/OperatorDenominator.cpp
+        operators/rational_operators/OperatorDenominator.h
+        operators/complex_operators/OperatorRE.cpp
+        operators/complex_operators/OperatorRE.h
+        operators/complex_operators/OperatorIM.cpp
+        operators/complex_operators/OperatorIM.h
+        operators/complex_operators/OperatorDollar.cpp
+        operators/complex_operators/OperatorDollar.h
         )
 
 
@@ -106,7 +112,7 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorIntegerDivision.cpp
         ut_computer_tests/operators_tests/rational_operators_tests/tests_OperatorNumerator.cpp
         ut_computer_tests/operators_tests/rational_operators_tests/tests_OperatorDenominator.cpp
-        )
+        ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorDollar.cpp ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorRE.cpp ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorIM.cpp)
 
 
 add_executable(ut-computer-tests ut_computer_tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})

@@ -1,14 +1,14 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
-#include "../../../operators/rational_operators/OperateurDenominator.h"
+#include "../../../operators/rational_operators/OperatorDenominator.h"
 
 using namespace std;
 
 class Test_Operator_Denominator : public ::testing::Test {
 protected:
     StackUTComputer st;
-    OperateurDenominator op_den;
+    OperatorDenominator op_den;
 
 public:
     virtual void SetUp() { }

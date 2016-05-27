@@ -25,7 +25,12 @@
 #include "logical_operators/OperatorEqual.h"
 #include "logical_operators/OperatorDifferent.h"
 #include "rational_operators/OperatorNumerator.h"
-#include "rational_operators/OperateurDenominator.h"
+#include "rational_operators/OperatorDenominator.h"
+#include "complex_operators/OperatorDollar.h"
+#include "complex_operators/OperatorIM.h"
+#include "complex_operators/OperatorRE.h"
+
+
 
 
 
