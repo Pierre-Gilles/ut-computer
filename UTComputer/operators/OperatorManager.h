@@ -24,6 +24,8 @@
 #include "logical_operators/OperatorSuperiorEqual.h"
 #include "logical_operators/OperatorEqual.h"
 #include "logical_operators/OperatorDifferent.h"
+#include "rational_operators/OperatorNumerator.h"
+#include "rational_operators/OperateurDenominator.h"
 
 
 

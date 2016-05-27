@@ -15,7 +15,9 @@ protected:
 
 public:
     virtual void SetUp() {
-        listOperators = {"+", "-", "*", "/", "DIV", "MOD", "NEG", "AND", "!=", "=", "<", "<=", "NOT", "OR", ">", ">="};
+        listOperators = {"+", "-", "*", "/", "DIV", "MOD", "NEG",
+                         "AND", "!=", "=", "<", "<=", "NOT", "OR", ">", ">=",
+                        "NUM", "DEN"};
         // dynamically instantiate one time each operator and store them in the unordered_map
         op_manager.addOperator(new OperatorPlus());
         op_manager.addOperator(new OperatorMinus());
@@ -34,6 +36,9 @@ public:
         op_manager.addOperator(new OperatorOr());
         op_manager.addOperator(new OperatorSuperior());
         op_manager.addOperator(new OperatorSuperiorEqual());
+
+        op_manager.addOperator(new OperatorNumerator());
+        op_manager.addOperator(new OperateurDenominator());
     }
     virtual void TearDown() {
         op_manager.~OperatorManager();
@@ -120,6 +125,12 @@ TEST_F(Test_Operator_Manager, Test_getOperator_Works) {
         if (listOperators[i] == ">=")
             EXPECT_TRUE( (dynamic_cast<OperatorSuperiorEqual*>(op_manager.getOperator(">="))) != nullptr );
 
+        if (listOperators[i] == "NUM")
+            EXPECT_TRUE( (dynamic_cast<OperatorNumerator*>(op_manager.getOperator("NUM"))) != nullptr );
+
+        if (listOperators[i] == "DEN")
+            EXPECT_TRUE( (dynamic_cast<OperateurDenominator*>(op_manager.getOperator("DEN"))) != nullptr );
+
         // Add if statements along the creation of new operators
     }
 }
@@ -184,6 +195,12 @@ TEST_F(Test_Operator_Manager, Test_Call_Operator_Execute_From_Map) {
                 EXPECT_EQ("1", st.top()->toString());
 
             if (listOperators[i] == ">=")
+                EXPECT_EQ("1", st.top()->toString());
+
+            if (listOperators[i] == "NUM")
+                EXPECT_EQ("3", st.top()->toString());
+
+            if (listOperators[i] == "DEN")
                 EXPECT_EQ("1", st.top()->toString());
 
             // Add if statements along the creation of new operators
