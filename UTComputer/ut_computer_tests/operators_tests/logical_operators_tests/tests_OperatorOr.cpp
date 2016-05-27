@@ -210,3 +210,87 @@ TEST_F(Test_Operator_Or, Test_OR_On_two_ExpressionLiteral) {
     EXPECT_EQ("'OR(3+SIN(3-2)*4,4+7*8*2)'", st.top()->toString());
     st.clear();
 }
+
+
+
+/* ========================================================== */
+/*                   TEST THROWN EXCEPTIONS                   */
+/* ========================================================== */
+
+TEST_F(Test_Operator_Or, Throw_Exception_Null_Arguments) {
+    st.push(shared_ptr<ComplexLiteral>());
+    st.push(shared_ptr<ComplexLiteral>());
+    try {
+        //op_or.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_or.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Or, Throw_Exception_First_Argument_Is_Null) {
+    st.push(shared_ptr<ComplexLiteral>());
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+    try {
+        //op_or.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_or.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Or, Throw_Exception_Second_Argument_Is_Null) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+    st.push(shared_ptr<ComplexLiteral>());
+    try {
+        //op_or.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_or.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Or, Throw_Exception_Two_Arguments_Invalid) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
+            NumericLiteral(1),
+            NumericLiteral(3)
+    )));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
+            NumericLiteral(2),
+            NumericLiteral(1)
+    )));
+    try {
+        //op_or.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_or.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Or, Throw_Exception_First_Argument_Invalid) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
+            NumericLiteral(1),
+            NumericLiteral(3)
+    )));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+    try {
+        //op_or.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_or.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Or, Throw_Exception_Second_Argument_Invalid) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
+            NumericLiteral(1),
+            NumericLiteral(3)
+    )));
+    try {
+        //op_or.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_or.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}

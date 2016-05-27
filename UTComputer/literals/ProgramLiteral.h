@@ -10,6 +10,12 @@ public:
 
     ProgramLiteral(const string &value) : StringLiteral(value) { }
     virtual ~ProgramLiteral() { }
+
+    virtual string toString() const override {
+        return value;
+    }
+
+
 };
 
 

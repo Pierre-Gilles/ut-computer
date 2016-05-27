@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 
 #include "../../../operators/classic_operators/OperatorNeg.h"
+#include "../../../literals/ProgramLiteral.h"
 
 using namespace std;
 
@@ -85,3 +86,30 @@ TEST_F(Test_Operator_Neg, Test_NOT_On_one_ExpressionLiteral) {
     st.clear();
 }
 
+
+
+/* ========================================================== */
+/*                   TEST THROWN EXCEPTIONS                   */
+/* ========================================================== */
+
+TEST_F(Test_Operator_Neg, Throw_Exception_Null_Argument) {
+    try {
+        st.push(shared_ptr<ComplexLiteral>());
+        //op_neg.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_neg.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+
+
+TEST_F(Test_Operator_Neg, Throw_Exception_Argument_Invalid) {
+    try {
+        st.push(shared_ptr<ProgramLiteral>(new ProgramLiteral(" ")));
+        //op_neg.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_neg.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}

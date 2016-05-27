@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 
 #include "../../../operators/logical_operators/OperatorNot.h"
+#include "../../../literals/ProgramLiteral.h"
 
 using namespace std;
 
@@ -61,4 +62,47 @@ TEST_F(Test_Operator_Not, Test_NOT_On_one_ExpressionLiteral) {
     EXPECT_EQ(1, st.size());
     EXPECT_EQ("'NOT(3+SIN(3-2)*4)'", st.top()->toString());
     st.clear();
+}
+
+
+
+
+
+/* ========================================================== */
+/*                   TEST THROWN EXCEPTIONS                   */
+/* ========================================================== */
+
+TEST_F(Test_Operator_Not, Throw_Exception_Null_Argument) {
+    try {
+        st.push(shared_ptr<ComplexLiteral>());
+        //op_not.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_not.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+
+
+TEST_F(Test_Operator_Not, Throw_Exception_Argument_Invalid) {
+    try {
+        st.push(shared_ptr<ProgramLiteral>(new ProgramLiteral(" ")));
+        //op_not.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_not.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Not, Throw_Exception_Argument_Invalid_2) {
+    try {
+        st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(
+                NumericLiteral(2),
+                NumericLiteral(1)
+        )));
+        //op_not.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_not.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
 }
