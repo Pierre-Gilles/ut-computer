@@ -38,7 +38,7 @@ TEST_F(Test_Expression_Literal, hasSamePriority) {
      * (when applying an operator on it) is necessary or not :
      *      - if hasSamePriority return true, then no need of parenthesis
      *      - if hasSamePriority return false, then need of parenthesis */
-    ExpressionLiteral e("");
+    ExpressionLiteral e("empty");
     vector<string> all_operators = {"<", ">", "<=", ">=", "=", "!=", "+", "-", "*", "/", "$", "AND", "OR", "NOT"};
     vector<string> priority0 = {"<", ">", "<=", ">=", "=", "!=", "AND", "OR", "NOT"};
     vector<string> priority1 = {"+", "-"};

@@ -77,3 +77,11 @@ TEST_F(Test_Operator_Neg, Complex_Negation) {
 }
 
 
+TEST_F(Test_Operator_Neg, Test_NOT_On_one_ExpressionLiteral) {
+    st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("3+SIN(3-2)*4")));
+    op_neg.execute(&st);
+    EXPECT_EQ(1, st.size());
+    EXPECT_EQ("'NEG(3+SIN(3-2)*4)'", st.top()->toString());
+    st.clear();
+}
+

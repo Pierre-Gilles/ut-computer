@@ -45,8 +45,13 @@ public:
 
 
 TEST_F(Test_Operator_Manager, Test_addOperatorFunction) {
-    for (int i=0; i<listOperators.size(); i++)
+    cerr << "Test OpManager : Information sur les operateurs existants et testés : " << endl;
+    cerr << "Key" << "\t\t\t" << "getKey()" << "\t\t" << "getArite()" << endl;
+    for (int i=0; i<listOperators.size(); i++) {
         EXPECT_TRUE(op_manager.operatorExists(listOperators[i])) << "operator : " << listOperators[i];
+        cerr << listOperators[i] << "\t\t\t\t" << op_manager.getOperator(listOperators[i])->getKey()
+            << "\t\t\t\t" << op_manager.getOperator(listOperators[i])->getArite() << endl;
+    }
 }
 
 
