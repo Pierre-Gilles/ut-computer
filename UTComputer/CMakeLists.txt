@@ -134,7 +134,8 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorDollar.cpp
         ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorRE.cpp
         ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorIM.cpp
-        )
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorDUP.cpp
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorCLEAR.cpp)
 
 
 add_executable(ut-computer-tests ut_computer_tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})
