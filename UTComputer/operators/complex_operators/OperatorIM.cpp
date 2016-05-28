@@ -40,7 +40,7 @@ shared_ptr<Literal> OperatorIM::executeSpecificOperator() {
         }
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-        throw UTComputerException("Error in OperatorIM::executeSpecificOperator : argument must be a ComplexLiteral (with or without imaginary part).") ;
+        throw UTComputerException("Error in OperatorIM::executeSpecificOperator : argument must be a ComplexLiteral or an ExpressionLiteral.");
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());

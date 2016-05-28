@@ -11,6 +11,9 @@
  *
  * OperatorDollar applies to
  *      - two ComplexLiterals with no imaginary parts
+ *      - NOT ON ExpressionLiteral : a complex can't have other complex numbers as imaginary or real part and we don't know
+ *          what is in an ExpressionLiteral before we apply EVAL on it : maybe the ExpressionLiteral, once evaluated, will be
+ *          a complex number...
  */
 shared_ptr<Literal> OperatorDollar::executeSpecificOperator() {
 
@@ -32,7 +35,7 @@ shared_ptr<Literal> OperatorDollar::executeSpecificOperator() {
         }
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-        throw UTComputerException("Error in OperatorDollar::executeSpecificOperator : invalid literal types for both arguments") ;
+        throw UTComputerException("Error in OperatorDollar::executeSpecificOperator : arguments must be ComplexLiteral without imaginary part.") ;
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());

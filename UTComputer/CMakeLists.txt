@@ -112,7 +112,10 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorIntegerDivision.cpp
         ut_computer_tests/operators_tests/rational_operators_tests/tests_OperatorNumerator.cpp
         ut_computer_tests/operators_tests/rational_operators_tests/tests_OperatorDenominator.cpp
-        ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorDollar.cpp ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorRE.cpp ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorIM.cpp)
+        ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorDollar.cpp
+        ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorRE.cpp
+        ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorIM.cpp
+        )
 
 
 add_executable(ut-computer-tests ut_computer_tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})
