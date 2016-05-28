@@ -1,15 +1,15 @@
 #ifndef UTCOMPUTER_OPERATORDIFFERENT_H
 #define UTCOMPUTER_OPERATORDIFFERENT_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorDifferent : public Operator {
+class OperatorDifferent : public CalculationOperator {
 
 
 public:
 
-    OperatorDifferent() : Operator(2, "!=") {}
+    OperatorDifferent() : CalculationOperator(2, "!=") {}
     virtual ~OperatorDifferent() {}
 
 private:

@@ -1,15 +1,15 @@
 #ifndef UTCOMPUTER_OPERATORINFERIOREQUAL_H
 #define UTCOMPUTER_OPERATORINFERIOREQUAL_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorInferiorEqual : public Operator {
+class OperatorInferiorEqual : public CalculationOperator {
 
 
 public:
 
-    OperatorInferiorEqual() : Operator(2, "<=") {}
+    OperatorInferiorEqual() : CalculationOperator(2, "<=") {}
     virtual ~OperatorInferiorEqual() {}
 
 

@@ -1,7 +1,3 @@
-//
-// Created by Raphael on 15/05/2016.
-//
-
 #ifndef TESTLO21CLION_STACKUTCOMPUTER_H
 #define TESTLO21CLION_STACKUTCOMPUTER_H
 
@@ -13,12 +9,20 @@
 #include "../exceptions/UTComputerException.h"
 #include "../literals/Literal.h"
 
+//#include "../operators/Operator.h"
+
+class Operator; // we need Operator class but we can't include the header file because Operator also need StackUTComputer for its function execute()
+
 using namespace std;
 
 
 class StackUTComputer {
 
     deque<shared_ptr<Literal>> st;
+    deque<shared_ptr<Literal>> lastArguments;
+    Operator *lastOperator;
+
+
 
 public:
 
@@ -26,19 +30,32 @@ public:
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
 
-    StackUTComputer(){}
+    StackUTComputer() : lastOperator(nullptr) {}
     virtual ~StackUTComputer() {
         st.clear(); // remove all elements from the container
+        lastArguments.clear();
     }
     // ===============================================================================================================
 
 
 
+    // ===============================================================================================================
+    // ======================                   Getters and Setters                         ==========================
+    // ===============================================================================================================
+    Operator *getLastOperator() const {
+        if (lastOperator == nullptr)
+            throw UTComputerException("Error StackUTComputer::excuteLastOperator : lastOperator attribute is null.");
+        return lastOperator;
+    }
+
+    // ===============================================================================================================
 
 
     // ===============================================================================================================
-    // ======================                     Implement Stack Interface                 ==========================
+    // ======================        Implement Stack Interface and Stack Operators          ==========================
     // ===============================================================================================================
+
+
 
     int size() {
         return (int)st.size(); // cast from "unsigned long int" in "int"
@@ -59,7 +76,14 @@ public:
     void push(shared_ptr<Literal> l) {
         st.push_front(l); // add element on top of the container
     }
+
+    void pushLastArgs() {
+        for (int i=0; i<lastArguments.size(); i++)
+            st.push_front(lastArguments[i]);
+    }
+
     // ===============================================================================================================
+
 
 
 
@@ -72,7 +96,7 @@ public:
      * Function that fill the Literal* table arguments with the right ones and in
      * the right order : first argument is the last one to be unstacked
      */
-    void getArguments(int arity, vector<shared_ptr<Literal>> &arguments) const;
+    void getArguments(int arity, vector<shared_ptr<Literal>> &arguments);
 
     /**
      * Function that delete the right number of elements from the container by calling

@@ -35,10 +35,14 @@ set(SOURCE_FILES
         literals/ProgramLiteral.h
         literals/AtomLiteral.cpp
         literals/AtomLiteral.h
-        operators/OperatorManager.cpp
-        operators/OperatorManager.h
         operators/Operator.cpp
         operators/Operator.h
+        operators/OperatorManager.cpp
+        operators/OperatorManager.h
+        operators/StackOperator.cpp
+        operators/StackOperator.h
+        operators/CalculationOperator.cpp
+        operators/CalculationOperator.h
         operators/classic_operators/OperatorPlus.cpp
         operators/classic_operators/OperatorPlus.h
         operators/classic_operators/OperatorMinus.cpp
@@ -70,7 +74,6 @@ set(SOURCE_FILES
         operators/classic_operators/OperatorModulo.cpp
         operators/classic_operators/OperatorModulo.h
         operators/classic_operators/OperatorNeg.cpp
-        operators/classic_operators/OperatorNeg.cpp
         operators/classic_operators/OperatorNeg.h
         operators/rational_operators/OperatorNumerator.cpp
         operators/rational_operators/OperatorNumerator.h
@@ -82,6 +85,22 @@ set(SOURCE_FILES
         operators/complex_operators/OperatorIM.h
         operators/complex_operators/OperatorDollar.cpp
         operators/complex_operators/OperatorDollar.h
+        operators/stack_operators/OperatorDUP.cpp
+        operators/stack_operators/OperatorDUP.h
+        operators/stack_operators/OperatorDROP.cpp
+        operators/stack_operators/OperatorDROP.h
+        operators/stack_operators/OperatorSWAP.cpp
+        operators/stack_operators/OperatorSWAP.h
+        operators/stack_operators/OperatorLASTOP.cpp
+        operators/stack_operators/OperatorLASTOP.h
+        operators/stack_operators/OperatorLASTARGS.cpp
+        operators/stack_operators/OperatorLASTARGS.h
+        operators/stack_operators/OperatorCLEAR.cpp
+        operators/stack_operators/OperatorCLEAR.h
+        operators/stack_operators/OperatorUNDO.cpp
+        operators/stack_operators/OperatorUNDO.h
+        operators/stack_operators/OperatorREDO.cpp
+        operators/stack_operators/OperatorREDO.h
         )
 
 

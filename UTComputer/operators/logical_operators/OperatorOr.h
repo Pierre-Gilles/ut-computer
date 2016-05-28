@@ -1,15 +1,15 @@
 #ifndef UTCOMPUTER_OPERATOROR_H
 #define UTCOMPUTER_OPERATOROR_H
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
-class OperatorOr : public Operator {
+class OperatorOr : public CalculationOperator {
 
 
 public:
 
-    OperatorOr() : Operator(2, "OR") {}
+    OperatorOr() : CalculationOperator(2, "OR") {}
     virtual ~OperatorOr() {}
 
 private:

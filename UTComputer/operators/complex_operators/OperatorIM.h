@@ -1,14 +1,14 @@
 #ifndef UTCOMPUTER_OPERATORIM_H
 #define UTCOMPUTER_OPERATORIM_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
-class OperatorIM : public Operator {
+class OperatorIM : public CalculationOperator {
 
 public:
-    OperatorIM() : Operator(1, "IM") { }
+    OperatorIM() : CalculationOperator(1, "IM") { }
     virtual ~OperatorIM() { }
 
 

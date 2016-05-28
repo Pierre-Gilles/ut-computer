@@ -1,24 +1,22 @@
-#ifndef TESTLO21CLION_OPERATOR_H
-#define TESTLO21CLION_OPERATOR_H
+#ifndef UTCOMPUTER_CALCULATIONOPERATOR_H
+#define UTCOMPUTER_CALCULATIONOPERATOR_H
 
-#include <iostream>
-#include <string>
-#include "../stack/StackUTComputer.h"
-#include "../exceptions/UTComputerException.h"
-using namespace std;
+#include "Operator.h"
 
-class Operator {
+class CalculationOperator : public Operator {
 protected:
-    int arity;
-    string key;
+    //int arity;
+    //string key;
+    vector<shared_ptr<Literal>> arguments; // vector of shared_ptr<Literal>
 public:
 
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
-    Operator(int nb, string key) : arity(nb), key(key) {
+    CalculationOperator(int nb, string key) : Operator(nb, key) {
+        arguments.reserve((unsigned long int)nb); // reserve space in vector
     }
-    virtual ~Operator() { }
+    virtual ~CalculationOperator() { }
     // ===============================================================================================================
 
 
@@ -26,31 +24,27 @@ public:
 
 
     // ===============================================================================================================
-    // ======================                       Getters and Setters                     ==========================
-    // ===============================================================================================================
-    int getArite() const {
-        return arity;
-    }
-
-    const string &getKey() const {
-        return key;
-    }
-    // ===============================================================================================================
-
-
-
-
-
-    // ===============================================================================================================
-    // ======================                     Interface for subclasses                  ==========================
+    // ======================                       Class main services                     ==========================
     // ===============================================================================================================
     /*
-     * Address of stack must not be changed, but "st" do not point to a const stack : we use a constant pointer
+     * Adress of stack must not be changed, but "st" do not point to a const stack : we use a constant pointer
      * and not a pointer to constant
      */
-    virtual void execute(StackUTComputer * const st) = 0;
+    virtual void execute(StackUTComputer * const st) override;
     // ===============================================================================================================
+
+
+
+
+
+    // ===============================================================================================================
+    // ======================                   Interface for subclasses                    ==========================
+    // ===============================================================================================================
+private:
+    virtual shared_ptr<Literal> executeSpecificOperator() = 0;
+    // ===============================================================================================================
+
 };
 
 
-#endif //TESTLO21CLION_OPERATOR_H
+#endif //UTCOMPUTER_CALCULATIONOPERATOR_H

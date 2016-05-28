@@ -1,14 +1,14 @@
 #ifndef UTCOMPUTER_OPERATEURDENOMINATOR_H
 #define UTCOMPUTER_OPERATEURDENOMINATOR_H
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
 
-class OperatorDenominator : public Operator {
+class OperatorDenominator : public CalculationOperator {
 
 public:
-    OperatorDenominator() : Operator(1, "DEN") { }
+    OperatorDenominator() : CalculationOperator(1, "DEN") { }
     virtual ~OperatorDenominator() { }
 
 

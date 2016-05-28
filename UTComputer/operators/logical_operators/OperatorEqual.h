@@ -1,15 +1,15 @@
 #ifndef UTCOMPUTER_OPERATOREQUAL_H
 #define UTCOMPUTER_OPERATOREQUAL_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorEqual : public Operator {
+class OperatorEqual : public CalculationOperator {
 
 
 public:
 
-    OperatorEqual() : Operator(2, "=") {}
+    OperatorEqual() : CalculationOperator(2, "=") {}
     virtual ~OperatorEqual() {}
 
 private:

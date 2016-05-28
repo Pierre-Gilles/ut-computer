@@ -1,14 +1,14 @@
 #ifndef UTCOMPUTER_MINUSOPERATOR_H
 #define UTCOMPUTER_MINUSOPERATOR_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
-class OperatorMinus : public Operator {
+class OperatorMinus : public CalculationOperator {
 
 public:
-    OperatorMinus() : Operator(2, "-") { }
+    OperatorMinus() : CalculationOperator(2, "-") { }
     virtual ~OperatorMinus() { }
 
 

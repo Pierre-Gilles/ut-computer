@@ -1,17 +1,17 @@
 #ifndef UTCOMPUTER_OPERATORNOT_H
 #define UTCOMPUTER_OPERATORNOT_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
 
-class OperatorNot : public Operator {
+class OperatorNot : public CalculationOperator {
 
 
 public:
 
-    OperatorNot() : Operator(1, "NOT") {}
+    OperatorNot() : CalculationOperator(1, "NOT") {}
     virtual ~OperatorNot() {}
 
 private:

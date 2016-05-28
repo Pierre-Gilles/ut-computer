@@ -1,14 +1,14 @@
 #ifndef UTCOMPUTER_OPERATORRE_H
 #define UTCOMPUTER_OPERATORRE_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
-class OperatorRE : public Operator {
+class OperatorRE : public CalculationOperator {
 
 public:
-    OperatorRE() : Operator(1, "RE") { }
+    OperatorRE() : CalculationOperator(1, "RE") { }
     virtual ~OperatorRE() { }
 
 

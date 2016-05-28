@@ -1,14 +1,14 @@
 #ifndef UTCOMPUTER_OPERATORNEG_H
 #define UTCOMPUTER_OPERATORNEG_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
-class OperatorNeg : public Operator {
+class OperatorNeg : public CalculationOperator {
 
 public:
-    OperatorNeg() : Operator(1, "NEG") { }
+    OperatorNeg() : CalculationOperator(1, "NEG") { }
     virtual ~OperatorNeg() { }
 
 

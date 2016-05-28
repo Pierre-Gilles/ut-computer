@@ -1,13 +1,13 @@
 #ifndef UTCOMPUTER_OPERATORDOLLAR_H
 #define UTCOMPUTER_OPERATORDOLLAR_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorDollar : public Operator {
+class OperatorDollar : public CalculationOperator {
 
 public:
-    OperatorDollar() : Operator(2, "$") { }
+    OperatorDollar() : CalculationOperator(2, "$") { }
     virtual ~OperatorDollar() { }
 
 

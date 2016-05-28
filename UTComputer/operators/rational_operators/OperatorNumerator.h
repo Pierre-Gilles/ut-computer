@@ -2,14 +2,14 @@
 #define UTCOMPUTER_OPERATORNUMERATOR_H
 
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
-class OperatorNumerator : public Operator {
+class OperatorNumerator : public CalculationOperator {
 
 public:
-    OperatorNumerator() : Operator(1, "NUM") { }
+    OperatorNumerator() : CalculationOperator(1, "NUM") { }
     virtual ~OperatorNumerator() { }
 
 

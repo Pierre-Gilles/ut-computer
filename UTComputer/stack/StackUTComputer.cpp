@@ -9,10 +9,11 @@
     * Function that fill the Literal* table arguments with the right ones and in
     * the right order : first argument is the last one to be unstacked
     */
-void StackUTComputer::getArguments(int arity, vector<shared_ptr<Literal>> &arguments) const {
+void StackUTComputer::getArguments(int arity, vector<shared_ptr<Literal>> &arguments) {
     if (st.size() < arity)
         throw UTComputerException("Error in StackUTComputer::getArguments : arity superior to stack size");
 
+    lastArguments.clear(); // drop previous last arguments
     for (int it=0; it<arity; it++) {
         if (!st[arity-1-it]) { // means that st[arity-1-i] is null
             arguments.clear(); // in case we have insert items before having the exception
@@ -20,6 +21,7 @@ void StackUTComputer::getArguments(int arity, vector<shared_ptr<Literal>> &argum
         }
 
         arguments.insert(arguments.begin()+it, st[arity-1-it]);
+        lastArguments.push_front(st[it]); // save last arguments
         //cerr << "insertion in arguments[" << it << "]" << " : st[" << arity-1-it << "] = " << st[arity-1-it]->toString() << endl;
     }
 }

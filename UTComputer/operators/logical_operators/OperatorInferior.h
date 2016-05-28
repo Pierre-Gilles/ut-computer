@@ -1,15 +1,15 @@
 #ifndef UTCOMPUTER_OPERATORINFERIOR_H
 #define UTCOMPUTER_OPERATORINFERIOR_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorInferior : public Operator {
+class OperatorInferior : public CalculationOperator {
 
 
 public:
 
-    OperatorInferior() : Operator(2, "<") {}
+    OperatorInferior() : CalculationOperator(2, "<") {}
     virtual ~OperatorInferior() {}
 
 private:
