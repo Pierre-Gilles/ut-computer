@@ -14,6 +14,7 @@ void OperatorUNDO::execute(StackUTComputer *const st){
     StackOperator::execute(st); // check usual possible errors
 
     try {
+        st->undo();
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
