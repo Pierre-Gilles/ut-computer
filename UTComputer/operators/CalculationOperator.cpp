@@ -8,8 +8,6 @@ void CalculationOperator::execute(StackUTComputer * const st) {
     if (st->size() < arity)
         throw UTComputerException("Error in Operator::execute : size of stack inferior to operator arity");
 
-//    st->createMemento();
-
     st->getArguments(arity, arguments);
     st->setLastOperator(this);
     st->setLastArguments(arity);
