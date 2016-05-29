@@ -21,7 +21,6 @@ void StackUTComputer::getArguments(int arity, vector<shared_ptr<Literal>> &argum
         }
 
         arguments.insert(arguments.begin()+it, st[arity-1-it]);
-        lastArguments.push_front(st[it]); // save last arguments
         //cerr << "insertion in arguments[" << it << "]" << " : st[" << arity-1-it << "] = " << st[arity-1-it]->toString() << endl;
     }
 }

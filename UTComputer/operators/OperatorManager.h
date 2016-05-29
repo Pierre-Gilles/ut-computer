@@ -29,6 +29,15 @@
 #include "complex_operators/OperatorDollar.h"
 #include "complex_operators/OperatorIM.h"
 #include "complex_operators/OperatorRE.h"
+#include "stack_operators/OperatorCLEAR.h"
+#include "stack_operators/OperatorDROP.h"
+#include "stack_operators/OperatorDUP.h"
+#include "stack_operators/OperatorLASTARGS.h"
+#include "stack_operators/OperatorLASTOP.h"
+#include "stack_operators/OperatorREDO.h"
+#include "stack_operators/OperatorUNDO.h"
+#include "stack_operators/OperatorSWAP.h"
+
 
 
 

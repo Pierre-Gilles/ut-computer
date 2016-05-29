@@ -42,11 +42,24 @@ public:
     // ===============================================================================================================
     // ======================                   Getters and Setters                         ==========================
     // ===============================================================================================================
+
+    void setLastOperator(Operator *lastOp) {
+        lastOperator = lastOp;
+    }
+
     Operator *getLastOperator() const {
-        if (lastOperator == nullptr)
-            throw UTComputerException("Error StackUTComputer::excuteLastOperator : lastOperator attribute is null.");
         return lastOperator;
     }
+
+    void setLastArguments(int operatorArity) {
+        if (st.size() < operatorArity)
+            throw UTComputerException("Error in StackUTComputer::setLastArguments : arity superior to stack size");
+
+        for (int i=0; i<operatorArity; i++) {
+            lastArguments.push_front(st[i]); // save last arguments
+        }
+    }
+
 
     // ===============================================================================================================
 
@@ -54,6 +67,8 @@ public:
     // ===============================================================================================================
     // ======================        Implement Stack Interface and Stack Operators          ==========================
     // ===============================================================================================================
+
+
 
 
 

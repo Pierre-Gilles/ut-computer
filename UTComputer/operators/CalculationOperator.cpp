@@ -9,6 +9,8 @@ void CalculationOperator::execute(StackUTComputer * const st) {
         throw UTComputerException("Error in Operator::execute : size of stack inferior to operator arity");
 
     st->getArguments(arity, arguments);
+    st->setLastOperator(this);
+    st->setLastArguments(arity);
 
     shared_ptr<Literal> result;
 

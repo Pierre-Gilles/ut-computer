@@ -19,5 +19,10 @@ void StackOperator::execute(StackUTComputer * const st) {
 
     if (st->size() < arity)
         throw UTComputerException("Error in StackOperator::execute : size of stack inferior to operator arity");
+
+    if (key != "LASTOP")
+        st->setLastOperator(this);
+    if (key != "LASTARGS")
+        st->setLastArguments(arity);
 }
 // ===============================================================================================================

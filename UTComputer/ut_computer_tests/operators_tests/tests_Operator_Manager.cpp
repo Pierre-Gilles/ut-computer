@@ -18,7 +18,8 @@ public:
         listOperators = {"+", "-", "*", "/", "DIV", "MOD", "NEG",
                          "AND", "!=", "=", "<", "<=", "NOT", "OR", ">", ">=",
                         "NUM", "DEN",
-                        "$", "RE", "IM"};
+                        "$", "RE", "IM",
+                        "CLEAR", "DROP", "DUP", "LASTARGS", "LASTOP", "REDO", "UNDO", "SWAP"};
         /* dynamically instantiate one time each operator and store them in the unordered_map */
 
         // Classic Operators
@@ -49,6 +50,17 @@ public:
         op_manager.addOperator(new OperatorDollar());
         op_manager.addOperator(new OperatorIM());
         op_manager.addOperator(new OperatorRE());
+
+        // Stack Operators
+        op_manager.addOperator(new OperatorCLEAR());
+        op_manager.addOperator(new OperatorDROP());
+        op_manager.addOperator(new OperatorDUP());
+        op_manager.addOperator(new OperatorLASTARGS());
+        op_manager.addOperator(new OperatorLASTOP());
+        op_manager.addOperator(new OperatorREDO());
+        op_manager.addOperator(new OperatorUNDO());
+        op_manager.addOperator(new OperatorSWAP());
+
     }
     virtual void TearDown() {
         op_manager.~OperatorManager();
@@ -150,6 +162,29 @@ TEST_F(Test_Operator_Manager, Test_getOperator_Works) {
         if (listOperators[i] == "IM")
             EXPECT_TRUE( (dynamic_cast<OperatorIM*>(op_manager.getOperator("IM"))) != nullptr );
 
+        if (listOperators[i] == "CLEAR")
+            EXPECT_TRUE( (dynamic_cast<OperatorCLEAR*>(op_manager.getOperator("CLEAR"))) != nullptr );
+
+        if (listOperators[i] == "DROP")
+            EXPECT_TRUE( (dynamic_cast<OperatorDROP*>(op_manager.getOperator("DROP"))) != nullptr );
+
+        if (listOperators[i] == "DUP")
+            EXPECT_TRUE( (dynamic_cast<OperatorDUP*>(op_manager.getOperator("DUP"))) != nullptr );
+
+        if (listOperators[i] == "LASTARGS")
+            EXPECT_TRUE( (dynamic_cast<OperatorLASTARGS*>(op_manager.getOperator("LASTARGS"))) != nullptr );
+
+        if (listOperators[i] == "LASTOP")
+            EXPECT_TRUE( (dynamic_cast<OperatorLASTOP*>(op_manager.getOperator("LASTOP"))) != nullptr );
+
+        if (listOperators[i] == "REDO")
+            EXPECT_TRUE( (dynamic_cast<OperatorREDO*>(op_manager.getOperator("REDO"))) != nullptr );
+
+        if (listOperators[i] == "UNDO")
+            EXPECT_TRUE( (dynamic_cast<OperatorUNDO*>(op_manager.getOperator("UNDO"))) != nullptr );
+
+        if (listOperators[i] == "SWAP")
+            EXPECT_TRUE( (dynamic_cast<OperatorSWAP*>(op_manager.getOperator("SWAP"))) != nullptr );
         // Add if statements along the creation of new operators
     }
 }
@@ -161,7 +196,13 @@ TEST_F(Test_Operator_Manager, Test_Call_Operator_Execute_From_Map) {
         for (int i=0; i<listOperators.size(); i++) {
             st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(8))));
             st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(3))));
-            op_manager.getOperator(listOperators[i])->execute(&st);
+
+            /* Don't call LASTOP because of possible thrown exception :
+             *  we don't know the stack size neither the last operator called */
+            if (listOperators[i] != "LASTOP")
+                op_manager.getOperator(listOperators[i])->execute(&st);
+
+
 
             if (listOperators[i] == "+")
                 EXPECT_EQ("11", st.top()->toString());
@@ -230,6 +271,34 @@ TEST_F(Test_Operator_Manager, Test_Call_Operator_Execute_From_Map) {
 
             if (listOperators[i] == "IM")
                 EXPECT_EQ("0", st.top()->toString());
+
+            if (listOperators[i] == "CLEAR")
+                EXPECT_EQ(0, st.size());
+
+            if (listOperators[i] == "DROP") {
+                EXPECT_EQ(1, st.size());
+                EXPECT_EQ("8", st.top()->toString());
+            }
+
+
+            if (listOperators[i] == "DUP") {
+                EXPECT_EQ(3, st.size());
+                EXPECT_EQ("3", st.top()->toString());
+                st.pop();
+                EXPECT_EQ(2, st.size());
+                EXPECT_EQ("3", st.top()->toString());
+            }
+
+            if (listOperators[i] == "REDO")
+
+            if (listOperators[i] == "UNDO")
+
+            if (listOperators[i] == "SWAP") {
+                EXPECT_EQ(2, st.size());
+                EXPECT_EQ("8", st.top()->toString());
+                st.pop();
+                EXPECT_EQ("3", st.top()->toString());
+            }
 
             // Add if statements along the creation of new operators
             st.clear();
