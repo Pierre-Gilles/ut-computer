@@ -1,8 +1,4 @@
 #include "Lexer.h"
-#include "assert.h"
-#include <ctype.h>
-#include <regex>
-#include <iterator>
 
 using namespace std;
 
@@ -118,16 +114,12 @@ vector<string> LexerUTComputer::split(const string &s) const {
     return result;
 }
 vector<string> LexerUTComputer::infixTokeniser(const string &s) const {
-    
+
     vector<string> elems;
-    regex r("([A-Z]+|[A-Z][0-9A-Z]*|[0-9.$]+|[+\-*/(),<>=]|<=|>=|!=)");
+    regex r("([A-Z]+|[A-Z][0-9A-Z]*|[0-9.$]+|[\\+\\-\\*\\/\\(\\),<>=]|<=|>=|\\!=)");
 
-    for (sregex_token_iterator it = sregex_token_iterator(s.begin(), s.end(), r, -1); it != sregex_token_iterator(); ++it)
-    {
-        cout << (string) *it << endl;
+    for (sregex_token_iterator it = sregex_token_iterator(s.begin(), s.end(), r, 1); it != sregex_token_iterator(); ++it)
         elems.push_back((string)*it);
-    }
-
 
     return elems;
 

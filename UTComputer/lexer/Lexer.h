@@ -8,6 +8,9 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <regex>
+#include <ctype.h>
+#include <iterator>
 #include "../exceptions/UTComputerException.h"
 
 using namespace std;

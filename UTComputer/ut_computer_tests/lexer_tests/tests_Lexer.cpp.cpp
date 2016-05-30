@@ -26,4 +26,10 @@ TEST_F(Test_Lexer_Class, Test_Lexer_split_function_test) {
     vector<string> result = lx.infixTokeniser("3+3+SIN(5+3)");
     vector<string> expected = {"3", "+", "3", "+", "SIN", "(" , "5", "+", "3", ")"};
     ASSERT_EQ(result, expected);
+
+    result = lx.infixTokeniser("(3+3+4)*2/SIN(5+3)*((3-1)*(4+2)/(2+4-1))");
+    expected = {"(", "3", "+", "3", "+", "4", ")", "*", "2", "/", "SIN", "(", "5", "+", "3", ")", "*", "(", "(", "3", "-", "1",
+                    ")", "*", "(", "4", "+", "2", ")", "/", "(", "2", "+", "4", "-", "1", ")", ")"};
+    ASSERT_EQ(result, expected);
+
 }
