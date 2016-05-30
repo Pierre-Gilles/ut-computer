@@ -1,14 +1,14 @@
 #ifndef UTCOMPUTER_OPERATORMULTIPLICATION_H
 #define UTCOMPUTER_OPERATORMULTIPLICATION_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
-class OperatorMultiplication : public Operator {
+class OperatorMultiplication : public CalculationOperator {
 
 public:
-    OperatorMultiplication() : Operator(2, "*") { }
+    OperatorMultiplication() : CalculationOperator(2, "*") { }
     virtual ~OperatorMultiplication() { }
 
 

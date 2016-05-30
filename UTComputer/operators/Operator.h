@@ -11,14 +11,12 @@ class Operator {
 protected:
     int arity;
     string key;
-    vector<shared_ptr<Literal>> arguments; // vector of shared_ptr<Literal>
 public:
 
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
     Operator(int nb, string key) : arity(nb), key(key) {
-        arguments.reserve((unsigned long int)nb); // reserve space in vector
     }
     virtual ~Operator() { }
     // ===============================================================================================================
@@ -44,26 +42,14 @@ public:
 
 
     // ===============================================================================================================
-    // ======================                       Class main services                     ==========================
+    // ======================                     Interface for subclasses                  ==========================
     // ===============================================================================================================
     /*
-     * Adress of stack must not bu changed, but "st" do not point to a const stack : we use a constant pointer
+     * Address of stack must not be changed, but "st" do not point to a const stack : we use a constant pointer
      * and not a pointer to constant
      */
-    void execute(StackUTComputer * const st);
+    virtual void execute(StackUTComputer * const st) = 0;
     // ===============================================================================================================
-
-
-
-
-
-    // ===============================================================================================================
-    // ======================                   Interface for subclasses                    ==========================
-    // ===============================================================================================================
-private:
-    virtual shared_ptr<Literal> executeSpecificOperator() = 0;
-    // ===============================================================================================================
-
 };
 
 

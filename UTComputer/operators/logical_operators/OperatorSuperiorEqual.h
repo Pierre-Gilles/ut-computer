@@ -1,14 +1,14 @@
 #ifndef UTCOMPUTER_OPERATORSUPERIOREQUAL_H
 #define UTCOMPUTER_OPERATORSUPERIOREQUAL_H
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorSuperiorEqual : public Operator {
+class OperatorSuperiorEqual : public CalculationOperator {
 
 
 public:
 
-    OperatorSuperiorEqual() : Operator(2, ">=") {}
+    OperatorSuperiorEqual() : CalculationOperator(2, ">=") {}
     virtual ~OperatorSuperiorEqual() {}
 
 private:

@@ -1,16 +1,16 @@
 #ifndef UTCOMPUTER_OPERATORDIVISION_H
 #define UTCOMPUTER_OPERATORDIVISION_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
 using namespace std;
 
-class OperatorDivision : public Operator {
+class OperatorDivision : public CalculationOperator {
 
 public:
-    OperatorDivision() : Operator(2, "/") { }
+    OperatorDivision() : CalculationOperator(2, "/") { }
     virtual ~OperatorDivision() { }
 
 

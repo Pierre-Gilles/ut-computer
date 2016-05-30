@@ -1,14 +1,15 @@
 #ifndef UTCOMPUTER_OPERATOROR_H
 #define UTCOMPUTER_OPERATOROR_H
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
+#include "../../literals/ExpressionLiteral.h"
 
-class OperatorOr : public Operator {
+class OperatorOr : public CalculationOperator {
 
 
 public:
 
-    OperatorOr() : Operator(2, "||") {}
+    OperatorOr() : CalculationOperator(2, "OR") {}
     virtual ~OperatorOr() {}
 
 private:
@@ -23,6 +24,7 @@ private:
      *
      * OperatorOr applies to
      *      - two ComplexLiterals with no imaginary parts
+     *      - two ExpressionLiteral returning OR(exp1,exp2)
      */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
     // ===============================================================================================================

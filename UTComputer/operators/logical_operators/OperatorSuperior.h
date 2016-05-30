@@ -1,15 +1,15 @@
 #ifndef UTCOMPUTER_OPERATORSUPERIOR_H
 #define UTCOMPUTER_OPERATORSUPERIOR_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorSuperior : public Operator {
+class OperatorSuperior : public CalculationOperator {
 
 
 public:
 
-    OperatorSuperior() : Operator(2, ">") {}
+    OperatorSuperior() : CalculationOperator(2, ">") {}
     virtual ~OperatorSuperior() {}
 
 private:

@@ -1,16 +1,16 @@
 #ifndef TESTLO21CLION_PLUSOPERATOR_H
 #define TESTLO21CLION_PLUSOPERATOR_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 #include "../../literals/ExpressionLiteral.h"
 
 
 
-class OperatorPlus : public Operator {
+class OperatorPlus : public CalculationOperator {
 
 public:
-    OperatorPlus() : Operator(2, "+") { }
+    OperatorPlus() : CalculationOperator(2, "+") { }
     virtual ~OperatorPlus() { }
 
 

@@ -1,13 +1,13 @@
 #ifndef UTCOMPUTER_OPERATORMODULO_H
 #define UTCOMPUTER_OPERATORMODULO_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorModulo : public Operator {
+class OperatorModulo : public CalculationOperator {
 
 public:
-    OperatorModulo() : Operator(2, "MOD") { }
+    OperatorModulo() : CalculationOperator(2, "MOD") { }
     virtual ~OperatorModulo() { }
 
 

@@ -13,7 +13,8 @@
  *
  * OperatorNeg applies to
  *      - one ComplexLiteral
- *      - one ExpressionLiteral */
+ *      - one ExpressionLiteral
+ */
 shared_ptr<Literal> OperatorNeg::executeSpecificOperator() {
     try {
         Literal* a = arguments[0].get();
@@ -27,7 +28,8 @@ shared_ptr<Literal> OperatorNeg::executeSpecificOperator() {
 
         //if instance of ExpressionLiteral
         if (exp_a != nullptr) {
-            string newExpresion = "NEG(";
+            string newExpresion = getKey();
+            newExpresion += "(";
             newExpresion += exp_a->getValue();
             newExpresion += ")";
             return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(newExpresion));
@@ -40,8 +42,6 @@ shared_ptr<Literal> OperatorNeg::executeSpecificOperator() {
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
         e1.insertBefore(" --> ");
-        e1.insertBefore(arguments[1]->toString());
-        e1.insertBefore(" and ");
         e1.insertBefore(arguments[0]->toString());
         e1.insertBefore("Error in applying OperatorNeg on ");
         throw e1;

@@ -12,6 +12,37 @@
 #include "classic_operators/OperatorMinus.h"
 #include "classic_operators/OperatorMultiplication.h"
 #include "classic_operators/OperatorDivision.h"
+#include "classic_operators/OperatorIntegerDivision.h"
+#include "classic_operators/OperatorNeg.h"
+#include "classic_operators/OperatorModulo.h"
+#include "logical_operators/OperatorAnd.h"
+#include "logical_operators/OperatorOr.h"
+#include "logical_operators/OperatorNot.h"
+#include "logical_operators/OperatorInferior.h"
+#include "logical_operators/OperatorInferiorEqual.h"
+#include "logical_operators/OperatorSuperior.h"
+#include "logical_operators/OperatorSuperiorEqual.h"
+#include "logical_operators/OperatorEqual.h"
+#include "logical_operators/OperatorDifferent.h"
+#include "rational_operators/OperatorNumerator.h"
+#include "rational_operators/OperatorDenominator.h"
+#include "complex_operators/OperatorDollar.h"
+#include "complex_operators/OperatorIM.h"
+#include "complex_operators/OperatorRE.h"
+#include "stack_operators/OperatorCLEAR.h"
+#include "stack_operators/OperatorDROP.h"
+#include "stack_operators/OperatorDUP.h"
+#include "stack_operators/OperatorLASTARGS.h"
+#include "stack_operators/OperatorLASTOP.h"
+#include "stack_operators/OperatorREDO.h"
+#include "stack_operators/OperatorUNDO.h"
+#include "stack_operators/OperatorSWAP.h"
+
+
+
+
+
+
 
 using namespace std;
 

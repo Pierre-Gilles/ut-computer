@@ -15,12 +15,51 @@ protected:
 
 public:
     virtual void SetUp() {
-        listOperators = {"+", "-", "*", "/"};
-        // dynamically instantiate one time each operator and store them in the unordered_map
+        listOperators = {"+", "-", "*", "/", "DIV", "MOD", "NEG",
+                         "AND", "!=", "=", "<", "<=", "NOT", "OR", ">", ">=",
+                        "NUM", "DEN",
+                        "$", "RE", "IM",
+                        "CLEAR", "DROP", "DUP", "LASTARGS", "LASTOP", "REDO", "UNDO", "SWAP"};
+        /* dynamically instantiate one time each operator and store them in the unordered_map */
+
+        // Classic Operators
         op_manager.addOperator(new OperatorPlus());
         op_manager.addOperator(new OperatorMinus());
         op_manager.addOperator(new OperatorMultiplication());
         op_manager.addOperator(new OperatorDivision());
+        op_manager.addOperator(new OperatorIntegerDivision());
+        op_manager.addOperator(new OperatorModulo());
+        op_manager.addOperator(new OperatorNeg());
+
+        // Logical Operators
+        op_manager.addOperator(new OperatorAnd());
+        op_manager.addOperator(new OperatorDifferent());
+        op_manager.addOperator(new OperatorEqual());
+        op_manager.addOperator(new OperatorInferior());
+        op_manager.addOperator(new OperatorInferiorEqual());
+        op_manager.addOperator(new OperatorNot());
+        op_manager.addOperator(new OperatorOr());
+        op_manager.addOperator(new OperatorSuperior());
+        op_manager.addOperator(new OperatorSuperiorEqual());
+
+        // Rational Operators
+        op_manager.addOperator(new OperatorNumerator());
+        op_manager.addOperator(new OperatorDenominator());
+
+        // Complex Operators
+        op_manager.addOperator(new OperatorDollar());
+        op_manager.addOperator(new OperatorIM());
+        op_manager.addOperator(new OperatorRE());
+
+        // Stack Operators
+        op_manager.addOperator(new OperatorCLEAR());
+        op_manager.addOperator(new OperatorDROP());
+        op_manager.addOperator(new OperatorDUP());
+        op_manager.addOperator(new OperatorLASTARGS());
+        op_manager.addOperator(new OperatorLASTOP());
+        op_manager.addOperator(new OperatorREDO());
+        op_manager.addOperator(new OperatorUNDO());
+        op_manager.addOperator(new OperatorSWAP());
 
     }
     virtual void TearDown() {
@@ -33,8 +72,13 @@ public:
 
 
 TEST_F(Test_Operator_Manager, Test_addOperatorFunction) {
-    for (int i=0; i<listOperators.size(); i++)
-        EXPECT_TRUE(op_manager.operatorExists(listOperators[i]));
+    cerr << "Test OpManager : Information sur les operateurs existants et testés : " << endl;
+    cerr << "Key" << "\t\t\t" << "getKey()" << "\t\t" << "getArite()" << endl;
+    for (int i=0; i<listOperators.size(); i++) {
+        EXPECT_TRUE(op_manager.operatorExists(listOperators[i])) << "operator : " << listOperators[i];
+        cerr << listOperators[i] << "\t\t\t\t" << op_manager.getOperator(listOperators[i])->getKey()
+            << "\t\t\t\t" << op_manager.getOperator(listOperators[i])->getArite() << endl;
+    }
 }
 
 
@@ -67,6 +111,80 @@ TEST_F(Test_Operator_Manager, Test_getOperator_Works) {
         if (listOperators[i] == "/")
            EXPECT_TRUE( (dynamic_cast<OperatorDivision*>(op_manager.getOperator("/"))) != nullptr );
 
+        if (listOperators[i] == "DIV")
+            EXPECT_TRUE( (dynamic_cast<OperatorIntegerDivision*>(op_manager.getOperator("DIV"))) != nullptr );
+
+        if (listOperators[i] == "MOD")
+            EXPECT_TRUE( (dynamic_cast<OperatorModulo*>(op_manager.getOperator("MOD"))) != nullptr );
+
+        if (listOperators[i] == "NEG")
+            EXPECT_TRUE( (dynamic_cast<OperatorNeg*>(op_manager.getOperator("NEG"))) != nullptr );
+
+        if (listOperators[i] == "AND")
+            EXPECT_TRUE( (dynamic_cast<OperatorAnd*>(op_manager.getOperator("AND"))) != nullptr );
+
+        if (listOperators[i] == "!=")
+            EXPECT_TRUE( (dynamic_cast<OperatorDifferent*>(op_manager.getOperator("!="))) != nullptr );
+
+        if (listOperators[i] == "=")
+            EXPECT_TRUE( (dynamic_cast<OperatorEqual*>(op_manager.getOperator("="))) != nullptr );
+
+        if (listOperators[i] == "<")
+            EXPECT_TRUE( (dynamic_cast<OperatorInferior*>(op_manager.getOperator("<"))) != nullptr );
+
+        if (listOperators[i] == "<=")
+            EXPECT_TRUE( (dynamic_cast<OperatorInferiorEqual*>(op_manager.getOperator("<="))) != nullptr );
+
+        if (listOperators[i] == "NOT")
+            EXPECT_TRUE( (dynamic_cast<OperatorNot*>(op_manager.getOperator("NOT"))) != nullptr );
+
+        if (listOperators[i] == "OR")
+            EXPECT_TRUE( (dynamic_cast<OperatorOr*>(op_manager.getOperator("OR"))) != nullptr );
+
+        if (listOperators[i] == ">")
+            EXPECT_TRUE( (dynamic_cast<OperatorSuperior*>(op_manager.getOperator(">"))) != nullptr );
+
+        if (listOperators[i] == ">=")
+            EXPECT_TRUE( (dynamic_cast<OperatorSuperiorEqual*>(op_manager.getOperator(">="))) != nullptr );
+
+        if (listOperators[i] == "NUM")
+            EXPECT_TRUE( (dynamic_cast<OperatorNumerator*>(op_manager.getOperator("NUM"))) != nullptr );
+
+        if (listOperators[i] == "DEN")
+            EXPECT_TRUE( (dynamic_cast<OperatorDenominator*>(op_manager.getOperator("DEN"))) != nullptr );
+
+        if (listOperators[i] == "$")
+            EXPECT_TRUE( (dynamic_cast<OperatorDollar*>(op_manager.getOperator("$"))) != nullptr );
+
+        if (listOperators[i] == "RE")
+            EXPECT_TRUE( (dynamic_cast<OperatorRE*>(op_manager.getOperator("RE"))) != nullptr );
+
+        if (listOperators[i] == "IM")
+            EXPECT_TRUE( (dynamic_cast<OperatorIM*>(op_manager.getOperator("IM"))) != nullptr );
+
+        if (listOperators[i] == "CLEAR")
+            EXPECT_TRUE( (dynamic_cast<OperatorCLEAR*>(op_manager.getOperator("CLEAR"))) != nullptr );
+
+        if (listOperators[i] == "DROP")
+            EXPECT_TRUE( (dynamic_cast<OperatorDROP*>(op_manager.getOperator("DROP"))) != nullptr );
+
+        if (listOperators[i] == "DUP")
+            EXPECT_TRUE( (dynamic_cast<OperatorDUP*>(op_manager.getOperator("DUP"))) != nullptr );
+
+        if (listOperators[i] == "LASTARGS")
+            EXPECT_TRUE( (dynamic_cast<OperatorLASTARGS*>(op_manager.getOperator("LASTARGS"))) != nullptr );
+
+        if (listOperators[i] == "LASTOP")
+            EXPECT_TRUE( (dynamic_cast<OperatorLASTOP*>(op_manager.getOperator("LASTOP"))) != nullptr );
+
+        if (listOperators[i] == "REDO")
+            EXPECT_TRUE( (dynamic_cast<OperatorREDO*>(op_manager.getOperator("REDO"))) != nullptr );
+
+        if (listOperators[i] == "UNDO")
+            EXPECT_TRUE( (dynamic_cast<OperatorUNDO*>(op_manager.getOperator("UNDO"))) != nullptr );
+
+        if (listOperators[i] == "SWAP")
+            EXPECT_TRUE( (dynamic_cast<OperatorSWAP*>(op_manager.getOperator("SWAP"))) != nullptr );
         // Add if statements along the creation of new operators
     }
 }
@@ -76,22 +194,111 @@ TEST_F(Test_Operator_Manager, Test_Call_Operator_Execute_From_Map) {
     /* For each op_vector[i] test that the call to the operator->execute() function works */
     try {
         for (int i=0; i<listOperators.size(); i++) {
-            st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(1))));
-            st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(4))));
-            op_manager.getOperator(listOperators[i])->execute(&st);
-            EXPECT_EQ(1, st.size());
+            st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(8))));
+            st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(3))));
+
+            /* Don't call LASTOP because of possible thrown exception :
+             *  we don't know the stack size neither the last operator called */
+            if (listOperators[i] != "LASTOP")
+                op_manager.getOperator(listOperators[i])->execute(&st);
+
+
 
             if (listOperators[i] == "+")
-                EXPECT_EQ("5", st.top()->toString());
+                EXPECT_EQ("11", st.top()->toString());
 
             if (listOperators[i] == "-")
-                EXPECT_EQ("-3", st.top()->toString());
+                EXPECT_EQ("5", st.top()->toString());
 
             if (listOperators[i] == "*")
-                EXPECT_EQ("4", st.top()->toString());
+                EXPECT_EQ("24", st.top()->toString());
 
             if (listOperators[i] == "/")
-                EXPECT_EQ("1/4", st.top()->toString());
+                EXPECT_EQ("8/3", st.top()->toString());
+
+            if (listOperators[i] == "DIV")
+                EXPECT_EQ("2", st.top()->toString());
+
+            if (listOperators[i] == "MOD") {
+                st.clear();
+                st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(8))));
+                st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+                op_manager.getOperator(listOperators[i])->execute(&st);
+                EXPECT_EQ("3", st.top()->toString());
+            }
+
+            if (listOperators[i] == "NEG")
+                EXPECT_EQ("-3", st.top()->toString());
+
+            if (listOperators[i] == "AND")
+                EXPECT_EQ("1", st.top()->toString());
+
+            if (listOperators[i] == "!=")
+                EXPECT_EQ("1", st.top()->toString());
+
+            if (listOperators[i] == "=")
+                EXPECT_EQ("0", st.top()->toString());
+
+            if (listOperators[i] == "<")
+                EXPECT_EQ("0", st.top()->toString());
+
+            if (listOperators[i] == "<=")
+                EXPECT_EQ("0", st.top()->toString());
+
+            if (listOperators[i] == "NOT")
+                EXPECT_EQ("0", st.top()->toString());
+
+            if (listOperators[i] == "OR")
+                EXPECT_EQ("1", st.top()->toString());
+
+            if (listOperators[i] == ">")
+                EXPECT_EQ("1", st.top()->toString());
+
+            if (listOperators[i] == ">=")
+                EXPECT_EQ("1", st.top()->toString());
+
+            if (listOperators[i] == "NUM")
+                EXPECT_EQ("3", st.top()->toString());
+
+            if (listOperators[i] == "DEN")
+                EXPECT_EQ("1", st.top()->toString());
+
+            if (listOperators[i] == "$")
+                EXPECT_EQ("8$3", st.top()->toString());
+
+            if (listOperators[i] == "RE")
+                EXPECT_EQ("3", st.top()->toString()); // because st.top() is ComplexLiteral(NumericLiteral(3)) with no imaginary part
+
+            if (listOperators[i] == "IM")
+                EXPECT_EQ("0", st.top()->toString());
+
+            if (listOperators[i] == "CLEAR")
+                EXPECT_EQ(0, st.size());
+
+            if (listOperators[i] == "DROP") {
+                EXPECT_EQ(1, st.size());
+                EXPECT_EQ("8", st.top()->toString());
+            }
+
+
+            if (listOperators[i] == "DUP") {
+                EXPECT_EQ(3, st.size());
+                EXPECT_EQ("3", st.top()->toString());
+                st.pop();
+                EXPECT_EQ(2, st.size());
+                EXPECT_EQ("3", st.top()->toString());
+            }
+
+            if (listOperators[i] == "REDO")
+
+            if (listOperators[i] == "UNDO")
+
+            if (listOperators[i] == "SWAP") {
+                EXPECT_EQ(2, st.size());
+                EXPECT_EQ("8", st.top()->toString());
+                st.pop();
+                EXPECT_EQ("3", st.top()->toString());
+            }
 
             // Add if statements along the creation of new operators
             st.clear();

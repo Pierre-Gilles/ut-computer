@@ -1,13 +1,13 @@
 #ifndef UTCOMPUTER_OPERATORINTEGERDIVISION_H
 #define UTCOMPUTER_OPERATORINTEGERDIVISION_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorIntegerDivision : public Operator {
+class OperatorIntegerDivision : public CalculationOperator {
 
 public:
-    OperatorIntegerDivision() : Operator(2, "DIV") { }
+    OperatorIntegerDivision() : CalculationOperator(2, "DIV") { }
     virtual ~OperatorIntegerDivision() { }
 
 

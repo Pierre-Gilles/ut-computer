@@ -11,7 +11,7 @@
  *      - test that every Literal* unstacked isn't null
  *
  * OperatorDifferent applies to
- *      - two ComplexLiterals with no imaginary parts
+ *      - two ComplexLiterals
  */
 shared_ptr<Literal> OperatorDifferent::executeSpecificOperator() {
     try {
@@ -29,7 +29,7 @@ shared_ptr<Literal> OperatorDifferent::executeSpecificOperator() {
         }
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-        throw UTComputerException("Error in OperatorInferior::executeSpecificOperator : invalid literal types") ;
+        throw UTComputerException("Error in OperatorDifferent::executeSpecificOperator : invalid literal types") ;
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
@@ -37,7 +37,7 @@ shared_ptr<Literal> OperatorDifferent::executeSpecificOperator() {
         e1.insertBefore(arguments[1]->toString());
         e1.insertBefore(" and ");
         e1.insertBefore(arguments[0]->toString());
-        e1.insertBefore("Error in applying OperatorPlus on ");
+        e1.insertBefore("Error in applying OperatorDifferent on ");
         throw e1;
     }
 

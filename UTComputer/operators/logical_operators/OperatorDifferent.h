@@ -1,15 +1,15 @@
 #ifndef UTCOMPUTER_OPERATORDIFFERENT_H
 #define UTCOMPUTER_OPERATORDIFFERENT_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
 
-class OperatorDifferent : public Operator {
+class OperatorDifferent : public CalculationOperator {
 
 
 public:
 
-    OperatorDifferent() : Operator(2, "!=") {}
+    OperatorDifferent() : CalculationOperator(2, "!=") {}
     virtual ~OperatorDifferent() {}
 
 private:
@@ -23,7 +23,7 @@ private:
      *      - test that every Literal* unstacked isn't null
      *
      * OperatorDifferent applies to
-     *      - two ComplexLiterals with no imaginary parts
+     *      - two ComplexLiterals
      */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
     // ===============================================================================================================

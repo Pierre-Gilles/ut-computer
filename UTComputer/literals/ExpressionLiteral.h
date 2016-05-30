@@ -15,7 +15,12 @@ public:
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
-    ExpressionLiteral(const string &value) : StringLiteral(value) { }
+    ExpressionLiteral(const string &value) : StringLiteral(value) {
+        if (value.length() == 0)
+            throw UTComputerException("Error ExpressionLiteral::constructor : expression must have a non empty value.");
+    }
+
+    ExpressionLiteral(const ExpressionLiteral &l) : StringLiteral(l.value) { }
     virtual ~ExpressionLiteral() { }
     // ===============================================================================================================
 

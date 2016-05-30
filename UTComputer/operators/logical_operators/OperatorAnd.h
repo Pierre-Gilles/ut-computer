@@ -1,15 +1,16 @@
 #ifndef UTCOMPUTER_OPERATORAND_H
 #define UTCOMPUTER_OPERATORAND_H
 
-#include "../Operator.h"
+#include "../CalculationOperator.h"
 #include "../../literals/ComplexLiteral.h"
+#include "../../literals/ExpressionLiteral.h"
 
-class OperatorAnd : public Operator {
+class OperatorAnd : public CalculationOperator {
 
 
 public:
 
-    OperatorAnd() : Operator(2, "AND") {}
+    OperatorAnd() : CalculationOperator(2, "AND") {}
     virtual ~OperatorAnd() {}
 
 private:
@@ -24,6 +25,7 @@ private:
      *
      * OperatorAnd applies to
      *      - two ComplexLiterals with no imaginary parts
+     *      - two ExpressionLiteral returning AND(exp1,exp2)
      */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
     // ===============================================================================================================

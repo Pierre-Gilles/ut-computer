@@ -25,8 +25,6 @@ shared_ptr<ComplexLiteral> ComplexLiteral::operator+(ComplexLiteral &l) const {
     return shared_ptr<ComplexLiteral>(new ComplexLiteral(
             real + l.real,
             im + l.im
-//            real + l.real,
-//            im + l.im
     ));
 }
 
@@ -114,7 +112,7 @@ shared_ptr<ComplexLiteral> ComplexLiteral::negOperator() const {
 bool ComplexLiteral::operator<(const ComplexLiteral &l) const {
     if (!isComplex() && !l.isComplex())
         return real < l.real;
-    throw UTComputerException("Error ComplexLiteral::operator< : comparing two complex numbers is impossible.");
+    throw UTComputerException("Error ComplexLiteral::operator< : comparing to a complex number is undefined behavior.");
 }
 
 bool ComplexLiteral::operator==(const ComplexLiteral &l) const {
@@ -124,19 +122,19 @@ bool ComplexLiteral::operator==(const ComplexLiteral &l) const {
 bool ComplexLiteral::operator>(const ComplexLiteral &l) const {
     if (!isComplex() && !l.isComplex())
         return real > l.real;
-    throw UTComputerException("Error ComplexLiteral::operator> : comparing two complex numbers is impossible.");
+    throw UTComputerException("Error ComplexLiteral::operator> : comparing to a complex number is undefined behavior.");
 }
 
 bool ComplexLiteral::operator<=(const ComplexLiteral &l) const {
     if (!isComplex() && !l.isComplex())
         return real <= l.real;
-    throw UTComputerException("Error ComplexLiteral::operator<= : comparing two complex numbers is impossible.");
+    throw UTComputerException("Error ComplexLiteral::operator<= : comparing to a complex number is undefined behavior.");
 }
 
 bool ComplexLiteral::operator>=(const ComplexLiteral &l) const {
     if (!isComplex() && !l.isComplex())
         return real >= l.real;
-    throw UTComputerException("Error ComplexLiteral::operator>= : comparing two complex numbers is impossible.");
+    throw UTComputerException("Error ComplexLiteral::operator>= : comparing to a complex number is undefined behavior.");
 }
 
 bool ComplexLiteral::operator!=(const ComplexLiteral &l) const {
@@ -146,19 +144,19 @@ bool ComplexLiteral::operator!=(const ComplexLiteral &l) const {
 bool ComplexLiteral::operator&&(const ComplexLiteral &l) const {
     if (!isComplex() && !l.isComplex())
         return real && l.real;
-    throw UTComputerException("Error ComplexLiteral::operator&&: comparing two complex numbers is impossible.");
+    throw UTComputerException("Error ComplexLiteral::operator&&: comparing to a complex number is undefined behavior.");
 }
 
 bool ComplexLiteral::operator||(const ComplexLiteral &l) const {
     if (!isComplex() && !l.isComplex())
         return real || l.real;
-    throw UTComputerException("Error ComplexLiteral::operator|| : comparing two complex numbers is impossible.");
+    throw UTComputerException("Error ComplexLiteral::operator|| : comparing to a complex number is undefined behavior.");
 }
 
 bool ComplexLiteral::operator!() const {
     if (im.getNumerator() == 0)
         return !(real);
-    throw UTComputerException("Error ComplexLiteral::operator! : what is a NOT complex number ?.");
+    throw UTComputerException("Error ComplexLiteral::operator! : what is a NOT complex number ?");
 }
 
 // ===============================================================================================================

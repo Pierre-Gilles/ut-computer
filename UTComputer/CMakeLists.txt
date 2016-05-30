@@ -35,10 +35,14 @@ set(SOURCE_FILES
         literals/ProgramLiteral.h
         literals/AtomLiteral.cpp
         literals/AtomLiteral.h
-        operators/OperatorManager.cpp
-        operators/OperatorManager.h
         operators/Operator.cpp
         operators/Operator.h
+        operators/OperatorManager.cpp
+        operators/OperatorManager.h
+        operators/StackOperator.cpp
+        operators/StackOperator.h
+        operators/CalculationOperator.cpp
+        operators/CalculationOperator.h
         operators/classic_operators/OperatorPlus.cpp
         operators/classic_operators/OperatorPlus.h
         operators/classic_operators/OperatorMinus.cpp
@@ -67,7 +71,37 @@ set(SOURCE_FILES
         operators/logical_operators/OperatorNot.h
         operators/classic_operators/OperatorIntegerDivision.cpp
         operators/classic_operators/OperatorIntegerDivision.h
-        operators/classic_operators/OperatorModulo.cpp operators/classic_operators/OperatorModulo.h operators/classic_operators/OperatorNeg.cpp operators/classic_operators/OperatorNeg.cpp operators/classic_operators/OperatorNeg.h)
+        operators/classic_operators/OperatorModulo.cpp
+        operators/classic_operators/OperatorModulo.h
+        operators/classic_operators/OperatorNeg.cpp
+        operators/classic_operators/OperatorNeg.h
+        operators/rational_operators/OperatorNumerator.cpp
+        operators/rational_operators/OperatorNumerator.h
+        operators/rational_operators/OperatorDenominator.cpp
+        operators/rational_operators/OperatorDenominator.h
+        operators/complex_operators/OperatorRE.cpp
+        operators/complex_operators/OperatorRE.h
+        operators/complex_operators/OperatorIM.cpp
+        operators/complex_operators/OperatorIM.h
+        operators/complex_operators/OperatorDollar.cpp
+        operators/complex_operators/OperatorDollar.h
+        operators/stack_operators/OperatorDUP.cpp
+        operators/stack_operators/OperatorDUP.h
+        operators/stack_operators/OperatorDROP.cpp
+        operators/stack_operators/OperatorDROP.h
+        operators/stack_operators/OperatorSWAP.cpp
+        operators/stack_operators/OperatorSWAP.h
+        operators/stack_operators/OperatorLASTOP.cpp
+        operators/stack_operators/OperatorLASTOP.h
+        operators/stack_operators/OperatorLASTARGS.cpp
+        operators/stack_operators/OperatorLASTARGS.h
+        operators/stack_operators/OperatorCLEAR.cpp
+        operators/stack_operators/OperatorCLEAR.h
+        operators/stack_operators/OperatorUNDO.cpp
+        operators/stack_operators/OperatorUNDO.h
+        operators/stack_operators/OperatorREDO.cpp
+        operators/stack_operators/OperatorREDO.h
+        )
 
 
 add_executable(ut-computer main.cpp ${SOURCE_FILES})
@@ -92,6 +126,21 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorSuperiorEqual.cpp
         ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorEqual.cpp
         ut_computer_tests/operators_tests/logical_operators_tests/tests_OperatorDifferent.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorNeg.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorMod.cpp
+        ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorIntegerDivision.cpp
+        ut_computer_tests/operators_tests/rational_operators_tests/tests_OperatorNumerator.cpp
+        ut_computer_tests/operators_tests/rational_operators_tests/tests_OperatorDenominator.cpp
+        ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorDollar.cpp
+        ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorRE.cpp
+        ut_computer_tests/operators_tests/complex_operators_tests/tests_OperatorIM.cpp
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorDUP.cpp
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorCLEAR.cpp
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorDROP.cpp
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorSWAP.cpp
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorLASTOP.cpp
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorLASTARGS.cpp
+        ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorUNDO_REDO.cpp
         )
 
 

@@ -38,7 +38,7 @@ TEST_F(Test_Expression_Literal, hasSamePriority) {
      * (when applying an operator on it) is necessary or not :
      *      - if hasSamePriority return true, then no need of parenthesis
      *      - if hasSamePriority return false, then need of parenthesis */
-    ExpressionLiteral e("");
+    ExpressionLiteral e("empty");
     vector<string> all_operators = {"<", ">", "<=", ">=", "=", "!=", "+", "-", "*", "/", "$", "AND", "OR", "NOT"};
     vector<string> priority0 = {"<", ">", "<=", ">=", "=", "!=", "AND", "OR", "NOT"};
     vector<string> priority1 = {"+", "-"};
@@ -218,7 +218,7 @@ TEST_F(Test_Expression_Literal, infixToPostix) {
     string result = e.getPostfixExpression();
     ASSERT_EQ(result, "3  3 +  5  * 12 -");
 
-    // TODO faire marcher infixToPostfix with this : let the test crash to see the result of the infixtopostfix function
+    // TODO faire marcher infixToPostfix with this (let the test crash to see the result of the infixtopostfix function)
     ExpressionLiteral e2("((1+2)*40)+SIN(3.2) - POW(5,X2)");
     string result2 = e2.getPostfixExpression();
 //    ASSERT_EQ(result2, "");

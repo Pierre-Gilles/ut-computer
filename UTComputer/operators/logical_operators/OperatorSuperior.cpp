@@ -30,7 +30,7 @@ shared_ptr<Literal> OperatorSuperior::executeSpecificOperator() {
          * arguments are different from 0*/
 
         // Here we didn't return anything or throw any exception, so both arguments have invalid type.
-        throw UTComputerException("Error in OperatorInferior::executeSpecificOperator : invalid literal types") ;
+        throw UTComputerException("Error in OperatorSuperior::executeSpecificOperator : invalid literal types") ;
     }
     catch (UTComputerException e) {
         UTComputerException e1(e.getMessage());
@@ -38,7 +38,7 @@ shared_ptr<Literal> OperatorSuperior::executeSpecificOperator() {
         e1.insertBefore(arguments[1]->toString());
         e1.insertBefore(" and ");
         e1.insertBefore(arguments[0]->toString());
-        e1.insertBefore("Error in applying OperatorPlus on ");
+        e1.insertBefore("Error in applying OperatorSuperior on ");
         throw e1;
     }
 

@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 
 #include "../../../operators/logical_operators/OperatorEqual.h"
+#include "../../../literals/ExpressionLiteral.h"
 
 using namespace std;
 
@@ -224,4 +225,98 @@ TEST_F(Test_Operator_Equal, Rational_Sup_Real_Gives_False) {
 
 
 
-// TODO tester avec des complexes
+
+/* ========================================================== */
+/*              test if two complex are equals                */
+/* ========================================================== */
+
+
+TEST_F(Test_Operator_Equal, Complex_Equal_To_Complex_Gives_True) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5,2), NumericLiteral(3))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5,2), NumericLiteral(3))));
+    op_equal.execute(&st);
+    EXPECT_EQ(1, st.size());
+    EXPECT_EQ("1", st.top()->toString());
+}
+
+
+TEST_F(Test_Operator_Equal, Complex_Non_Equal_To_Complex_Gives_False) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5,2), NumericLiteral(3))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(4,2), NumericLiteral(3))));
+    op_equal.execute(&st);
+    EXPECT_EQ(1, st.size());
+    EXPECT_EQ("0", st.top()->toString());
+}
+
+
+
+
+/* ========================================================== */
+/*                   TEST THROWN EXCEPTIONS                   */
+/* ========================================================== */
+
+TEST_F(Test_Operator_Equal, Throw_Exception_Null_Arguments) {
+    st.push(shared_ptr<ComplexLiteral>());
+    st.push(shared_ptr<ComplexLiteral>());
+    try {
+        //op_equal.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_equal.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Equal, Throw_Exception_First_Argument_Is_Null) {
+    st.push(shared_ptr<ComplexLiteral>());
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+    try {
+        //op_equal.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_equal.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Equal, Throw_Exception_Second_Argument_Is_Null) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+    st.push(shared_ptr<ComplexLiteral>());
+    try {
+        //op_equal.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_equal.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Equal, Throw_Exception_Two_Arguments_Invalid) {
+    st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
+    st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
+    try {
+        //op_equal.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_equal.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Equal, Throw_Exception_First_Argument_Invalid) {
+    st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+    try {
+        //op_equal.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_equal.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}
+
+TEST_F(Test_Operator_Equal, Throw_Exception_Second_Argument_Invalid) {
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(5))));
+    st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral("1+1")));
+    try {
+        //op_equal.execute(&st); // uncomment to get error message
+        ASSERT_THROW(op_equal.execute(&st), UTComputerException);
+    } catch (UTComputerException e) {
+        cerr << e.getMessage() << endl;
+    }
+}

@@ -3,6 +3,7 @@
 
 #include "../../stack/StackUTComputer.h"
 #include "../../literals/ComplexLiteral.h"
+#include "../../literals/ProgramLiteral.h"
 
 
 
@@ -17,6 +18,37 @@ public:
         st.clear();
     }
 };
+
+
+TEST_F(Test_StackUTComputer_Class, Quick_Test_Undo_Redo_Do_Not_Crash) {
+    vector<shared_ptr<Literal>> arguments;
+    arguments.reserve(10);
+
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.push(shared_ptr<ComplexLiteral>(new ComplexLiteral(NumericLiteral(2))));
+    st.getArguments(2,arguments);
+    st.deleteArguments(2);
+    st.push(shared_ptr<Literal>());
+    st.push(shared_ptr<Literal>());
+    st.push(shared_ptr<Literal>());
+    st.push(shared_ptr<Literal>());
+    st.size();
+    st.pop();
+    st.top();
+    st.undo();
+    st.redo();
+    st.clear();
+    st.createMemento();
+}
 
 TEST_F(Test_StackUTComputer_Class, Test_shared_ptd_usage) {
     shared_ptr<ComplexLiteral> test(new ComplexLiteral(NumericLiteral(2)));
