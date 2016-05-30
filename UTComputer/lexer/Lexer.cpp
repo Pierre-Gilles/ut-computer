@@ -1,5 +1,8 @@
 #include "Lexer.h"
 #include "assert.h"
+#include <ctype.h>
+#include <regex>
+#include <iterator>
 
 using namespace std;
 
@@ -10,6 +13,9 @@ const char LexerUTComputer::progSeparatorStart = '[';
 const char LexerUTComputer::progSeparatorStop = ']';
 const char LexerUTComputer::expressionSeparator = '\'';
 
+
+//
+const vector<string> LexerUTComputer::operatorEval = { "+", "-", "/", "=", "*", "DIV", "MOD", "NEG", "NUM", "DEN", "$", "RE", "IM", "END", "OR", "NOT"};
 
 
 
@@ -111,6 +117,101 @@ vector<string> LexerUTComputer::split(const string &s) const {
     }
     return result;
 }
+vector<string> LexerUTComputer::infixTokeniser(const string &s) const {
+    
+    vector<string> elems;
+    regex r("([A-Z]+|[A-Z][0-9A-Z]*|[0-9.$]+|[+\-*/(),<>=]|<=|>=|!=)");
+
+    for (sregex_token_iterator it = sregex_token_iterator(s.begin(), s.end(), r, -1); it != sregex_token_iterator(); ++it)
+    {
+        cout << (string) *it << endl;
+        elems.push_back((string)*it);
+    }
+
+
+    return elems;
+
+}
+
+/*vector<string> LexerUTComputer::infixTokeniser2(const string &s) const {
+
+    // result will contain the array of token
+    vector<string> result;
+
+    string tmp = "";
+    evalModes actualMode = UnLocked;
+
+    // foreach character in string
+    for (int i=0; i<s.length(); i++) {
+
+        switch(actualMode){
+
+            case UnLocked:
+
+                // if the character is an operator
+                if(isalpha(s[i])) {
+                    tmp = s[i];
+                    actualMode = operatorLocked;
+                }
+
+                 else if(s[i] == '(' || s[i] == ')'){
+                    tmp = s[i];
+                    result.push_back(tmp);
+                    tmp = "";
+                }
+
+
+                else {
+                    actualMode = LitteralLocked;
+                    tmp.insert(tmp.length(), 1, s[i]);
+                }
+
+
+                break;
+
+            case operatorLocked:
+
+                bool foundParenthesis = s[i] == '(' || s[i] == ')';
+                bool foundNumber = isdigit(s[i]);
+
+                if(foundParenthesis){
+                    result.push_back(tmp);
+                    tmp = s[i];
+                    result.push_back(tmp);
+                    tmp = "";
+                }
+
+                else if(foundNumber){
+                    result.push_back(tmp);
+                    tmp = s[i];
+                    actualMode = LitteralLocked;
+                }
+
+                else {
+                    tmp.insert(tmp.length(), 1, s[i]);
+                }
+
+
+                break;
+
+            case LitteralLocked:
+
+                if(isdigit(s[i])){
+                    tmp.insert(tmp.length(), 1, s[i]);
+                } else {
+                    result.push_back(tmp);
+                    tmp = "";
+                    actualMode = UnLocked;
+                }
+        }
+    }
+
+    if(actualMode == LitteralLocked){
+        result.push_back(tmp);
+    }
+
+    return result;
+}*/
 // ===============================================================================================================
 
 
@@ -120,6 +221,16 @@ vector<string> LexerUTComputer::split(const string &s) const {
 // ======================                       Useful class functions                  ==========================
 // ===============================================================================================================
 bool LexerUTComputer::findInArray(const char c, const vector<char> array) const {
+    bool found = false;
+    int i = 0;
+    while(!found && i < array.size()){
+        found = (array[i] == c);
+        i++;
+    }
+    return found;
+}
+
+bool LexerUTComputer::findInArrayString(const string c, const vector<string> array) const {
     bool found = false;
     int i = 0;
     while(!found && i < array.size()){

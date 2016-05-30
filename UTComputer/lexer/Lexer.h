@@ -23,6 +23,8 @@ public:
     static const char progSeparatorStop;
     static const char expressionSeparator;
 
+    static const vector<string> operatorEval;
+
 
 
 
@@ -42,6 +44,7 @@ public:
     // ======================                        Class main services                    ==========================
     // ===============================================================================================================
     vector<string> split(const string &s) const;
+    vector<string> infixTokeniser(const string &s) const;
     // ===============================================================================================================
 
 
@@ -52,6 +55,7 @@ public:
     // ===============================================================================================================
 private:
     bool findInArray(const char c, const vector<char> array) const;
+    bool findInArrayString(const string c, const vector<string> array) const;
     // ===============================================================================================================
 
 };

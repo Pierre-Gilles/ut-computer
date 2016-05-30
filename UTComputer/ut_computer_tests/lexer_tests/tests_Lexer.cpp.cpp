@@ -21,3 +21,9 @@ TEST_F(Test_Lexer_Class, Test_Lexer_split_function) {
     vector<string> expected = {"3", "3", "+", "5", "*", "'3+3'", "4", "+"};
     ASSERT_EQ(result, expected);
 }
+
+TEST_F(Test_Lexer_Class, Test_Lexer_split_function_test) {
+    vector<string> result = lx.infixTokeniser("3+3+SIN(5+3)");
+    vector<string> expected = {"3", "+", "3", "+", "SIN", "(" , "5", "+", "3", ")"};
+    ASSERT_EQ(result, expected);
+}
