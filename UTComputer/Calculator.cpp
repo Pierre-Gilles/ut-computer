@@ -136,7 +136,7 @@ void Calculator::executeEvalOperator() {
         // calculate(postfix_tokens); // recursive call to calculate
     }
     else if (prgm != nullptr) {
-        // vector<string> postfix_tokens = lx.tokenize(prgm->getValue());
+         vector<string> postfix_tokens = lx.tokenizeInfixToPostfix(prgm->getValue());
         // calculate(postfix_tokens); // recursive call to calculate
     }
     else {

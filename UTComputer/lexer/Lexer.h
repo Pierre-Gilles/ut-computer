@@ -48,8 +48,9 @@ public:
     // ======================                        Class main services                    ==========================
     // ===============================================================================================================
     vector<string> split(const string &s) const;
-    vector<string> infixTokeniser(const string &s) const;
-    string infixToPostfix(const vector<string> elems) const;
+    vector<string> tokenize(const string &s) const;
+    vector<string> infixToPostfix(const vector<string> elems) const;
+    vector<string> tokenizeInfixToPostfix(const string &s) const;
     // ===============================================================================================================
 
 

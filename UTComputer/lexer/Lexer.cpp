@@ -113,7 +113,7 @@ vector<string> LexerUTComputer::split(const string &s) const {
     }
     return result;
 }
-vector<string> LexerUTComputer::infixTokeniser(const string &s) const {
+vector<string> LexerUTComputer::tokenize(const string &s) const {
 
     vector<string> elems;
     regex r("([A-Z]+|[A-Z][0-9A-Z]*|[0-9.$]+|[\\+\\-\\*\\/\\(\\),<>=]|<=|>=|\\!=)");
@@ -124,6 +124,12 @@ vector<string> LexerUTComputer::infixTokeniser(const string &s) const {
     return elems;
 
 }
+
+vector<string> LexerUTComputer::tokenizeInfixToPostfix(const string &s) const{
+    vector<string> elems = tokenize(s);
+    return infixToPostfix(elems);
+}
+
 
 int LexerUTComputer::getWeightOperator(const string s) const {
 
@@ -137,10 +143,10 @@ int LexerUTComputer::getWeightOperator(const string s) const {
     return 0;
 }
 
-string LexerUTComputer::infixToPostfix(const vector<string> infix) const {
+vector<string> LexerUTComputer::infixToPostfix(const vector<string> infix) const {
 
     stack<string> s;
-    string postfix;
+    vector<string> postfix;
     unsigned long int size = infix.size();
     int weight;
     int i = 0;
@@ -164,8 +170,7 @@ string LexerUTComputer::infixToPostfix(const vector<string> infix) const {
             // a opening parenthesis
             while (!s.empty() && s.top() != "(") {
 
-                postfix.append(" ");
-                postfix.append(s.top());
+                postfix.push_back(s.top());
                 k++;
                 s.pop();
 
@@ -182,8 +187,8 @@ string LexerUTComputer::infixToPostfix(const vector<string> infix) const {
         if (weight == 0) {
             // we saw an operand
             // simply append it to postfix expression
-            postfix.append(" ");
-            postfix.append(ch);
+
+            postfix.push_back(ch);
             k++;
         }
         else {
@@ -202,8 +207,7 @@ string LexerUTComputer::infixToPostfix(const vector<string> infix) const {
                 while (!s.empty() && s.top() != "(" &&
                        weight <= getWeightOperator(s.top())) {
 
-                    postfix.append(" ");
-                    postfix.append(s.top());
+                    postfix.push_back(s.top());
                     k++;
                     s.pop();
 
@@ -217,12 +221,11 @@ string LexerUTComputer::infixToPostfix(const vector<string> infix) const {
     // pop of the remaining operators present in the stack
     // and append it to postfix expression
     while (!s.empty()) {
-        postfix.append(" ");
-        postfix.append(s.top());
+
+        postfix.push_back(s.top());
         s.pop();
     }
 
-    postfix.erase(0, 1);
     return postfix;
 
 }
