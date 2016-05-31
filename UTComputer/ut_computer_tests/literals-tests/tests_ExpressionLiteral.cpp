@@ -32,6 +32,7 @@ TEST_F(Test_Expression_Literal, Test_Regex) {
 
     EXPECT_FALSE(std::regex_match("'1+1", r));
     EXPECT_FALSE(std::regex_match("1+1'", r));
+    EXPECT_FALSE(std::regex_match("1+1", r));
 
 }
 

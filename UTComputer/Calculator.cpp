@@ -77,15 +77,16 @@ void Calculator::calculate(const vector<string> &tokens) {
             }
 
 
+            else if (op_manager.operatorExists(*it)) {
+                op_manager.getOperator(*it)->execute(&st);
+            }
+
+
             // If it's an atom literal : string with capital letters and number beginning
             else if (std::regex_match(*it, regex(AtomLiteral::getAtomRegex()))) {
                 handleAtom(*it);
             }
 
-
-            else if (op_manager.operatorExists(*it)) {
-                op_manager.getOperator(*it)->execute(&st);
-            }
 
             else {
                 /* Appeler LiteralFactory qui créera soit un Complex, soit une Expression, soit un Program.
@@ -155,7 +156,7 @@ void Calculator::executeEvalOperator() {
 
 
 void Calculator::handleAtom(const string& s) {
-    // If we found the atom in the atom_map
+    // If we find the atom in the atom_map
     if (atomFound(s)) {
 
         // if it's a variable (ComplexLiteral), we need to stack it
@@ -177,7 +178,7 @@ void Calculator::handleAtom(const string& s) {
         }
 
     }
-        // it's not a variable nor a program : we need to create a nex ExpressionLiteral and stack it
+    // it's not a variable nor a program : we need to create a nex ExpressionLiteral and stack it
     else {
         st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral(s)));
     }
