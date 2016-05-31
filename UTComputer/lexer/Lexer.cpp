@@ -11,7 +11,7 @@ const char LexerUTComputer::expressionSeparator = '\'';
 
 
 //
-const vector<string> LexerUTComputer::operatorEval = { "+", "-", "/", "=", "*", "DIV", "MOD", "NEG", "NUM", "DEN", "$", "RE", "IM", "END", "OR", "NOT"};
+const vector<string> LexerUTComputer::operatorEval = { "DIV", "MOD", "NEG", "NUM", "DEN", "RE", "IM", "END", "OR", "NOT"};
 
 
 
@@ -127,10 +127,12 @@ vector<string> LexerUTComputer::infixTokeniser(const string &s) const {
 
 int LexerUTComputer::getWeightOperator(const string s) const {
 
-    if(s == "SIN" || s == "COS") return 4;
-    if(s == "$" ) return 3;
-    if(s == "/" || s == "*") return 2;
-    if(s == "+" || s == "-") return 1;
+    if(s == "SIN" || s == "COS" || s == "NUM" || s == "NEG" || s == "DEN" || s == "RE" || s == "IM" ) return 5;
+    if(s == "$" ) return 4;
+    if(s == "/" || s == "*" || s == "DIV" || s == "MOD" ) return 3;
+    if(s == "+" || s == "-") return 2;
+
+    if(s == "OR" || s == "AND" || s == "NOT") return 1;
 
     return 0;
 }
