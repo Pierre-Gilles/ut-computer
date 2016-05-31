@@ -101,7 +101,9 @@ set(SOURCE_FILES
         operators/stack_operators/OperatorUNDO.h
         operators/stack_operators/OperatorREDO.cpp
         operators/stack_operators/OperatorREDO.h
-        Calculator.cpp Calculator.h)
+        Calculator.cpp
+        Calculator.h
+        )
 
 
 add_executable(ut-computer main.cpp ${SOURCE_FILES})
@@ -113,6 +115,8 @@ set(TEST_FILES
         ut_computer_tests/literals-tests/tests_ExpressionLiteral.cpp
         ut_computer_tests/literals-tests/tests_NumericLiteral.cpp
         ut_computer_tests/literals-tests/tests_ComplexLiteral.cpp
+        ut_computer_tests/literals-tests/tests_ProgramLiteral.cpp
+        ut_computer_tests/literals-tests/tests_LiteralFactory.cpp
         ut_computer_tests/operators_tests/tests_Operator.cpp
         ut_computer_tests/operators_tests/tests_Operator_Manager.cpp
         ut_computer_tests/operators_tests/classic_operators_tests/tests_OperatorPlus.cpp
@@ -143,7 +147,7 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorLASTOP.cpp
         ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorLASTARGS.cpp
         ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorUNDO_REDO.cpp
-        ut_computer_tests/literals-tests/tests_ProgramLiteral.cpp)
+        )
 
 
 add_executable(ut-computer-tests ut_computer_tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})

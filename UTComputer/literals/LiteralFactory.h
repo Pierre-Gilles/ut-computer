@@ -25,6 +25,11 @@ public:
             return shared_ptr<ComplexLiteral>(new ComplexLiteral(s));
         }
 
+        /*
+         * If it's an Expression.
+         * Important : regex fails if there is \n in expression, but there is no good reason for such character to
+         * be in an expression
+         */
         if (regex_match(s, regexExpression)) {
             string tmp = s.substr(1, s.length()-2); // we want all the string without the first and last character
             return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(tmp));
