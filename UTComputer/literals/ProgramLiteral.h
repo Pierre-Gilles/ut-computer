@@ -6,6 +6,7 @@
 
 class ProgramLiteral : public StringLiteral {
 
+    const static string programRegex;
 public:
 
     ProgramLiteral(const string &value) : StringLiteral(value) { }
@@ -17,6 +18,9 @@ public:
     }
 
 
+    static const string &getProgramRegex() {
+        return programRegex;
+    }
 };
 
 

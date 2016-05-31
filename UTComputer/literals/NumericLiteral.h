@@ -13,7 +13,7 @@ class NumericLiteral : public Literal {
 
     double numerator;
     double denominator;
-
+    const static string numericRegex;
 public:
 
     // ===============================================================================================================
@@ -59,7 +59,16 @@ public:
             throw UTComputerException("Error NumericLiteral::setNumerator :  denominator can't be 0.");
         NumericLiteral::denominator = den;
     }
+
+    static const string &getNumericRegex() {
+        return numericRegex;
+    }
+
     // ===============================================================================================================
+
+
+
+
 
 
 

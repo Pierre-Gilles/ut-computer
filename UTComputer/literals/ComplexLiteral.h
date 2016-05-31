@@ -16,10 +16,15 @@ public:
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
+    ComplexLiteral(const string &s) {
+        real = NumericLiteral(stod(s));
+        im = NumericLiteral(0);
+    }
+
     ComplexLiteral(NumericLiteral r, NumericLiteral i = NumericLiteral(0.0)) :
             Literal(), real(r), im(i) { }
 
-    ComplexLiteral(ComplexLiteral &l) {
+    ComplexLiteral(ComplexLiteral &l) : Literal() {
         real = l.real; // default copy constructor OK for NumericLiteral
         im = l.im; // default copy constructor OK for NumericLiteral
     }

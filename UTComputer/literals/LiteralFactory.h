@@ -1,43 +1,44 @@
 #ifndef TESTLO21CLION_LITERALFACTORY_H
 #define TESTLO21CLION_LITERALFACTORY_H
-#include "Literal.h"
+#include "ComplexLiteral.h"
+#include "ProgramLiteral.h"
+#include "ExpressionLiteral.h"
+#include <regex>
 
 using namespace std;
 
-typedef Literal* (*createFunction)(const string& s);
 
 
 class LiteralFactory {
-    createFunction *tabStaticCreateFunctions;
-    int nb_literals;
 
 public:
-    LiteralFactory() {
-//        nb_literals = 7;
-//        tabStaticCreateFunctions = new createFunction[nb_literals];
-//        tabStaticCreateFunctions[0] = &IntegerLiteral::create;
-//        tabStaticCreateFunctions[1] = &RealLiteral::create;
-//        tabStaticCreateFunctions[2] = nullptr;
-//        tabStaticCreateFunctions[3] = nullptr;
-//        tabStaticCreateFunctions[4] = nullptr;
-//        tabStaticCreateFunctions[5] = nullptr;
-//        tabStaticCreateFunctions[6] = nullptr;
+    LiteralFactory() { }
+    virtual ~LiteralFactory() { }
 
+
+    shared_ptr<Literal> createLiteral(const string &s) {
+        regex regexNumeric = regex(NumericLiteral::getNumericRegex());
+        regex regexExpression = regex(ExpressionLiteral::getExpressionRegex());
+        regex regexProgram = regex(ProgramLiteral::getProgramRegex());
+
+        if (regex_match(s, regexNumeric)) {
+            return shared_ptr<ComplexLiteral>(new ComplexLiteral(s));
+        }
+
+        if (regex_match(s, regexExpression)) {
+            string tmp = s.substr(1, s.length()-2); // we want all the string without the first and last character
+            return shared_ptr<ExpressionLiteral>(new ExpressionLiteral(tmp));
+        }
+
+        if (regex_match(s, regexProgram)) {
+            string tmp = s.substr(1, s.length()-2); // we want all the string without the first and last character
+            return shared_ptr<ProgramLiteral>(new ProgramLiteral(tmp));
+        }
+
+        // Here we didn't return anything so the string "s" is invalid (error in syntax)
+        throw UTComputerException("Error LiteralFactory::createLiteral : syntax error for the token \"" + s + "\"");
     }
 
-//    Literal* createLiteral(const string& s) {
-//        Literal* tmp = nullptr;
-//        for (int i=0; i<nb_literals; i++) {
-//
-//            if (tabStaticCreateFunctions[i] != nullptr) {
-//                tmp = tabStaticCreateFunctions[i](s);
-//                if (tmp != nullptr) {
-//                    return tmp;
-//                }
-//            }
-//        }
-//        return tmp;
-//    }
 };
 
 

@@ -10,14 +10,22 @@
 
 
 class ExpressionLiteral : public StringLiteral {
+
+    const static string expressionRegex;
+
+
 public:
 
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
-    ExpressionLiteral(const string &value) : StringLiteral(value) {
+    ExpressionLiteral(const string &v) : StringLiteral(v) {
         if (value.length() == 0)
             throw UTComputerException("Error ExpressionLiteral::constructor : expression must have a non empty value.");
+
+        value.erase(std::remove(value.begin(), value.end(), ' '), value.end()); // delete all spaces
+        value.erase(std::remove(value.begin(), value.end(), '\t'), value.end()); // delete all tab
+        value.erase(std::remove(value.begin(), value.end(), '\n'), value.end()); // delete all "new line"
     }
 
     ExpressionLiteral(const ExpressionLiteral &l) : StringLiteral(l.value) { }
@@ -34,13 +42,20 @@ public:
     string getPostfixExpression() const {
         return infixToPostfix(value);
     }
+
+    static const string &getExpressionRegex() {
+        return expressionRegex;
+    }
+
     // ===============================================================================================================
 
 
 
 
 
-    // ===============================================================================================================
+
+
+// ===============================================================================================================
     // ======================                         Override Methods                      ==========================
     // ===============================================================================================================
     virtual string toString() const override;
