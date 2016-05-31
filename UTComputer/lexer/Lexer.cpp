@@ -11,7 +11,7 @@ const char LexerUTComputer::expressionSeparator = '\'';
 
 
 //
-const vector<string> LexerUTComputer::operatorEval = { "+", "-", "/", "=", "*", "DIV", "MOD", "NEG", "NUM", "DEN", "$", "RE", "IM", "END", "OR", "NOT"};
+const vector<string> LexerUTComputer::operatorEval = { "DIV", "MOD", "NEG", "NUM", "DEN", "RE", "IM", "END", "OR", "NOT"};
 
 
 
@@ -125,85 +125,108 @@ vector<string> LexerUTComputer::infixTokeniser(const string &s) const {
 
 }
 
-/*vector<string> LexerUTComputer::infixTokeniser2(const string &s) const {
+int LexerUTComputer::getWeightOperator(const string s) const {
 
-    // result will contain the array of token
-    vector<string> result;
+    if(s == "SIN" || s == "COS" || s == "NUM" || s == "NEG" || s == "DEN" || s == "RE" || s == "IM" ) return 5;
+    if(s == "$" ) return 4;
+    if(s == "/" || s == "*" || s == "DIV" || s == "MOD" ) return 3;
+    if(s == "+" || s == "-") return 2;
 
-    string tmp = "";
-    evalModes actualMode = UnLocked;
+    if(s == "OR" || s == "AND" || s == "NOT") return 1;
 
-    // foreach character in string
-    for (int i=0; i<s.length(); i++) {
+    return 0;
+}
 
-        switch(actualMode){
+string LexerUTComputer::infixToPostfix(const vector<string> infix) const {
 
-            case UnLocked:
+    stack<string> s;
+    string postfix;
+    unsigned long int size = infix.size();
+    int weight;
+    int i = 0;
+    int k = 0;
+    string ch;
 
-                // if the character is an operator
-                if(isalpha(s[i])) {
-                    tmp = s[i];
-                    actualMode = operatorLocked;
-                }
+    // iterate over the infix expression
+    while (i < size) {
 
-                 else if(s[i] == '(' || s[i] == ')'){
-                    tmp = s[i];
-                    result.push_back(tmp);
-                    tmp = "";
-                }
-
-
-                else {
-                    actualMode = LitteralLocked;
-                    tmp.insert(tmp.length(), 1, s[i]);
-                }
-
-
-                break;
-
-            case operatorLocked:
-
-                bool foundParenthesis = s[i] == '(' || s[i] == ')';
-                bool foundNumber = isdigit(s[i]);
-
-                if(foundParenthesis){
-                    result.push_back(tmp);
-                    tmp = s[i];
-                    result.push_back(tmp);
-                    tmp = "";
-                }
-
-                else if(foundNumber){
-                    result.push_back(tmp);
-                    tmp = s[i];
-                    actualMode = LitteralLocked;
-                }
-
-                else {
-                    tmp.insert(tmp.length(), 1, s[i]);
-                }
-
-
-                break;
-
-            case LitteralLocked:
-
-                if(isdigit(s[i])){
-                    tmp.insert(tmp.length(), 1, s[i]);
-                } else {
-                    result.push_back(tmp);
-                    tmp = "";
-                    actualMode = UnLocked;
-                }
+        ch = infix[i];
+        if (ch == "(") {
+            // simply push the opening parenthesis
+            s.push(ch);
+            i++;
+            continue;
         }
+        if (ch == ")") {
+            // if we see a closing parenthesis,
+            // pop of all the elements and append it to
+            // the postfix expression till we encounter
+            // a opening parenthesis
+            while (!s.empty() && s.top() != "(") {
+
+                postfix.append(" ");
+                postfix.append(s.top());
+                k++;
+                s.pop();
+
+            }
+            // pop off the opening parenthesis also
+            if (!s.empty()) {
+                s.pop();
+            }
+            i++;
+            continue;
+        }
+        weight = getWeightOperator(ch);
+
+        if (weight == 0) {
+            // we saw an operand
+            // simply append it to postfix expression
+            postfix.append(" ");
+            postfix.append(ch);
+            k++;
+        }
+        else {
+            // we saw an operator
+            if (s.empty()) {
+                // simply push the operator onto stack if
+                // stack is empty
+
+                s.push(ch);
+            }
+            else {
+                // pop of all the operators from the stack and
+                // append it to the postfix expression till we
+                // see an operator with a lower precedence that
+                // the current operator
+                while (!s.empty() && s.top() != "(" &&
+                       weight <= getWeightOperator(s.top())) {
+
+                    postfix.append(" ");
+                    postfix.append(s.top());
+                    k++;
+                    s.pop();
+
+                }
+                // push the current operator onto stack
+                s.push(ch);
+            }
+        }
+        i++;
+    }
+    // pop of the remaining operators present in the stack
+    // and append it to postfix expression
+    while (!s.empty()) {
+        postfix.append(" ");
+        postfix.append(s.top());
+        s.pop();
     }
 
-    if(actualMode == LitteralLocked){
-        result.push_back(tmp);
-    }
+    postfix.erase(0, 1);
+    return postfix;
 
-    return result;
-}*/
+}
+
 // ===============================================================================================================
 
 

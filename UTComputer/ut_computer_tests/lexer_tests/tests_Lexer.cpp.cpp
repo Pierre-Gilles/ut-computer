@@ -33,3 +33,30 @@ TEST_F(Test_Lexer_Class, Test_Lexer_split_function_test) {
     ASSERT_EQ(result, expected);
 
 }
+
+TEST_F(Test_Lexer_Class, Test_Lexer_infixToPostfix) {
+
+    // Testing
+    vector<string> elems = {"(", "3", "+", "3", "+", "4", ")", "*", "2", "/", "SIN", "(", "5", "+", "3", ")", "*", "(", "(", "3", "-", "1",
+                               ")", "*", "(", "4", "+", "2", ")", "/", "(", "2", "+", "4", "-", "1", ")", ")"};
+
+    string result = lx.infixToPostfix(elems);
+
+    string expected = "3 3 + 4 + 2 * 5 3 + SIN / 3 1 - 4 2 + * 2 4 + 1 - / *";
+
+    ASSERT_EQ(result, expected);
+
+    elems = {"3", "+", "3", "+", "SIN", "(" , "5", "+", "3", ")"};
+    expected = "3 3 + 5 3 + SIN +";
+    result = lx.infixToPostfix(elems);
+
+    ASSERT_EQ(result, expected);
+
+    elems = { "(", "3", "+", "7", ")", "DIV", "5" };
+    expected = "3 7 + 5 DIV";
+    result = lx.infixToPostfix(elems);
+
+    ASSERT_EQ(result, expected);
+}
+
+

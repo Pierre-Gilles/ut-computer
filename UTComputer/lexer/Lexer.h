@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <stack>
 #include <regex>
 #include <ctype.h>
 #include <iterator>
@@ -48,6 +49,7 @@ public:
     // ===============================================================================================================
     vector<string> split(const string &s) const;
     vector<string> infixTokeniser(const string &s) const;
+    string infixToPostfix(const vector<string> elems) const;
     // ===============================================================================================================
 
 
@@ -59,6 +61,7 @@ public:
 private:
     bool findInArray(const char c, const vector<char> array) const;
     bool findInArrayString(const string c, const vector<string> array) const;
+    int getWeightOperator(const string s) const;
     // ===============================================================================================================
 
 };
