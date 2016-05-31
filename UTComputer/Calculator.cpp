@@ -1,5 +1,4 @@
 #include "Calculator.h"
-#include <regex>
 
 // ===============================================================================================================
 // ======================               Constructors and Destructors                    ==========================
@@ -129,20 +128,25 @@ void Calculator::executeEvalOperator() {
     ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(st.top().get());
 
     if (exp != nullptr) { // if exp is indeed an ExpressionLiteral
-        // vector<string> infix_tokens = lx.tokenize(exp->getValue()); // here we have a vector of string containing infix expression tokens
-        // string postfix_expression = lx.infixToPostfix(infix_tokens);
-        // vector<string> postfix_tokens = lx.tokenize(postfix_expression);
+        /* Get the expression value into postfixe notation and in a vector<string> */
+        vector<string> postfix_tokens = lx.tokenizeInfixToPostfix(exp->getValue());
 
         /* Need to check constraints before evaluating expression :
-        *  - Si la littérale expression comprend au moins un atome qui ne correspond pas au nom d’une variable, l’évaluation n’a aucune effet et un message en informe l’utilisateur.
-        *  - Si la littérale expression comprend au moins un atome qui correspond à l’identificateur d’un programme, l’évaluation n’a aucun effet et un message d’erreur informe l’utilisateur.
-         * - Si tous les atomes de la littérales expression sont des identificateurs de variable, l’expression est évaluée numériquement.
+         * If there is an atom in "postfix_tokens"
+         *  - if it's not present in the atom_mat --> fail
+         *  - if it's a program --> fail
+         *  - if it's a complex --> ok continue
+         *  - if it's not a program or a complex --> fail
          *  */
-        // calculate(postfix_tokens); // recursive call to calculate
+        if (! checkExpressionCorrectForEval(postfix_tokens))
+            throw UTComputerException("Error Calculator::executeEvalOperator() : the Expression contains invalid atom.");
+        st.pop(); // delete the expression before eval //TODO peut être la sauvegarder quelque part si jamais y'a des erreurs dans l'evaluation
+        calculate(postfix_tokens); // recursive call to calculate
     }
     else if (prgm != nullptr) {
-         vector<string> postfix_tokens = lx.tokenizeInfixToPostfix(prgm->getValue());
-        // calculate(postfix_tokens); // recursive call to calculate
+        vector<string> postfix_tokens = lx.tokenize(prgm->getValue());
+        st.pop(); // delete the program before eval //TODO peut être la sauvegarder quelque part si jamais y'a des erreurs dans l'evaluation
+        calculate(postfix_tokens); // recursive call to calculate
     }
     else {
         throw UTComputerException("Error Calculator::executeEvalOperator() : call to EVAL and stack top isn't an Expression or Program.");
@@ -151,25 +155,23 @@ void Calculator::executeEvalOperator() {
 
 
 void Calculator::handleAtom(const string& s) {
-    unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(s);
-
     // If we found the atom in the atom_map
-    if (found != atom_map.cend()) {
-
-        ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map[s].get());
-        ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(atom_map[s].get());
+    if (atomFound(s)) {
 
         // if it's a variable (ComplexLiteral), we need to stack it
-        if (comp != nullptr) {
+        if (atomIsNumeric(s)) {
+            st.pop(); // delete the atom before eval //TODO peut être la sauvegarder quelque part si jamais y'a des erreurs dans l'evaluation
             st.push(atom_map[s]);
         }
 
-            // if it's a program, we need to evaluate it
-        else if (prgm != nullptr) {
-            // calculate(lx.tokenize(prgm->getValue()));
+        // if it's a program, we need to evaluate it
+        else if (atomIsProgram(s)) {
+            vector<string> postfix_tokens = lx.tokenize(dynamic_cast<ProgramLiteral*>(atom_map[s].get())->getValue());
+            st.pop(); // delete the atom before eval //TODO peut être la sauvegarder quelque part si jamais y'a des erreurs dans l'evaluation
+            calculate(postfix_tokens); // recursive call to calculate
         }
 
-            // it's not a variable nor a program, error because atom_map contains variable or program
+        // it's not a variable nor a program, error because atom_map contains variable or program
         else {
             throw UTComputerException("Error Calculator::calculate() : atom_map contains an atom that is not a complex or a program.");
         }
@@ -180,6 +182,84 @@ void Calculator::handleAtom(const string& s) {
         st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral(s)));
     }
 }
+
+
+
+/*
+* If there is an atom in "postfix_tokens"
+*  - if it's not present in the atom_mat --> fail
+*  - if it's a program --> fail
+*  - if it's a complex --> ok continue
+*  - if it's not a program or a complex --> fail
+*/
+bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
+
+    regex atomRegex(AtomLiteral::getAtomRegex());
+
+    for (auto it = tokens.cbegin(); it != tokens.cend(); ++it) {
+        if (regex_match(*it, atomRegex)) { // if it's an atom in the literal we have to evaluate
+            if (! atomFound(*it))
+                return false;
+
+            if (atomIsProgram(*it))
+                return false;
+
+            if (! atomIsNumeric(*it))
+                return false;
+        }
+    }
+    return true;
+}
+
+
+
+
+
+
+
+// ===============================================================================================================
+// ======================                  Class useful functions                        =========================
+// ===============================================================================================================
+
+
+
+bool Calculator::atomExists(const string &key) const {
+    unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(key);
+    return !(found == atom_map.cend());
+}
+
+bool Calculator::atomFound(const string &s) const {
+    unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(s);
+    return (found != atom_map.cend());
+}
+
+bool Calculator::atomIsNumeric(const string &s) {
+    ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map[s].get());
+    return (comp != nullptr);
+}
+
+bool Calculator::atomIsProgram(const string &s) {
+    ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(atom_map[s].get());
+    return (prgm != nullptr);
+}
+
+
+
+bool Calculator::addOperator(Operator* o) {
+    return op_manager.addOperator(o);
+}
+
+
+bool Calculator::addAtom(const string &key, shared_ptr<Literal> l) {
+    if (atomExists(key))
+        throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
+
+    pair<string, shared_ptr<Literal>> atom_pair (key, l);
+    atom_map.insert(atom_pair);
+    return true;
+}
+
+
 
 
 

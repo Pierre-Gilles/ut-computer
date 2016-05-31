@@ -110,7 +110,7 @@ add_executable(ut-computer main.cpp ${SOURCE_FILES})
 
 # Tests
 set(TEST_FILES
-        ut_computer_tests/lexer_tests/tests_Lexer.cpp.cpp
+        ut_computer_tests/lexer_tests/tests_Lexer.cpp
         ut_computer_tests/stack_tests/tests_StackUTComputer.cpp
         ut_computer_tests/literals-tests/tests_ExpressionLiteral.cpp
         ut_computer_tests/literals-tests/tests_NumericLiteral.cpp

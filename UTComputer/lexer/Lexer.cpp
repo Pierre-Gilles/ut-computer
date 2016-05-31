@@ -10,7 +10,6 @@ const char LexerUTComputer::progSeparatorStop = ']';
 const char LexerUTComputer::expressionSeparator = '\'';
 
 
-//
 const vector<string> LexerUTComputer::operatorEval = { "DIV", "MOD", "NEG", "NUM", "DEN", "RE", "IM", "END", "OR", "NOT"};
 
 

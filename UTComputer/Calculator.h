@@ -74,29 +74,19 @@ public:
     // methods used in main service calculate(const vector<string> &tokens)
     void executeEvalOperator();
     void handleAtom(const string& s);
-
-
-    bool addOperator(Operator* o) {
-        return op_manager.addOperator(o);
-    }
-
-
-    bool addAtom(const string &key, shared_ptr<Literal> l) {
-        if (atomExists(key))
-            throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
-
-        pair<string, shared_ptr<Literal>> atom_pair (key, l);
-        atom_map.insert(atom_pair);
-        return true;
-    }
-
-    bool atomExists(const string &key) const {
-        unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(key);
-        return !(found == atom_map.cend());
-    }
+    bool checkExpressionCorrectForEval(vector<string> &tokens);
 
 
 
+    // ===============================================================================================================
+    // ======================                  Class useful functions                        =========================
+    // ===============================================================================================================
+    bool atomExists(const string &key) const;
+    bool atomFound(const string &s) const;
+    bool atomIsNumeric(const string &s);
+    bool atomIsProgram(const string &s);
+    bool addOperator(Operator* o);
+    bool addAtom(const string &key, shared_ptr<Literal> l);
 };
 
 
