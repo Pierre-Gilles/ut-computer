@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
-//    ::testing::GTEST_FLAG(filter) = "Test_Literal_Factory*:";
+//    ::testing::GTEST_FLAG(filter) = "Test_Atom_Literal*:";
     //::testing::GTEST_FLAG(filter) += "Test_Operator_Minus*:";
     return RUN_ALL_TESTS();
 }

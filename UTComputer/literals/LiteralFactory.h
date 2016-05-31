@@ -3,6 +3,7 @@
 #include "ComplexLiteral.h"
 #include "ProgramLiteral.h"
 #include "ExpressionLiteral.h"
+#include "AtomLiteral.h"
 #include <regex>
 
 using namespace std;

@@ -116,6 +116,7 @@ set(TEST_FILES
         ut_computer_tests/literals-tests/tests_NumericLiteral.cpp
         ut_computer_tests/literals-tests/tests_ComplexLiteral.cpp
         ut_computer_tests/literals-tests/tests_ProgramLiteral.cpp
+        ut_computer_tests/literals-tests/tests_AtomLiteral.cpp
         ut_computer_tests/literals-tests/tests_LiteralFactory.cpp
         ut_computer_tests/operators_tests/tests_Operator.cpp
         ut_computer_tests/operators_tests/tests_Operator_Manager.cpp

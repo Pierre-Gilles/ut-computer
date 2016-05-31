@@ -6,10 +6,17 @@
 
 class AtomLiteral : public StringLiteral {
 
+    const static string atomRegex;
+
 public:
     AtomLiteral(const string &value) : StringLiteral(value) { }
 
     virtual ~AtomLiteral() { }
+
+
+    static const string &getAtomRegex() {
+        return atomRegex;
+    }
 };
 
 

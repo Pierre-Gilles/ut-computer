@@ -1,4 +1,5 @@
 #include "Calculator.h"
+#include <regex>
 
 // ===============================================================================================================
 // ======================               Constructors and Destructors                    ==========================
@@ -66,22 +67,26 @@ void Calculator::calculate(const vector<string> &tokens) {
         for (auto it = tokens.cbegin(); it != tokens.cend(); ++it) {
 
             // Special case for Operator EVAL
-            if (*it == "EVAL")
+            if (*it == "EVAL") {
                 executeEvalOperator();
+            }
 
 
-                // Special case for Operator EDIT
-            else if (*it == "EDIT")
+            // Special case for Operator EDIT
+            else if (*it == "EDIT") {
                 throw UTComputerException("Sorry, operator EDIT is not implemented yet.");
+            }
 
 
-                // If it's an atom literal : suite de caractères composée de lettres majuscules et de chiffres et commençant par une lettre majuscule
-            else if (*it == "") // TODO mettre une regex dans AtomLiteral et tester comme pour les regex de Numeric, Program et Expression Literal (attribut static et getter static)
+            // If it's an atom literal : string with capital letters and number beginning
+            else if (std::regex_match(*it, regex(AtomLiteral::getAtomRegex()))) {
                 handleAtom(*it);
+            }
 
 
-            else if (op_manager.operatorExists(*it))
+            else if (op_manager.operatorExists(*it)) {
                 op_manager.getOperator(*it)->execute(&st);
+            }
 
             else {
                 /* Appeler LiteralFactory qui créera soit un Complex, soit une Expression, soit un Program.
