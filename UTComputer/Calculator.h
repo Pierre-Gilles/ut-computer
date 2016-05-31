@@ -5,11 +5,13 @@
 #include "operators/OperatorManager.h"
 #include "stack/StackUTComputer.h"
 #include "lexer/Lexer.h"
+#include "literals/LiteralFactory.h"
 
 
 class Calculator {
 
     OperatorManager op_manager;
+    LiteralFactory lf;
     StackUTComputer st;
     LexerUTComputer lx;
     unordered_map<string, shared_ptr<Literal>> atom_map;

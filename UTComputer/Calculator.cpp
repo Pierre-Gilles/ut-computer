@@ -76,7 +76,7 @@ void Calculator::calculate(const vector<string> &tokens) {
 
 
                 // If it's an atom literal : suite de caractères composée de lettres majuscules et de chiffres et commençant par une lettre majuscule
-            else if (*it == "")
+            else if (*it == "") // TODO mettre une regex dans AtomLiteral et tester comme pour les regex de Numeric, Program et Expression Literal (attribut static et getter static)
                 handleAtom(*it);
 
 
@@ -88,6 +88,8 @@ void Calculator::calculate(const vector<string> &tokens) {
                  * Si le string *it passé à la factory ne permet pas de créer une Literal, alors c'est qu'il y a une erreur
                  * dans le string (mauvaise saisie) qui est lancée par la factory et attrapée ici.
                  * */
+                shared_ptr<Literal> newLit = lf.createLiteral(*it);
+                st.push(newLit);
             }
 
             // save new state after calculate is done for a token
