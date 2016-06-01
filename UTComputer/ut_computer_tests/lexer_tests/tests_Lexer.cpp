@@ -72,8 +72,8 @@ TEST_F(Test_Lexer_Class, Test_Lexer_infixToPostfix) {
     EXPECT_EQ(result, expected);
 
 
-    elems = { "(", "3", "+", "7", ")", "MOD", "(", "5", ",", "10" ")"};
-    expected = {"3", "7", "+", "5", "10", "MOD" };
+    elems = { "MOD", "(", "5", ",", "10" ")"};
+    expected = {"5", "10", "MOD" };
     result = lx.infixToPostfix(elems);
     EXPECT_EQ(result, expected);
 
