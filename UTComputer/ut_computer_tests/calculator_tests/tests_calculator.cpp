@@ -154,7 +154,27 @@ TEST_F(Test_Calculator, Test_Classic_Operations) {
 TEST_F(Test_Calculator, Test_Rational_Operations) {
 
     try {
+        inputTest = "3 5 / NUM";
+        c.run(inputTest);
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("3", c.getSt().top()->toString());
 
+
+        // stack is 3
+        inputTest = "3 5 / DEN";
+        c.run(inputTest);
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("5", c.getSt().top()->toString());
+
+        inputTest = "8 NUM";
+        c.run(inputTest);
+        EXPECT_EQ(3, c.getSt().size());
+        EXPECT_EQ("8", c.getSt().top()->toString());
+
+        inputTest = "8 DEN";
+        c.run(inputTest);
+        EXPECT_EQ(4, c.getSt().size());
+        EXPECT_EQ("1", c.getSt().top()->toString());
     }
 
     catch (UTComputerException e) {
@@ -166,7 +186,15 @@ TEST_F(Test_Calculator, Test_Rational_Operations) {
 TEST_F(Test_Calculator, Test_Complex_Operations) {
 
     try {
+        inputTest = "3 4 $";
+        c.run(inputTest);
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("3$4", c.getSt().top()->toString());
 
+        inputTest = "87878 4.222 $";
+        c.run(inputTest);
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("87878$4.222", c.getSt().top()->toString());
     }
 
     catch (UTComputerException e) {
@@ -178,7 +206,50 @@ TEST_F(Test_Calculator, Test_Complex_Operations) {
 TEST_F(Test_Calculator, Test_Logical_Operations) {
 
     try {
+        inputTest = "1 NOT";
+        c.run(inputTest);
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("0", c.getSt().top()->toString());
 
+        inputTest = "1 1 OR";
+        c.run(inputTest);
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("1", c.getSt().top()->toString());
+
+        inputTest = "0 1 OR";
+        c.run(inputTest);
+        EXPECT_EQ(3, c.getSt().size());
+        EXPECT_EQ("1", c.getSt().top()->toString());
+
+        inputTest = "0 0 OR";
+        c.run(inputTest);
+        EXPECT_EQ(4, c.getSt().size());
+        EXPECT_EQ("0", c.getSt().top()->toString());
+
+        inputTest = "1 1 AND";
+        c.run(inputTest);
+        EXPECT_EQ(5, c.getSt().size());
+        EXPECT_EQ("1", c.getSt().top()->toString());
+
+        inputTest = "0 1 AND";
+        c.run(inputTest);
+        EXPECT_EQ(6, c.getSt().size());
+        EXPECT_EQ("0", c.getSt().top()->toString());
+
+        inputTest = "0 0 AND";
+        c.run(inputTest);
+        EXPECT_EQ(7, c.getSt().size());
+        EXPECT_EQ("0", c.getSt().top()->toString());
+
+        inputTest = "'1 + 1' '0 + 0' AND";
+        c.run(inputTest);
+        EXPECT_EQ(8, c.getSt().size());
+        EXPECT_EQ("'AND(1+1,0+0)'", c.getSt().top()->toString());
+
+        inputTest = "EVAL";
+        c.run(inputTest);
+        EXPECT_EQ(8, c.getSt().size());
+        EXPECT_EQ("0", c.getSt().top()->toString());
     }
 
     catch (UTComputerException e) {
@@ -191,6 +262,103 @@ TEST_F(Test_Calculator, Test_Stack_Operations) {
 
     try {
 
+        inputTest = "1 CLEAR";
+        c.run(inputTest);
+        EXPECT_EQ(0, c.getSt().size());
+
+        inputTest = "1 DROP";
+        c.run(inputTest);
+        EXPECT_EQ(0, c.getSt().size());
+
+        inputTest = "1 DUP";
+        c.run(inputTest);
+        EXPECT_EQ(2, c.getSt().size());
+
+        inputTest = "1 2 SWAP";
+        c.run(inputTest);
+        EXPECT_EQ(4, c.getSt().size());
+        EXPECT_EQ("1", c.getSt().top()->toString());
+        c.run("DROP");
+        EXPECT_EQ("2", c.getSt().top()->toString());
+
+
+        // LASTARGS
+        c.run("CLEAR");
+        inputTest = "2 2 +";
+        c.run(inputTest);
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("4", c.getSt().top()->toString());
+        inputTest = "LASTARGS";
+        c.run(inputTest);
+        EXPECT_EQ(3, c.getSt().size());
+        EXPECT_EQ("2", c.getSt().top()->toString());
+        c.run("DROP");
+        EXPECT_EQ("2", c.getSt().top()->toString());
+        c.run("DROP");
+        EXPECT_EQ("4", c.getSt().top()->toString());
+
+
+        // LASTOP
+        c.run("CLEAR");
+        inputTest = "2 2 + 2 LASTOP";
+        c.run(inputTest);
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("6", c.getSt().top()->toString());
+
+        // UNDO
+        c.run("CLEAR");
+        inputTest = "2 2 + 3 3 + UNDO";
+        c.run(inputTest);
+        EXPECT_EQ(3, c.getSt().size());
+        // UNDO enlève + uniquement
+        EXPECT_EQ("3", c.getSt().top()->toString());
+
+        c.run("UNDO");
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("3", c.getSt().top()->toString());
+
+        c.run("UNDO");
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("4", c.getSt().top()->toString());
+
+        c.run("UNDO");
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("2", c.getSt().top()->toString());
+
+        c.run("UNDO");
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("2", c.getSt().top()->toString());
+
+        c.run("UNDO");
+        EXPECT_EQ(0, c.getSt().size());
+
+        c.run("REDO");
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("2", c.getSt().top()->toString());
+
+        c.run("REDO");
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("2", c.getSt().top()->toString());
+
+        c.run("REDO");
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("4", c.getSt().top()->toString());
+
+        c.run("REDO");
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("3", c.getSt().top()->toString());
+
+        c.run("REDO");
+        EXPECT_EQ(3, c.getSt().size());
+        EXPECT_EQ("3", c.getSt().top()->toString());
+
+        c.run("REDO");
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("6", c.getSt().top()->toString());
+
+        c.run("REDO");
+        EXPECT_EQ(2, c.getSt().size());
+        EXPECT_EQ("6", c.getSt().top()->toString());
     }
 
     catch (UTComputerException e) {
@@ -246,6 +414,8 @@ TEST_F(Test_Calculator, Test_Expression_Evaluation) {
 TEST_F(Test_Calculator, Test_Program_Evaluation) {
 
     try {
+
+
 
     }
 

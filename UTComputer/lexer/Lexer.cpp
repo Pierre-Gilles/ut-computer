@@ -115,7 +115,7 @@ vector<string> LexerUTComputer::split(const string &s) const {
 vector<string> LexerUTComputer::tokenize(const string &s) const {
 
     vector<string> elems;
-    regex r("('.*'|\\[.*\\]|[A-Z]+|[A-Z][0-9A-Z]*|[0-9.$]+|[\\+\\-\\*\\/\\(\\),<>=]|<=|>=|\\!=)");
+    regex r("('.[^']*'|\\[.*\\]|[A-Z]+|[A-Z][0-9A-Z]*|[0-9.$]+|[\\+\\-\\*\\/\\(\\),<>=]|<=|>=|\\!=)");
 
     for (sregex_token_iterator it = sregex_token_iterator(s.begin(), s.end(), r, 1); it != sregex_token_iterator(); ++it)
         elems.push_back((string)*it);
@@ -132,12 +132,13 @@ vector<string> LexerUTComputer::tokenizeInfixToPostfix(const string &s) const{
 
 int LexerUTComputer::getWeightOperator(const string s) const {
 
-    if(s == "SIN" || s == "COS" || s == "NUM" || s == "NEG" || s == "DEN" || s == "RE" || s == "IM" ) return 5;
-    if(s == "$" ) return 4;
-    if(s == "/" || s == "*" || s == "DIV" || s == "MOD" ) return 3;
-    if(s == "+" || s == "-") return 2;
+    if(s == "SIN" || s == "COS" || s == "NUM" || s == "NEG" || s == "DEN" || s == "RE" || s == "IM" ) return 6;
+    if(s == "$" ) return 5;
+    if(s == "/" || s == "*" || s == "DIV" || s == "MOD" ) return 4;
+    if(s == "+" || s == "-") return 3;
 
-    if(s == "OR" || s == "AND" || s == "NOT") return 1;
+    if(s == "OR" || s == "AND" || s == "NOT") return 2;
+    if(s == ",") return 1;
 
     return 0;
 }
@@ -169,7 +170,8 @@ vector<string> LexerUTComputer::infixToPostfix(const vector<string> infix) const
             // a opening parenthesis
             while (!s.empty() && s.top() != "(") {
 
-                postfix.push_back(s.top());
+                if(s.top() != ",")
+                    postfix.push_back(s.top());
                 k++;
                 s.pop();
 
@@ -183,9 +185,7 @@ vector<string> LexerUTComputer::infixToPostfix(const vector<string> infix) const
         }
         weight = getWeightOperator(ch);
 
-        if(ch == ",") {
-            // if element is a ",", do nothing
-        } else if (weight == 0) {
+       if (weight == 0) {
             // we saw an operand
             // simply append it to postfix expression
 
@@ -208,7 +208,8 @@ vector<string> LexerUTComputer::infixToPostfix(const vector<string> infix) const
                 while (!s.empty() && s.top() != "(" &&
                        weight <= getWeightOperator(s.top())) {
 
-                    postfix.push_back(s.top());
+                    if(s.top() != ",")
+                        postfix.push_back(s.top());
                     k++;
                     s.pop();
 
@@ -223,7 +224,8 @@ vector<string> LexerUTComputer::infixToPostfix(const vector<string> infix) const
     // and append it to postfix expression
     while (!s.empty()) {
 
-        postfix.push_back(s.top());
+        if(s.top() != ",")
+            postfix.push_back(s.top());
         s.pop();
     }
 

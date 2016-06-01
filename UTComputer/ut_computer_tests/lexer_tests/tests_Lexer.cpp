@@ -29,6 +29,7 @@ TEST_F(Test_Lexer_Class, Test_Lexer_tokenize_function_on_infixe_expression) {
     expected = {"(", "3", "+", "3", "+", "4", ")", "*", "2", "/", "SIN", "(", "5", "+", "3", ")", "*", "(", "(", "3", "-", "1",
                     ")", "*", "(", "4", "+", "2", ")", "/", "(", "2", "+", "4", "-", "1", ")", ")"};
     EXPECT_EQ(result, expected);
+
 }
 
 TEST_F(Test_Lexer_Class, Test_Lexer_tokenize_function_on_postfixe_expression) {
@@ -47,6 +48,10 @@ TEST_F(Test_Lexer_Class, Test_Lexer_tokenize_function_on_postfixe_expression) {
 
     result = lx.tokenize("3 3 + 2 - 132 * 34 32.12 / 231 DIV $ 2 3 / NEG 23 9.3 OR 23 .4 AND");
     expected = {"3","3","+","2","-","132","*","34","32.12","/","231","DIV","$","2","3","/","NEG","23","9.3","OR","23",".4","AND"};
+    EXPECT_EQ(result, expected);
+
+    result = lx.tokenize("'1 + 1' '0 + 0' AND");
+    expected = {"'1 + 1'", "'0 + 0'", "AND"};
     EXPECT_EQ(result, expected);
 }
 
@@ -75,6 +80,10 @@ TEST_F(Test_Lexer_Class, Test_Lexer_infixToPostfix) {
     elems = { "MOD", "(", "5", ",", "10", ")"};
     expected = {"5", "10", "MOD" };
     result = lx.infixToPostfix(elems);
+    EXPECT_EQ(result, expected);
+
+    result = lx.infixToPostfix(lx.tokenize("AND(1+1, 0+0)"));
+    expected = {"1" ,"1" ,"+" ,"0", "0", "+", "AND"};
     EXPECT_EQ(result, expected);
 
 }

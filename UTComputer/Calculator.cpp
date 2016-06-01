@@ -63,8 +63,10 @@ void Calculator::run(const string &s) {
 void Calculator::calculate(const vector<string> &tokens) {
 
     try {
-        // save initial state before iterating through the tokens
-        st.createMemento();
+
+        if(tokens.size() >= 1 && tokens[0] != "UNDO" && tokens[0] != "REDO" )
+            // save initial state before iterating through the tokens
+            st.createMemento();
 
         for (auto it = tokens.cbegin(); it != tokens.cend(); ++it) {
 
@@ -100,8 +102,9 @@ void Calculator::calculate(const vector<string> &tokens) {
                 st.push(newLit);
             }
 
-            // save new state after calculate is done for a token
-            st.createMemento();
+            if(*it != "UNDO" && *it != "REDO" )
+                // save new state after calculate is done for a token
+                st.createMemento();
         }
     }
     catch (UTComputerException e) {
