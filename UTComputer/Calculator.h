@@ -60,6 +60,7 @@ public:
     // ===============================================================================================================
 
 
+    void run(const string &s);
     void calculate(const vector<string> &tokens);
 
 

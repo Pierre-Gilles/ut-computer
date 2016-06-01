@@ -148,7 +148,7 @@ set(TEST_FILES
         ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorLASTOP.cpp
         ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorLASTARGS.cpp
         ut_computer_tests/operators_tests/stack_operators_tests/tests_OperatorUNDO_REDO.cpp
-        )
+        ut_computer_tests/calculator_tests/tests_calculator.cpp)
 
 
 add_executable(ut-computer-tests ut_computer_tests/main.cpp ${SOURCE_FILES} ${TEST_FILES})

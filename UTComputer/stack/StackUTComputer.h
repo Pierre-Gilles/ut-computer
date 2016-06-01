@@ -102,11 +102,11 @@ public:
     // ===============================================================================================================
 
 
-    int size() {
+    int size() const {
         return (int)st.size(); // cast from "unsigned long int" in "int"
     }
 
-    shared_ptr<Literal> top() {
+    shared_ptr<Literal> top() const {
         return st[0];
     }
 

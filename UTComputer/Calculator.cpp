@@ -56,6 +56,9 @@ Calculator::Calculator() {
 // ======================                      Class main service                        =========================
 // ===============================================================================================================
 
+void Calculator::run(const string &s) {
+    calculate(lx.tokenize(s));
+}
 
 void Calculator::calculate(const vector<string> &tokens) {
 
@@ -199,14 +202,20 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 
     for (auto it = tokens.cbegin(); it != tokens.cend(); ++it) {
         if (regex_match(*it, atomRegex)) { // if it's an atom in the literal we have to evaluate
-            if (! atomFound(*it))
-                return false;
 
-            if (atomIsProgram(*it))
-                return false;
+            // test first if the atom correspond to a known operator : if it's the case, go to next iteration
+            if (!op_manager.operatorExists(*it)) {
+                if (! atomFound(*it))
+                    return false;
 
-            if (! atomIsNumeric(*it))
-                return false;
+                if (atomIsProgram(*it))
+                    return false;
+
+                if (! atomIsNumeric(*it))
+                    return false;
+            }
+
+
         }
     }
     return true;

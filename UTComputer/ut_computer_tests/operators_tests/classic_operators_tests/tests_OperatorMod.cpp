@@ -98,3 +98,6 @@ TEST_F(Test_Operator_Mod, Modulo_Applies_Only_To_Integers) {
         cerr << e.getMessage() << endl;
     }
 }
+
+
+// TODO : MOD sur des nombres négatifs ??

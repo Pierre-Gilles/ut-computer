@@ -98,3 +98,7 @@ TEST_F(Test_Operator_Int_Div, Integer_Division_Applies_Only_To_Integers) {
         cerr << e.getMessage() << endl;
     }
 }
+
+
+
+// TODO : DIV sur des int négatifs ???

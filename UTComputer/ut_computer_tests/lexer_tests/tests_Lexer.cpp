@@ -10,9 +10,7 @@ protected:
 
 public:
     virtual void SetUp() { }
-    virtual void TearDown() {
-
-    }
+    virtual void TearDown() { }
 };
 
 
@@ -57,24 +55,28 @@ TEST_F(Test_Lexer_Class, Test_Lexer_infixToPostfix) {
     // Testing
     vector<string> elems = {"(", "3", "+", "3", "+", "4", ")", "*", "2", "/", "SIN", "(", "5", "+", "3", ")", "*", "(", "(", "3", "-", "1",
                                ")", "*", "(", "4", "+", "2", ")", "/", "(", "2", "+", "4", "-", "1", ")", ")"};
-
     vector <string> result = lx.infixToPostfix(elems);
-
     vector<string> expected = { "3", "3", "+", "4", "+", "2", "*", "5", "3", "+", "SIN", "/", "3", "1", "-", "4", "2", "+", "*", "2", "4", "+", "1", "-", "/", "*" };
-
     EXPECT_EQ(result, expected);
+
 
     elems = {"3", "+", "3", "+", "SIN", "(" , "5", "+", "3", ")"};
     expected = {"3", "3", "+", "5", "3", "+", "SIN", "+"};
     result = lx.infixToPostfix(elems);
-
     EXPECT_EQ(result, expected);
+
 
     elems = { "(", "3", "+", "7", ")", "DIV", "(", "5", ")"};
     expected = {"3", "7", "+", "5", "DIV" };
     result = lx.infixToPostfix(elems);
-
     EXPECT_EQ(result, expected);
+
+
+    elems = { "(", "3", "+", "7", ")", "MOD", "(", "5", ",", "10" ")"};
+    expected = {"3", "7", "+", "5", "10", "MOD" };
+    result = lx.infixToPostfix(elems);
+    EXPECT_EQ(result, expected);
+
 }
 
 
