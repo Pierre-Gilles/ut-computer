@@ -183,7 +183,9 @@ vector<string> LexerUTComputer::infixToPostfix(const vector<string> infix) const
         }
         weight = getWeightOperator(ch);
 
-        if (weight == 0) {
+        if(ch == ",") {
+            // if element is a ",", do nothing
+        } else if (weight == 0) {
             // we saw an operand
             // simply append it to postfix expression
 
