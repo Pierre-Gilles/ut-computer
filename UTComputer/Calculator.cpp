@@ -72,7 +72,9 @@ void Calculator::calculate(const vector<string> &tokens) {
 
             // Special case for Operator EVAL
             if (*it == "EVAL") {
-                executeEvalOperator();
+                executeEvalOperator(); /* TODO peut être dupliquer et lui passer l'adresse du memento créé avant de
+                                        * rentrer dans la boucle : si erreur dans executeEvalOperator, le specifier
+                                        * et remettre la stack dans l'état du memento*/
             }
 
 
