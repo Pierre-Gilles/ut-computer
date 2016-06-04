@@ -62,8 +62,15 @@ private slots:
   // enter
   void on_pushButtonEnter_clicked();
 
+  void on_pushButtonUndo_clicked();
+
+  void on_pushButtonRedo_clicked();
+
+  void on_lineEdit_returnPressed();
+
 private:
     Ui::MainWindow *ui;
+
     Calculator *calc;
 
     void updateValueLineEdit(string s);
@@ -72,6 +79,7 @@ private:
     void updateStackDisplay(vector<string> elems);
     string getLineEditValue();
     void refreshView();
+    void calculate();
 };
 
 #endif // MAINWINDOW_H

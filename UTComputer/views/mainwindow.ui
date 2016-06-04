@@ -121,7 +121,7 @@
      <item row="0" column="1">
       <widget class="QPushButton" name="pushButtonRedo">
        <property name="text">
-        <string>Redo</string>
+        <string>REDO</string>
        </property>
       </widget>
      </item>
@@ -240,7 +240,7 @@
      <item row="0" column="0">
       <widget class="QPushButton" name="pushButtonUndo">
        <property name="text">
-        <string>Undo</string>
+        <string>UNDO</string>
        </property>
       </widget>
      </item>

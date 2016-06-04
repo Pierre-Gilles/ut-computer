@@ -25,8 +25,16 @@ void MainWindow::updateValueLineEdit(string s){
 }
 
 void MainWindow::addToLineEdit(string s){
+
+    // add the text at the end of the line
     QString qs = QString::fromStdString(s);
     ui->lineEdit->setText(ui->lineEdit->text() + qs);
+
+    // test if it was a
+    //QCharRef c = s[qs.length()-1];
+    if(calc->getLx().isOperator(s)){
+        calculate();
+    }
 }
 
 string MainWindow::getLineEditValue(){
@@ -56,7 +64,29 @@ void MainWindow::updateStackDisplay(vector<string> elems){
     }
 }
 
+void MainWindow::calculate(){
+    try{
+       calc->run(getLineEditValue());
+       refreshView();
+    } catch(UTComputerException e){
+        displayError(e.getMessage());
+    }
+}
+
 void MainWindow::on_lineEdit_textChanged(const QString &arg1) {
+    try{
+        string text = arg1.toUtf8().constData();
+        vector<string> tokens = calc->getLx().tokenize(text);
+        string last;
+        if (!tokens.empty()){
+            last = tokens.back();
+            if(calc->getLx().isOperator(last)){
+                calculate();
+            }
+        }
+    } catch(UTComputerException e){
+        displayError(e.getMessage());
+    }
 
 }
 
@@ -182,10 +212,19 @@ void MainWindow::on_pushButtonEval_clicked(){
  */
 
 void MainWindow::on_pushButtonEnter_clicked(){
-    try{
-       calc->run(getLineEditValue());
-       refreshView();
-    } catch(UTComputerException e){
-        displayError(e.getMessage());
-    }
+    calculate();
+}
+
+// UNDO
+void MainWindow::on_pushButtonUndo_clicked(){
+    addToLineEdit("UNDO");
+}
+
+// REDO
+void MainWindow::on_pushButtonRedo_clicked(){
+    addToLineEdit("REDO");
+}
+
+void MainWindow::on_lineEdit_returnPressed(){
+    calculate();
 }

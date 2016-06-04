@@ -51,6 +51,7 @@ public:
     vector<string> tokenize(const string &s) const;
     vector<string> infixToPostfix(const vector<string> elems) const;
     vector<string> tokenizeInfixToPostfix(const string &s) const;
+    bool isOperator(const string s) const;
     // ===============================================================================================================
 
 
