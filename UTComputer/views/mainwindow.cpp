@@ -1,9 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <iostream>
+
+#include <QString>
+#include <QDebug>
+
 using namespace std;
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(Calculator *calc, QWidget *parent) :
+        calc(calc),
         QMainWindow(parent),
         ui(new Ui::MainWindow)
 {
@@ -23,6 +27,33 @@ void MainWindow::updateValueLineEdit(string s){
 void MainWindow::addToLineEdit(string s){
     QString qs = QString::fromStdString(s);
     ui->lineEdit->setText(ui->lineEdit->text() + qs);
+}
+
+string MainWindow::getLineEditValue(){
+    QString qs = ui->lineEdit->text();
+    string utf8_text = qs.toUtf8().constData();
+    return utf8_text;
+}
+
+void MainWindow::displayError(string s){
+    QString qs = QString::fromStdString(s);
+    ui->errorLabel->setText(qs);
+    qDebug() << qs << endl;
+}
+
+void MainWindow::refreshView(){
+    vector<string> elements = calc->getSt().getLastElementsString(5);
+    updateValueLineEdit(elements[0]);
+    updateStackDisplay(elements);
+}
+
+void MainWindow::updateStackDisplay(vector<string> elems){
+    ui->listWidget->clear();
+
+    for(int i = 0; i < elems.size(); i++){
+        QString qs = QString::fromStdString(elems[i]);
+        ui->listWidget->addItem(qs);
+    }
 }
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1) {
@@ -74,9 +105,87 @@ void MainWindow::on_pushButton9_clicked(){
 }
 
 /**
+  * OPERATOR BUTTON
+  */
+
+void MainWindow::on_pushButtonPlus_clicked(){
+     addToLineEdit("+");
+}
+
+void MainWindow::on_pushButtonMinus_clicked(){
+    addToLineEdit("-");
+}
+
+void MainWindow::on_pushButtonDivide_clicked(){
+    addToLineEdit("/");
+}
+
+void MainWindow::on_pushButtonMultiply_clicked(){
+    addToLineEdit("*");
+}
+
+void MainWindow::on_pushButtonNeg_clicked(){
+    addToLineEdit("NEG");
+}
+
+void MainWindow::on_pushButtonDollar_clicked(){
+    addToLineEdit("$");
+}
+
+void MainWindow::on_pushButtonAnd_clicked(){
+    addToLineEdit("AND");
+}
+
+void MainWindow::on_pushButtonOr_clicked(){
+    addToLineEdit("OR");
+}
+
+void MainWindow::on_pushButtonNot_clicked(){
+    addToLineEdit("NOT");
+}
+
+void MainWindow::on_pushButtonNum_clicked(){
+    addToLineEdit("NUM");
+}
+
+void MainWindow::on_pushButtonDen_clicked(){
+    addToLineEdit("DEN");
+}
+
+void MainWindow::on_pushButtonRe_clicked(){
+    addToLineEdit("RE");
+}
+
+void MainWindow::on_pushButtonIm_clicked(){
+    addToLineEdit("IM");
+}
+
+void MainWindow::on_pushButtonLeftParenthesis_clicked(){
+    addToLineEdit("(");
+}
+
+void MainWindow::on_pushButtonRightParenthesis_clicked(){
+    addToLineEdit(")");
+}
+
+void MainWindow::on_pushButtonPoint_clicked(){
+    addToLineEdit(".");
+}
+
+void MainWindow::on_pushButtonEval_clicked(){
+    addToLineEdit("EVAL");
+}
+
+
+/**
  * ENTER BUTTON SLOT
  */
 
 void MainWindow::on_pushButtonEnter_clicked(){
-
+    try{
+       calc->run(getLineEditValue());
+       refreshView();
+    } catch(UTComputerException e){
+        displayError(e.getMessage());
+    }
 }

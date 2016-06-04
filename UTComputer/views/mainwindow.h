@@ -5,6 +5,9 @@
 #include <QLineEdit>
 #include <QString>
 #include <string>
+#include <iostream>
+#include <vector>
+#include "../Calculator.h"
 
 using namespace std;
 
@@ -17,9 +20,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    void updateValueLineEdit(string s);
-    void addToLineEdit(string s);
+    explicit MainWindow(Calculator *calc, QWidget *parent = 0);
+
     ~MainWindow();
 
 private slots:
@@ -37,15 +39,39 @@ private slots:
   void on_pushButton7_clicked();
   void on_pushButton8_clicked();
   void on_pushButton9_clicked();
+  void on_pushButtonOr_clicked();
 
   // operator
-
+  void on_pushButtonPlus_clicked();
+  void on_pushButtonMinus_clicked();
+  void on_pushButtonMultiply_clicked();
+  void on_pushButtonDivide_clicked();
+  void on_pushButtonNeg_clicked();
+  void on_pushButtonAnd_clicked();
+  void on_pushButtonNot_clicked();
+  void on_pushButtonEval_clicked();
+  void on_pushButtonNum_clicked();
+  void on_pushButtonDen_clicked();
+  void on_pushButtonRe_clicked();
+  void on_pushButtonIm_clicked();
+  void on_pushButtonDollar_clicked();
+  void on_pushButtonLeftParenthesis_clicked();
+  void on_pushButtonRightParenthesis_clicked();
+  void on_pushButtonPoint_clicked();
 
   // enter
   void on_pushButtonEnter_clicked();
 
 private:
     Ui::MainWindow *ui;
+    Calculator *calc;
+
+    void updateValueLineEdit(string s);
+    void addToLineEdit(string s);
+    void displayError(string s);
+    void updateStackDisplay(vector<string> elems);
+    string getLineEditValue();
+    void refreshView();
 };
 
 #endif // MAINWINDOW_H

@@ -87,6 +87,16 @@ public:
         StackUTComputer::maxMementoSize = nb;
     }
 
+    vector<string> getLastElementsString(int nb) const{
+        vector<string> elements;
+        int i = 0;
+        while(i < nb && i < size()){
+            elements.push_back(st[i]->toString());
+            i++;
+        }
+        return elements;
+    }
+
     // ===============================================================================================================
 
 
