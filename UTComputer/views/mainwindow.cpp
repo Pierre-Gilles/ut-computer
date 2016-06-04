@@ -32,9 +32,6 @@ void MainWindow::addToLineEdit(string s){
 
     // test if it was a
     //QCharRef c = s[qs.length()-1];
-    if(calc->getLx().isOperator(s)){
-        calculate();
-    }
 }
 
 string MainWindow::getLineEditValue(){
