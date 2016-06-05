@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -58,7 +58,8 @@ SOURCES += main.cpp\
     operators/OperatorManager.cpp \
     operators/StackOperator.cpp \
     stack/StackUTComputer.cpp \
-    Calculator.cpp
+    Calculator.cpp \
+    db/Database.cpp
 
 HEADERS  += views/mainwindow.h \
     exceptions/UTComputerException.h \
@@ -105,6 +106,7 @@ HEADERS  += views/mainwindow.h \
     operators/OperatorManager.h \
     operators/StackOperator.h \
     stack/StackUTComputer.h \
-    Calculator.h
+    Calculator.h \
+    db/Database.h
 
 FORMS    +=  views/mainwindow.ui
