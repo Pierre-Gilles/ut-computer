@@ -20,13 +20,7 @@ public:
     ProgramLiteral(const ProgramLiteral &l) : StringLiteral(l.value) { }
     virtual ~ProgramLiteral() { }
 
-    virtual string toString() const override {
-        /* replace all \t or \n by spaces for the toString method (use the getValue() to get the program with \t and \n */
-        string tmp = value;
-        replace(tmp.begin(), tmp.end(), '\t', ' ');
-        replace(tmp.begin(), tmp.end(), '\n', ' ');
-        return "[" + tmp + "]";
-    }
+    virtual string toString() const override;
 
 
     static const string &getProgramRegex() {

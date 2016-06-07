@@ -18,37 +18,32 @@ class Calculator {
 
 
 public:
+
+
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
-
     Calculator();
-
     virtual ~Calculator() { }
+    // ===============================================================================================================
+
+
+
+
 
 
     // ===============================================================================================================
     // ======================                       Getters and Setters                     ==========================
     // ===============================================================================================================
 
+    const OperatorManager &getOp_manager() const;
 
+    const StackUTComputer &getSt();
 
+    const LexerUTComputer &getLx() const;
 
-    const OperatorManager &getOp_manager() const {
-        return op_manager;
-    }
-
-    const StackUTComputer &getSt() {
-        return st;
-    }
-
-    const LexerUTComputer &getLx() const {
-        return lx;
-    }
-
-    const unordered_map<string, shared_ptr<Literal>> &getAtom_map() const {
-        return atom_map;
-    }
+    const unordered_map<string, shared_ptr<Literal>> &getAtom_map() const;
+    // ===============================================================================================================
 
 
 
@@ -62,6 +57,8 @@ public:
 
     void run(const string &s);
     void calculate(const vector<string> &tokens);
+    // ===============================================================================================================
+
 
 
 
@@ -76,6 +73,11 @@ public:
     void executeEvalOperator();
     void handleAtom(const string& s);
     bool checkExpressionCorrectForEval(vector<string> &tokens);
+    // ===============================================================================================================
+
+
+
+
 
 
 
@@ -88,6 +90,7 @@ public:
     bool atomIsProgram(const string &s);
     bool addOperator(Operator* o);
     bool addAtom(const string &key, shared_ptr<Literal> l);
+    // ===============================================================================================================
 };
 
 

@@ -118,11 +118,6 @@ vector<string> LexerUTComputer::infixToPostfix(const vector<string> infix) const
 
 }
 
-bool LexerUTComputer::isOperator(const string s) const{
-    int weight = getWeightOperator(s);
-    return (weight == 6 || weight == 4 || weight == 3 || weight == 2);
-}
-
 // ===============================================================================================================
 
 
@@ -131,6 +126,11 @@ bool LexerUTComputer::isOperator(const string s) const{
 // ===============================================================================================================
 // ======================                       Useful class functions                  ==========================
 // ===============================================================================================================
+
+bool LexerUTComputer::isOperator(const string s) const{
+    int weight = getWeightOperator(s);
+    return (weight == 6 || weight == 4 || weight == 3 || weight == 2);
+}
 
 bool LexerUTComputer::operatorWeightExists(const string &key) const {
     unordered_map<string, int>::const_iterator found = operator_weight_map.find(key);

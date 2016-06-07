@@ -18,11 +18,109 @@ StackUTComputer::~StackUTComputer() {
 
 
 
+
+
+
+
+// ===============================================================================================================
+// ======================                   Getters and Setters                         ==========================
+// ===============================================================================================================
+
+void StackUTComputer::setLastOperator(Operator *lastOp) {
+    lastOperator = lastOp;
+}
+
+Operator* StackUTComputer::getLastOperator() const {
+    return lastOperator;
+}
+
+
+const deque<shared_ptr<Literal>> & StackUTComputer::getLastArguments() const {
+    return lastArguments;
+}
+
+void StackUTComputer::setLastArguments(int operatorArity) {
+    if (st.size() < operatorArity)
+        throw UTComputerException("Error in StackUTComputer::setLastArguments : arity superior to stack size");
+
+
+    lastArguments.clear(); // clear old arguments
+    /*
+     * Put arguments in a reverse order :
+     *  if stack contains a then b, lastArguments will contains b than a
+     *  This way, when we want to get lastArguments back in stack, we just have to
+     *  unstack x from lastArguments and stack it directly in stack "st".
+     */
+    for (int i=0; i<operatorArity; i++) {
+        lastArguments.push_front(st[i]); // save last arguments
+    }
+}
+
+
+void StackUTComputer::setMaxMementoSize(int nb) {
+    StackUTComputer::maxMementoSize = nb;
+}
+
+vector<string> StackUTComputer::getLastElementsString(int nb) const{
+    vector<string> elements;
+    int i = 0;
+    while(i < nb && i < size()){
+        elements.push_back(st[i]->toString());
+        i++;
+    }
+    return elements;
+}
+
+// ===============================================================================================================
+
+
+
+
+
+
+
+// ===============================================================================================================
+// ======================        Implement Stack Interface and Stack Operators          ==========================
+// ===============================================================================================================
+
+int StackUTComputer::size() const {
+    return (int)st.size(); // cast from "unsigned long int" in "int"
+}
+
+shared_ptr<Literal> StackUTComputer::top() const {
+    return st[0];
+}
+
+void StackUTComputer::pop() {
+    st.pop_front(); // remove top element from the container
+}
+
+void StackUTComputer::clear() {
+    st.clear(); // remove all elements from the container
+}
+
 void StackUTComputer::clearMemento() {
     for (auto it = mementoStack.begin(); it != mementoStack.end(); ++it)
         delete *it;
     mementoStack.clear();
 }
+
+void StackUTComputer::push(shared_ptr<Literal> l) {
+    st.push_front(l); // add element on top of the container
+}
+
+void StackUTComputer::pushLastArgs() {
+    for (int i=0; i<lastArguments.size(); i++)
+        st.push_front(lastArguments[i]);
+}
+// ===============================================================================================================
+
+
+
+
+
+
+
 
 
 // ===============================================================================================================
@@ -120,3 +218,4 @@ void StackUTComputer::redo() {
         }
     }
 }
+// ===============================================================================================================

@@ -44,8 +44,30 @@ Calculator::Calculator() {
     addOperator(new OperatorUNDO());
     addOperator(new OperatorSWAP());
 }
+// ===============================================================================================================
 
 
+
+// ===============================================================================================================
+// ======================                       Getters and Setters                     ==========================
+// ===============================================================================================================
+
+const OperatorManager & Calculator::getOp_manager() const {
+    return op_manager;
+}
+
+const StackUTComputer & Calculator::getSt() {
+    return st;
+}
+
+const LexerUTComputer & Calculator::getLx() const {
+    return lx;
+}
+
+const unordered_map<string, shared_ptr<Literal>> & Calculator::getAtom_map() const {
+    return atom_map;
+}
+// ===============================================================================================================
 
 
 
@@ -64,9 +86,12 @@ void Calculator::calculate(const vector<string> &tokens) {
 
     try {
 
-        if(tokens.size() >= 1 && tokens[0] != "UNDO" && tokens[0] != "REDO" )
+        if(tokens.size() >= 1) {
             // save initial state before iterating through the tokens
-            st.createMemento();
+            if (tokens[0] != "UNDO" && tokens[0] != "REDO") {
+                st.createMemento();
+            }
+        }
 
         for (auto it = tokens.cbegin(); it != tokens.cend(); ++it) {
 
@@ -116,7 +141,7 @@ void Calculator::calculate(const vector<string> &tokens) {
         throw e1;
     }
 }
-
+// ===============================================================================================================
 
 
 
@@ -127,8 +152,6 @@ void Calculator::calculate(const vector<string> &tokens) {
 // ===============================================================================================================
 // ======================                    Class other services                        =========================
 // ===============================================================================================================
-
-
 
 
 // methods used in main service calculate(const vector<string> &tokens)
@@ -162,7 +185,6 @@ void Calculator::executeEvalOperator() {
     }
 }
 
-
 void Calculator::handleAtom(const string& s) {
     // If we find the atom in the atom_map
     if (atomFound(s)) {
@@ -191,7 +213,6 @@ void Calculator::handleAtom(const string& s) {
         st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral(s)));
     }
 }
-
 
 
 /*
@@ -225,7 +246,7 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
     }
     return true;
 }
-
+// ===============================================================================================================
 
 
 
@@ -235,8 +256,6 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 // ===============================================================================================================
 // ======================                  Class useful functions                        =========================
 // ===============================================================================================================
-
-
 
 bool Calculator::atomExists(const string &key) const {
     unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(key);
@@ -258,12 +277,9 @@ bool Calculator::atomIsProgram(const string &s) {
     return (prgm != nullptr);
 }
 
-
-
 bool Calculator::addOperator(Operator* o) {
     return op_manager.addOperator(o) && lx.addOperatorWeight(o);
 }
-
 
 bool Calculator::addAtom(const string &key, shared_ptr<Literal> l) {
     if (atomExists(key))
@@ -273,7 +289,7 @@ bool Calculator::addAtom(const string &key, shared_ptr<Literal> l) {
     atom_map.insert(atom_pair);
     return true;
 }
-
+// ===============================================================================================================
 
 
 
