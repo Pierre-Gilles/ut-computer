@@ -6,43 +6,43 @@
 
 Calculator::Calculator() {
     // Classic Operators
-    op_manager.addOperator(new OperatorPlus());
-    op_manager.addOperator(new OperatorMinus());
-    op_manager.addOperator(new OperatorMultiplication());
-    op_manager.addOperator(new OperatorDivision());
-    op_manager.addOperator(new OperatorIntegerDivision());
-    op_manager.addOperator(new OperatorModulo());
-    op_manager.addOperator(new OperatorNeg());
+    addOperator(new OperatorPlus());
+    addOperator(new OperatorMinus());
+    addOperator(new OperatorMultiplication());
+    addOperator(new OperatorDivision());
+    addOperator(new OperatorIntegerDivision());
+    addOperator(new OperatorModulo());
+    addOperator(new OperatorNeg());
 
     // Logical Operators
-    op_manager.addOperator(new OperatorAnd());
-    op_manager.addOperator(new OperatorDifferent());
-    op_manager.addOperator(new OperatorEqual());
-    op_manager.addOperator(new OperatorInferior());
-    op_manager.addOperator(new OperatorInferiorEqual());
-    op_manager.addOperator(new OperatorNot());
-    op_manager.addOperator(new OperatorOr());
-    op_manager.addOperator(new OperatorSuperior());
-    op_manager.addOperator(new OperatorSuperiorEqual());
+    addOperator(new OperatorAnd());
+    addOperator(new OperatorDifferent());
+    addOperator(new OperatorEqual());
+    addOperator(new OperatorInferior());
+    addOperator(new OperatorInferiorEqual());
+    addOperator(new OperatorNot());
+    addOperator(new OperatorOr());
+    addOperator(new OperatorSuperior());
+    addOperator(new OperatorSuperiorEqual());
 
     // Rational Operators
-    op_manager.addOperator(new OperatorNumerator());
-    op_manager.addOperator(new OperatorDenominator());
+    addOperator(new OperatorNumerator());
+    addOperator(new OperatorDenominator());
 
     // Complex Operators
-    op_manager.addOperator(new OperatorDollar());
-    op_manager.addOperator(new OperatorIM());
-    op_manager.addOperator(new OperatorRE());
+    addOperator(new OperatorDollar());
+    addOperator(new OperatorIM());
+    addOperator(new OperatorRE());
 
     // Stack Operators
-    op_manager.addOperator(new OperatorCLEAR());
-    op_manager.addOperator(new OperatorDROP());
-    op_manager.addOperator(new OperatorDUP());
-    op_manager.addOperator(new OperatorLASTARGS());
-    op_manager.addOperator(new OperatorLASTOP());
-    op_manager.addOperator(new OperatorREDO());
-    op_manager.addOperator(new OperatorUNDO());
-    op_manager.addOperator(new OperatorSWAP());
+    addOperator(new OperatorCLEAR());
+    addOperator(new OperatorDROP());
+    addOperator(new OperatorDUP());
+    addOperator(new OperatorLASTARGS());
+    addOperator(new OperatorLASTOP());
+    addOperator(new OperatorREDO());
+    addOperator(new OperatorUNDO());
+    addOperator(new OperatorSWAP());
 }
 
 
@@ -261,7 +261,7 @@ bool Calculator::atomIsProgram(const string &s) {
 
 
 bool Calculator::addOperator(Operator* o) {
-    return op_manager.addOperator(o);
+    return op_manager.addOperator(o) && lx.addOperatorWeight(o);
 }
 
 

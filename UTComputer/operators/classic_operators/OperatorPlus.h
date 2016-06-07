@@ -10,7 +10,7 @@
 class OperatorPlus : public CalculationOperator {
 
 public:
-    OperatorPlus() : CalculationOperator(2, "+") { }
+    OperatorPlus() : CalculationOperator(2, "+",3) { }
     virtual ~OperatorPlus() { }
 
 

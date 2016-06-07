@@ -9,7 +9,7 @@
 class OperatorDUP : public StackOperator {
 
 public:
-    OperatorDUP() : StackOperator(1, "DUP") { }
+    OperatorDUP() : StackOperator(1, "DUP",6) { }
     virtual ~OperatorDUP() { }
 
 

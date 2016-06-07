@@ -8,7 +8,7 @@
 class OperatorRE : public CalculationOperator {
 
 public:
-    OperatorRE() : CalculationOperator(1, "RE") { }
+    OperatorRE() : CalculationOperator(1, "RE",6) { }
     virtual ~OperatorRE() { }
 
 

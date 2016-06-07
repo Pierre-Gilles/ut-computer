@@ -8,7 +8,7 @@
 class OperatorMinus : public CalculationOperator {
 
 public:
-    OperatorMinus() : CalculationOperator(2, "-") { }
+    OperatorMinus() : CalculationOperator(2, "-",3) { }
     virtual ~OperatorMinus() { }
 
 

@@ -7,7 +7,7 @@
 class OperatorDROP : public StackOperator {
 
 public:
-    OperatorDROP() : StackOperator(1, "DROP") { }
+    OperatorDROP() : StackOperator(1, "DROP",6) { }
     virtual ~OperatorDROP() { }
 
 

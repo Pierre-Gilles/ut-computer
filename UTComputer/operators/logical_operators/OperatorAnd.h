@@ -10,7 +10,7 @@ class OperatorAnd : public CalculationOperator {
 
 public:
 
-    OperatorAnd() : CalculationOperator(2, "AND") {}
+    OperatorAnd() : CalculationOperator(2, "AND",2) {}
     virtual ~OperatorAnd() {}
 
 private:

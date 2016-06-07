@@ -9,7 +9,7 @@ class OperatorInferiorEqual : public CalculationOperator {
 
 public:
 
-    OperatorInferiorEqual() : CalculationOperator(2, "<=") {}
+    OperatorInferiorEqual() : CalculationOperator(2, "<=",2) {}
     virtual ~OperatorInferiorEqual() {}
 
 

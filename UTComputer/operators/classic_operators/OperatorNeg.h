@@ -8,7 +8,7 @@
 class OperatorNeg : public CalculationOperator {
 
 public:
-    OperatorNeg() : CalculationOperator(1, "NEG") { }
+    OperatorNeg() : CalculationOperator(1, "NEG",6) { }
     virtual ~OperatorNeg() { }
 
 

@@ -10,7 +10,7 @@
 class OperatorUNDO : public StackOperator {
 
 public:
-    OperatorUNDO() : StackOperator(0, "UNDO") { }
+    OperatorUNDO() : StackOperator(0, "UNDO",6) { }
     virtual ~OperatorUNDO() { }
 
 

@@ -9,7 +9,7 @@ class OperatorDifferent : public CalculationOperator {
 
 public:
 
-    OperatorDifferent() : CalculationOperator(2, "!=") {}
+    OperatorDifferent() : CalculationOperator(2, "!=",2) {}
     virtual ~OperatorDifferent() {}
 
 private:

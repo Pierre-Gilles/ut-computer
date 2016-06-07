@@ -9,7 +9,7 @@
 class OperatorNumerator : public CalculationOperator {
 
 public:
-    OperatorNumerator() : CalculationOperator(1, "NUM") { }
+    OperatorNumerator() : CalculationOperator(1, "NUM",6) { }
     virtual ~OperatorNumerator() { }
 
 

@@ -7,7 +7,7 @@
 class OperatorIntegerDivision : public CalculationOperator {
 
 public:
-    OperatorIntegerDivision() : CalculationOperator(2, "DIV") { }
+    OperatorIntegerDivision() : CalculationOperator(2, "DIV",6) { }
     virtual ~OperatorIntegerDivision() { }
 
 

@@ -7,7 +7,7 @@
 class OperatorDollar : public CalculationOperator {
 
 public:
-    OperatorDollar() : CalculationOperator(2, "$") { }
+    OperatorDollar() : CalculationOperator(2, "$",5) { }
     virtual ~OperatorDollar() { }
 
 

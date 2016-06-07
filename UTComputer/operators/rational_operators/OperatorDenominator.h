@@ -8,7 +8,7 @@
 class OperatorDenominator : public CalculationOperator {
 
 public:
-    OperatorDenominator() : CalculationOperator(1, "DEN") { }
+    OperatorDenominator() : CalculationOperator(1, "DEN",6) { }
     virtual ~OperatorDenominator() { }
 
 

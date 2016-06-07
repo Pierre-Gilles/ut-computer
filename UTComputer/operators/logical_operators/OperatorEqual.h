@@ -9,7 +9,7 @@ class OperatorEqual : public CalculationOperator {
 
 public:
 
-    OperatorEqual() : CalculationOperator(2, "=") {}
+    OperatorEqual() : CalculationOperator(2, "=",2) {}
     virtual ~OperatorEqual() {}
 
 private:

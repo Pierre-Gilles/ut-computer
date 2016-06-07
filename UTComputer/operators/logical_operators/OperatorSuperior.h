@@ -9,7 +9,7 @@ class OperatorSuperior : public CalculationOperator {
 
 public:
 
-    OperatorSuperior() : CalculationOperator(2, ">") {}
+    OperatorSuperior() : CalculationOperator(2, ">",2) {}
     virtual ~OperatorSuperior() {}
 
 private:
