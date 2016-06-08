@@ -128,14 +128,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab71a5fdfb01b2edef59b5d2e134d3ad7"><td class="memItemLeft" align="right" valign="top">const unordered_map&lt; string, int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexer_u_t_computer.html#ab71a5fdfb01b2edef59b5d2e134d3ad7">getOperator_weigth_map</a> () const </td></tr>
 <tr class="separator:ab71a5fdfb01b2edef59b5d2e134d3ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2e69597ab5327b620fc0ec15b529ed1"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexer_u_t_computer.html#ac2e69597ab5327b620fc0ec15b529ed1">tokenize</a> (const string &amp;s) const </td></tr>
+<tr class="memdesc:ac2e69597ab5327b620fc0ec15b529ed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that tokenize a string.  <a href="#ac2e69597ab5327b620fc0ec15b529ed1">More...</a><br /></td></tr>
 <tr class="separator:ac2e69597ab5327b620fc0ec15b529ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a1f2c3018275d7004611faf6aaf8fda"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexer_u_t_computer.html#a7a1f2c3018275d7004611faf6aaf8fda">infixToPostfix</a> (const vector&lt; string &gt; elems) const </td></tr>
+<tr class="memdesc:a7a1f2c3018275d7004611faf6aaf8fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that transform an infix expression into a postfix expression.  <a href="#a7a1f2c3018275d7004611faf6aaf8fda">More...</a><br /></td></tr>
 <tr class="separator:a7a1f2c3018275d7004611faf6aaf8fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedc21c5fad6d3f64f11d75bc3036a710"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexer_u_t_computer.html#aedc21c5fad6d3f64f11d75bc3036a710">tokenizeInfixToPostfix</a> (const string &amp;s) const </td></tr>
+<tr class="memdesc:aedc21c5fad6d3f64f11d75bc3036a710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combination of tokenize and infixToPostfix methods.  <a href="#aedc21c5fad6d3f64f11d75bc3036a710">More...</a><br /></td></tr>
 <tr class="separator:aedc21c5fad6d3f64f11d75bc3036a710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1403979ceda59382ca5aff8db0424194"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexer_u_t_computer.html#a1403979ceda59382ca5aff8db0424194">addOperatorWeight</a> (<a class="el" href="class_operator.html">Operator</a> *o)</td></tr>
+<tr class="memdesc:a1403979ceda59382ca5aff8db0424194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that add an operator weight to the operator_weight_map.  <a href="#a1403979ceda59382ca5aff8db0424194">More...</a><br /></td></tr>
 <tr class="separator:a1403979ceda59382ca5aff8db0424194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80a1ed83e7eebadb100a11703b610fbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexer_u_t_computer.html#a80a1ed83e7eebadb100a11703b610fbd">isOperator</a> (const string s) const </td></tr>
+<tr class="memdesc:a80a1ed83e7eebadb100a11703b610fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if "s" is an operator.  <a href="#a80a1ed83e7eebadb100a11703b610fbd">More...</a><br /></td></tr>
 <tr class="separator:a80a1ed83e7eebadb100a11703b610fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -146,8 +151,10 @@ Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8636e5eef3bf64a01f339f1f1314b167"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexer_u_t_computer.html#a8636e5eef3bf64a01f339f1f1314b167">operatorWeightExists</a> (const string &amp;key) const </td></tr>
+<tr class="memdesc:a8636e5eef3bf64a01f339f1f1314b167"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an <a class="el" href="class_operator.html" title="Abstract super class for all specific operators. ">Operator</a> and its weight exist in operator_weight_map.  <a href="#a8636e5eef3bf64a01f339f1f1314b167">More...</a><br /></td></tr>
 <tr class="separator:a8636e5eef3bf64a01f339f1f1314b167"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f53bbfd7fc1e2c25b28a408747c7c1e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexer_u_t_computer.html#a4f53bbfd7fc1e2c25b28a408747c7c1e">getWeightOperator</a> (const string s) const </td></tr>
+<tr class="memdesc:a4f53bbfd7fc1e2c25b28a408747c7c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to get an <a class="el" href="class_operator.html" title="Abstract super class for all specific operators. ">Operator</a>'s weight.  <a href="#a4f53bbfd7fc1e2c25b28a408747c7c1e">More...</a><br /></td></tr>
 <tr class="separator:a4f53bbfd7fc1e2c25b28a408747c7c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -212,6 +219,15 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Method that add an operator weight to the operator_weight_map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">o</td><td>: pointer to the <a class="el" href="class_operator.html" title="Abstract super class for all specific operators. ">Operator</a> from which we want the weight </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the operator is not already present in operator_weight_map, otherwise return false </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ab71a5fdfb01b2edef59b5d2e134d3ad7"></a>
@@ -260,6 +276,15 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Method to get an <a class="el" href="class_operator.html" title="Abstract super class for all specific operators. ">Operator</a>'s weight. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>: the operator's key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_operator.html" title="Abstract super class for all specific operators. ">Operator</a>'s weight </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a7a1f2c3018275d7004611faf6aaf8fda"></a>
@@ -276,6 +301,15 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Method that transform an infix expression into a postfix expression. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elems</td><td>: the vector of string containing all the tokens of the infix expression </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of string containing all the tokens arranged in a postfix manner </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a80a1ed83e7eebadb100a11703b610fbd"></a>
@@ -291,6 +325,15 @@ Private Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check if "s" is an operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>: string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if s is an operator, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -316,6 +359,15 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Check if an <a class="el" href="class_operator.html" title="Abstract super class for all specific operators. ">Operator</a> and its weight exist in operator_weight_map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>: the operator's key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the <a class="el" href="class_operator.html" title="Abstract super class for all specific operators. ">Operator</a> and its weight exist, false otherwise </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ac2e69597ab5327b620fc0ec15b529ed1"></a>
@@ -331,6 +383,15 @@ Private Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Method that tokenize a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>: the string to tokenize </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of string containing all tokens </dd></dl>
 
 </div>
 </div>
@@ -348,6 +409,15 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Combination of tokenize and infixToPostfix methods. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>: the string representing the infix expression </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The infix expression tokenized and transformed in a postfix expression </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -360,7 +430,7 @@ Private Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>unordered_map containing the priority (int value) of each operator used in this application. </p>
+<p>unordered_map containing the priority (int value) of each operator used in this application or add later on by an user. </p>
 
 </div>
 </div>

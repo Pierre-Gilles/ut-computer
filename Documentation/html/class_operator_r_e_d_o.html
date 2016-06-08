@@ -122,8 +122,8 @@ Inheritance diagram for OperatorREDO:</div>
  <div class="center">
   <img src="class_operator_r_e_d_o.png" usemap="#OperatorREDO_map" alt=""/>
   <map id="OperatorREDO_map" name="OperatorREDO_map">
-<area href="class_stack_operator.html" alt="StackOperator" shape="rect" coords="0,56,98,80"/>
-<area href="class_operator.html" alt="Operator" shape="rect" coords="0,0,98,24"/>
+<area href="class_stack_operator.html" title="Super class for all specific stack operators. " alt="StackOperator" shape="rect" coords="0,56,98,80"/>
+<area href="class_operator.html" title="Abstract super class for all specific operators. " alt="Operator" shape="rect" coords="0,0,98,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -134,6 +134,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a564badbe23e7eee41ca59070c5d58241"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator_r_e_d_o.html#a564badbe23e7eee41ca59070c5d58241">~OperatorREDO</a> ()</td></tr>
 <tr class="separator:a564badbe23e7eee41ca59070c5d58241"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ee32bac5a132702c28f0b2597dd26a4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator_r_e_d_o.html#a0ee32bac5a132702c28f0b2597dd26a4">execute</a> (<a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> *const st) override</td></tr>
+<tr class="memdesc:a0ee32bac5a132702c28f0b2597dd26a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joint method that will be called in all <a class="el" href="class_stack_operator.html" title="Super class for all specific stack operators. ">StackOperator</a>'s subclasses.  <a href="#a0ee32bac5a132702c28f0b2597dd26a4">More...</a><br /></td></tr>
 <tr class="separator:a0ee32bac5a132702c28f0b2597dd26a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_stack_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_stack_operator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_stack_operator.html">StackOperator</a></td></tr>
 <tr class="memitem:a8b48aa2607dcf01a36434793b31d1e33 inherit pub_methods_class_stack_operator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_operator.html#a8b48aa2607dcf01a36434793b31d1e33">StackOperator</a> (int nb, string <a class="el" href="class_operator.html#a5617dbf5bd1201d414ba2b5c18511d9d">key</a>, int prio)</td></tr>
@@ -142,14 +143,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a96ae3dcf287b360c5561bf201f11632a inherit pub_methods_class_stack_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_operator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_operator.html">Operator</a></td></tr>
 <tr class="memitem:a52e92f86dfad785709104e30e24390cd inherit pub_methods_class_operator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a52e92f86dfad785709104e30e24390cd">Operator</a> (int nb, string <a class="el" href="class_operator.html#a5617dbf5bd1201d414ba2b5c18511d9d">key</a>, int prio)</td></tr>
+<tr class="memdesc:a52e92f86dfad785709104e30e24390cd inherit pub_methods_class_operator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a52e92f86dfad785709104e30e24390cd">More...</a><br /></td></tr>
 <tr class="separator:a52e92f86dfad785709104e30e24390cd inherit pub_methods_class_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fdf52b48772b7025c7baca76c7378f4 inherit pub_methods_class_operator"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a3fdf52b48772b7025c7baca76c7378f4">~Operator</a> ()</td></tr>
 <tr class="separator:a3fdf52b48772b7025c7baca76c7378f4 inherit pub_methods_class_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91ef5d7d87b3743521eee1bf8684098c inherit pub_methods_class_operator"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a91ef5d7d87b3743521eee1bf8684098c">getArite</a> () const </td></tr>
+<tr class="memdesc:a91ef5d7d87b3743521eee1bf8684098c inherit pub_methods_class_operator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the private attribute arity.  <a href="#a91ef5d7d87b3743521eee1bf8684098c">More...</a><br /></td></tr>
 <tr class="separator:a91ef5d7d87b3743521eee1bf8684098c inherit pub_methods_class_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f31a1b1272e47e1ea7c5bdef53fc858 inherit pub_methods_class_operator"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a7f31a1b1272e47e1ea7c5bdef53fc858">getKey</a> () const </td></tr>
-<tr class="separator:a7f31a1b1272e47e1ea7c5bdef53fc858 inherit pub_methods_class_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a059990ff23e551eb8801ce9b64a9602c inherit pub_methods_class_operator"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a059990ff23e551eb8801ce9b64a9602c">getKey</a> () const </td></tr>
+<tr class="memdesc:a059990ff23e551eb8801ce9b64a9602c inherit pub_methods_class_operator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the private attribute key.  <a href="#a059990ff23e551eb8801ce9b64a9602c">More...</a><br /></td></tr>
+<tr class="separator:a059990ff23e551eb8801ce9b64a9602c inherit pub_methods_class_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa74b47c66d88977e0564a0600aa5c92b inherit pub_methods_class_operator"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#aa74b47c66d88977e0564a0600aa5c92b">getPriority</a> () const </td></tr>
+<tr class="memdesc:aa74b47c66d88977e0564a0600aa5c92b inherit pub_methods_class_operator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the private attribute key.  <a href="#aa74b47c66d88977e0564a0600aa5c92b">More...</a><br /></td></tr>
 <tr class="separator:aa74b47c66d88977e0564a0600aa5c92b inherit pub_methods_class_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -231,6 +236,18 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Joint method that will be called in all <a class="el" href="class_stack_operator.html" title="Super class for all specific stack operators. ">StackOperator</a>'s subclasses. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">st</td><td>: constant pointer (referenced object can be modified but reference itself cannot) to an instance of <a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Redefinition of <a class="el" href="class_operator.html#af7785dff25ba21013ed4fba4b673665e" title="Virtual pure method to be implemented by each specific operators. ">Operator::execute</a> function</p><ul>
+<li>check that parameter "st" isn't null</li>
+<li>check that stack size is superior or equal to the operator's arity </li>
+</ul>
 
 <p>Reimplemented from <a class="el" href="class_stack_operator.html#a94da3b0d228235f5f3efe14163707e54">StackOperator</a>.</p>
 

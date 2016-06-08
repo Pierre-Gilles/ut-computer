@@ -116,6 +116,9 @@ $(document).ready(function(){initNavTree('class_operator.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract super class for all specific operators.  
+ <a href="class_operator.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_operator_8h_source.html">Operator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Operator:</div>
@@ -124,7 +127,7 @@ Inheritance diagram for Operator:</div>
   <img src="class_operator.png" usemap="#Operator_map" alt=""/>
   <map id="Operator_map" name="Operator_map">
 <area href="class_calculation_operator.html" alt="CalculationOperator" shape="rect" coords="0,56,147,80"/>
-<area href="class_stack_operator.html" alt="StackOperator" shape="rect" coords="314,56,461,80"/>
+<area href="class_stack_operator.html" title="Super class for all specific stack operators. " alt="StackOperator" shape="rect" coords="314,56,461,80"/>
 <area href="class_operator_and.html" alt="OperatorAnd" shape="rect" coords="157,112,304,136"/>
 <area href="class_operator_denominator.html" alt="OperatorDenominator" shape="rect" coords="157,168,304,192"/>
 <area href="class_operator_different.html" alt="OperatorDifferent" shape="rect" coords="157,224,304,248"/>
@@ -160,17 +163,22 @@ Inheritance diagram for Operator:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a52e92f86dfad785709104e30e24390cd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a52e92f86dfad785709104e30e24390cd">Operator</a> (int nb, string <a class="el" href="class_operator.html#a5617dbf5bd1201d414ba2b5c18511d9d">key</a>, int prio)</td></tr>
+<tr class="memdesc:a52e92f86dfad785709104e30e24390cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a52e92f86dfad785709104e30e24390cd">More...</a><br /></td></tr>
 <tr class="separator:a52e92f86dfad785709104e30e24390cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fdf52b48772b7025c7baca76c7378f4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a3fdf52b48772b7025c7baca76c7378f4">~Operator</a> ()</td></tr>
 <tr class="separator:a3fdf52b48772b7025c7baca76c7378f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91ef5d7d87b3743521eee1bf8684098c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a91ef5d7d87b3743521eee1bf8684098c">getArite</a> () const </td></tr>
+<tr class="memdesc:a91ef5d7d87b3743521eee1bf8684098c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the private attribute arity.  <a href="#a91ef5d7d87b3743521eee1bf8684098c">More...</a><br /></td></tr>
 <tr class="separator:a91ef5d7d87b3743521eee1bf8684098c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f31a1b1272e47e1ea7c5bdef53fc858"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a7f31a1b1272e47e1ea7c5bdef53fc858">getKey</a> () const </td></tr>
-<tr class="separator:a7f31a1b1272e47e1ea7c5bdef53fc858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a059990ff23e551eb8801ce9b64a9602c"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a059990ff23e551eb8801ce9b64a9602c">getKey</a> () const </td></tr>
+<tr class="memdesc:a059990ff23e551eb8801ce9b64a9602c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the private attribute key.  <a href="#a059990ff23e551eb8801ce9b64a9602c">More...</a><br /></td></tr>
+<tr class="separator:a059990ff23e551eb8801ce9b64a9602c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa74b47c66d88977e0564a0600aa5c92b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#aa74b47c66d88977e0564a0600aa5c92b">getPriority</a> () const </td></tr>
+<tr class="memdesc:aa74b47c66d88977e0564a0600aa5c92b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the private attribute key.  <a href="#aa74b47c66d88977e0564a0600aa5c92b">More...</a><br /></td></tr>
 <tr class="separator:aa74b47c66d88977e0564a0600aa5c92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61487b697fbb29cb4e87193ac11fb337"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a61487b697fbb29cb4e87193ac11fb337">execute</a> (<a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> *const st)=0</td></tr>
-<tr class="separator:a61487b697fbb29cb4e87193ac11fb337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7785dff25ba21013ed4fba4b673665e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#af7785dff25ba21013ed4fba4b673665e">execute</a> (<a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> *const st)=0</td></tr>
+<tr class="memdesc:af7785dff25ba21013ed4fba4b673665e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual pure method to be implemented by each specific operators.  <a href="#af7785dff25ba21013ed4fba4b673665e">More...</a><br /></td></tr>
+<tr class="separator:af7785dff25ba21013ed4fba4b673665e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -181,7 +189,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a25440d56236b4b63705f91c00a105f29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a25440d56236b4b63705f91c00a105f29">priority</a></td></tr>
 <tr class="separator:a25440d56236b4b63705f91c00a105f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Abstract super class for all specific operators. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a52e92f86dfad785709104e30e24390cd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -220,6 +230,17 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nb</td><td>: int representing the operator's arity </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>: string representing the operator's key (+, -, DIV, ...) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prio</td><td>: int representing the operators's priority </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>"Nothing", the class is abstract </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a3fdf52b48772b7025c7baca76c7378f4"></a>
@@ -246,7 +267,7 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a61487b697fbb29cb4e87193ac11fb337"></a>
+<a class="anchor" id="af7785dff25ba21013ed4fba4b673665e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -254,7 +275,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void Operator::execute </td>
+          <td class="memname">void Operator::execute </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> *const&#160;</td>
           <td class="paramname"><em>st</em></td><td>)</td>
@@ -268,7 +289,23 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_calculation_operator.html#a9ceeaf9791c3ff161f3dc9de65b0582e">CalculationOperator</a>, <a class="el" href="class_stack_operator.html#a94da3b0d228235f5f3efe14163707e54">StackOperator</a>, <a class="el" href="class_operator_r_e_d_o.html#a0ee32bac5a132702c28f0b2597dd26a4">OperatorREDO</a>, <a class="el" href="class_operator_u_n_d_o.html#a9513c473e5def2759b9b1cc2c74d1e36">OperatorUNDO</a>, <a class="el" href="class_operator_c_l_e_a_r.html#ad091c5a9c1917070e3d3c81488b54d20">OperatorCLEAR</a>, <a class="el" href="class_operator_d_u_p.html#a370efe4a8124779ae48061c2a0971c24">OperatorDUP</a>, <a class="el" href="class_operator_l_a_s_t_a_r_g_s.html#a324254f3f89bf2b77033e89c57128b75">OperatorLASTARGS</a>, <a class="el" href="class_operator_l_a_s_t_o_p.html#abb61ad01d33c0d100055bfe849864f98">OperatorLASTOP</a>, <a class="el" href="class_operator_s_w_a_p.html#a01747b5d7d075edc71b7ad193a2de71f">OperatorSWAP</a>, and <a class="el" href="class_operator_d_r_o_p.html#ae2b7bceba599baa5e44c4e4c6f301245">OperatorDROP</a>.</p>
+<p>Virtual pure method to be implemented by each specific operators. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">st</td><td>: constant pointer (referenced object can be modified but reference itself cannot) to an instance of <a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Every specific operator will redefine this function and do what needs to be done according to their function :</p><ul>
+<li>All stack operators implement it in a different way<ul>
+<li><a class="el" href="class_operator_c_l_e_a_r.html">OperatorCLEAR</a> will call <a class="el" href="class_stack_u_t_computer.html#ae96df2f3ba2854a6a8aa284282ae1dda">StackUTComputer::clear()</a> method</li>
+<li>...</li>
+</ul>
+</li>
+<li><a class="el" href="class_calculation_operator.html">CalculationOperator</a> implements it to do general actions that all its subclass must do and call a new virtual pure method that will be implemented by each subclass of <a class="el" href="class_calculation_operator.html">CalculationOperator</a>. </li>
+</ul>
+
+<p>Implemented in <a class="el" href="class_stack_operator.html#a94da3b0d228235f5f3efe14163707e54">StackOperator</a>, <a class="el" href="class_calculation_operator.html#a9ceeaf9791c3ff161f3dc9de65b0582e">CalculationOperator</a>, <a class="el" href="class_operator_r_e_d_o.html#a0ee32bac5a132702c28f0b2597dd26a4">OperatorREDO</a>, <a class="el" href="class_operator_u_n_d_o.html#a9513c473e5def2759b9b1cc2c74d1e36">OperatorUNDO</a>, <a class="el" href="class_operator_c_l_e_a_r.html#ad091c5a9c1917070e3d3c81488b54d20">OperatorCLEAR</a>, <a class="el" href="class_operator_d_u_p.html#a370efe4a8124779ae48061c2a0971c24">OperatorDUP</a>, <a class="el" href="class_operator_l_a_s_t_a_r_g_s.html#a324254f3f89bf2b77033e89c57128b75">OperatorLASTARGS</a>, <a class="el" href="class_operator_l_a_s_t_o_p.html#abb61ad01d33c0d100055bfe849864f98">OperatorLASTOP</a>, <a class="el" href="class_operator_s_w_a_p.html#a01747b5d7d075edc71b7ad193a2de71f">OperatorSWAP</a>, and <a class="el" href="class_operator_d_r_o_p.html#ae2b7bceba599baa5e44c4e4c6f301245">OperatorDROP</a>.</p>
 
 </div>
 </div>
@@ -293,9 +330,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Getter for the private attribute arity. </p>
+<dl class="section return"><dt>Returns</dt><dd>The private attribute arity </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="a7f31a1b1272e47e1ea7c5bdef53fc858"></a>
+<a class="anchor" id="a059990ff23e551eb8801ce9b64a9602c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -303,7 +343,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const string&amp; Operator::getKey </td>
+          <td class="memname">const string &amp; Operator::getKey </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -315,6 +355,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Getter for the private attribute key. </p>
+<dl class="section return"><dt>Returns</dt><dd>The private attribute key </dd></dl>
 
 </div>
 </div>
@@ -338,6 +381,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Getter for the private attribute key. </p>
+<dl class="section return"><dt>Returns</dt><dd>The private attribute key </dd></dl>
 
 </div>
 </div>

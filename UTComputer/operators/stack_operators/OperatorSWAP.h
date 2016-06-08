@@ -1,3 +1,9 @@
+/**
+ * \file OperatorSWAP.h
+ * \brief File containing the OperatorSWAP class.
+ */
+
+
 #ifndef UTCOMPUTER_OPERATORSWAP_H
 #define UTCOMPUTER_OPERATORSWAP_H
 
@@ -5,6 +11,9 @@
 #include "../StackOperator.h"
 #include "../../literals/Literal.h"
 
+/**
+ * \class OperatorSWAP
+ */
 class OperatorSWAP : public StackOperator {
 
 public:

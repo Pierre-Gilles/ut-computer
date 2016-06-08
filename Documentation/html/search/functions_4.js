@@ -7,7 +7,7 @@ var searchData=
   ['getdenominator',['getDenominator',['../class_numeric_literal.html#ada5d86909617e86d14c151b534f8f1bc',1,'NumericLiteral']]],
   ['getexpressionregex',['getExpressionRegex',['../class_expression_literal.html#a1cb28b0859276884065c201981c14da7',1,'ExpressionLiteral']]],
   ['getim',['getIm',['../class_complex_literal.html#a8ad2d184389970d2c9b65930ffb71d4b',1,'ComplexLiteral']]],
-  ['getkey',['getKey',['../class_operator.html#a7f31a1b1272e47e1ea7c5bdef53fc858',1,'Operator']]],
+  ['getkey',['getKey',['../class_operator.html#a059990ff23e551eb8801ce9b64a9602c',1,'Operator']]],
   ['getlastarguments',['getLastArguments',['../class_stack_u_t_computer.html#aa38a298e930db0047e14eaca69885eb6',1,'StackUTComputer']]],
   ['getlastelementsstring',['getLastElementsString',['../class_stack_u_t_computer.html#a13f7307ff6826854e1d62777bfffbd2f',1,'StackUTComputer']]],
   ['getlastoperator',['getLastOperator',['../class_stack_u_t_computer.html#abaf11e9a2e4258f08e3758ca29cbfb0a',1,'StackUTComputer']]],
