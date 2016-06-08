@@ -257,15 +257,18 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 // ======================                  Class useful functions                        =========================
 // ===============================================================================================================
 
-bool Calculator::atomExists(const string &key) const {
-    unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(key);
-    return !(found == atom_map.cend());
-}
+
 
 bool Calculator::atomFound(const string &s) const {
     unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(s);
     return (found != atom_map.cend());
 }
+
+bool Calculator::programFound(const string &s) const {
+    unordered_map<string, shared_ptr<Literal>>::const_iterator found = program_map.find(s);
+    return !(found == program_map.cend());
+}
+
 
 bool Calculator::atomIsNumeric(const string &s) {
     ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map[s].get());
@@ -282,13 +285,23 @@ bool Calculator::addOperator(Operator* o) {
 }
 
 bool Calculator::addAtom(const string &key, shared_ptr<Literal> l) {
-    if (atomExists(key))
+    if (atomFound(key))
         throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
 
     pair<string, shared_ptr<Literal>> atom_pair (key, l);
     atom_map.insert(atom_pair);
     return true;
 }
+
+bool Calculator::addProgram(const string &key, shared_ptr<Literal> l) {
+    if (programFound(key))
+        throw UTComputerException("Error in Calculator::addProgram : program already exists.");
+
+    pair<string, shared_ptr<Literal>> program_pair (key, l);
+    program_map.insert(program_pair);
+    return true;
+}
+
 // ===============================================================================================================
 
 

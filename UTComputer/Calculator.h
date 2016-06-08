@@ -15,6 +15,7 @@ class Calculator {
     StackUTComputer st;
     LexerUTComputer lx;
     unordered_map<string, shared_ptr<Literal>> atom_map;
+    unordered_map<string, shared_ptr<Literal>> program_map;
 
 
 public:
@@ -84,12 +85,13 @@ public:
     // ===============================================================================================================
     // ======================                  Class useful functions                        =========================
     // ===============================================================================================================
-    bool atomExists(const string &key) const;
     bool atomFound(const string &s) const;
+    bool programFound(const string &s) const;
     bool atomIsNumeric(const string &s);
     bool atomIsProgram(const string &s);
     bool addOperator(Operator* o);
     bool addAtom(const string &key, shared_ptr<Literal> l);
+    bool addProgram(const string &key, shared_ptr<Literal> l);
     // ===============================================================================================================
 };
 
