@@ -126,10 +126,10 @@ void StackUTComputer::pushLastArgs() {
 // ===============================================================================================================
 // ======================                            Class services                     ==========================
 // ===============================================================================================================
-/**
-    * Function that fill the Literal* table arguments with the right ones and in
-    * the right order : first argument is the last one to be unstacked
-    */
+    /*
+     * Function that fill the Literal* table arguments with the right ones and in
+     * the right order : first argument is the last one to be unstacked
+     */
 void StackUTComputer::getArguments(int arity, vector<shared_ptr<Literal>> &arguments) {
     if (st.size() < arity)
         throw UTComputerException("Error in StackUTComputer::getArguments : arity superior to stack size");

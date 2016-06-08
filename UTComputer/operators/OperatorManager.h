@@ -48,7 +48,7 @@ using namespace std;
 
 
 class OperatorManager {
-    unordered_map<string, Operator*> op_map;
+    unordered_map<string, Operator*> op_map; /*!< Container to store and access to Operator* */
 
 
 
@@ -58,6 +58,14 @@ public:
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
     OperatorManager() { }
+
+    /**
+     * \fn virtual ~OperatorManager()
+     * \brief Destructor
+     *
+     * Iterates in the unordered_map \a op_map and delete all the pointers to Operator.
+     * Operators are created in the Calculator constructor bur deleted here, in the OperatorManager descructor.
+     */
     virtual ~OperatorManager() {
         for (auto it = op_map.begin(); it != op_map.end(); ++it) {
             delete it->second;
@@ -74,10 +82,29 @@ public:
     // ======================                       Class main services                     ==========================
     // ===============================================================================================================
 
+    /**
+     * \fn bool operatorExists(const string &key) const;
+     * \brief Check if an Operator exists
+     * \param[in] key :  Operator's key
+     * \return True if the Operator exists in \a op_map, otherwise return false
+     */
     bool operatorExists(const string &key) const;
 
+    /**
+     * \fn Operator* getOperator(const string &key);
+     * \brief Get a specific Operator
+     * \param[in] key : Operator's key
+     * \return A pointer to an Operator matching the key parameter
+     */
     Operator* getOperator(const string &key);
 
+
+    /**
+     * \fn bool addOperator(Operator* o);
+     * \brief Method that add an Operator* to the \a op_map attribute
+     * \param[in] o : Pointer to the Operator
+     * \return True adding the Operator went well, false otherwise
+     */
     bool addOperator(Operator* o);
     // ===============================================================================================================
 

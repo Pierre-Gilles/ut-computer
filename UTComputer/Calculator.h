@@ -1,4 +1,3 @@
-// TOTO doc
 #ifndef UTCOMPUTER_CALCULATOR_H
 #define UTCOMPUTER_CALCULATOR_H
 
@@ -9,14 +8,18 @@
 #include "literals/LiteralFactory.h"
 
 
+/**
+ * \class Calculator
+ * \brief Main class of the application
+ */
 class Calculator {
 
     OperatorManager op_manager;
     LiteralFactory lf;
     StackUTComputer st;
     LexerUTComputer lx;
-    unordered_map<string, shared_ptr<AtomLiteral>> atom_map;
     unordered_map<string, shared_ptr<ProgramLiteral>> program_map;
+    unordered_map<string, shared_ptr<AtomLiteral>> atom_map;
 
 
 public:
@@ -25,6 +28,14 @@ public:
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
+    /**
+     * \fn Calculator()
+     * \brief Constructor
+     * \return A new instance of Calculator
+     *
+     * The constructor is in charge of creating all the basic Operator used in this application by calling the method
+     * Calculator::addOperator
+     */
     Calculator();
     virtual ~Calculator() { }
     // ===============================================================================================================
@@ -38,16 +49,49 @@ public:
     // ======================                       Getters and Setters                     ==========================
     // ===============================================================================================================
 
+    /**
+     * \fn const OperatorManager &getOp_manager() const
+     * \brief Getter for the private attribute \a op_manager
+     * \return The private attribute
+     */
     const OperatorManager &getOp_manager() const;
 
+
+    /**
+     * \fn const StackUTComputer &getSt()
+     * \brief Getter for the private attribute \a st (instance of StackUTComputer)
+     * \return The private attribute \a st (instance of StackUTComputer)
+     */
     const StackUTComputer &getSt();
 
+
+    /**
+     * \fn const LexerUTComputer &getLx() const
+     * \brief Getter for the private attribute \a lx (instance of LexerUTComputer)
+     * \return The private attribute \a lx (instance of LexerUTComputer)
+     */
     const LexerUTComputer &getLx() const;
 
+
+    /**
+     * \fn void init_program_map(vector<vector<string>> list)
+     * \brief Method that init the \a program_map attribute with the information stored in the SQLite database
+     * \param[in] list : vector of a vector of string
+     */
     void init_program_map(vector<vector<string>> list);
 
+    /**
+     * \fn void init_program_map(vector<vector<string>> list)
+     * \brief Method that init the \a program_map attribute with the information stored in the SQLite database
+     * \return
+     */
     vector<vector<string>> save_program_map() const;
 
+    /**
+     * \fn void init_atom_map(vector<vector<string>> list)
+     * \brief Method that init the \a atom_map attribute with the information stored in the SQLite database
+     * \param[in] list : vector of a vector of string
+     */
     void init_atom_map(vector<vector<string>> list);
 
     vector<vector<string>> save_atom_map() const;
