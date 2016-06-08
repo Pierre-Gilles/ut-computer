@@ -17,8 +17,16 @@ var class_stack_u_t_computer =
     [ "reinstateMemento", "class_stack_u_t_computer.html#a537c2b5e64df5243a6403499b6d92540", null ],
     [ "setLastArguments", "class_stack_u_t_computer.html#ab3b3bc9fccfd2859f8a119dcd6abdcad", null ],
     [ "setLastOperator", "class_stack_u_t_computer.html#a5f1642c2a0ee94a3e3ae9044173385d1", null ],
+    [ "setMaxMementoSize", "class_stack_u_t_computer.html#a9ce7656d49e5c3b028764665da72f9f9", null ],
     [ "size", "class_stack_u_t_computer.html#a1f30824b947382210386f17629156552", null ],
     [ "top", "class_stack_u_t_computer.html#a5f4c729227b1fa5a84b822b8ad1aedda", null ],
     [ "undo", "class_stack_u_t_computer.html#afc03536182956509e2f408ae55c59ab1", null ],
-    [ "StackUTComputerMemento", "class_stack_u_t_computer.html#a5ab82a37e2a4f31c2c2ce468be1cfddd", null ]
+    [ "StackUTComputerMemento", "class_stack_u_t_computer.html#a5ab82a37e2a4f31c2c2ce468be1cfddd", null ],
+    [ "lastArguments", "class_stack_u_t_computer.html#a713243abd8f0afbc7300b4f3db6e2824", null ],
+    [ "lastOperator", "class_stack_u_t_computer.html#a9983fd995249624de3ee889bcee7db3f", null ],
+    [ "maxMementoSize", "class_stack_u_t_computer.html#aeceab57a43a1375ea95ab7dc04c10eb0", null ],
+    [ "mementoCurrentSize", "class_stack_u_t_computer.html#aeb4c1ca0632abe4e4ffb0eea039eff4e", null ],
+    [ "mementoPosition", "class_stack_u_t_computer.html#a22e93cc6fed9443476fa1dac852ac346", null ],
+    [ "mementoStack", "class_stack_u_t_computer.html#a8508796eff9c94d6d1b1b7c3d97432a8", null ],
+    [ "st", "class_stack_u_t_computer.html#af4f29c82c75468f5662c22c75d6265bf", null ]
 ];

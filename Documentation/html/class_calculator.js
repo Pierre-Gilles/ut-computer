@@ -16,5 +16,10 @@ var class_calculator =
     [ "getOp_manager", "class_calculator.html#a4c3ac6d918aea79cd8d7bc6e2b387c7e", null ],
     [ "getSt", "class_calculator.html#ac74a0436d438e789ef16605aa159debf", null ],
     [ "handleAtom", "class_calculator.html#a4015ff8cdb89a22ae2b1cf0b6a4aad10", null ],
-    [ "run", "class_calculator.html#a24a26b805195716df116a7f79febfa94", null ]
+    [ "run", "class_calculator.html#a24a26b805195716df116a7f79febfa94", null ],
+    [ "atom_map", "class_calculator.html#a554ccc63e06357651688381390da9346", null ],
+    [ "lf", "class_calculator.html#aa34f4c9fce871d264314b0413fe3f108", null ],
+    [ "lx", "class_calculator.html#a090b4a36dc189544f799000ba203a43f", null ],
+    [ "op_manager", "class_calculator.html#a635be8fd99a2aa034a54cc878d8d34ae", null ],
+    [ "st", "class_calculator.html#a8bb0dc09d21ca2fbb18215d8f17ec7e5", null ]
 ];

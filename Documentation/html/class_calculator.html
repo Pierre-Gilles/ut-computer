@@ -109,6 +109,7 @@ $(document).ready(function(){initNavTree('class_calculator.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_calculator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Calculator Class Reference</div>  </div>
@@ -153,6 +154,19 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaefeb1653d799e4649fe0742d8d3f93a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cf8ed719d8eca6f53a4589c4f4fafec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a7cf8ed719d8eca6f53a4589c4f4fafec">addAtom</a> (const string &amp;key, shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt; l)</td></tr>
 <tr class="separator:a7cf8ed719d8eca6f53a4589c4f4fafec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a635be8fd99a2aa034a54cc878d8d34ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_operator_manager.html">OperatorManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a635be8fd99a2aa034a54cc878d8d34ae">op_manager</a></td></tr>
+<tr class="separator:a635be8fd99a2aa034a54cc878d8d34ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa34f4c9fce871d264314b0413fe3f108"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_literal_factory.html">LiteralFactory</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#aa34f4c9fce871d264314b0413fe3f108">lf</a></td></tr>
+<tr class="separator:aa34f4c9fce871d264314b0413fe3f108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb0dc09d21ca2fbb18215d8f17ec7e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a8bb0dc09d21ca2fbb18215d8f17ec7e5">st</a></td></tr>
+<tr class="separator:a8bb0dc09d21ca2fbb18215d8f17ec7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a090b4a36dc189544f799000ba203a43f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_lexer_u_t_computer.html">LexerUTComputer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a090b4a36dc189544f799000ba203a43f">lx</a></td></tr>
+<tr class="separator:a090b4a36dc189544f799000ba203a43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a554ccc63e06357651688381390da9346"><td class="memItemLeft" align="right" valign="top">unordered_map&lt; string, shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a554ccc63e06357651688381390da9346">atom_map</a></td></tr>
+<tr class="separator:a554ccc63e06357651688381390da9346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="adf568b2e0dacc9adf5b7d740622beb92"></a>
@@ -435,6 +449,107 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a554ccc63e06357651688381390da9346"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unordered_map&lt;string, shared_ptr&lt;<a class="el" href="class_literal.html">Literal</a>&gt; &gt; Calculator::atom_map</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa34f4c9fce871d264314b0413fe3f108"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_literal_factory.html">LiteralFactory</a> Calculator::lf</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a090b4a36dc189544f799000ba203a43f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_lexer_u_t_computer.html">LexerUTComputer</a> Calculator::lx</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a635be8fd99a2aa034a54cc878d8d34ae"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_operator_manager.html">OperatorManager</a> Calculator::op_manager</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8bb0dc09d21ca2fbb18215d8f17ec7e5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> Calculator::st</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

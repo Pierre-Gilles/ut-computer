@@ -27,5 +27,7 @@ var class_complex_literal =
     [ "operator||", "class_complex_literal.html#a1733963fe2c7b5431f6eb50ec044c691", null ],
     [ "setIm", "class_complex_literal.html#a3a69fd56378fe9a3315e49ad5cf807fd", null ],
     [ "setReal", "class_complex_literal.html#a038264f11c02916544d5d6f53809db15", null ],
-    [ "toString", "class_complex_literal.html#acb7e6c16406055a59e4facb6e9368bc7", null ]
+    [ "toString", "class_complex_literal.html#acb7e6c16406055a59e4facb6e9368bc7", null ],
+    [ "im", "class_complex_literal.html#abdbd8e1ad624cdd457c2834b2e0c1ef2", null ],
+    [ "real", "class_complex_literal.html#a43d74d8498e6fc04a2266ee4b13214cf", null ]
 ];

@@ -110,6 +110,9 @@ $(document).ready(function(){initNavTree('class_numeric_literal.html','');});
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_numeric_literal-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">NumericLiteral Class Reference</div>  </div>
@@ -186,6 +189,23 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a98104c79374f4aef865a3a87aa715e14"><td class="memItemLeft" align="right" valign="top">static const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_numeric_literal.html#a98104c79374f4aef865a3a87aa715e14">getNumericRegex</a> ()</td></tr>
 <tr class="separator:a98104c79374f4aef865a3a87aa715e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab7105f74e511ec4d35a18e6d2d7c78b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_numeric_literal.html#ab7105f74e511ec4d35a18e6d2d7c78b4">simplification</a> ()</td></tr>
+<tr class="separator:ab7105f74e511ec4d35a18e6d2d7c78b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1bba874419316748a568f7d5a9763ca4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_numeric_literal.html#a1bba874419316748a568f7d5a9763ca4">numerator</a></td></tr>
+<tr class="separator:a1bba874419316748a568f7d5a9763ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bf510e0c82b49a726024ce2ea53ca23"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_numeric_literal.html#a7bf510e0c82b49a726024ce2ea53ca23">denominator</a></td></tr>
+<tr class="separator:a7bf510e0c82b49a726024ce2ea53ca23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ac43adfd2cc4889d89d702b56b22a87ec"><td class="memItemLeft" align="right" valign="top">static const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_numeric_literal.html#ac43adfd2cc4889d89d702b56b22a87ec">numericRegex</a> = &quot;(^[0-9]+$)|(^[0-9]*(\\.[0-9]+)?$)&quot;</td></tr>
+<tr class="separator:ac43adfd2cc4889d89d702b56b22a87ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -636,6 +656,29 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ab7105f74e511ec4d35a18e6d2d7c78b4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NumericLiteral::simplification </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="aa7852069deb8dc1f1d99f8d3ab4fc7e2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -661,6 +704,67 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A string that will depend on the subclass implementing this method </dd></dl>
 
 <p>Implements <a class="el" href="class_literal.html#a91ddbfda666eef5cb7ed8c0854f6fc94">Literal</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a7bf510e0c82b49a726024ce2ea53ca23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double NumericLiteral::denominator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1bba874419316748a568f7d5a9763ca4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double NumericLiteral::numerator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac43adfd2cc4889d89d702b56b22a87ec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string NumericLiteral::numericRegex = &quot;(^[0-9]+$)|(^[0-9]*(\\.[0-9]+)?$)&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['inputtest',['inputTest',['../class_test___calculator.html#ab94e3e5bf847d879b1f9a5bd479cd0a2',1,'Test_Calculator']]]
+  ['db',['db',['../class_database.html#aea64d7d99483faec8f049cdd817bb693',1,'Database']]],
+  ['denominator',['denominator',['../class_numeric_literal.html#a7bf510e0c82b49a726024ce2ea53ca23',1,'NumericLiteral']]]
 ];

@@ -4,6 +4,7 @@ var class_numeric_literal =
     [ "~NumericLiteral", "class_numeric_literal.html#a7e0d79d8bb3fd85d840f1540473b3799", null ],
     [ "getDenominator", "class_numeric_literal.html#ada5d86909617e86d14c151b534f8f1bc", null ],
     [ "getNumerator", "class_numeric_literal.html#af40946f5156fef570da5a083be5d3fc0", null ],
+    [ "getNumericRegex", "class_numeric_literal.html#a98104c79374f4aef865a3a87aa715e14", null ],
     [ "isInteger", "class_numeric_literal.html#a2df8c0619f986d05962e1a6f09abbb4b", null ],
     [ "isRational", "class_numeric_literal.html#ab810353dfbd0aec6c84eff81dfcb459a", null ],
     [ "isReal", "class_numeric_literal.html#adc06d015d9fd06b6479595072b1772e6", null ],
@@ -23,5 +24,9 @@ var class_numeric_literal =
     [ "operator||", "class_numeric_literal.html#aa4831c518e05f9eb98b9149dd22261e3", null ],
     [ "setDenominator", "class_numeric_literal.html#a92cc6f64e034a7564c7537cb7c38a811", null ],
     [ "setNumerator", "class_numeric_literal.html#a2bbd936fcec2240d21a7617ddb4d4b8b", null ],
-    [ "toString", "class_numeric_literal.html#aa7852069deb8dc1f1d99f8d3ab4fc7e2", null ]
+    [ "simplification", "class_numeric_literal.html#ab7105f74e511ec4d35a18e6d2d7c78b4", null ],
+    [ "toString", "class_numeric_literal.html#aa7852069deb8dc1f1d99f8d3ab4fc7e2", null ],
+    [ "denominator", "class_numeric_literal.html#a7bf510e0c82b49a726024ce2ea53ca23", null ],
+    [ "numerator", "class_numeric_literal.html#a1bba874419316748a568f7d5a9763ca4", null ],
+    [ "numericRegex", "class_numeric_literal.html#ac43adfd2cc4889d89d702b56b22a87ec", null ]
 ];

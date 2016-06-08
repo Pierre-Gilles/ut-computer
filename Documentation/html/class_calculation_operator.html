@@ -110,6 +110,7 @@ $(document).ready(function(){initNavTree('class_calculation_operator.html','');}
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_calculation_operator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">CalculationOperator Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -179,6 +180,11 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a5617dbf5bd1201d414ba2b5c18511d9d inherit pro_attribs_class_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25440d56236b4b63705f91c00a105f29 inherit pro_attribs_class_operator"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a25440d56236b4b63705f91c00a105f29">priority</a></td></tr>
 <tr class="separator:a25440d56236b4b63705f91c00a105f29 inherit pro_attribs_class_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5d401c7aa7e7d8f07b45e97d7d9fac92"><td class="memItemLeft" align="right" valign="top">virtual shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculation_operator.html#a5d401c7aa7e7d8f07b45e97d7d9fac92">executeSpecificOperator</a> ()=0</td></tr>
+<tr class="separator:a5d401c7aa7e7d8f07b45e97d7d9fac92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa456b041dab26d7bd802d71fe2c32ea5"></a>
@@ -268,6 +274,31 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_operator.html#a61487b697fbb29cb4e87193ac11fb337">Operator</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5d401c7aa7e7d8f07b45e97d7d9fac92"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual shared_ptr&lt;<a class="el" href="class_literal.html">Literal</a>&gt; CalculationOperator::executeSpecificOperator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_operator_division.html#ad85b04c284c27d95c066c060e951fa3b">OperatorDivision</a>, <a class="el" href="class_operator_minus.html#ac7e9da0662a80564af3e9ca22db31496">OperatorMinus</a>, <a class="el" href="class_operator_plus.html#ad62453ce89b699994d09aff0a0198c62">OperatorPlus</a>, <a class="el" href="class_operator_multiplication.html#ac33f1ed7230a30b6cf08d58e0bedae97">OperatorMultiplication</a>, <a class="el" href="class_operator_dollar.html#a1f35f406ec87d81bd1880ea2b2018dc0">OperatorDollar</a>, <a class="el" href="class_operator_i_m.html#a75e7966a692ac92bf8958cdc12978a44">OperatorIM</a>, <a class="el" href="class_operator_r_e.html#a99c072ce93de495e96fd436405196681">OperatorRE</a>, <a class="el" href="class_operator_not.html#a901b71d74fe5b2327381bd8a9ec3c273">OperatorNot</a>, <a class="el" href="class_operator_numerator.html#aaf57a6b5f7d5c12a78bd9600d2b19c90">OperatorNumerator</a>, <a class="el" href="class_operator_neg.html#a5bfbd9a565357b6e80907b9cd36b816f">OperatorNeg</a>, <a class="el" href="class_operator_and.html#a275779c93617ac60e6c7fda0f3c12a29">OperatorAnd</a>, <a class="el" href="class_operator_denominator.html#a3ece9a15508eec68985338ec9e458b66">OperatorDenominator</a>, <a class="el" href="class_operator_inferior_equal.html#a8bd6593966167e3fda1540ef3cdd9d9d">OperatorInferiorEqual</a>, <a class="el" href="class_operator_or.html#a25ab2168732f2f4fc7bd37ccdb5284cc">OperatorOr</a>, <a class="el" href="class_operator_different.html#ace302d446faf95b5c91469b5c4288205">OperatorDifferent</a>, <a class="el" href="class_operator_equal.html#aa239e812fb47f1fc18072c41c2d410ba">OperatorEqual</a>, <a class="el" href="class_operator_inferior.html#a31ee70e2e09d6fa42bf10f81501123eb">OperatorInferior</a>, <a class="el" href="class_operator_superior.html#a036bb5a53c0ba761490701f75393766e">OperatorSuperior</a>, <a class="el" href="class_operator_integer_division.html#ab20a9a9e59d17d9fa46c02cd86c41414">OperatorIntegerDivision</a>, <a class="el" href="class_operator_modulo.html#aed65b69ff7f84dd70a6bf67402d5e762">OperatorModulo</a>, and <a class="el" href="class_operator_superior_equal.html#ac544e384795817790101c5a02664dbc7">OperatorSuperiorEqual</a>.</p>
 
 </div>
 </div>

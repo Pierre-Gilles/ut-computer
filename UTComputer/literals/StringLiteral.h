@@ -10,7 +10,7 @@
 
 /**
  * \class StringLiteral
- * \brief subclass of Literal
+ * \brief Abstract subclass of Literal
  *
  * Superclass for all string type literals (AtomLiteral, ProgramLiteral and ExpressionLiteral)
  */
@@ -22,8 +22,14 @@ public:
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
+    /**
+     * \fn StringLiteral(const string &value)
+     * \brief ExpressionLiteral constructor
+     * \param[in] value : string from which the StringLiteral is created (subclasses will call this constructor)
+     * \return \a Nothing because the class is abstract and can't beinstantiated
+     */
     StringLiteral(const string &value) : value(value) { }
-    virtual ~StringLiteral() { }
+    virtual ~StringLiteral() { } /*!< virtual destructor is necessary with inheritance */
     // ===============================================================================================================
 
 
@@ -32,10 +38,19 @@ public:
     // ===============================================================================================================
     // ======================                       Getters and Setters                     ==========================
     // ===============================================================================================================
+    /**
+     * \fn const string &getValue() const
+     * \brief Getter for the protected attribute value
+     * \return The protected attribute value
+     */
     const string &getValue() const {
         return value;
     }
-
+    /**
+     * \fn void setValue(const string &val)
+     * \brief Setter for the protected attribute value
+     * \param[in] val : the string used to set the protected attribute value
+     */
     void setValue(const string &val) {
         value = val;
     }
@@ -48,6 +63,11 @@ public:
     // ===============================================================================================================
     // ======================                         Override Methods                      ==========================
     // ===============================================================================================================
+    /**
+     * \fn virtual string toString() const
+     * \brief Virtual pure method that will be redefined by each subclass
+     * \return A string that will depend on the subclass implementing this method
+     */
     virtual string toString() const override = 0;
     // ===============================================================================================================
 

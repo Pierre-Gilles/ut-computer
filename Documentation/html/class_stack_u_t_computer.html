@@ -110,6 +110,8 @@ $(document).ready(function(){initNavTree('class_stack_u_t_computer.html','');});
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="class_stack_u_t_computer-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -166,6 +168,26 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a9ce7656d49e5c3b028764665da72f9f9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_u_t_computer.html#a9ce7656d49e5c3b028764665da72f9f9">setMaxMementoSize</a> (int nb)</td></tr>
 <tr class="separator:a9ce7656d49e5c3b028764665da72f9f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af4f29c82c75468f5662c22c75d6265bf"><td class="memItemLeft" align="right" valign="top">deque&lt; shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_u_t_computer.html#af4f29c82c75468f5662c22c75d6265bf">st</a></td></tr>
+<tr class="separator:af4f29c82c75468f5662c22c75d6265bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a713243abd8f0afbc7300b4f3db6e2824"><td class="memItemLeft" align="right" valign="top">deque&lt; shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_u_t_computer.html#a713243abd8f0afbc7300b4f3db6e2824">lastArguments</a></td></tr>
+<tr class="separator:a713243abd8f0afbc7300b4f3db6e2824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9983fd995249624de3ee889bcee7db3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_operator.html">Operator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_u_t_computer.html#a9983fd995249624de3ee889bcee7db3f">lastOperator</a></td></tr>
+<tr class="separator:a9983fd995249624de3ee889bcee7db3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8508796eff9c94d6d1b1b7c3d97432a8"><td class="memItemLeft" align="right" valign="top">deque&lt; <a class="el" href="class_stack_u_t_computer_memento.html">StackUTComputerMemento</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_u_t_computer.html#a8508796eff9c94d6d1b1b7c3d97432a8">mementoStack</a></td></tr>
+<tr class="separator:a8508796eff9c94d6d1b1b7c3d97432a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4c1ca0632abe4e4ffb0eea039eff4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_u_t_computer.html#aeb4c1ca0632abe4e4ffb0eea039eff4e">mementoCurrentSize</a></td></tr>
+<tr class="separator:aeb4c1ca0632abe4e4ffb0eea039eff4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22e93cc6fed9443476fa1dac852ac346"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_u_t_computer.html#a22e93cc6fed9443476fa1dac852ac346">mementoPosition</a></td></tr>
+<tr class="separator:a22e93cc6fed9443476fa1dac852ac346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:aeceab57a43a1375ea95ab7dc04c10eb0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_u_t_computer.html#aeceab57a43a1375ea95ab7dc04c10eb0">maxMementoSize</a> = 10</td></tr>
+<tr class="separator:aeceab57a43a1375ea95ab7dc04c10eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -548,6 +570,147 @@ Friends</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a713243abd8f0afbc7300b4f3db6e2824"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">deque&lt;shared_ptr&lt;<a class="el" href="class_literal.html">Literal</a>&gt; &gt; StackUTComputer::lastArguments</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9983fd995249624de3ee889bcee7db3f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_operator.html">Operator</a>* StackUTComputer::lastOperator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aeceab57a43a1375ea95ab7dc04c10eb0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StackUTComputer::maxMementoSize = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aeb4c1ca0632abe4e4ffb0eea039eff4e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StackUTComputer::mementoCurrentSize</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a22e93cc6fed9443476fa1dac852ac346"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int StackUTComputer::mementoPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8508796eff9c94d6d1b1b7c3d97432a8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">deque&lt;<a class="el" href="class_stack_u_t_computer_memento.html">StackUTComputerMemento</a> *&gt; StackUTComputer::mementoStack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af4f29c82c75468f5662c22c75d6265bf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">deque&lt;shared_ptr&lt;<a class="el" href="class_literal.html">Literal</a>&gt; &gt; StackUTComputer::st</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

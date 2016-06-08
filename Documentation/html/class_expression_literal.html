@@ -110,11 +110,16 @@ $(document).ready(function(){initNavTree('class_expression_literal.html','');});
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_expression_literal-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ExpressionLiteral Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Subclass of <a class="el" href="class_string_literal.html" title="Abstract subclass of Literal. ">StringLiteral</a>.  
+ <a href="class_expression_literal.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_expression_literal_8h_source.html">ExpressionLiteral.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -123,7 +128,7 @@ Inheritance diagram for ExpressionLiteral:</div>
  <div class="center">
   <img src="class_expression_literal.png" usemap="#ExpressionLiteral_map" alt=""/>
   <map id="ExpressionLiteral_map" name="ExpressionLiteral_map">
-<area href="class_string_literal.html" alt="StringLiteral" shape="rect" coords="0,56,109,80"/>
+<area href="class_string_literal.html" title="Abstract subclass of Literal. " alt="StringLiteral" shape="rect" coords="0,56,109,80"/>
 <area href="class_literal.html" title="Abstract class for all literals. " alt="Literal" shape="rect" coords="0,0,109,24"/>
 </map>
  </div></div>
@@ -131,34 +136,39 @@ Inheritance diagram for ExpressionLiteral:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a75dc34400ecec49abe426fbe0dced9be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a75dc34400ecec49abe426fbe0dced9be">ExpressionLiteral</a> (const string &amp;v)</td></tr>
+<tr class="memdesc:a75dc34400ecec49abe426fbe0dced9be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor taking a string to construct a new <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>.  <a href="#a75dc34400ecec49abe426fbe0dced9be">More...</a><br /></td></tr>
 <tr class="separator:a75dc34400ecec49abe426fbe0dced9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d765b227ca1251b0ea95accd5308bf4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a8d765b227ca1251b0ea95accd5308bf4">ExpressionLiteral</a> (const <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &amp;l)</td></tr>
+<tr class="memdesc:a8d765b227ca1251b0ea95accd5308bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor taking a <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> reference to construct a new <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>.  <a href="#a8d765b227ca1251b0ea95accd5308bf4">More...</a><br /></td></tr>
 <tr class="separator:a8d765b227ca1251b0ea95accd5308bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e282c2176922720886a44c7552c029d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a8e282c2176922720886a44c7552c029d">~ExpressionLiteral</a> ()</td></tr>
 <tr class="separator:a8e282c2176922720886a44c7552c029d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7953a4a98a09a5f5b130b49f80b7e04"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#ad7953a4a98a09a5f5b130b49f80b7e04">getPostfixExpression</a> () const </td></tr>
-<tr class="separator:ad7953a4a98a09a5f5b130b49f80b7e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae35d48fab60ec399786c2f65d7a49b5d"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#ae35d48fab60ec399786c2f65d7a49b5d">toString</a> () const  override</td></tr>
-<tr class="memdesc:ae35d48fab60ec399786c2f65d7a49b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual pure method that will be redefined by each subclass.  <a href="#ae35d48fab60ec399786c2f65d7a49b5d">More...</a><br /></td></tr>
+<tr class="memdesc:ae35d48fab60ec399786c2f65d7a49b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override of the virtual pure <a class="el" href="class_expression_literal.html#ae35d48fab60ec399786c2f65d7a49b5d" title="Override of the virtual pure toString() function. ">toString()</a> function.  <a href="#ae35d48fab60ec399786c2f65d7a49b5d">More...</a><br /></td></tr>
 <tr class="separator:ae35d48fab60ec399786c2f65d7a49b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af62cb9d411669c4d2fdde054b2439f07"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#af62cb9d411669c4d2fdde054b2439f07">operator+</a> (const <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &amp;l) const </td></tr>
+<tr class="memdesc:af62cb9d411669c4d2fdde054b2439f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload of operator+ between two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>.  <a href="#af62cb9d411669c4d2fdde054b2439f07">More...</a><br /></td></tr>
 <tr class="separator:af62cb9d411669c4d2fdde054b2439f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bc7b6175130396eebc788982ec60b16"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a8bc7b6175130396eebc788982ec60b16">operator-</a> (const <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &amp;l) const </td></tr>
+<tr class="memdesc:a8bc7b6175130396eebc788982ec60b16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload of operator- between two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>.  <a href="#a8bc7b6175130396eebc788982ec60b16">More...</a><br /></td></tr>
 <tr class="separator:a8bc7b6175130396eebc788982ec60b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7796601f1eba3280a9e66588daed88cd"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a7796601f1eba3280a9e66588daed88cd">operator*</a> (const <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &amp;l) const </td></tr>
+<tr class="memdesc:a7796601f1eba3280a9e66588daed88cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload of operator* between two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>.  <a href="#a7796601f1eba3280a9e66588daed88cd">More...</a><br /></td></tr>
 <tr class="separator:a7796601f1eba3280a9e66588daed88cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a139eeed2bbda49088d2b1d56508d43b8"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a139eeed2bbda49088d2b1d56508d43b8">operator/</a> (const <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &amp;l) const </td></tr>
+<tr class="memdesc:a139eeed2bbda49088d2b1d56508d43b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload of operator/ between two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>.  <a href="#a139eeed2bbda49088d2b1d56508d43b8">More...</a><br /></td></tr>
 <tr class="separator:a139eeed2bbda49088d2b1d56508d43b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7657e5894bd520a41f283c8ddc8f33d5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a7657e5894bd520a41f283c8ddc8f33d5">hasSamePriority</a> (const string &amp;op, const string &amp;expression) const </td></tr>
-<tr class="separator:a7657e5894bd520a41f283c8ddc8f33d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_string_literal"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_string_literal')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_string_literal.html">StringLiteral</a></td></tr>
 <tr class="memitem:a7bb1f5f2ecdf3c3a8f6027bf484b4263 inherit pub_methods_class_string_literal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_string_literal.html#a7bb1f5f2ecdf3c3a8f6027bf484b4263">StringLiteral</a> (const string &amp;<a class="el" href="class_string_literal.html#ac587048215440d9157b673e0d2ef60c0">value</a>)</td></tr>
+<tr class="memdesc:a7bb1f5f2ecdf3c3a8f6027bf484b4263 inherit pub_methods_class_string_literal"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> constructor.  <a href="#a7bb1f5f2ecdf3c3a8f6027bf484b4263">More...</a><br /></td></tr>
 <tr class="separator:a7bb1f5f2ecdf3c3a8f6027bf484b4263 inherit pub_methods_class_string_literal"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a056369ee041e57c18145ea0fe09f309a inherit pub_methods_class_string_literal"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_string_literal.html#a056369ee041e57c18145ea0fe09f309a">~StringLiteral</a> ()</td></tr>
 <tr class="separator:a056369ee041e57c18145ea0fe09f309a inherit pub_methods_class_string_literal"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad48f97999a528e48b2e6d32e04084af1 inherit pub_methods_class_string_literal"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_string_literal.html#ad48f97999a528e48b2e6d32e04084af1">getValue</a> () const </td></tr>
-<tr class="separator:ad48f97999a528e48b2e6d32e04084af1 inherit pub_methods_class_string_literal"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd35d17fa3a9cbf3d444e46c7c61181 inherit pub_methods_class_string_literal"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_string_literal.html#aacd35d17fa3a9cbf3d444e46c7c61181">getValue</a> () const </td></tr>
+<tr class="memdesc:aacd35d17fa3a9cbf3d444e46c7c61181 inherit pub_methods_class_string_literal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the protected attribute value.  <a href="#aacd35d17fa3a9cbf3d444e46c7c61181">More...</a><br /></td></tr>
+<tr class="separator:aacd35d17fa3a9cbf3d444e46c7c61181 inherit pub_methods_class_string_literal"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1c5b00c825e829f67affa6f5f381cd1 inherit pub_methods_class_string_literal"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_string_literal.html#ab1c5b00c825e829f67affa6f5f381cd1">setValue</a> (const string &amp;val)</td></tr>
+<tr class="memdesc:ab1c5b00c825e829f67affa6f5f381cd1 inherit pub_methods_class_string_literal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for the protected attribute value.  <a href="#ab1c5b00c825e829f67affa6f5f381cd1">More...</a><br /></td></tr>
 <tr class="separator:ab1c5b00c825e829f67affa6f5f381cd1 inherit pub_methods_class_string_literal"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_literal"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_literal')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_literal.html">Literal</a></td></tr>
 <tr class="memitem:ae562f3f8cfa8d6d1730bfc0bfcda289f inherit pub_methods_class_literal"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_literal.html#ae562f3f8cfa8d6d1730bfc0bfcda289f">~Literal</a> ()</td></tr>
@@ -166,8 +176,23 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a110690877f3f1dec1473dbb218176dc2"><td class="memItemLeft" align="right" valign="top">static const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a110690877f3f1dec1473dbb218176dc2">getExpressionRegex</a> ()</td></tr>
-<tr class="separator:a110690877f3f1dec1473dbb218176dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb28b0859276884065c201981c14da7"><td class="memItemLeft" align="right" valign="top">static const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a1cb28b0859276884065c201981c14da7">getExpressionRegex</a> ()</td></tr>
+<tr class="memdesc:a1cb28b0859276884065c201981c14da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static function to get the static attribute expressionRegex.  <a href="#a1cb28b0859276884065c201981c14da7">More...</a><br /></td></tr>
+<tr class="separator:a1cb28b0859276884065c201981c14da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a73e33bb618ee5e91a5732088fb29b229"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#a73e33bb618ee5e91a5732088fb29b229">hasSamePriority</a> (const string &amp;op, const string &amp;expression) const </td></tr>
+<tr class="memdesc:a73e33bb618ee5e91a5732088fb29b229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method used to test if an expression contains operators having the same priority than parameter <em>op</em> or not.  <a href="#a73e33bb618ee5e91a5732088fb29b229">More...</a><br /></td></tr>
+<tr class="separator:a73e33bb618ee5e91a5732088fb29b229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9db4634bead88329d87edc388b1b696"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#af9db4634bead88329d87edc388b1b696">constructNewExpression</a> (const string &amp;op, const <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &amp;l) const </td></tr>
+<tr class="memdesc:af9db4634bead88329d87edc388b1b696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method used to construct a new expression from two expressions and an operator +, -, * or /.  <a href="#af9db4634bead88329d87edc388b1b696">More...</a><br /></td></tr>
+<tr class="separator:af9db4634bead88329d87edc388b1b696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ae14b9052358271bd51be94c2790d1c4e"><td class="memItemLeft" align="right" valign="top">static const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression_literal.html#ae14b9052358271bd51be94c2790d1c4e">expressionRegex</a> = &quot;^'.*'$&quot;</td></tr>
+<tr class="separator:ae14b9052358271bd51be94c2790d1c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -178,7 +203,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ac587048215440d9157b673e0d2ef60c0 inherit pro_attribs_class_string_literal"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_string_literal.html#ac587048215440d9157b673e0d2ef60c0">value</a></td></tr>
 <tr class="separator:ac587048215440d9157b673e0d2ef60c0 inherit pro_attribs_class_string_literal"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Subclass of <a class="el" href="class_string_literal.html" title="Abstract subclass of Literal. ">StringLiteral</a>. </p>
+<p>Class used to manage expressions (example : '(2+2)*3/4-(10+2-5)' ) </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a75dc34400ecec49abe426fbe0dced9be"></a>
 <div class="memitem">
 <div class="memproto">
@@ -200,6 +228,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructor taking a string to construct a new <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>: string from which the <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> is created </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An instance of <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>. Delete all spaces, \t and \n character. </dd></dl>
 
 </div>
 </div>
@@ -224,6 +261,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructor taking a <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> reference to construct a new <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>: <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> from which the new <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> is created </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> instance, copy of the parameter. </dd></dl>
 
 </div>
 </div>
@@ -251,7 +297,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a110690877f3f1dec1473dbb218176dc2"></a>
+<a class="anchor" id="af9db4634bead88329d87edc388b1b696"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -259,7 +305,51 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static const string&amp; ExpressionLiteral::getExpressionRegex </td>
+          <td class="memname">ExpressionLiteral::constructNewExpression </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>op</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_expression_literal.html">ExpressionLiteral</a> &amp;&#160;</td>
+          <td class="paramname"><em>l</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Method used to construct a new expression from two expressions and an operator +, -, * or /. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">op</td><td>: string containing the operator </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>: const <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> &amp; </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the concatenation of the operator <em>op</em> and the two expressions (the one given as a parameter and the implicit one) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1cb28b0859276884065c201981c14da7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const string &amp; ExpressionLiteral::getExpressionRegex </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -272,9 +362,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Static function to get the static attribute expressionRegex. </p>
+<dl class="section return"><dt>Returns</dt><dd>The static private attribute expressionRegex </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="ad7953a4a98a09a5f5b130b49f80b7e04"></a>
+<a class="anchor" id="a73e33bb618ee5e91a5732088fb29b229"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -282,27 +375,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string ExpressionLiteral::getPostfixExpression </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a7657e5894bd520a41f283c8ddc8f33d5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ExpressionLiteral::hasSamePriority </td>
+          <td class="memname">ExpressionLiteral::hasSamePriority </td>
           <td>(</td>
           <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>op</em>, </td>
@@ -319,7 +392,22 @@ Additional Inherited Members</h2></td></tr>
           <td></td><td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Method used to test if an expression contains operators having the same priority than parameter <em>op</em> or not. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">op</td><td>: string containing the operator </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">expression</td><td>: string containing the expression </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if <em>expression's</em> operators have the same priority than \ op, Fale otherwise. </dd></dl>
 
 </div>
 </div>
@@ -337,6 +425,15 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Overload of operator* between two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>: const <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new shared_ptr&lt;ExpressionLiteral&gt; containing the concatenation of the two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> and the operator multiplication </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="af62cb9d411669c4d2fdde054b2439f07"></a>
@@ -352,6 +449,15 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Overload of operator+ between two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>: const <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new shared_ptr&lt;ExpressionLiteral&gt; containing the concatenation of the two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> and the operator plus </dd></dl>
 
 </div>
 </div>
@@ -369,6 +475,15 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Overload of operator- between two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>: const <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new shared_ptr&lt;ExpressionLiteral&gt; containing the concatenation of the two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> and the operator minus </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a139eeed2bbda49088d2b1d56508d43b8"></a>
@@ -384,6 +499,15 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Overload of operator/ between two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>: const <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new shared_ptr&lt;ExpressionLiteral&gt; containing the concatenation of the two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> and the operator division </dd></dl>
 
 </div>
 </div>
@@ -408,10 +532,32 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual pure method that will be redefined by each subclass. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string that will depend on the subclass implementing this method </dd></dl>
+<p>Override of the virtual pure <a class="el" href="class_expression_literal.html#ae35d48fab60ec399786c2f65d7a49b5d" title="Override of the virtual pure toString() function. ">toString()</a> function. </p>
+<dl class="section return"><dt>Returns</dt><dd>The protected attribute <em>value</em> surrounded by simples quotes : 'value'. </dd></dl>
 
-<p>Implements <a class="el" href="class_string_literal.html#a2d2c9f4b0c612923558829991a694f52">StringLiteral</a>.</p>
+<p>Implements <a class="el" href="class_string_literal.html#a698332dfe3b67b8705d352f20b23b46a">StringLiteral</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ae14b9052358271bd51be94c2790d1c4e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string ExpressionLiteral::expressionRegex = &quot;^'.*'$&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>String containing the regex specific to <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> </p>
 
 </div>
 </div>
