@@ -1,5 +1,12 @@
 var NAVTREEINDEX5 =
 {
+"tests___operator_superior_equal_8cpp.html#ae7886140b56e63ede0a23cccd0f45665":[2,0,0,6,3,2,8,8],
+"tests___operator_superior_equal_8cpp.html#af849b29981f9e67a19a0c60fd25438a2":[2,0,0,6,3,2,8,29],
+"tests___operator_superior_equal_8cpp.html#af9ba9782545bf22494d1867e17854492":[2,0,0,6,3,2,8,16],
+"tests___operator_superior_equal_8cpp.html#afe7321936c768ca42dd2be2a16166041":[2,0,0,6,3,2,8,26],
+"tests___operator_u_n_d_o___r_e_d_o_8cpp.html":[2,0,0,6,3,4,6],
+"tests___operator_u_n_d_o___r_e_d_o_8cpp.html#a0fdef7f143173d2cdbbafdd107cc2709":[2,0,0,6,3,4,6,1],
+"tests___operator_u_n_d_o___r_e_d_o_8cpp.html#a859052b6d2d6b278fc2beaf99bea1cf1":[2,0,0,6,3,4,6,4],
 "tests___operator_u_n_d_o___r_e_d_o_8cpp.html#a8bdd24f053f72348087cd688d9f599da":[2,0,0,6,3,4,6,2],
 "tests___operator_u_n_d_o___r_e_d_o_8cpp.html#aa55948e892193116cbfc6b68152cf6c2":[2,0,0,6,3,4,6,5],
 "tests___operator_u_n_d_o___r_e_d_o_8cpp.html#ac238d7b4593dc2cf4f87da3f5a312535":[2,0,0,6,3,4,6,3],

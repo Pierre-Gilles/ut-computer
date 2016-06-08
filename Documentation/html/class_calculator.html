@@ -130,8 +130,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac74a0436d438e789ef16605aa159debf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd8eab9116bda603a47f6c8f86f67414"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_lexer_u_t_computer.html">LexerUTComputer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#acd8eab9116bda603a47f6c8f86f67414">getLx</a> () const </td></tr>
 <tr class="separator:acd8eab9116bda603a47f6c8f86f67414"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6b7ca8cc281039b220167499968d222"><td class="memItemLeft" align="right" valign="top">const unordered_map&lt; string, shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#af6b7ca8cc281039b220167499968d222">getAtom_map</a> () const </td></tr>
-<tr class="separator:af6b7ca8cc281039b220167499968d222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b2063ea7ab8b3346cb9e16804b333b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#ad1b2063ea7ab8b3346cb9e16804b333b">init_program_map</a> (vector&lt; vector&lt; string &gt;&gt; list)</td></tr>
+<tr class="separator:ad1b2063ea7ab8b3346cb9e16804b333b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5797ac337de219b54244a942ea9bf22f"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a5797ac337de219b54244a942ea9bf22f">save_program_map</a> () const </td></tr>
+<tr class="separator:a5797ac337de219b54244a942ea9bf22f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade1d57e54e261478d9fc5f1505bf3889"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#ade1d57e54e261478d9fc5f1505bf3889">init_atom_map</a> (vector&lt; vector&lt; string &gt;&gt; list)</td></tr>
+<tr class="separator:ade1d57e54e261478d9fc5f1505bf3889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc047c259914abc66cc95fc89fe6f49d"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#abc047c259914abc66cc95fc89fe6f49d">save_atom_map</a> () const </td></tr>
+<tr class="separator:abc047c259914abc66cc95fc89fe6f49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a26b805195716df116a7f79febfa94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a24a26b805195716df116a7f79febfa94">run</a> (const string &amp;s)</td></tr>
 <tr class="separator:a24a26b805195716df116a7f79febfa94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d75acbb41a13ec1fde23a53d8e7a63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a15d75acbb41a13ec1fde23a53d8e7a63">calculate</a> (const vector&lt; string &gt; &amp;tokens)</td></tr>
@@ -142,18 +148,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4015ff8cdb89a22ae2b1cf0b6a4aad10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68333ba930613d4b1846e6120e3f1aa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a68333ba930613d4b1846e6120e3f1aa0">checkExpressionCorrectForEval</a> (vector&lt; string &gt; &amp;tokens)</td></tr>
 <tr class="separator:a68333ba930613d4b1846e6120e3f1aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaed9c73fac90faa3c2956bef5eff3b4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#aaed9c73fac90faa3c2956bef5eff3b4e">atomExists</a> (const string &amp;key) const </td></tr>
-<tr class="separator:aaed9c73fac90faa3c2956bef5eff3b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1da0b28611cac39a469b216d4b2eb9ac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a1da0b28611cac39a469b216d4b2eb9ac">atomFound</a> (const string &amp;s) const </td></tr>
 <tr class="separator:a1da0b28611cac39a469b216d4b2eb9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecfe96740262c7ab3b958e48c2201436"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#aecfe96740262c7ab3b958e48c2201436">programFound</a> (const string &amp;s) const </td></tr>
+<tr class="separator:aecfe96740262c7ab3b958e48c2201436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad319a0868bad944102f75e60c2103105"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#ad319a0868bad944102f75e60c2103105">atomIsNumeric</a> (const string &amp;s)</td></tr>
 <tr class="separator:ad319a0868bad944102f75e60c2103105"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fd5b7333d5b846bf9e01f0604d00f60"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a9fd5b7333d5b846bf9e01f0604d00f60">atomIsProgram</a> (const string &amp;s)</td></tr>
 <tr class="separator:a9fd5b7333d5b846bf9e01f0604d00f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaefeb1653d799e4649fe0742d8d3f93a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#aaefeb1653d799e4649fe0742d8d3f93a">addOperator</a> (<a class="el" href="class_operator.html">Operator</a> *o)</td></tr>
 <tr class="separator:aaefeb1653d799e4649fe0742d8d3f93a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cf8ed719d8eca6f53a4589c4f4fafec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a7cf8ed719d8eca6f53a4589c4f4fafec">addAtom</a> (const string &amp;key, shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt; l)</td></tr>
-<tr class="separator:a7cf8ed719d8eca6f53a4589c4f4fafec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9997977b8d0bac4cb50486efe3912fdb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a9997977b8d0bac4cb50486efe3912fdb">addAtom</a> (const string &amp;key, const string &amp;value)</td></tr>
+<tr class="separator:a9997977b8d0bac4cb50486efe3912fdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec00e64dc1b23fc5ef094fb544dd8b6c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#aec00e64dc1b23fc5ef094fb544dd8b6c">addProgram</a> (const string &amp;key, const string &amp;value)</td></tr>
+<tr class="separator:aec00e64dc1b23fc5ef094fb544dd8b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -165,8 +173,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a8bb0dc09d21ca2fbb18215d8f17ec7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a090b4a36dc189544f799000ba203a43f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_lexer_u_t_computer.html">LexerUTComputer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a090b4a36dc189544f799000ba203a43f">lx</a></td></tr>
 <tr class="separator:a090b4a36dc189544f799000ba203a43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a554ccc63e06357651688381390da9346"><td class="memItemLeft" align="right" valign="top">unordered_map&lt; string, shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#a554ccc63e06357651688381390da9346">atom_map</a></td></tr>
-<tr class="separator:a554ccc63e06357651688381390da9346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf84441eea4e8876e7c8141b3e358319"><td class="memItemLeft" align="right" valign="top">unordered_map&lt; string, shared_ptr&lt; <a class="el" href="class_atom_literal.html">AtomLiteral</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#acf84441eea4e8876e7c8141b3e358319">atom_map</a></td></tr>
+<tr class="separator:acf84441eea4e8876e7c8141b3e358319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb2996881e10cb39ca0cb1438ea4a9e"><td class="memItemLeft" align="right" valign="top">unordered_map&lt; string, shared_ptr&lt; <a class="el" href="class_program_literal.html">ProgramLiteral</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator.html#acfb2996881e10cb39ca0cb1438ea4a9e">program_map</a></td></tr>
+<tr class="separator:acfb2996881e10cb39ca0cb1438ea4a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="adf568b2e0dacc9adf5b7d740622beb92"></a>
@@ -208,7 +218,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a7cf8ed719d8eca6f53a4589c4f4fafec"></a>
+<a class="anchor" id="a9997977b8d0bac4cb50486efe3912fdb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -221,8 +231,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt;&#160;</td>
-          <td class="paramname"><em>l</em>&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -250,16 +260,26 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aaed9c73fac90faa3c2956bef5eff3b4e"></a>
+<a class="anchor" id="aec00e64dc1b23fc5ef094fb544dd8b6c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Calculator::atomExists </td>
+          <td class="memname">bool Calculator::addProgram </td>
           <td>(</td>
           <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -361,21 +381,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af6b7ca8cc281039b220167499968d222"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unordered_map&lt; string, shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt; &gt; &amp; Calculator::getAtom_map </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="acd8eab9116bda603a47f6c8f86f67414"></a>
 <div class="memitem">
 <div class="memproto">
@@ -437,6 +442,54 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ade1d57e54e261478d9fc5f1505bf3889"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Calculator::init_atom_map </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; string &gt;&gt;&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad1b2063ea7ab8b3346cb9e16804b333b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Calculator::init_program_map </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; string &gt;&gt;&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aecfe96740262c7ab3b958e48c2201436"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Calculator::programFound </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a24a26b805195716df116a7f79febfa94"></a>
 <div class="memitem">
 <div class="memproto">
@@ -453,8 +506,38 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abc047c259914abc66cc95fc89fe6f49d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; string &gt; &gt; Calculator::save_atom_map </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5797ac337de219b54244a942ea9bf22f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; string &gt; &gt; Calculator::save_program_map </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a554ccc63e06357651688381390da9346"></a>
+<a class="anchor" id="acf84441eea4e8876e7c8141b3e358319"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -462,7 +545,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unordered_map&lt;string, shared_ptr&lt;<a class="el" href="class_literal.html">Literal</a>&gt; &gt; Calculator::atom_map</td>
+          <td class="memname">unordered_map&lt;string, shared_ptr&lt;<a class="el" href="class_atom_literal.html">AtomLiteral</a>&gt; &gt; Calculator::atom_map</td>
         </tr>
       </table>
   </td>
@@ -523,6 +606,26 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_operator_manager.html">OperatorManager</a> Calculator::op_manager</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acfb2996881e10cb39ca0cb1438ea4a9e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unordered_map&lt;string, shared_ptr&lt;<a class="el" href="class_program_literal.html">ProgramLiteral</a>&gt; &gt; Calculator::program_map</td>
         </tr>
       </table>
   </td>

@@ -1,6 +1,8 @@
 var searchData=
 [
   ['infixtopostfix',['infixToPostfix',['../class_lexer_u_t_computer.html#a7a1f2c3018275d7004611faf6aaf8fda',1,'LexerUTComputer']]],
+  ['init_5fatom_5fmap',['init_atom_map',['../class_calculator.html#ade1d57e54e261478d9fc5f1505bf3889',1,'Calculator']]],
+  ['init_5fprogram_5fmap',['init_program_map',['../class_calculator.html#ad1b2063ea7ab8b3346cb9e16804b333b',1,'Calculator']]],
   ['insertbefore',['insertBefore',['../class_u_t_computer_exception.html#a5ee2edc1b6652b7f743d11aaa8c4ccd6',1,'UTComputerException']]],
   ['iscomplex',['isComplex',['../class_complex_literal.html#a57b1ee1a3b91a16bec4a32d5b8075830',1,'ComplexLiteral']]],
   ['isinteger',['isInteger',['../class_complex_literal.html#a2173b6a9dac0883ae7b002672e004cac',1,'ComplexLiteral::isInteger()'],['../class_numeric_literal.html#a2df8c0619f986d05962e1a6f09abbb4b',1,'NumericLiteral::isInteger()']]],

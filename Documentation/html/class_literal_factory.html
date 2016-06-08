@@ -115,6 +115,9 @@ $(document).ready(function(){initNavTree('class_literal_factory.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>Class used to create specifics literals (Program, Complex, ...)  
+ <a href="class_literal_factory.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_literal_factory_8h_source.html">LiteralFactory.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -124,9 +127,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a29e73fdd87e7ad84b48f9a141d0fe299"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_literal_factory.html#a29e73fdd87e7ad84b48f9a141d0fe299">~LiteralFactory</a> ()</td></tr>
 <tr class="separator:a29e73fdd87e7ad84b48f9a141d0fe299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64816e0a34e70ed6afaef19804cc78fb"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_literal_factory.html#a64816e0a34e70ed6afaef19804cc78fb">createLiteral</a> (const string &amp;s)</td></tr>
+<tr class="memdesc:a64816e0a34e70ed6afaef19804cc78fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that create a <a class="el" href="class_literal.html" title="Abstract class for all literals. ">Literal</a>.  <a href="#a64816e0a34e70ed6afaef19804cc78fb">More...</a><br /></td></tr>
 <tr class="separator:a64816e0a34e70ed6afaef19804cc78fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class used to create specifics literals (Program, Complex, ...) </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a56ad68cf36938de64bbd93cbda8d19de"></a>
 <div class="memitem">
 <div class="memproto">
@@ -187,6 +193,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Method that create a <a class="el" href="class_literal.html" title="Abstract class for all literals. ">Literal</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>: string containing the future value of the literal </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new shared_ptr&lt;Literal&gt; containing the right type of <a class="el" href="class_literal.html" title="Abstract class for all literals. ">Literal</a> </dd></dl>
 
 </div>
 </div>

@@ -4,7 +4,7 @@ var class_numeric_literal =
     [ "~NumericLiteral", "class_numeric_literal.html#a7e0d79d8bb3fd85d840f1540473b3799", null ],
     [ "getDenominator", "class_numeric_literal.html#ada5d86909617e86d14c151b534f8f1bc", null ],
     [ "getNumerator", "class_numeric_literal.html#af40946f5156fef570da5a083be5d3fc0", null ],
-    [ "getNumericRegex", "class_numeric_literal.html#a98104c79374f4aef865a3a87aa715e14", null ],
+    [ "getNumericRegex", "class_numeric_literal.html#aa4719fbf8da74a59d8d32f7a0a9bd4b7", null ],
     [ "isInteger", "class_numeric_literal.html#a2df8c0619f986d05962e1a6f09abbb4b", null ],
     [ "isRational", "class_numeric_literal.html#ab810353dfbd0aec6c84eff81dfcb459a", null ],
     [ "isReal", "class_numeric_literal.html#adc06d015d9fd06b6479595072b1772e6", null ],

@@ -1,5 +1,12 @@
 var NAVTREEINDEX4 =
 {
+"tests___operator_inferior_8cpp.html#af4764ed9c7b0f69bbbfae0c5b60e71b6":[2,0,0,6,3,2,3,6],
+"tests___operator_inferior_8cpp.html#af92b2e3a5c7c26fe7fd414cb906f3ae4":[2,0,0,6,3,2,3,28],
+"tests___operator_inferior_8cpp.html#afc6acad9d399a80d3c06119f272ec2bd":[2,0,0,6,3,2,3,29],
+"tests___operator_inferior_8cpp.html#aff4e4062f2453268cd27f3b056ed4ba5":[2,0,0,6,3,2,3,24],
+"tests___operator_inferior_8cpp.html#aff73298e463c49d3d490e03938cfbf04":[2,0,0,6,3,2,3,17],
+"tests___operator_inferior_equal_8cpp.html":[2,0,0,6,3,2,4],
+"tests___operator_inferior_equal_8cpp.html#a087495f02ce5e8458c83fac36c823d0f":[2,0,0,6,3,2,4,21],
 "tests___operator_inferior_equal_8cpp.html#a0b3c51a255f92c370f698d4b25851d99":[2,0,0,6,3,2,4,17],
 "tests___operator_inferior_equal_8cpp.html#a0dfb2e826e9b659498b89f4bef0a6f56":[2,0,0,6,3,2,4,12],
 "tests___operator_inferior_equal_8cpp.html#a10c93df4e2bdbf5d3261e0f74a767715":[2,0,0,6,3,2,4,30],
@@ -242,12 +249,5 @@ var NAVTREEINDEX4 =
 "tests___operator_superior_equal_8cpp.html#acb8e0bb5992d5d79ac696f504dc4b05c":[2,0,0,6,3,2,8,13],
 "tests___operator_superior_equal_8cpp.html#ad077ce9f901ab850401f02132cdcae09":[2,0,0,6,3,2,8,11],
 "tests___operator_superior_equal_8cpp.html#ada98204fc98f5831d14a222c413be914":[2,0,0,6,3,2,8,10],
-"tests___operator_superior_equal_8cpp.html#ae41799c73b2c256a95d29c7832bdd044":[2,0,0,6,3,2,8,17],
-"tests___operator_superior_equal_8cpp.html#ae7886140b56e63ede0a23cccd0f45665":[2,0,0,6,3,2,8,8],
-"tests___operator_superior_equal_8cpp.html#af849b29981f9e67a19a0c60fd25438a2":[2,0,0,6,3,2,8,29],
-"tests___operator_superior_equal_8cpp.html#af9ba9782545bf22494d1867e17854492":[2,0,0,6,3,2,8,16],
-"tests___operator_superior_equal_8cpp.html#afe7321936c768ca42dd2be2a16166041":[2,0,0,6,3,2,8,26],
-"tests___operator_u_n_d_o___r_e_d_o_8cpp.html":[2,0,0,6,3,4,6],
-"tests___operator_u_n_d_o___r_e_d_o_8cpp.html#a0fdef7f143173d2cdbbafdd107cc2709":[2,0,0,6,3,4,6,1],
-"tests___operator_u_n_d_o___r_e_d_o_8cpp.html#a859052b6d2d6b278fc2beaf99bea1cf1":[2,0,0,6,3,4,6,4]
+"tests___operator_superior_equal_8cpp.html#ae41799c73b2c256a95d29c7832bdd044":[2,0,0,6,3,2,8,17]
 };

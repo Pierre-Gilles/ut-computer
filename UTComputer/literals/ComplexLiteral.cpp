@@ -21,28 +21,21 @@ string ComplexLiteral::toString() const {
 
 // Classic operators
 
-shared_ptr<ComplexLiteral> ComplexLiteral::operator+(ComplexLiteral &l) const {
+shared_ptr<ComplexLiteral> ComplexLiteral::operator+(const ComplexLiteral &l) const {
     return shared_ptr<ComplexLiteral>(new ComplexLiteral(
             real + l.real,
             im + l.im
     ));
 }
 
-shared_ptr<ComplexLiteral> ComplexLiteral::operator+(NumericLiteral &l) const {
-    return shared_ptr<ComplexLiteral>(new ComplexLiteral(
-            real + l, // call to NumericLiteral::operator+(NumericLiteral &l) const that returns a new NumericLiteral
-            im
-    ));
-}
-
-shared_ptr<ComplexLiteral> ComplexLiteral::operator-(ComplexLiteral &l) const {
+shared_ptr<ComplexLiteral> ComplexLiteral::operator-(const ComplexLiteral &l) const {
     return shared_ptr<ComplexLiteral>(new ComplexLiteral(
             real - l.real,
             im - l.im
     ));
 }
 
-shared_ptr<ComplexLiteral> ComplexLiteral::operator*(ComplexLiteral &l) const {
+shared_ptr<ComplexLiteral> ComplexLiteral::operator*(const ComplexLiteral &l) const {
 
     // if both complex are not really complex numbers
     if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
@@ -66,7 +59,7 @@ shared_ptr<ComplexLiteral> ComplexLiteral::operator*(ComplexLiteral &l) const {
     return shared_ptr<ComplexLiteral>(new ComplexLiteral(real_part_result, im_part_result));
 }
 
-shared_ptr<ComplexLiteral> ComplexLiteral::operator/(ComplexLiteral &l) const {
+shared_ptr<ComplexLiteral> ComplexLiteral::operator/(const ComplexLiteral &l) const {
     // if both complex are not really complex numbers
     if (im.getNumerator() == 0 && l.im.getNumerator() == 0)
         return shared_ptr<ComplexLiteral>(new ComplexLiteral(real / l.real));
