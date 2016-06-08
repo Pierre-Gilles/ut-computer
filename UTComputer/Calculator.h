@@ -14,8 +14,8 @@ class Calculator {
     LiteralFactory lf;
     StackUTComputer st;
     LexerUTComputer lx;
-    unordered_map<string, shared_ptr<Literal>> atom_map;
-    unordered_map<string, shared_ptr<Literal>> program_map;
+    unordered_map<string, shared_ptr<AtomLiteral>> atom_map;
+    unordered_map<string, shared_ptr<ProgramLiteral>> program_map;
 
 
 public:
@@ -43,11 +43,13 @@ public:
 
     const LexerUTComputer &getLx() const;
 
-    const unordered_map<string, shared_ptr<Literal>> &getAtom_map() const;
-
     void init_program_map(vector<vector<string>> list);
 
+    vector<vector<string>> save_program_map() const;
+
     void init_atom_map(vector<vector<string>> list);
+
+    vector<vector<string>> save_atom_map() const;
 
     // ===============================================================================================================
 

@@ -64,10 +64,6 @@ const LexerUTComputer & Calculator::getLx() const {
     return lx;
 }
 
-const unordered_map<string, shared_ptr<Literal>> & Calculator::getAtom_map() const {
-    return atom_map;
-}
-
 void Calculator::init_program_map(vector<vector<string>> list) {
     for (auto line = list.cbegin(); line != list.cend(); ++line) {
         if (line->size() != 2)
@@ -77,6 +73,18 @@ void Calculator::init_program_map(vector<vector<string>> list) {
     }
 }
 
+vector<vector<string>> Calculator::save_program_map() const {
+    vector<vector<string>> lines;
+    vector<string> one_line;
+    for ( auto it = program_map.cbegin(); it != program_map.cend(); ++it ) {
+        one_line.push_back(it->first);
+        one_line.push_back(it->second.get()->getValue());
+        lines.push_back(one_line);
+        one_line.clear();
+    }
+    return lines;
+}
+
 void Calculator::init_atom_map(vector<vector<string>> list) {
     for (auto line = list.cbegin(); line != list.cend(); ++line) {
         if (line->size() != 2)
@@ -84,6 +92,18 @@ void Calculator::init_atom_map(vector<vector<string>> list) {
 
         addAtom(line->at(0), line->at(1));
     }
+}
+
+vector<vector<string>> Calculator::save_atom_map() const {
+    vector<vector<string>> lines;
+    vector<string> one_line;
+    for ( auto it = atom_map.cbegin(); it != atom_map.cend(); ++it ) {
+        one_line.push_back(it->first);
+        one_line.push_back(it->second.get()->getValue());
+        lines.push_back(one_line);
+        one_line.clear();
+    }
+    return lines;
 }
 
 // ===============================================================================================================
@@ -279,12 +299,12 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 
 
 bool Calculator::atomFound(const string &s) const {
-    unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(s);
+    unordered_map<string, shared_ptr<AtomLiteral>>::const_iterator found = atom_map.find(s);
     return (found != atom_map.cend());
 }
 
 bool Calculator::programFound(const string &s) const {
-    unordered_map<string, shared_ptr<Literal>>::const_iterator found = program_map.find(s);
+    unordered_map<string, shared_ptr<ProgramLiteral>>::const_iterator found = program_map.find(s);
     return !(found == program_map.cend());
 }
 
@@ -307,7 +327,7 @@ bool Calculator::addAtom(const string &key, const string &value) {
     if (atomFound(key))
         throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
 
-    pair<string, shared_ptr<Literal>> atom_pair (key, shared_ptr<AtomLiteral>(new AtomLiteral(value)));
+    pair<string, shared_ptr<AtomLiteral>> atom_pair (key, shared_ptr<AtomLiteral>(new AtomLiteral(value)));
     atom_map.insert(atom_pair);
     return true;
 }
@@ -316,7 +336,7 @@ bool Calculator::addProgram(const string &key, const string &value) {
     if (programFound(key))
         throw UTComputerException("Error in Calculator::addProgram : program already exists.");
 
-    pair<string, shared_ptr<Literal>> program_pair (key, shared_ptr<ProgramLiteral>(new ProgramLiteral(value)));
+    pair<string, shared_ptr<ProgramLiteral>> program_pair (key, shared_ptr<ProgramLiteral>(new ProgramLiteral(value)));
     program_map.insert(program_pair);
     return true;
 }
