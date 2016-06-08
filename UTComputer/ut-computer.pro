@@ -110,3 +110,5 @@ HEADERS  += views/mainwindow.h \
     db/Database.h
 
 FORMS    +=  views/mainwindow.ui
+
+RESOURCES += database.db

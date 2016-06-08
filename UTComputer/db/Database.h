@@ -7,7 +7,10 @@
 #include <QSqlRecord>
 #include <QDir>
 #include <QSqlError>
+#include <QFile>
 #include "../exceptions/UTComputerException.h"
+
+using namespace std;
 
 class Database {
 private:
@@ -17,6 +20,7 @@ private:
 
 
     bool openDatabase(){
+        qDebug() << "Tentative de connexion à la DB " << path <<endl;
         db = QSqlDatabase::addDatabase("QSQLITE");
         db.setDatabaseName(path);
         bool result =  db.open();
@@ -33,9 +37,22 @@ private:
     }
 
 public:
-    Database(QString path): path(path) {}
-    int createProgram(string text);
-    void getPrograms();
+
+    // Duplicate the base DB file
+    // and add write and read permission to the file
+    Database() {
+        path = "../database.db";
+        if(!QFile::exists(path)){
+            qDebug() << "Copying DB" << endl;
+            QFile::copy(":/database.db", path);
+            if(!QFile::setPermissions(path, QFileDevice::WriteOwner | QFileDevice::ReadOwner)){
+                qDebug() << "Unable to set permission for db file" << endl;
+            }
+        }
+    }
+    void createProgram(string name, string value);
+    vector<vector <string>> getPrograms();
+    void cleanDatabase();
 };
 
 #endif //DATABASE_H

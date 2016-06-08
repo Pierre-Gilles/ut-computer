@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "../Calculator.h"
+#include "../db/Database.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(Calculator *calc, QWidget *parent = 0);
+    explicit MainWindow(Calculator *calc, Database *db, QWidget *parent = 0);
 
     ~MainWindow();
 
@@ -72,6 +73,7 @@ private:
     Ui::MainWindow *ui;
 
     Calculator *calc;
+    Database *db;
 
     void updateValueLineEdit(string s);
     void addToLineEdit(string s);

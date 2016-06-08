@@ -14,15 +14,15 @@ int main(int argc, char *argv[]){
     // Creating calculator
     Calculator calc;
 
+    // Creating Database
+    Database db;
+
     // Creating MainView
     QApplication a(argc, argv);
-    MainWindow w(&calc);
+    MainWindow w(&calc, &db);
     w.show();
 
-    // Creating Database
-    Database db("../../database.db");
-    db.createProgram("test test");
-    db.getPrograms();
+
 
     return a.exec();
 }

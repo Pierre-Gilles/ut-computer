@@ -6,8 +6,9 @@
 
 using namespace std;
 
-MainWindow::MainWindow(Calculator *calc, QWidget *parent) :
+MainWindow::MainWindow(Calculator *calc, Database *db, QWidget *parent) :
         calc(calc),
+        db(db),
         QMainWindow(parent),
         ui(new Ui::MainWindow)
 {
