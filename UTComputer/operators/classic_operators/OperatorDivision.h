@@ -10,7 +10,7 @@ using namespace std;
 class OperatorDivision : public CalculationOperator {
 
 public:
-    OperatorDivision() : CalculationOperator(2, "/") { }
+    OperatorDivision() : CalculationOperator(2, "/",4) { }
     virtual ~OperatorDivision() { }
 
 

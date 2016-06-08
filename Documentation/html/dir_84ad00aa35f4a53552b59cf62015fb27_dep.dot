@@ -1,0 +1,14 @@
+digraph "/Users/raphael/Documents/Etudes_Informatique/GitHub/Projet_LO21/ut-computer/UTComputer/ut_computer_tests/stack_tests" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_be0a10119af180d52e817a8f05dc15d6 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="ut_computer_tests" fontname="Helvetica", fontsize="10", URL="dir_be0a10119af180d52e817a8f05dc15d6.html"]
+  dir_84ad00aa35f4a53552b59cf62015fb27 [shape=box, label="stack_tests", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_84ad00aa35f4a53552b59cf62015fb27.html"];
+  }
+  dir_5d8e243fb2dfcfaa9d1ea248619dc914 [shape=box label="stack" URL="dir_5d8e243fb2dfcfaa9d1ea248619dc914.html"];
+  dir_361df549749f8fb1bceea741f91fc781 [shape=box label="literals" URL="dir_361df549749f8fb1bceea741f91fc781.html"];
+  dir_5d8e243fb2dfcfaa9d1ea248619dc914->dir_361df549749f8fb1bceea741f91fc781 [headlabel="1", labeldistance=1.5 headhref="dir_000012_000004.html"];
+  dir_84ad00aa35f4a53552b59cf62015fb27->dir_5d8e243fb2dfcfaa9d1ea248619dc914 [headlabel="1", labeldistance=1.5 headhref="dir_000022_000012.html"];
+  dir_84ad00aa35f4a53552b59cf62015fb27->dir_361df549749f8fb1bceea741f91fc781 [headlabel="2", labeldistance=1.5 headhref="dir_000022_000004.html"];
+}

@@ -8,7 +8,7 @@
 class OperatorSWAP : public StackOperator {
 
 public:
-    OperatorSWAP() : StackOperator(2, "SWAP") { }
+    OperatorSWAP() : StackOperator(2, "SWAP",6) { }
     virtual ~OperatorSWAP() { }
 
 

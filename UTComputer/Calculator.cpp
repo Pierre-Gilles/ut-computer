@@ -6,46 +6,87 @@
 
 Calculator::Calculator() {
     // Classic Operators
-    op_manager.addOperator(new OperatorPlus());
-    op_manager.addOperator(new OperatorMinus());
-    op_manager.addOperator(new OperatorMultiplication());
-    op_manager.addOperator(new OperatorDivision());
-    op_manager.addOperator(new OperatorIntegerDivision());
-    op_manager.addOperator(new OperatorModulo());
-    op_manager.addOperator(new OperatorNeg());
+    addOperator(new OperatorPlus());
+    addOperator(new OperatorMinus());
+    addOperator(new OperatorMultiplication());
+    addOperator(new OperatorDivision());
+    addOperator(new OperatorIntegerDivision());
+    addOperator(new OperatorModulo());
+    addOperator(new OperatorNeg());
 
     // Logical Operators
-    op_manager.addOperator(new OperatorAnd());
-    op_manager.addOperator(new OperatorDifferent());
-    op_manager.addOperator(new OperatorEqual());
-    op_manager.addOperator(new OperatorInferior());
-    op_manager.addOperator(new OperatorInferiorEqual());
-    op_manager.addOperator(new OperatorNot());
-    op_manager.addOperator(new OperatorOr());
-    op_manager.addOperator(new OperatorSuperior());
-    op_manager.addOperator(new OperatorSuperiorEqual());
+    addOperator(new OperatorAnd());
+    addOperator(new OperatorDifferent());
+    addOperator(new OperatorEqual());
+    addOperator(new OperatorInferior());
+    addOperator(new OperatorInferiorEqual());
+    addOperator(new OperatorNot());
+    addOperator(new OperatorOr());
+    addOperator(new OperatorSuperior());
+    addOperator(new OperatorSuperiorEqual());
 
     // Rational Operators
-    op_manager.addOperator(new OperatorNumerator());
-    op_manager.addOperator(new OperatorDenominator());
+    addOperator(new OperatorNumerator());
+    addOperator(new OperatorDenominator());
 
     // Complex Operators
-    op_manager.addOperator(new OperatorDollar());
-    op_manager.addOperator(new OperatorIM());
-    op_manager.addOperator(new OperatorRE());
+    addOperator(new OperatorDollar());
+    addOperator(new OperatorIM());
+    addOperator(new OperatorRE());
 
     // Stack Operators
-    op_manager.addOperator(new OperatorCLEAR());
-    op_manager.addOperator(new OperatorDROP());
-    op_manager.addOperator(new OperatorDUP());
-    op_manager.addOperator(new OperatorLASTARGS());
-    op_manager.addOperator(new OperatorLASTOP());
-    op_manager.addOperator(new OperatorREDO());
-    op_manager.addOperator(new OperatorUNDO());
-    op_manager.addOperator(new OperatorSWAP());
+    addOperator(new OperatorCLEAR());
+    addOperator(new OperatorDROP());
+    addOperator(new OperatorDUP());
+    addOperator(new OperatorLASTARGS());
+    addOperator(new OperatorLASTOP());
+    addOperator(new OperatorREDO());
+    addOperator(new OperatorUNDO());
+    addOperator(new OperatorSWAP());
+}
+// ===============================================================================================================
+
+
+
+// ===============================================================================================================
+// ======================                       Getters and Setters                     ==========================
+// ===============================================================================================================
+
+const OperatorManager & Calculator::getOp_manager() const {
+    return op_manager;
 }
 
+const StackUTComputer & Calculator::getSt() {
+    return st;
+}
 
+const LexerUTComputer & Calculator::getLx() const {
+    return lx;
+}
+
+const unordered_map<string, shared_ptr<Literal>> & Calculator::getAtom_map() const {
+    return atom_map;
+}
+
+void Calculator::init_program_map(vector<vector<string>> list) {
+    for (auto line = list.cbegin(); line != list.cend(); ++line) {
+        if (line->size() != 2)
+            throw UTComputerException("Error in Calculator::init_program_map : Each line must contains two columns : key and value");
+
+        addProgram(line->at(0), line->at(1));
+    }
+}
+
+void Calculator::init_atom_map(vector<vector<string>> list) {
+    for (auto line = list.cbegin(); line != list.cend(); ++line) {
+        if (line->size() != 2)
+            throw UTComputerException("Error in Calculator::init_program_map : Each line must contains two columns : key and value");
+
+        addAtom(line->at(0), line->at(1));
+    }
+}
+}
+// ===============================================================================================================
 
 
 
@@ -64,9 +105,12 @@ void Calculator::calculate(const vector<string> &tokens) {
 
     try {
 
-        if(tokens.size() >= 1 && tokens[0] != "UNDO" && tokens[0] != "REDO" )
+        if(tokens.size() >= 1) {
             // save initial state before iterating through the tokens
-            st.createMemento();
+            if (tokens[0] != "UNDO" && tokens[0] != "REDO") {
+                st.createMemento();
+            }
+        }
 
         for (auto it = tokens.cbegin(); it != tokens.cend(); ++it) {
 
@@ -116,7 +160,7 @@ void Calculator::calculate(const vector<string> &tokens) {
         throw e1;
     }
 }
-
+// ===============================================================================================================
 
 
 
@@ -127,8 +171,6 @@ void Calculator::calculate(const vector<string> &tokens) {
 // ===============================================================================================================
 // ======================                    Class other services                        =========================
 // ===============================================================================================================
-
-
 
 
 // methods used in main service calculate(const vector<string> &tokens)
@@ -162,7 +204,6 @@ void Calculator::executeEvalOperator() {
     }
 }
 
-
 void Calculator::handleAtom(const string& s) {
     // If we find the atom in the atom_map
     if (atomFound(s)) {
@@ -191,7 +232,6 @@ void Calculator::handleAtom(const string& s) {
         st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral(s)));
     }
 }
-
 
 
 /*
@@ -225,7 +265,7 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
     }
     return true;
 }
-
+// ===============================================================================================================
 
 
 
@@ -238,15 +278,16 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 
 
 
-bool Calculator::atomExists(const string &key) const {
-    unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(key);
-    return !(found == atom_map.cend());
-}
-
 bool Calculator::atomFound(const string &s) const {
     unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(s);
     return (found != atom_map.cend());
 }
+
+bool Calculator::programFound(const string &s) const {
+    unordered_map<string, shared_ptr<Literal>>::const_iterator found = program_map.find(s);
+    return !(found == program_map.cend());
+}
+
 
 bool Calculator::atomIsNumeric(const string &s) {
     ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map[s].get());
@@ -258,22 +299,29 @@ bool Calculator::atomIsProgram(const string &s) {
     return (prgm != nullptr);
 }
 
-
-
 bool Calculator::addOperator(Operator* o) {
-    return op_manager.addOperator(o);
+    return op_manager.addOperator(o) && lx.addOperatorWeight(o);
 }
 
-
-bool Calculator::addAtom(const string &key, shared_ptr<Literal> l) {
-    if (atomExists(key))
+bool Calculator::addAtom(const string &key, const string &value) {
+    if (atomFound(key))
         throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
 
-    pair<string, shared_ptr<Literal>> atom_pair (key, l);
+    pair<string, shared_ptr<Literal>> atom_pair (key, shared_ptr<AtomLiteral>(new AtomLiteral(value)));
     atom_map.insert(atom_pair);
     return true;
 }
 
+bool Calculator::addProgram(const string &key, const string &value) {
+    if (programFound(key))
+        throw UTComputerException("Error in Calculator::addProgram : program already exists.");
+
+    pair<string, shared_ptr<Literal>> program_pair (key, shared_ptr<ProgramLiteral>(new ProgramLiteral(value)));
+    program_map.insert(program_pair);
+    return true;
+}
+
+// ===============================================================================================================
 
 
 

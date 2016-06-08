@@ -13,7 +13,7 @@ public:
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
-    CalculationOperator(int nb, string key) : Operator(nb, key) {
+    CalculationOperator(int nb, string key, int prio) : Operator(nb, key, prio) {
         arguments.reserve((unsigned long int)nb); // reserve space in vector
     }
     virtual ~CalculationOperator() { }

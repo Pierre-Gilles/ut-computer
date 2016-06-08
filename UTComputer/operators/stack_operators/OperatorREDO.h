@@ -10,7 +10,7 @@
 class OperatorREDO : public StackOperator {
 
 public:
-    OperatorREDO() : StackOperator(0, "REDO") { }
+    OperatorREDO() : StackOperator(0, "REDO",6) { }
     virtual ~OperatorREDO() { }
 
 

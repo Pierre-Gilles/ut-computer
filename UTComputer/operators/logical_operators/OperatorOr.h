@@ -9,7 +9,7 @@ class OperatorOr : public CalculationOperator {
 
 public:
 
-    OperatorOr() : CalculationOperator(2, "OR") {}
+    OperatorOr() : CalculationOperator(2, "OR",2) {}
     virtual ~OperatorOr() {}
 
 private:

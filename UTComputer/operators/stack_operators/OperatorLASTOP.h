@@ -8,7 +8,7 @@
 class OperatorLASTOP : public StackOperator {
 
 public:
-    OperatorLASTOP() : StackOperator(0, "LASTOP") { }
+    OperatorLASTOP() : StackOperator(0, "LASTOP",6) { }
     virtual ~OperatorLASTOP() { }
 
 

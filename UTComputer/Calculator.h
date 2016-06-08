@@ -15,40 +15,41 @@ class Calculator {
     StackUTComputer st;
     LexerUTComputer lx;
     unordered_map<string, shared_ptr<Literal>> atom_map;
+    unordered_map<string, shared_ptr<Literal>> program_map;
 
 
 public:
+
+
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
-
     Calculator();
-
     virtual ~Calculator() { }
+    // ===============================================================================================================
+
+
+
+
 
 
     // ===============================================================================================================
     // ======================                       Getters and Setters                     ==========================
     // ===============================================================================================================
 
+    const OperatorManager &getOp_manager() const;
 
+    const StackUTComputer &getSt();
 
+    const LexerUTComputer &getLx() const;
 
-    const OperatorManager &getOp_manager() const {
-        return op_manager;
-    }
+    const unordered_map<string, shared_ptr<Literal>> &getAtom_map() const;
 
-    const StackUTComputer &getSt() {
-        return st;
-    }
+    void init_program_map(vector<vector<string>> list);
 
-    const LexerUTComputer &getLx() const {
-        return lx;
-    }
+    void init_atom_map(vector<vector<string>> list);
 
-    const unordered_map<string, shared_ptr<Literal>> &getAtom_map() const {
-        return atom_map;
-    }
+    // ===============================================================================================================
 
 
 
@@ -60,8 +61,12 @@ public:
     // ===============================================================================================================
 
 
+
+
     void run(const string &s);
     void calculate(const vector<string> &tokens);
+    // ===============================================================================================================
+
 
 
 
@@ -76,18 +81,25 @@ public:
     void executeEvalOperator();
     void handleAtom(const string& s);
     bool checkExpressionCorrectForEval(vector<string> &tokens);
+    // ===============================================================================================================
+
+
+
+
 
 
 
     // ===============================================================================================================
     // ======================                  Class useful functions                        =========================
     // ===============================================================================================================
-    bool atomExists(const string &key) const;
     bool atomFound(const string &s) const;
+    bool programFound(const string &s) const;
     bool atomIsNumeric(const string &s);
     bool atomIsProgram(const string &s);
     bool addOperator(Operator* o);
-    bool addAtom(const string &key, shared_ptr<Literal> l);
+    bool addAtom(const string &key, const string &value);
+    bool addProgram(const string &key, const string &value);
+    // ===============================================================================================================
 };
 
 

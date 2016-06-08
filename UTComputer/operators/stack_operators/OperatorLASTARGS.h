@@ -9,7 +9,7 @@
 class OperatorLASTARGS : public StackOperator {
 
 public:
-    OperatorLASTARGS() : StackOperator(0, "LASTARGS") { }
+    OperatorLASTARGS() : StackOperator(0, "LASTARGS",6) { }
     virtual ~OperatorLASTARGS() { }
 
 

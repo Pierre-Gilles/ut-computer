@@ -11,12 +11,13 @@ class Operator {
 protected:
     int arity;
     string key;
+    int priority;
 public:
 
     // ===============================================================================================================
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
-    Operator(int nb, string key) : arity(nb), key(key) {
+    Operator(int nb, string key, int prio) : arity(nb), key(key), priority(prio) {
     }
     virtual ~Operator() { }
     // ===============================================================================================================
@@ -35,6 +36,10 @@ public:
     const string &getKey() const {
         return key;
     }
+
+    int getPriority() const {
+        return priority;
+    }
     // ===============================================================================================================
 
 
@@ -44,7 +49,8 @@ public:
     // ===============================================================================================================
     // ======================                     Interface for subclasses                  ==========================
     // ===============================================================================================================
-    /*
+
+/*
      * Address of stack must not be changed, but "st" do not point to a const stack : we use a constant pointer
      * and not a pointer to constant
      */

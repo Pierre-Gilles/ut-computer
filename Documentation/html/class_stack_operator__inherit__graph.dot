@@ -1,0 +1,25 @@
+digraph "StackOperator"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="StackOperator",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Operator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="OperatorCLEAR",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator_c_l_e_a_r.html"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="OperatorDROP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator_d_r_o_p.html"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="OperatorDUP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator_d_u_p.html"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="OperatorLASTARGS",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator_l_a_s_t_a_r_g_s.html"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="OperatorLASTOP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator_l_a_s_t_o_p.html"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="OperatorREDO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator_r_e_d_o.html"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="OperatorSWAP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator_s_w_a_p.html"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="OperatorUNDO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_operator_u_n_d_o.html"];
+}

@@ -1,6 +1,7 @@
-//
-// Created by Raphael on 15/05/2016.
-//
+/**
+ * \file Lexer.h
+ * \brief File containing the LexerUTComputer class.
+ */
 
 #ifndef TESTLO21CLION_LEXER_H
 #define TESTLO21CLION_LEXER_H
@@ -12,25 +13,20 @@
 #include <regex>
 #include <ctype.h>
 #include <iterator>
+#include <unordered_map>
+#include "../operators/Operator.h"
 #include "../exceptions/UTComputerException.h"
 
 using namespace std;
 
-enum modes { UnLocked, ExpressionLocked, ProgLocked, LitteralLocked };
 
+/**
+ * \class LexerUTComputer
+ */
 class LexerUTComputer {
 public:
 
-    static const vector<char> operatorTypes;
-    static const vector<char> separatorTypes;
-    static const char progSeparatorStart;
-    static const char progSeparatorStop;
-    static const char expressionSeparator;
-
-    static const vector<string> operatorEval;
-
-
-
+    unordered_map<string, int> operator_weight_map; /*!< unordered_map containing the priority (int value) of each operator used in this application. */
 
 
     // ===============================================================================================================
@@ -42,16 +38,48 @@ public:
 
 
 
+    // ===============================================================================================================
+    // ======================                     Getters and Setters                       ==========================
+    // ===============================================================================================================
+    /**
+     * \fn const unordered_map<string, int> &getOperator_weigth_map() const
+     * \return the \a operator_weight_map attribute
+     */
+    const unordered_map<string, int> &getOperator_weigth_map() const {
+        return operator_weight_map;
+    }
+    // ===============================================================================================================
+
+
+
 
 
     // ===============================================================================================================
     // ======================                        Class main services                    ==========================
     // ===============================================================================================================
-    vector<string> split(const string &s) const;
+    /**
+     * \fn
+     * \brief
+     * \param[in] s the string to tokenize
+     * \return
+     */
     vector<string> tokenize(const string &s) const;
+
+    /**
+     * \fn
+     * \brief
+     * \param[]
+     * \return
+     */
     vector<string> infixToPostfix(const vector<string> elems) const;
+
+    /**
+     * \fn
+     * \brief
+     * \param[]
+     * \return
+     */
     vector<string> tokenizeInfixToPostfix(const string &s) const;
-    bool isOperator(const string s) const;
     // ===============================================================================================================
 
 
@@ -60,9 +88,36 @@ public:
     // ===============================================================================================================
     // ======================                       Useful class functions                  ==========================
     // ===============================================================================================================
+    /**
+     * \fn
+     * \brief
+     * \param[]
+     * \return
+     */
+    bool addOperatorWeight(Operator *o); //
+
+    /**
+     * \fn
+     * \brief
+     * \param[]
+     * \return
+     */
+    bool isOperator(const string s) const;
 private:
-    bool findInArray(const char c, const vector<char> array) const;
-    bool findInArrayString(const string c, const vector<string> array) const;
+    /**
+     * \fn
+     * \brief
+     * \param[]
+     * \return
+     */
+    bool operatorWeightExists(const string &key) const;
+
+    /**
+     * \fn
+     * \brief
+     * \param[]
+     * \return
+     */
     int getWeightOperator(const string s) const;
     // ===============================================================================================================
 

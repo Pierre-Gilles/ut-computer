@@ -414,7 +414,24 @@ TEST_F(Test_Calculator, Test_Expression_Evaluation) {
 TEST_F(Test_Calculator, Test_Program_Evaluation) {
 
     try {
+        // stack is empty
+        inputTest = "[2 2 + 2 +]";
+        c.run(inputTest);
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("[2 2 + 2 +]", c.getSt().top()->toString());
+        EXPECT_EQ("2 2 + 2 +", dynamic_cast<ProgramLiteral*>(c.getSt().top().get())->getValue());
 
+        // stack is program [2+2+2]
+        inputTest = "EVAL";
+        c.run(inputTest);
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("6", c.getSt().top()->toString());
+
+        // stack is 6
+        inputTest = "[2 2 * 5 2 - + 2 /] EVAL +";
+        c.run(inputTest);
+        EXPECT_EQ(1, c.getSt().size());
+        EXPECT_EQ("19/2", c.getSt().top()->toString());
 
 
     }

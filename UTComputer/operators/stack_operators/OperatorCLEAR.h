@@ -9,7 +9,7 @@
 class OperatorCLEAR : public StackOperator {
 
 public:
-    OperatorCLEAR() : StackOperator(0, "CLEAR") { }
+    OperatorCLEAR() : StackOperator(0, "CLEAR",6) { }
     virtual ~OperatorCLEAR() { }
 
 

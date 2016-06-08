@@ -8,7 +8,7 @@ class OperatorSuperiorEqual : public CalculationOperator {
 
 public:
 
-    OperatorSuperiorEqual() : CalculationOperator(2, ">=") {}
+    OperatorSuperiorEqual() : CalculationOperator(2, ">=",2) {}
     virtual ~OperatorSuperiorEqual() {}
 
 private:

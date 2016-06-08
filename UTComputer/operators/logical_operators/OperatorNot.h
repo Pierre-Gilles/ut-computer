@@ -11,7 +11,7 @@ class OperatorNot : public CalculationOperator {
 
 public:
 
-    OperatorNot() : CalculationOperator(1, "NOT") {}
+    OperatorNot() : CalculationOperator(1, "NOT",2) {}
     virtual ~OperatorNot() {}
 
 private:

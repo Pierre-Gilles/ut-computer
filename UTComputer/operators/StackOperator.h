@@ -11,7 +11,7 @@ public:
     // ======================               Constructors and Destructors                    ==========================
     // ===============================================================================================================
 
-    StackOperator(int nb, string key) : Operator(nb, key) {}
+    StackOperator(int nb, string key, int prio) : Operator(nb, key, prio) {}
     virtual ~StackOperator() { }
 
 

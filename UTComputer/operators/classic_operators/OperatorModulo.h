@@ -7,7 +7,7 @@
 class OperatorModulo : public CalculationOperator {
 
 public:
-    OperatorModulo() : CalculationOperator(2, "MOD") { }
+    OperatorModulo() : CalculationOperator(2, "MOD",6) { }
     virtual ~OperatorModulo() { }
 
 
