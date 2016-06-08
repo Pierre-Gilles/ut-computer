@@ -44,6 +44,11 @@ public:
     const LexerUTComputer &getLx() const;
 
     const unordered_map<string, shared_ptr<Literal>> &getAtom_map() const;
+
+    void init_program_map(vector<vector<string>> list);
+
+    void init_atom_map(vector<vector<string>> list);
+
     // ===============================================================================================================
 
 
@@ -54,6 +59,8 @@ public:
     // ===============================================================================================================
     // ======================                      Class main service                        =========================
     // ===============================================================================================================
+
+
 
 
     void run(const string &s);
@@ -90,8 +97,8 @@ public:
     bool atomIsNumeric(const string &s);
     bool atomIsProgram(const string &s);
     bool addOperator(Operator* o);
-    bool addAtom(const string &key, shared_ptr<Literal> l);
-    bool addProgram(const string &key, shared_ptr<Literal> l);
+    bool addAtom(const string &key, const string &value);
+    bool addProgram(const string &key, const string &value);
     // ===============================================================================================================
 };
 

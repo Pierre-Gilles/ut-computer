@@ -67,6 +67,25 @@ const LexerUTComputer & Calculator::getLx() const {
 const unordered_map<string, shared_ptr<Literal>> & Calculator::getAtom_map() const {
     return atom_map;
 }
+
+void Calculator::init_program_map(vector<vector<string>> list) {
+    for (auto line = list.cbegin(); line != list.cend(); ++line) {
+        if (line->size() != 2)
+            throw UTComputerException("Error in Calculator::init_program_map : Each line must contains two columns : key and value");
+
+        addProgram(line->at(0), line->at(1));
+    }
+}
+
+void Calculator::init_atom_map(vector<vector<string>> list) {
+    for (auto line = list.cbegin(); line != list.cend(); ++line) {
+        if (line->size() != 2)
+            throw UTComputerException("Error in Calculator::init_program_map : Each line must contains two columns : key and value");
+
+        addAtom(line->at(0), line->at(1));
+    }
+}
+}
 // ===============================================================================================================
 
 
@@ -284,20 +303,20 @@ bool Calculator::addOperator(Operator* o) {
     return op_manager.addOperator(o) && lx.addOperatorWeight(o);
 }
 
-bool Calculator::addAtom(const string &key, shared_ptr<Literal> l) {
+bool Calculator::addAtom(const string &key, const string &value) {
     if (atomFound(key))
         throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
 
-    pair<string, shared_ptr<Literal>> atom_pair (key, l);
+    pair<string, shared_ptr<Literal>> atom_pair (key, shared_ptr<AtomLiteral>(new AtomLiteral(value)));
     atom_map.insert(atom_pair);
     return true;
 }
 
-bool Calculator::addProgram(const string &key, shared_ptr<Literal> l) {
+bool Calculator::addProgram(const string &key, const string &value) {
     if (programFound(key))
         throw UTComputerException("Error in Calculator::addProgram : program already exists.");
 
-    pair<string, shared_ptr<Literal>> program_pair (key, l);
+    pair<string, shared_ptr<Literal>> program_pair (key, shared_ptr<ProgramLiteral>(new ProgramLiteral(value)));
     program_map.insert(program_pair);
     return true;
 }
