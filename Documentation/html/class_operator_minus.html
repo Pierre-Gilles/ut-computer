@@ -123,7 +123,7 @@ Inheritance diagram for OperatorMinus:</div>
  <div class="center">
   <img src="class_operator_minus.png" usemap="#OperatorMinus_map" alt=""/>
   <map id="OperatorMinus_map" name="OperatorMinus_map">
-<area href="class_calculation_operator.html" alt="CalculationOperator" shape="rect" coords="0,56,126,80"/>
+<area href="class_calculation_operator.html" title="Super class for all specific calculation operators. " alt="CalculationOperator" shape="rect" coords="0,56,126,80"/>
 <area href="class_operator.html" title="Abstract super class for all specific operators. " alt="Operator" shape="rect" coords="0,0,126,24"/>
 </map>
  </div></div>
@@ -161,7 +161,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ac7e9da0662a80564af3e9ca22db31496"><td class="memItemLeft" align="right" valign="top">virtual shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator_minus.html#ac7e9da0662a80564af3e9ca22db31496">executeSpecificOperator</a> () override</td></tr>
-<tr class="memdesc:ac7e9da0662a80564af3e9ca22db31496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual pure method that manage the operation made by the operator.  <a href="#ac7e9da0662a80564af3e9ca22db31496">More...</a><br /></td></tr>
+<tr class="memdesc:ac7e9da0662a80564af3e9ca22db31496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply the operator.  <a href="#ac7e9da0662a80564af3e9ca22db31496">More...</a><br /></td></tr>
 <tr class="separator:ac7e9da0662a80564af3e9ca22db31496"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -246,13 +246,17 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual pure method that manage the operation made by the operator. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">st</td><td>: constant pointer (referenced object can be modified but reference itself cannot) to an instance of <a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Apply the operator. </p>
+<p>Tests done before :</p><ul>
+<li>test that pointer to stack is not null</li>
+<li>test that stack contains enough Literal* (st.size() &gt;= operator arity)</li>
+<li>test that every Literal* unstacked isn't null</li>
+</ul>
+<p><a class="el" href="class_operator_minus.html">OperatorMinus</a> applies to</p><ul>
+<li>two ComplexLiterals</li>
+<li>two <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a></li>
+<li>an <a class="el" href="class_expression_literal.html" title="Subclass of StringLiteral. ">ExpressionLiteral</a> and a <a class="el" href="class_complex_literal.html" title="Subclass of Literal. ">ComplexLiteral</a> </li>
+</ul>
 
 <p>Implements <a class="el" href="class_calculation_operator.html#a79d24ee81814ed19eb8efe781e02d55c">CalculationOperator</a>.</p>
 

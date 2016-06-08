@@ -17,13 +17,20 @@ private:
     // ===============================================================================================================
     // ======================                 Implement Operator interface                  ==========================
     // ===============================================================================================================
-    /* Tests done before in superclass :
+
+    /**
+     * \fn virtual shared_ptr<Literal> executeSpecificOperator() override
+     * \brief Apply the operator
+     *
+     * Tests done before :
      *      - test that pointer to stack is not null
      *      - test that stack contains enough Literal* (st.size() >= operator arity)
      *      - test that every Literal* unstacked isn't null
      *
      * OperatorModulo applies to
-     *      - two ComplexLiterals that are of "type" integer : no complex, no real nor rational */
+     *      - two ComplexLiteral that are of "type" integer : no complex, no real nor rational
+     */
+
     virtual shared_ptr<Literal> executeSpecificOperator() override;
     // ===============================================================================================================
 
