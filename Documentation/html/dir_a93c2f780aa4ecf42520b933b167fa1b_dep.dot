@@ -1,0 +1,11 @@
+digraph "/Users/raphael/Documents/Etudes_Informatique/GitHub/Projet_LO21/ut-computer/UTComputer/operators/logical_operators" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_b0ebf79e332bdd22b1ec3680e4f5649c {
+    graph [ bgcolor="#ddddee", pencolor="black", label="operators" fontname="Helvetica", fontsize="10", URL="dir_b0ebf79e332bdd22b1ec3680e4f5649c.html"]
+  dir_a93c2f780aa4ecf42520b933b167fa1b [shape=box, label="logical_operators", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_a93c2f780aa4ecf42520b933b167fa1b.html"];
+  }
+  dir_361df549749f8fb1bceea741f91fc781 [shape=box label="literals" URL="dir_361df549749f8fb1bceea741f91fc781.html"];
+  dir_a93c2f780aa4ecf42520b933b167fa1b->dir_361df549749f8fb1bceea741f91fc781 [headlabel="12", labeldistance=1.5 headhref="dir_000009_000004.html"];
+}

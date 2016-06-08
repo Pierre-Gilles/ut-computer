@@ -1,8 +1,19 @@
+/**
+ * \file StringLiteral.h
+ * \brief File containing the declaration of the class StringLiteral
+ */
+
 #ifndef TESTLO21CLION_STRINGLITERAL_H
 #define TESTLO21CLION_STRINGLITERAL_H
 
 #include "Literal.h"
 
+/**
+ * \class StringLiteral
+ * \brief subclass of Literal
+ *
+ * Superclass for all string type literals (AtomLiteral, ProgramLiteral and ExpressionLiteral)
+ */
 class StringLiteral : public Literal {
 protected:
     string value;
