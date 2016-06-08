@@ -140,7 +140,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a58a3bb976d90d7b2031c14431034694f inherit pub_methods_class_calculation_operator"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculation_operator.html#a58a3bb976d90d7b2031c14431034694f">~CalculationOperator</a> ()</td></tr>
 <tr class="separator:a58a3bb976d90d7b2031c14431034694f inherit pub_methods_class_calculation_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ceeaf9791c3ff161f3dc9de65b0582e inherit pub_methods_class_calculation_operator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculation_operator.html#a9ceeaf9791c3ff161f3dc9de65b0582e">execute</a> (<a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> *const st) override</td></tr>
-<tr class="memdesc:a9ceeaf9791c3ff161f3dc9de65b0582e inherit pub_methods_class_calculation_operator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual pure method to be implemented by each specific operators.  <a href="#a9ceeaf9791c3ff161f3dc9de65b0582e">More...</a><br /></td></tr>
+<tr class="memdesc:a9ceeaf9791c3ff161f3dc9de65b0582e inherit pub_methods_class_calculation_operator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of <a class="el" href="class_operator.html#af7785dff25ba21013ed4fba4b673665e" title="Virtual pure method to be implemented by each specific operators. ">Operator::execute</a>.  <a href="#a9ceeaf9791c3ff161f3dc9de65b0582e">More...</a><br /></td></tr>
 <tr class="separator:a9ceeaf9791c3ff161f3dc9de65b0582e inherit pub_methods_class_calculation_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_operator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_operator.html">Operator</a></td></tr>
 <tr class="memitem:a52e92f86dfad785709104e30e24390cd inherit pub_methods_class_operator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator.html#a52e92f86dfad785709104e30e24390cd">Operator</a> (int nb, string <a class="el" href="class_operator.html#a5617dbf5bd1201d414ba2b5c18511d9d">key</a>, int prio)</td></tr>
@@ -161,6 +161,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ad62453ce89b699994d09aff0a0198c62"><td class="memItemLeft" align="right" valign="top">virtual shared_ptr&lt; <a class="el" href="class_literal.html">Literal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator_plus.html#ad62453ce89b699994d09aff0a0198c62">executeSpecificOperator</a> () override</td></tr>
+<tr class="memdesc:ad62453ce89b699994d09aff0a0198c62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual pure method that manage the operation made by the operator.  <a href="#ad62453ce89b699994d09aff0a0198c62">More...</a><br /></td></tr>
 <tr class="separator:ad62453ce89b699994d09aff0a0198c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -245,7 +246,15 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_calculation_operator.html#a5d401c7aa7e7d8f07b45e97d7d9fac92">CalculationOperator</a>.</p>
+<p>Virtual pure method that manage the operation made by the operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">st</td><td>: constant pointer (referenced object can be modified but reference itself cannot) to an instance of <a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_calculation_operator.html#a79d24ee81814ed19eb8efe781e02d55c">CalculationOperator</a>.</p>
 
 </div>
 </div>

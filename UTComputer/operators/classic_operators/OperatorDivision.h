@@ -28,7 +28,8 @@ private:
      * OperatorDivision applies to
      *      - two ComplexLiterals
      *      - two ExpressionLiteral
-     *      - an ExpressionLiteral and a ComplexLiteral */
+     *      - an ExpressionLiteral and a ComplexLiteral
+     */
     virtual shared_ptr<Literal> executeSpecificOperator() override;
 
     // ===============================================================================================================

@@ -134,7 +134,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a24bc21fd0e41da0449cc43decdd961f4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator_u_n_d_o.html#a24bc21fd0e41da0449cc43decdd961f4">~OperatorUNDO</a> ()</td></tr>
 <tr class="separator:a24bc21fd0e41da0449cc43decdd961f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9513c473e5def2759b9b1cc2c74d1e36"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operator_u_n_d_o.html#a9513c473e5def2759b9b1cc2c74d1e36">execute</a> (<a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a> *const st) override</td></tr>
-<tr class="memdesc:a9513c473e5def2759b9b1cc2c74d1e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joint method that will be called in all <a class="el" href="class_stack_operator.html" title="Super class for all specific stack operators. ">StackOperator</a>'s subclasses.  <a href="#a9513c473e5def2759b9b1cc2c74d1e36">More...</a><br /></td></tr>
+<tr class="memdesc:a9513c473e5def2759b9b1cc2c74d1e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute specific operations of the operator.  <a href="#a9513c473e5def2759b9b1cc2c74d1e36">More...</a><br /></td></tr>
 <tr class="separator:a9513c473e5def2759b9b1cc2c74d1e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_stack_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_stack_operator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_stack_operator.html">StackOperator</a></td></tr>
 <tr class="memitem:a8b48aa2607dcf01a36434793b31d1e33 inherit pub_methods_class_stack_operator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack_operator.html#a8b48aa2607dcf01a36434793b31d1e33">StackOperator</a> (int nb, string <a class="el" href="class_operator.html#a5617dbf5bd1201d414ba2b5c18511d9d">key</a>, int prio)</td></tr>
@@ -237,16 +237,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Joint method that will be called in all <a class="el" href="class_stack_operator.html" title="Super class for all specific stack operators. ">StackOperator</a>'s subclasses. </p>
+<p>Execute specific operations of the operator. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">st</td><td>: constant pointer (referenced object can be modified but reference itself cannot) to an instance of <a class="el" href="class_stack_u_t_computer.html">StackUTComputer</a></td></tr>
   </table>
   </dd>
 </dl>
-<p>Redefinition of <a class="el" href="class_operator.html#af7785dff25ba21013ed4fba4b673665e" title="Virtual pure method to be implemented by each specific operators. ">Operator::execute</a> function</p><ul>
-<li>check that parameter "st" isn't null</li>
-<li>check that stack size is superior or equal to the operator's arity </li>
+<p>Redefinition of <a class="el" href="class_stack_operator.html#a94da3b0d228235f5f3efe14163707e54" title="Joint method that will be called in all StackOperator&#39;s subclasses. ">StackOperator::execute</a> :</p><ul>
+<li>call to <a class="el" href="class_stack_operator.html#a94da3b0d228235f5f3efe14163707e54" title="Joint method that will be called in all StackOperator&#39;s subclasses. ">StackOperator::execute</a> method</li>
+<li>try to apply <a class="el" href="class_stack_u_t_computer.html#afc03536182956509e2f408ae55c59ab1">StackUTComputer::undo</a> </li>
 </ul>
 
 <p>Reimplemented from <a class="el" href="class_stack_operator.html#a94da3b0d228235f5f3efe14163707e54">StackOperator</a>.</p>
