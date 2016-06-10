@@ -26,6 +26,10 @@ StackUTComputer::~StackUTComputer() {
 // ======================                   Getters and Setters                         ==========================
 // ===============================================================================================================
 
+const deque<shared_ptr<Literal>> & StackUTComputer::getSt() const {
+    return st;
+}
+
 void StackUTComputer::setLastOperator(Operator *lastOp) {
     lastOperator = lastOp;
 }
@@ -83,8 +87,8 @@ vector<string> StackUTComputer::getLastElementsString(int nb) const{
 // ======================        Implement Stack Interface and Stack Operators          ==========================
 // ===============================================================================================================
 
-int StackUTComputer::size() const {
-    return (int)st.size(); // cast from "unsigned long int" in "int"
+unsigned long int StackUTComputer::size() const {
+    return st.size(); // cast from "unsigned long int" in "int"
 }
 
 shared_ptr<Literal> StackUTComputer::top() const {

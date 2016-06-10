@@ -48,6 +48,13 @@ Calculator::Calculator() {
 
 
 
+
+
+
+
+
+
+
 // ===============================================================================================================
 // ======================                       Getters and Setters                     ==========================
 // ===============================================================================================================
@@ -63,6 +70,14 @@ const StackUTComputer & Calculator::getSt() {
 const LexerUTComputer & Calculator::getLx() const {
     return lx;
 }
+// ===============================================================================================================
+
+
+
+
+// ===============================================================================================================
+// ======================               Saving and initiating application                         ================
+// ===============================================================================================================
 
 void Calculator::init_program_map(vector<vector<string>> list) {
     for (auto line = list.cbegin(); line != list.cend(); ++line) {
@@ -106,7 +121,33 @@ vector<vector<string>> Calculator::save_atom_map() const {
     return lines;
 }
 
+
+void Calculator::init_stack(vector<string> list) {
+    /* List is an reverse replica of the stack, meaning the end of the stack is at the beginning of the vector "list" */
+
+    for (auto it = list.cbegin(); it != list.cend(); ++it) {
+        shared_ptr<Literal> newLit = lf.createLiteral(*it);
+        st.push(newLit);
+    }
+}
+
+vector<string> Calculator::save_stack() const {
+    vector<string> result;
+    result.reserve(st.size());
+    /* Iterate through the stack from the end to the beginning  */
+    for (auto it = st.getSt().crbegin(); it != st.getSt().crend(); ++it) {
+        /* using push_back because of it's constant complexity (amortized time, reallocation may happen) */
+        result.push_back(st.top()->toString());
+    }
+
+    /* Now result is an reverse replica of the stack, but it contains string instead of shared_ptr<Literal> */
+    return result;
+}
 // ===============================================================================================================
+
+
+
+
 
 
 
@@ -279,7 +320,6 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
                 if (! atomIsNumeric(*it))
                     return false;
             }
-
 
         }
     }

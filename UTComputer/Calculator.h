@@ -72,6 +72,16 @@ public:
      */
     const LexerUTComputer &getLx() const;
 
+    // ===============================================================================================================
+
+
+
+
+
+
+    // ===============================================================================================================
+    // ======================               Saving and initiating application                         ================
+    // ===============================================================================================================
 
     /**
      * \fn void init_program_map(vector<vector<string>> list)
@@ -87,6 +97,8 @@ public:
      */
     vector<vector<string>> save_program_map() const;
 
+
+    // TODO continuer documentation
     /**
      * \fn void init_atom_map(vector<vector<string>> list)
      * \brief Method that init the \a atom_map attribute with the information stored in the SQLite database
@@ -96,7 +108,12 @@ public:
 
     vector<vector<string>> save_atom_map() const;
 
+    void init_stack(vector<string> list);
+
+    vector<string> save_stack() const;
     // ===============================================================================================================
+
+
 
 
 

@@ -73,6 +73,14 @@ public:
     // ======================                   Getters and Setters                         ==========================
     // ===============================================================================================================
 
+
+    /**
+     * \fn const deque<shared_ptr<Literal>> &getSt() const
+     * \brief Getter for \a st attribute
+     * \return The private attribute \a st
+     */
+    const deque<shared_ptr<Literal>> &getSt() const;
+
     /**
      * \fn Operator *getLastOperator() const
      * \brief Getter for \a lastOperator
@@ -135,7 +143,7 @@ public:
      * \fn int size() const
      * \return The size of the private attribute \a st
      */
-    int size() const;
+    unsigned long int size() const;
 
 
     /**
