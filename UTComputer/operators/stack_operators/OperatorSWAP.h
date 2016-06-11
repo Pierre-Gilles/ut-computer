@@ -1,3 +1,9 @@
+/**
+ * \file OperatorSWAP.h
+ * \brief File containing the OperatorSWAP class.
+ */
+
+
 #ifndef UTCOMPUTER_OPERATORSWAP_H
 #define UTCOMPUTER_OPERATORSWAP_H
 
@@ -5,6 +11,9 @@
 #include "../StackOperator.h"
 #include "../../literals/Literal.h"
 
+/**
+ * \class OperatorSWAP
+ */
 class OperatorSWAP : public StackOperator {
 
 public:
@@ -16,9 +25,14 @@ public:
     // ===============================================================================================================
     // ======================                 Implement superclass interface                ==========================
     // ===============================================================================================================
-    /*
-     * Address of stack must not be changed, but "st" do not point to a const stack : we use a constant pointer
-     * and not a pointer to constant
+    /**
+     * \fn virtual void execute(StackUTComputer * const st) override
+     * \brief Execute specific operations of the operator
+     * \param[in] st : constant pointer (referenced object can be modified but reference itself cannot) to an instance of StackUTComputer
+     *
+     * Redefinition of StackOperator::execute :
+     *    - call to StackOperator::execute method
+     *    - try to swap the first two elements
      */
     virtual void execute(StackUTComputer * const st) override;
     // ===============================================================================================================

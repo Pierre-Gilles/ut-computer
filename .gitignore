@@ -4,7 +4,7 @@ build
 .qmake.stash
 tests/Makefile
 .idea
-
+Documentation/*
 
 #for the makefile of shadow builds :
 build-*

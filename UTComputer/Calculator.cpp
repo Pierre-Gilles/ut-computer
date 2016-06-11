@@ -48,6 +48,13 @@ Calculator::Calculator() {
 
 
 
+
+
+
+
+
+
+
 // ===============================================================================================================
 // ======================                       Getters and Setters                     ==========================
 // ===============================================================================================================
@@ -63,6 +70,14 @@ const StackUTComputer & Calculator::getSt() {
 const LexerUTComputer & Calculator::getLx() const {
     return lx;
 }
+// ===============================================================================================================
+
+
+
+
+// ===============================================================================================================
+// ======================               Saving and initiating application                         ================
+// ===============================================================================================================
 
 void Calculator::init_program_map(vector<vector<string>> list) {
     for (auto line = list.cbegin(); line != list.cend(); ++line) {
@@ -99,14 +114,40 @@ vector<vector<string>> Calculator::save_atom_map() const {
     vector<string> one_line;
     for ( auto it = atom_map.cbegin(); it != atom_map.cend(); ++it ) {
         one_line.push_back(it->first);
-        one_line.push_back(it->second.get()->getValue());
+        one_line.push_back(it->second.get()->toString());
         lines.push_back(one_line);
         one_line.clear();
     }
     return lines;
 }
 
+
+void Calculator::init_stack(vector<string> list) {
+    /* List is an reverse replica of the stack, meaning the end of the stack is at the beginning of the vector "list" */
+
+    for (auto it = list.cbegin(); it != list.cend(); ++it) {
+        shared_ptr<Literal> newLit = lf.createLiteral(*it);
+        st.push(newLit);
+    }
+}
+
+vector<string> Calculator::save_stack() const {
+    vector<string> result;
+    result.reserve(st.size());
+    /* Iterate through the stack from the end to the beginning  */
+    for (auto it = st.getSt().crbegin(); it != st.getSt().crend(); ++it) {
+        /* using push_back because of it's constant complexity (amortized time, reallocation may happen) */
+        result.push_back(st.top()->toString());
+    }
+
+    /* Now result is an reverse replica of the stack, but it contains string instead of shared_ptr<Literal> */
+    return result;
+}
 // ===============================================================================================================
+
+
+
+
 
 
 
@@ -258,8 +299,8 @@ void Calculator::handleAtom(const string& s) {
 * If there is an atom in "postfix_tokens"
 *  - if it's not present in the atom_mat --> fail
 *  - if it's a program --> fail
-*  - if it's a complex --> ok continue
-*  - if it's not a program or a complex --> fail
+*  - if it's not a complex --> failcontinue
+* - otherwise --> continue
 */
 bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 
@@ -280,7 +321,6 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
                     return false;
             }
 
-
         }
     }
     return true;
@@ -299,7 +339,7 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 
 
 bool Calculator::atomFound(const string &s) const {
-    unordered_map<string, shared_ptr<AtomLiteral>>::const_iterator found = atom_map.find(s);
+    unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(s);
     return (found != atom_map.cend());
 }
 
@@ -309,13 +349,13 @@ bool Calculator::programFound(const string &s) const {
 }
 
 
-bool Calculator::atomIsNumeric(const string &s) {
-    ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map[s].get());
+bool Calculator::atomIsNumeric(const string &s) const {
+    ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map.at(s).get());
     return (comp != nullptr);
 }
 
-bool Calculator::atomIsProgram(const string &s) {
-    ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(atom_map[s].get());
+bool Calculator::atomIsProgram(const string &s) const {
+    ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(atom_map.at(s).get());
     return (prgm != nullptr);
 }
 
@@ -327,7 +367,7 @@ bool Calculator::addAtom(const string &key, const string &value) {
     if (atomFound(key))
         throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
 
-    pair<string, shared_ptr<AtomLiteral>> atom_pair (key, shared_ptr<AtomLiteral>(new AtomLiteral(value)));
+    pair<string, shared_ptr<Literal>> atom_pair (key, lf.createLiteral(value));
     atom_map.insert(atom_pair);
     return true;
 }

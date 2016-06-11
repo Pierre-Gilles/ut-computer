@@ -17,16 +17,31 @@ class AtomLiteral : public StringLiteral {
     const static string atomRegex; /*!< String containing the regex specific to AtomLiteral */
 
 public:
+
+    // ===============================================================================================================
+    // ======================               Constructors and Destructors                    ==========================
+    // ===============================================================================================================
+
     /**
      * \fn AtomLiteral(const string &value)
-     * \brief AtomLiteral constructor taking a string to construct a new AtomLiteral
+     * \brief Constructor taking a string to construct a new AtomLiteral
      * \param[in] value : string from which the AtomLiteral is created
      * \return An AtomLiteral instance
      */
     AtomLiteral(const string &value) : StringLiteral(value) { }
 
     virtual ~AtomLiteral() { }
+    // ===============================================================================================================
 
+
+
+
+
+
+
+    // ===============================================================================================================
+    // ======================                       Getters and Setters                     ==========================
+    // ===============================================================================================================
 
     /**
      * \fn static const string &getAtomRegex()
@@ -37,6 +52,18 @@ public:
         return atomRegex;
     }
 
+    // ===============================================================================================================
+
+
+
+
+
+
+
+    // ===============================================================================================================
+    // ======================                         Override Methods                      ==========================
+    // ===============================================================================================================
+
     /**
      * \fn virtual string toString() const override
      * \brief Redefinition of the superclass virtual pure toString() method
@@ -45,6 +72,12 @@ public:
     virtual string toString() const override {
         return value;
     }
+    // ===============================================================================================================
+
+
+
+
+
 
 
 };

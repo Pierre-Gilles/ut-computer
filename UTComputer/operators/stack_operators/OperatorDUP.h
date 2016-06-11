@@ -1,3 +1,8 @@
+/**
+ * \file OperatorDUP.h
+ * \brief File containing the OperatorDUP class.
+ */
+
 #ifndef UTCOMPUTER_OPERATORDUP_H
 #define UTCOMPUTER_OPERATORDUP_H
 
@@ -6,6 +11,11 @@
 #include "../../literals/ExpressionLiteral.h"
 #include "../../literals/ProgramLiteral.h"
 
+
+
+/**
+ * \class OperatorDUP
+ */
 class OperatorDUP : public StackOperator {
 
 public:
@@ -17,9 +27,14 @@ public:
     // ===============================================================================================================
     // ======================                 Implement superclass interface                ==========================
     // ===============================================================================================================
-    /*
-     * Address of stack must not be changed, but "st" do not point to a const stack : we use a constant pointer
-     * and not a pointer to constant
+    /**
+     * \fn virtual void execute(StackUTComputer * const st) override
+     * \brief Execute specific operations of the operator
+     * \param[in] st : constant pointer (referenced object can be modified but reference itself cannot) to an instance of StackUTComputer
+     *
+     * Redefinition of StackOperator::execute :
+     *    - call to StackOperator::execute method
+     *    - try to duplicate the top of the stack
      */
     virtual void execute(StackUTComputer * const st) override;
     // ===============================================================================================================
