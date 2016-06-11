@@ -92,10 +92,14 @@ unsigned long int StackUTComputer::size() const {
 }
 
 shared_ptr<Literal> StackUTComputer::top() const {
+    if (size() == 0)
+        throw UTComputerException("Error in StackUTComputer::top() : stack is empty");
     return st[0];
 }
 
 void StackUTComputer::pop() {
+    if (size() == 0)
+        throw UTComputerException("Error in StackUTComputer::pop() : stack is empty");
     st.pop_front(); // remove top element from the container
 }
 

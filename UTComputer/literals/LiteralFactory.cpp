@@ -2,6 +2,10 @@
 
 
 shared_ptr<Literal> LiteralFactory::createLiteral(const string &s) {
+    if (s == "") {
+        throw UTComputerException("Error LiteralFactory::createLiteral : token should not be empty)");
+    }
+
     regex regexNumeric = regex(NumericLiteral::getNumericRegex());
     regex regexExpression = regex(ExpressionLiteral::getExpressionRegex());
     regex regexProgram = regex(ProgramLiteral::getProgramRegex());

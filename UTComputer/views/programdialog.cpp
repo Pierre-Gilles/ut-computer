@@ -24,8 +24,10 @@ void ProgramDialog::displayError(string e){
 }
 
 void ProgramDialog::updateList(){
-    ui->listPrograms->clear();
-    qDebug() << programs.size() <<endl;
+//    ui->listPrograms->clearSelection();
+//    ui->listPrograms->clearFocus();
+    ui->listPrograms->clear(); // TODO crash quand on ajoute un programme alors qu'un item de la liste des programmes est sélectionné
+    //qDebug() << programs.size() <<endl;
     for(int i = 0; i < programs.size(); i++){
         QString qs = QString::fromStdString(programs[i][0]);
         ui->listPrograms->addItem(qs);

@@ -137,7 +137,7 @@ vector<string> Calculator::save_stack() const {
     /* Iterate through the stack from the end to the beginning  */
     for (auto it = st.getSt().crbegin(); it != st.getSt().crend(); ++it) {
         /* using push_back because of it's constant complexity (amortized time, reallocation may happen) */
-        result.push_back(st.top()->toString());
+        result.push_back(it->get()->toString());
     }
 
     /* Now result is an reverse replica of the stack, but it contains string instead of shared_ptr<Literal> */
@@ -268,25 +268,25 @@ void Calculator::executeEvalOperator() {
 void Calculator::handleAtom(const string& s) {
     // If we find the atom in the atom_map
     if (atomFound(s)) {
+        st.push(atom_map[s]);
 
         // if it's a variable (ComplexLiteral), we need to stack it
-        if (atomIsNumeric(s)) {
-            st.pop(); // delete the atom before eval //TODO peut être la sauvegarder quelque part si jamais y'a des erreurs dans l'evaluation
-            st.push(atom_map[s]);
-        }
+//        if (atomIsNumeric(s)) {
+//            st.push(atom_map[s]);
+//        }
+//
+//         if it's a program, we need to evaluate it
+//
+//
+//         it's not a variable nor a program, error because atom_map contains variable or program
+//        else {
+//            throw UTComputerException("Error Calculator::calculate() : atom_map contains an atom that is not a complex or a program.");
+//        }
 
-        // if it's a program, we need to evaluate it
-        else if (atomIsProgram(s)) {
-            vector<string> postfix_tokens = lx.tokenize(dynamic_cast<ProgramLiteral*>(atom_map[s].get())->getValue());
-            st.pop(); // delete the atom before eval //TODO peut être la sauvegarder quelque part si jamais y'a des erreurs dans l'evaluation
-            calculate(postfix_tokens); // recursive call to calculate
-        }
-
-        // it's not a variable nor a program, error because atom_map contains variable or program
-        else {
-            throw UTComputerException("Error Calculator::calculate() : atom_map contains an atom that is not a complex or a program.");
-        }
-
+    }
+    else if (programFound(s)) {
+        vector<string> postfix_tokens = lx.tokenize(dynamic_cast<ProgramLiteral*>(program_map[s].get())->getValue());
+        calculate(postfix_tokens); // recursive call to calculate
     }
     // it's not a variable nor a program : we need to create a nex ExpressionLiteral and stack it
     else {
@@ -295,13 +295,6 @@ void Calculator::handleAtom(const string& s) {
 }
 
 
-/*
-* If there is an atom in "postfix_tokens"
-*  - if it's not present in the atom_mat --> fail
-*  - if it's a program --> fail
-*  - if it's not a complex --> failcontinue
-* - otherwise --> continue
-*/
 bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 
     regex atomRegex(AtomLiteral::getAtomRegex());
@@ -367,17 +360,13 @@ bool Calculator::addAtom(const string &key, const string &value) {
     if (atomFound(key))
         throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
 
-    if(!isupper(key[0])){
-        throw UTComputerException("Error in Calculator::addAtom : First character of the name should be uppercase.");
+    if (!regex_match(key, regex(AtomLiteral::getAtomRegex()))) {
+        throw UTComputerException("Error in Calculator::addAtom : Variable name must begin by a capital letter and it should contain only capital letters and numbers.");
     }
 
-    int i = 0;
-    while (isalnum(key[i]) && i < key.size()) i++;
-
-    if(i < key.size()) {
-        throw UTComputerException("Error in Calculator::addAtom : Name should be alphanumeric.");
+    if (!regex_match(value, regex(NumericLiteral::getNumericRegex()))) {
+        throw UTComputerException("Error in Calculator::addAtom : Variable can only be of numeric type.");
     }
-
 
     pair<string, shared_ptr<Literal>> atom_pair (key, lf.createLiteral(value));
     atom_map.insert(atom_pair);
@@ -387,6 +376,10 @@ bool Calculator::addAtom(const string &key, const string &value) {
 bool Calculator::addProgram(const string &key, const string &value) {
     if (programFound(key))
         throw UTComputerException("Error in Calculator::addProgram : program already exists.");
+
+    if (!regex_match(key, regex(AtomLiteral::getAtomRegex()))) {
+        throw UTComputerException("Error in Calculator::addProgram : Program name must begin by a capital letter and it should contain only capital letters and numbers.");
+    }
 
     pair<string, shared_ptr<ProgramLiteral>> program_pair (key, shared_ptr<ProgramLiteral>(new ProgramLiteral(value)));
     program_map.insert(program_pair);
