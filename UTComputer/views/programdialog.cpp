@@ -39,6 +39,7 @@ void ProgramDialog::on_pushButtonCreateProgram_clicked(){
         vector<string> prog = {ui->textEditNewProgName->toPlainText().toStdString(), ""};
         programs.push_back(prog);
         updateList();
+        ui->textEditNewProgName->setText("");
     } catch(UTComputerException e){
         displayError(e.getMessage());
     }
