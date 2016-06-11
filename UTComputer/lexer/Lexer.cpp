@@ -13,7 +13,7 @@ using namespace std;
 vector<string> LexerUTComputer::tokenize(const string &s) const {
 
     vector<string> elems;
-    regex r("('.[^']*'|\\[.*\\]|[A-Z]+|[A-Z][0-9A-Z]*|[0-9.$]+|[\\+\\-\\*\\/\\(\\),<>=]|<=|>=|\\!=)");
+    regex r("('.[^']*'|\\[.*\\]|[A-Z][0-9A-Z]*|[A-Z]+|[0-9.$]+|[\\+\\-\\*\\/\\(\\),<>=]|<=|>=|\\!=)");
 
     for (sregex_token_iterator it = sregex_token_iterator(s.begin(), s.end(), r, 1); it != sregex_token_iterator(); ++it)
         elems.push_back((string)*it);

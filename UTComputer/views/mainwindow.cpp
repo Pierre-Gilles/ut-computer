@@ -179,54 +179,67 @@ void MainWindow::on_pushButton9_clicked(){
 
 void MainWindow::on_pushButtonPlus_clicked(){
      addToLineEdit("+");
+     calculate();
 }
 
 void MainWindow::on_pushButtonMinus_clicked(){
     addToLineEdit("-");
+    calculate();
 }
 
 void MainWindow::on_pushButtonDivide_clicked(){
     addToLineEdit("/");
+    calculate();
 }
 
 void MainWindow::on_pushButtonMultiply_clicked(){
     addToLineEdit("*");
+    calculate();
 }
 
 void MainWindow::on_pushButtonNeg_clicked(){
     addToLineEdit("NEG");
+    calculate();
 }
 
 void MainWindow::on_pushButtonDollar_clicked(){
     addToLineEdit("$");
+    calculate();
 }
 
 void MainWindow::on_pushButtonAnd_clicked(){
     addToLineEdit("AND");
+    calculate();
 }
 
 void MainWindow::on_pushButtonOr_clicked(){
     addToLineEdit("OR");
+    calculate();
 }
 
 void MainWindow::on_pushButtonNot_clicked(){
     addToLineEdit("NOT");
+    calculate();
 }
 
 void MainWindow::on_pushButtonNum_clicked(){
     addToLineEdit("NUM");
+    calculate();
 }
 
 void MainWindow::on_pushButtonDen_clicked(){
     addToLineEdit("DEN");
+    calculate();
 }
 
 void MainWindow::on_pushButtonRe_clicked(){
     addToLineEdit("RE");
+    calculate();
 }
 
 void MainWindow::on_pushButtonIm_clicked(){
     addToLineEdit("IM");
+    calculate();
 }
 
 void MainWindow::on_pushButtonLeftParenthesis_clicked(){
@@ -243,6 +256,7 @@ void MainWindow::on_pushButtonPoint_clicked(){
 
 void MainWindow::on_pushButtonEval_clicked(){
     addToLineEdit("EVAL");
+    calculate();
 }
 
 
@@ -257,11 +271,13 @@ void MainWindow::on_pushButtonEnter_clicked(){
 // UNDO
 void MainWindow::on_pushButtonUndo_clicked(){
     addToLineEdit("UNDO");
+    calculate();
 }
 
 // REDO
 void MainWindow::on_pushButtonRedo_clicked(){
     addToLineEdit("REDO");
+    calculate();
 }
 
 void MainWindow::on_lineEdit_returnPressed(){
@@ -270,30 +286,37 @@ void MainWindow::on_lineEdit_returnPressed(){
 
 void MainWindow::on_pushButtonEdit_clicked(){
     addToLineEdit("EDIT");
+    calculate();
 }
 
 void MainWindow::on_pushButtonClear_clicked(){
     addToLineEdit("CLEAR");
+    calculate();
 }
 
 void MainWindow::on_pushButtonSwap_clicked(){
     addToLineEdit("SWAP");
+    calculate();
 }
 
 void MainWindow::on_pushButtonLastOp_clicked(){
     addToLineEdit("LASTOP");
+    calculate();
 }
 
 void MainWindow::on_pushButtonDrop_clicked(){
     addToLineEdit("DROP");
+    calculate();
 }
 
 void MainWindow::on_pushButtonDup_clicked(){
     addToLineEdit("DUP");
+    calculate();
 }
 
 void MainWindow::on_pushButtonLastArgs_clicked(){
     addToLineEdit("LASTARGS");
+    calculate();
 }
 
 
