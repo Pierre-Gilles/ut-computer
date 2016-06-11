@@ -51,7 +51,10 @@ public:
         }
     }
     void createProgram(string name, string value);
+    void createAtom(string name, string value);
+    void sync(vector<vector<string>> programs, vector<vector <string>> atoms);
     vector<vector <string>> getPrograms();
+    vector<vector <string>> getAtoms();
     void cleanDatabase();
 };
 

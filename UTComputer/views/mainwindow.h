@@ -9,6 +9,7 @@
 #include <vector>
 #include "../Calculator.h"
 #include "../db/Database.h"
+#include "./programdialog.h"
 
 using namespace std;
 
@@ -69,8 +70,27 @@ private slots:
 
   void on_lineEdit_returnPressed();
 
+  void on_pushButtonEdit_clicked();
+
+
+  void on_pushButtonClear_clicked();
+
+  void on_pushButtonSwap_clicked();
+
+  void on_pushButtonLastOp_clicked();
+
+  void on_pushButtonDrop_clicked();
+
+  void on_pushButtonDup_clicked();
+
+  void on_pushButtonLastArgs_clicked();
+
+  void on_toolButtonProgram_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    ProgramDialog *progDial = 0;
 
     Calculator *calc;
     Database *db;

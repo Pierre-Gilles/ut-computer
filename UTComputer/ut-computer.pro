@@ -59,7 +59,8 @@ SOURCES += main.cpp\
     operators/StackOperator.cpp \
     stack/StackUTComputer.cpp \
     Calculator.cpp \
-    db/Database.cpp
+    db/Database.cpp \
+    views/programdialog.cpp
 
 HEADERS  += views/mainwindow.h \
     exceptions/UTComputerException.h \
@@ -107,8 +108,10 @@ HEADERS  += views/mainwindow.h \
     operators/StackOperator.h \
     stack/StackUTComputer.h \
     Calculator.h \
-    db/Database.h
+    db/Database.h \
+    views/programdialog.h
 
-FORMS    +=  views/mainwindow.ui
+FORMS    +=  views/mainwindow.ui \
+    views/programdialog.ui
 
 RESOURCES += database.db

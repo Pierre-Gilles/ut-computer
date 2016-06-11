@@ -17,6 +17,7 @@ MainWindow::MainWindow(Calculator *calc, Database *db, QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    db->sync(calc->save_program_map(), calc->save_atom_map());
     delete ui;
 }
 
@@ -43,13 +44,13 @@ string MainWindow::getLineEditValue(){
 
 void MainWindow::displayError(string s){
     QString qs = QString::fromStdString(s);
-    ui->errorLabel->setText(qs);
+    ui->errorTextArea->setText(qs);
     qDebug() << qs << endl;
 }
 
 void MainWindow::refreshView(){
     vector<string> elements = calc->getSt().getLastElementsString(5);
-    updateValueLineEdit(elements[0]);
+    updateValueLineEdit("");
     updateStackDisplay(elements);
 }
 
@@ -225,4 +226,43 @@ void MainWindow::on_pushButtonRedo_clicked(){
 
 void MainWindow::on_lineEdit_returnPressed(){
     calculate();
+}
+
+void MainWindow::on_pushButtonEdit_clicked(){
+    addToLineEdit("EDIT");
+}
+
+void MainWindow::on_pushButtonClear_clicked(){
+    addToLineEdit("CLEAR");
+}
+
+void MainWindow::on_pushButtonSwap_clicked(){
+    addToLineEdit("SWAP");
+}
+
+void MainWindow::on_pushButtonLastOp_clicked(){
+    addToLineEdit("LASTOP");
+}
+
+void MainWindow::on_pushButtonDrop_clicked(){
+    addToLineEdit("DROP");
+}
+
+void MainWindow::on_pushButtonDup_clicked(){
+    addToLineEdit("DUP");
+}
+
+void MainWindow::on_pushButtonLastArgs_clicked(){
+    addToLineEdit("LASTARGS");
+}
+
+
+/**
+ * Open windows
+ */
+
+void MainWindow::on_toolButtonProgram_clicked(){
+    if(progDial != 0) delete progDial;
+    progDial = new ProgramDialog(calc);
+    progDial->show();
 }
