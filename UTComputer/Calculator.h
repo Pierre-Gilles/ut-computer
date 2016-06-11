@@ -188,7 +188,7 @@ public:
      * If there is an atom in "postfix_tokens"
      *  - if it's not present in the atom_mat --> fail
      *  - if it's a program --> fail
-     *  - if it's not a complex --> failcontinue
+     *  - if it's not a complex --> fail
      * - otherwise --> continue
      */
     bool checkExpressionCorrectForEval(vector<string> &tokens);
@@ -288,6 +288,25 @@ public:
      * \return True if atom can be updated, false otherwise
      */
      bool updateAtom(const string &key, const string &value);
+
+    /**
+     * \fn bool deleteAtom(const string &key)
+     * \brief Method that delete an atom in the \a atom_map attribute
+     * \param[in] key : the key of the atom to delete
+     * \return True if atom has been deleted, false otherwise
+     */
+    bool deleteAtom(const string &key);
+
+
+    /**
+     * \fn bool deleteProgram(const string &key)
+     * \brief Method that update an atom in the \a program_map attribute
+     * \param[in] key : the key of the program to delete
+     * \return True if program has been deleted, false otherwise
+     */
+    bool deleteProgram(const string &key);
+
+
 
 
     // ===============================================================================================================

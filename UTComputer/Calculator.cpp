@@ -273,25 +273,13 @@ void Calculator::handleAtom(const string& s) {
     // If we find the atom in the atom_map
     if (atomFound(s)) {
         st.push(atom_map[s]);
-
-        // if it's a variable (ComplexLiteral), we need to stack it
-//        if (atomIsNumeric(s)) {
-//            st.push(atom_map[s]);
-//        }
-//
-//         if it's a program, we need to evaluate it
-//
-//
-//         it's not a variable nor a program, error because atom_map contains variable or program
-//        else {
-//            throw UTComputerException("Error Calculator::calculate() : atom_map contains an atom that is not a complex or a program.");
-//        }
-
     }
+
     else if (programFound(s)) {
         vector<string> postfix_tokens = lx.tokenize(dynamic_cast<ProgramLiteral*>(program_map[s].get())->getValue());
         calculate(postfix_tokens); // recursive call to calculate
     }
+
     // it's not a variable nor a program : we need to create a nex ExpressionLiteral and stack it
     else {
         st.push(shared_ptr<ExpressionLiteral>(new ExpressionLiteral(s)));
@@ -306,18 +294,18 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
     for (auto it = tokens.cbegin(); it != tokens.cend(); ++it) {
         if (regex_match(*it, atomRegex)) { // if it's an atom in the literal we have to evaluate
 
-            // test first if the atom correspond to a known operator : if it's the case, go to next iteration
+            /* test first if the atom correspond to a known operator :
+             *  - if it's the case, go to next iteration
+             *  - otherwise, do some more tests
+             */
             if (!op_manager.operatorExists(*it)) {
-                if (! atomFound(*it))
+                /* if it's not a variable, return false */
+                if (!atomFound(*it))
                     return false;
-
-                if (atomIsProgram(*it))
-                    return false;
-
-                if (! atomIsNumeric(*it))
+                /* if it's a program, return false */
+                if (programFound(*it))
                     return false;
             }
-
         }
     }
     return true;
@@ -403,6 +391,22 @@ bool Calculator::updateProgram(const string &key, const string &value){
         throw UTComputerException("Error in Calculator::updateProgram : cant find program.");
 
     program_map[key] = shared_ptr<ProgramLiteral>(new ProgramLiteral(value));
+    return true;
+}
+
+
+bool Calculator::deleteAtom(const string &key){
+    if (!atomFound(key))
+        throw UTComputerException("Error in Calculator::deleteAtom : cant find atom.");
+    atom_map.erase(key);
+    return true;
+}
+
+bool Calculator::deleteProgram(const string &key){
+    if (!programFound(key))
+        throw UTComputerException("Error in Calculator::updateProgram : cant find program.");
+
+    program_map.erase(key);
     return true;
 }
 
