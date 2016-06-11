@@ -226,4 +226,13 @@ void StackUTComputer::redo() {
         }
     }
 }
+
+void StackUTComputer::createTemporaryMemento() {
+    delete temporaryMemento; // delete on a nullptr is ok
+    temporaryMemento = new StackUTComputerMemento(this);
+}
+
+void StackUTComputer::reinstateTemporaryMemento() {
+    reinstateMemento(temporaryMemento);
+}
 // ===============================================================================================================

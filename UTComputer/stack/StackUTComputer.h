@@ -27,6 +27,7 @@ class StackUTComputer {
 
     // memento
     deque<StackUTComputerMemento *> mementoStack; /*!< deque of StackUTComputerMemento* used to store memento instances */
+    StackUTComputerMemento *temporaryMemento;
     int mementoCurrentSize;
     int mementoPosition;
     static int maxMementoSize; /*!< parameter to fix a size of possible mementos being accessible at the same time */
@@ -50,7 +51,7 @@ public:
      *      - \a mementoCurrentSize is set to 0
      *      - \a mementoPosition is set to 0
      */
-    StackUTComputer() : lastOperator(nullptr), mementoCurrentSize(0), mementoPosition(0)  { }
+    StackUTComputer() : lastOperator(nullptr), mementoCurrentSize(0), mementoPosition(0), temporaryMemento(nullptr)  { }
 
     /**
      * \fn virtual ~StackUTComputer()
@@ -246,6 +247,18 @@ public:
      * \brief Method that create a memento of the StackUTComputer
      */
     void createMemento();
+
+    /**
+     * \fn void createTemporaryMemento()
+     * \brief Method that create a temporarry memento of the StackUTComputer
+     */
+    void createTemporaryMemento();
+
+    /**
+     * \fn void reinstateTemporaryMemento()
+     * \brief Method that get the stack back to the temporary memento
+     */
+    void reinstateTemporaryMemento();
 
 private:
     /**

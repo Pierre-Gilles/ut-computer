@@ -164,6 +164,8 @@ void Calculator::run(const string &s) {
 
 void Calculator::calculate(const vector<string> &tokens) {
 
+    /* Create temporary memento : if there is an error, the stack is set back to it's sate before the error */
+    st.createTemporaryMemento();
     try {
 
         if(tokens.size() > 1) {
@@ -216,6 +218,7 @@ void Calculator::calculate(const vector<string> &tokens) {
         }
     }
     catch (UTComputerException e) {
+        st.reinstateTemporaryMemento();
         UTComputerException e1(e.getMessage());
         e1.insertBefore(" --> ");
         e1.insertBefore("Error in applying Calculator::calculate() ");
