@@ -73,6 +73,21 @@ void MainWindow::updateStackDisplay(vector<string> elems){
 
     for(int i = 0; i < elems.size(); i++){
         QString qs = QString::fromStdString(elems[i]);
+
+        /* Test to display only what the QListWidget can contains, not conclusive */
+        /*
+        QFontMetrics metrics(ui->listWidget->font());
+        int textInPixeles = metrics.width(qs);
+
+        if (qs.length() > textInPixeles) {
+            QString new_qs = qs.mid(0,textInPixeles-5) + "..." + qs.mid(qs.length()-1,qs.length()-1);
+            ui->listWidget->addItem(new_qs);
+        }
+        else {
+            ui->listWidget->addItem(qs);
+        }
+        */
+
         ui->listWidget->addItem(qs);
     }
 }
