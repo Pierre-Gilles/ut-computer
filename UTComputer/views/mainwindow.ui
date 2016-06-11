@@ -71,9 +71,9 @@
    <widget class="QToolButton" name="toolButtonProgram">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>530</x>
       <y>10</y>
-      <width>111</width>
+      <width>90</width>
       <height>41</height>
      </rect>
     </property>
@@ -92,9 +92,9 @@
    <widget class="QToolButton" name="toolButtonVariable">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>430</x>
       <y>10</y>
-      <width>111</width>
+      <width>90</width>
       <height>41</height>
      </rect>
     </property>
@@ -212,6 +212,27 @@
     </property>
     <property name="text">
      <string>Command line</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonProgram_2">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>10</y>
+      <width>90</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Parameters</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonEnter">

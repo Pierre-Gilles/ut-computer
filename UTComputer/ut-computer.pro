@@ -117,7 +117,8 @@ HEADERS  += views/mainwindow.h \
 
 FORMS    +=  views/mainwindow.ui \
     views/programdialog.ui \
-    views/atomdialog.ui
+    views/atomdialog.ui \
+    views/setup.ui
 
 RESOURCES += database.db \
     sounds/que_trepasse.wav
