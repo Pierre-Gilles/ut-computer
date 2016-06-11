@@ -9,8 +9,8 @@ using namespace std;
 MainWindow::MainWindow(Calculator *calc, Database *db, Sound *sound, QWidget *parent) :
         calc(calc),
         db(db),
-        sound(sound),
         QMainWindow(parent),
+        sound(sound),
         ui(new Ui::MainWindow)
 {
     // init with data in database
