@@ -191,7 +191,11 @@ string Calculator::convertComplexLiteralToPostfix(ComplexLiteral * l) const {
 // ===============================================================================================================
 
 void Calculator::run(const string &s) {
-    calculate(lx.tokenize(s));
+    if (s != "") { // do something only if command line contains something
+        if (lx.tokenize(s).size() == 0) // nothing in the command line is recognized
+            throw UTComputerException("Error in Calculator::run : your command \"" + s + "\" is invalid !!");
+        calculate(lx.tokenize(s));
+    }
 }
 
 void Calculator::calculate(const vector<string> &tokens) {
@@ -212,9 +216,7 @@ void Calculator::calculate(const vector<string> &tokens) {
 
             // Special case for Operator EVAL
             if (*it == "EVAL") {
-                executeEvalOperator(); /* TODO peut être dupliquer et lui passer l'adresse du memento créé avant de
-                                        * rentrer dans la boucle : si erreur dans executeEvalOperator, le specifier
-                                        * et remettre la stack dans l'état du memento*/
+                executeEvalOperator();
             }
 
 
@@ -288,12 +290,12 @@ void Calculator::executeEvalOperator() {
          *  */
         if (! checkExpressionCorrectForEval(postfix_tokens))
             throw UTComputerException("Error Calculator::executeEvalOperator() : the Expression contains invalid atom.");
-        st.pop(); // delete the expression before eval //TODO peut être la sauvegarder quelque part si jamais y'a des erreurs dans l'evaluation
+        st.pop(); // delete the expression before eval
         calculate(postfix_tokens); // recursive call to calculate
     }
     else if (prgm != nullptr) {
         vector<string> postfix_tokens = lx.tokenize(prgm->getValue());
-        st.pop(); // delete the program before eval //TODO peut être la sauvegarder quelque part si jamais y'a des erreurs dans l'evaluation
+        st.pop(); // delete the program before eval
         calculate(postfix_tokens); // recursive call to calculate
     }
     else {

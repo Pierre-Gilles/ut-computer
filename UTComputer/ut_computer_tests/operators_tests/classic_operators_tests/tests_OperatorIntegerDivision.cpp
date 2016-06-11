@@ -99,6 +99,3 @@ TEST_F(Test_Operator_Int_Div, Integer_Division_Applies_Only_To_Integers) {
     }
 }
 
-
-
-// TODO : DIV sur des int négatifs ???

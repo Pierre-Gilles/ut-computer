@@ -127,6 +127,12 @@ public:
      */
     vector<string> save_stack() const;
 
+    /**
+     * \fn string convertComplexLiteralToPostfix(ComplexLiteral * l) const
+     * \brief Method that is used to convert a ComplexLiteral in a postfix expression which, when evaluated, return the ComplexLiteral
+     * \param[in] l : the ComplexLiteral to "transform" in a string
+     * \return A string
+     */
     string convertComplexLiteralToPostfix(ComplexLiteral * l) const;
     // ===============================================================================================================
 

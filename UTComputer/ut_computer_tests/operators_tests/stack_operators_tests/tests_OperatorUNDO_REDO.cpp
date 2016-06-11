@@ -105,7 +105,6 @@ TEST_F(Test_Operator_UNDO_REDO, UNDO_And_REDO_Works_after_push_on_stack) {
         arguments.clear();
 
         // test that undo won't crash when there is nothing to undo : crtl-Z just not "working"
-        //TODO  maybe change this behavior and throw an exception and display in the interface that there is nothing to go back to ?
         op_UNDO.execute(&st);
         op_UNDO.execute(&st);
         op_UNDO.execute(&st);
