@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QDebug>
 #include <vector>
+#include <QListWidgetItem>
 #include "../Calculator.h"
 
 namespace Ui {
@@ -20,6 +21,11 @@ public:
 
 private slots:
     void on_pushButtonCreateProgram_clicked();
+
+    void on_textEdit_textChanged();
+
+    void on_listPrograms_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+
 
 private:
     Ui::ProgramDialog *ui;

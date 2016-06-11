@@ -271,6 +271,24 @@ public:
      */
     bool addProgram(const string &key, const string &value);
 
+    /**
+     * \fn bool updateProgram(const string &key, const string &value)
+     * \brief Method that update a program in the \a atom_map attribute
+     * \param[in] key : the key of the program
+     * \param[in] value : the value of the program
+     * \return True if program can be updated, false otherwise
+     */
+    bool updateProgram(const string &key, const string &value);
+
+    /**
+     * \fn bool updateAtom(const string &key, const string &value)
+     * \brief Method that update an atom in the \a atom_map attribute
+     * \param[in] key : the key of the atom
+     * \param[in] value : the value of the atom
+     * \return True if atom can be updated, false otherwise
+     */
+     bool updateAtom(const string &key, const string &value);
+
 
     // ===============================================================================================================
 };

@@ -13,7 +13,9 @@ MainWindow::MainWindow(Calculator *calc, Database *db, QWidget *parent) :
         ui(new Ui::MainWindow)
 {
     // init with data in database
-    calc->init_program_map(db->getPrograms());
+    vector<vector<string>> progs = db->getPrograms();
+    qDebug() << "Get programs from DB = " << progs.size() <<endl;
+    calc->init_program_map(progs);
     calc->init_atom_map(db->getAtoms());
 
     ui->setupUi(this);

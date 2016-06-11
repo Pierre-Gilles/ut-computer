@@ -381,6 +381,22 @@ bool Calculator::addProgram(const string &key, const string &value) {
     return true;
 }
 
+bool Calculator::updateAtom(const string &key, const string &value){
+    if (!atomFound(key))
+        throw UTComputerException("Error in Calculator::updateAtom : cant find atom.");
+
+    atom_map[key] = shared_ptr<ProgramLiteral>(new ProgramLiteral(value));
+    return true;
+}
+
+bool Calculator::updateProgram(const string &key, const string &value){
+    if (!programFound(key))
+        throw UTComputerException("Error in Calculator::updateProgram : cant find program.");
+
+    program_map[key] = shared_ptr<ProgramLiteral>(new ProgramLiteral(value));
+    return true;
+}
+
 // ===============================================================================================================
 
 
