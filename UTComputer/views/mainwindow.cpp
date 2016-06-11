@@ -88,12 +88,37 @@ void MainWindow::calculate(){
 void MainWindow::on_lineEdit_textChanged(const QString &arg1) {
     try{
         string text = arg1.toUtf8().constData();
-        vector<string> tokens = calc->getLx().tokenize(text);
-        string last;
-        if (!tokens.empty()){
-            last = tokens.back();
-            if(calc->getLx().isOperator(last)){
-                calculate();
+        if(text.size() > 0){
+            char lastElement = text[text.size()-1];
+            if(!expressionLocked && !programLocked){
+                if(lastElement == '+' || lastElement == '-' || lastElement == '/' || lastElement == '$'){
+                    calculate();
+                }
+
+                if(lastElement == '\''){
+                    expressionLocked = true;
+                }
+
+                if(lastElement == '['){
+                    programLocked = true;
+                }
+            } else if(expressionLocked){
+                if(lastElement == '\''){
+                    expressionLocked = false;
+                }
+            } else if(programLocked){
+                if(lastElement == ']'){
+                    programLocked = false;
+                }
+            } else {
+
+                if(lastElement == '\''){
+                    expressionLocked = true;
+                }
+
+                if(lastElement == '['){
+                    programLocked = true;
+                }
             }
         }
     } catch(UTComputerException e){

@@ -99,6 +99,10 @@ private:
     Calculator *calc;
     Database *db;
 
+    // lock
+    bool expressionLocked = false;
+    bool programLocked = false;
+
     void updateValueLineEdit(string s);
     void addToLineEdit(string s);
     void displayError(string s);
