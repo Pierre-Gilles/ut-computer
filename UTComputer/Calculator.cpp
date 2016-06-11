@@ -114,7 +114,7 @@ vector<vector<string>> Calculator::save_atom_map() const {
     vector<string> one_line;
     for ( auto it = atom_map.cbegin(); it != atom_map.cend(); ++it ) {
         one_line.push_back(it->first);
-        one_line.push_back(it->second.get()->getValue());
+        one_line.push_back(it->second.get()->toString());
         lines.push_back(one_line);
         one_line.clear();
     }
@@ -299,8 +299,8 @@ void Calculator::handleAtom(const string& s) {
 * If there is an atom in "postfix_tokens"
 *  - if it's not present in the atom_mat --> fail
 *  - if it's a program --> fail
-*  - if it's a complex --> ok continue
-*  - if it's not a program or a complex --> fail
+*  - if it's not a complex --> failcontinue
+* - otherwise --> continue
 */
 bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 
@@ -339,7 +339,7 @@ bool Calculator::checkExpressionCorrectForEval(vector<string> &tokens) {
 
 
 bool Calculator::atomFound(const string &s) const {
-    unordered_map<string, shared_ptr<AtomLiteral>>::const_iterator found = atom_map.find(s);
+    unordered_map<string, shared_ptr<Literal>>::const_iterator found = atom_map.find(s);
     return (found != atom_map.cend());
 }
 
@@ -349,13 +349,13 @@ bool Calculator::programFound(const string &s) const {
 }
 
 
-bool Calculator::atomIsNumeric(const string &s) {
-    ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map[s].get());
+bool Calculator::atomIsNumeric(const string &s) const {
+    ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map.at(s).get());
     return (comp != nullptr);
 }
 
-bool Calculator::atomIsProgram(const string &s) {
-    ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(atom_map[s].get());
+bool Calculator::atomIsProgram(const string &s) const {
+    ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(atom_map.at(s).get());
     return (prgm != nullptr);
 }
 
@@ -367,7 +367,7 @@ bool Calculator::addAtom(const string &key, const string &value) {
     if (atomFound(key))
         throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
 
-    pair<string, shared_ptr<AtomLiteral>> atom_pair (key, shared_ptr<AtomLiteral>(new AtomLiteral(value)));
+    pair<string, shared_ptr<Literal>> atom_pair (key, lf.createLiteral(value));
     atom_map.insert(atom_pair);
     return true;
 }
