@@ -166,7 +166,7 @@ void Calculator::calculate(const vector<string> &tokens) {
 
     try {
 
-        if(tokens.size() >= 1) {
+        if(tokens.size() > 1) {
             // save initial state before iterating through the tokens
             if (tokens[0] != "UNDO" && tokens[0] != "REDO") {
                 st.createMemento();
@@ -174,6 +174,7 @@ void Calculator::calculate(const vector<string> &tokens) {
         }
 
         for (auto it = tokens.cbegin(); it != tokens.cend(); ++it) {
+
 
             // Special case for Operator EVAL
             if (*it == "EVAL") {
@@ -209,8 +210,8 @@ void Calculator::calculate(const vector<string> &tokens) {
                 st.push(newLit);
             }
 
+            // save state after calculate is done for a token
             if(*it != "UNDO" && *it != "REDO" )
-                // save new state after calculate is done for a token
                 st.createMemento();
         }
     }
