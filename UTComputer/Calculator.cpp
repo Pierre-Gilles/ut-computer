@@ -334,16 +334,6 @@ bool Calculator::programFound(const string &s) const {
 }
 
 
-//bool Calculator::atomIsNumeric(const string &s) const {
-//    ComplexLiteral *comp = dynamic_cast<ComplexLiteral*>(atom_map.at(s).get());
-//    return (comp != nullptr);
-//}
-//
-//bool Calculator::atomIsProgram(const string &s) const {
-//    ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(atom_map.at(s).get());
-//    return (prgm != nullptr);
-//}
-
 bool Calculator::addOperator(Operator* o) {
     return op_manager.addOperator(o) && lx.addOperatorWeight(o);
 }

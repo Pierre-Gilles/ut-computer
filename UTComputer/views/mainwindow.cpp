@@ -24,7 +24,6 @@ MainWindow::MainWindow(Calculator *calc, Database *db, Sound *sound, QWidget *pa
     } catch(UTComputerException e){
         qDebug() << QString::fromStdString(e.getMessage());
     }
-
     ui->setupUi(this);
     refreshView();
 }

@@ -22,7 +22,7 @@ void StackOperator::execute(StackUTComputer * const st) {
 
 
 
-    if (key != "LASTOP")
+    if (key != "LASTOP" && key != "LASTARGS")
         st->setLastOperator(this);
     if (key != "LASTARGS")
         st->setLastArguments(arity);

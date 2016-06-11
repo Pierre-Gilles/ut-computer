@@ -223,24 +223,6 @@ public:
 
 
     /**
-     * \fn bool atomIsNumeric(const string &s) const
-     * \brief Check if an atom contained in \a atom_map is instance of ComplexLiteral
-     * \param[in] s : the key of the atom
-     * \return True if the atom is in fact a ComplexLiteral, false otherwise
-     */
-//    bool atomIsNumeric(const string &s) const;
-
-
-    /**
-     * \fn bool atomIsProgram(const string &s) const
-     * \brief Check if an atom contained in \a atom_map is instance of ProgramLiteral
-     * \param[in] s : the key of the atom
-     * \return True if the atom is in fact a ProgramLiteral, false otherwise
-     */
-//    bool atomIsProgram(const string &s) const;
-
-
-    /**
      * \fn bool addOperator(Operator* o)
      * \brief Method that add an Operator to the Calculator
      * \param[in] o : the pointer to the Operator to add
