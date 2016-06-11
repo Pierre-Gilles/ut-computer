@@ -19,17 +19,18 @@ MainWindow::MainWindow(Calculator *calc, Database *db, QWidget *parent) :
     try{
         calc->init_program_map(progs);
         calc->init_atom_map(db->getAtoms());
+        calc->init_stack(db->getStack());
     } catch(UTComputerException e){
         qDebug() << QString::fromStdString(e.getMessage());
     }
 
-
     ui->setupUi(this);
+    refreshView();
 }
 
 MainWindow::~MainWindow()
 {
-    db->sync(calc->save_program_map(), calc->save_atom_map());
+    db->sync(calc->save_program_map(), calc->save_atom_map(), calc->save_stack());
     delete ui;
 }
 
@@ -61,7 +62,7 @@ void MainWindow::displayError(string s){
 }
 
 void MainWindow::refreshView(){
-    vector<string> elements = calc->getSt().getLastElementsString(5);
+    vector<string> elements = calc->getSt().getLastElementsString(120);
     updateValueLineEdit("");
     updateStackDisplay(elements);
 }

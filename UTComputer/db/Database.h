@@ -52,9 +52,11 @@ public:
     }
     void createProgram(string name, string value);
     void createAtom(string name, string value);
-    void sync(vector<vector<string>> programs, vector<vector <string>> atoms);
+    void sync(vector<vector<string>> programs, vector<vector <string>> atoms, vector<string> elements);
+    void saveStack(vector<string> elements);
     vector<vector <string>> getPrograms();
     vector<vector <string>> getAtoms();
+    vector<string> getStack();
     void cleanDatabase();
 };
 
