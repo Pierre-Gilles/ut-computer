@@ -6,6 +6,7 @@
 #include "stack/StackUTComputer.h"
 #include "lexer/Lexer.h"
 #include "literals/LiteralFactory.h"
+#include "literals/ComplexLiteral.h"
 
 
 /**
@@ -125,6 +126,8 @@ public:
      * \return A vector of string containing the \a st attribute
      */
     vector<string> save_stack() const;
+
+    string convertComplexLiteralToPostfix(ComplexLiteral * l) const;
     // ===============================================================================================================
 
 

@@ -126,8 +126,9 @@ void Calculator::init_stack(vector<string> list) {
     /* List is an reverse replica of the stack, meaning the end of the stack is at the beginning of the vector "list" */
 
     for (auto it = list.cbegin(); it != list.cend(); ++it) {
-        shared_ptr<Literal> newLit = lf.createLiteral(*it);
-        st.push(newLit);
+        calculate(lx.tokenize(*it));
+//        shared_ptr<Literal> newLit = lf.createLiteral(*it);
+//        st.push(newLit);
     }
 }
 
@@ -137,11 +138,42 @@ vector<string> Calculator::save_stack() const {
     /* Iterate through the stack from the end to the beginning  */
     for (auto it = st.getSt().crbegin(); it != st.getSt().crend(); ++it) {
         /* using push_back because of it's constant complexity (amortized time, reallocation may happen) */
-        result.push_back(it->get()->toString());
+        ComplexLiteral * l;
+        if ( (l = dynamic_cast<ComplexLiteral*>(it->get())) != nullptr ) {
+            result.push_back(convertComplexLiteralToPostfix(l));
+        }
+        else {
+            result.push_back(it->get()->toString());
+        }
     }
 
     /* Now result is an reverse replica of the stack, but it contains string instead of shared_ptr<Literal> */
     return result;
+}
+
+string Calculator::convertComplexLiteralToPostfix(ComplexLiteral * l) const {
+    ostringstream string_stream;
+
+    if (l->getReal().getNumerator() < 0)
+        string_stream << -(l->getReal().getNumerator()) << " NEG " ;
+    else
+        string_stream << " " << l->getReal().getNumerator() << " ";
+
+    if (l->getReal().isRational())
+        string_stream << " " << l->getReal().getDenominator() << " / ";
+
+    if (l->isComplex()) {
+        if (l->getIm().getNumerator() < 0)
+            string_stream << -(l->getIm().getNumerator()) << " NEG " ;
+        else
+            string_stream << " " << l->getIm().getNumerator() << " ";
+
+        if (l->getIm().isRational())
+            string_stream << " " << l->getIm().getDenominator() << " / ";
+
+        string_stream << " $ ";
+    }
+    return string_stream.str();
 }
 // ===============================================================================================================
 

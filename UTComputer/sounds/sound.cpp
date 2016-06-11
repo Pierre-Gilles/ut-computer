@@ -9,9 +9,9 @@ Sound::Sound(){
 //    listOfSounds.push_back(":/sounds/monumentale_erreur.wav");
 //    listOfSounds.push_back(":/sounds/mortecouille.wav");
 //    listOfSounds.push_back(":/sounds/pas_jour_faire_chier_kamelott.wav");
-    //listOfSounds.push_back(":/sounds/que_trepasse.wav");
+    listOfSounds.push_back(":/sounds/que_trepasse.wav");
 //    listOfSounds.push_back(":/sounds/wou_pinaise.wav");
-    listOfSounds.push_back(":/sounds/a.wav");
+//    listOfSounds.push_back(":/sounds/attention.wav");
 
 }
 
