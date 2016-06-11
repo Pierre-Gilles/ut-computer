@@ -367,6 +367,18 @@ bool Calculator::addAtom(const string &key, const string &value) {
     if (atomFound(key))
         throw UTComputerException("Error in Calculator::addAtom : atom already exists.");
 
+    if(!isupper(key[0])){
+        throw UTComputerException("Error in Calculator::addAtom : First character of the name should be uppercase.");
+    }
+
+    int i = 0;
+    while (isalnum(key[i]) && i < key.size()) i++;
+
+    if(i < key.size()) {
+        throw UTComputerException("Error in Calculator::addAtom : Name should be alphanumeric.");
+    }
+
+
     pair<string, shared_ptr<Literal>> atom_pair (key, lf.createLiteral(value));
     atom_map.insert(atom_pair);
     return true;
@@ -385,7 +397,7 @@ bool Calculator::updateAtom(const string &key, const string &value){
     if (!atomFound(key))
         throw UTComputerException("Error in Calculator::updateAtom : cant find atom.");
 
-    atom_map[key] = shared_ptr<ProgramLiteral>(new ProgramLiteral(value));
+    atom_map[key] = lf.createLiteral(value);
     return true;
 }
 

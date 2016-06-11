@@ -60,7 +60,8 @@ SOURCES += main.cpp\
     stack/StackUTComputer.cpp \
     Calculator.cpp \
     db/Database.cpp \
-    views/programdialog.cpp
+    views/programdialog.cpp \
+    views/atomdialog.cpp
 
 HEADERS  += views/mainwindow.h \
     exceptions/UTComputerException.h \
@@ -109,9 +110,11 @@ HEADERS  += views/mainwindow.h \
     stack/StackUTComputer.h \
     Calculator.h \
     db/Database.h \
-    views/programdialog.h
+    views/programdialog.h \
+    views/atomdialog.h
 
 FORMS    +=  views/mainwindow.ui \
-    views/programdialog.ui
+    views/programdialog.ui \
+    views/atomdialog.ui
 
 RESOURCES += database.db

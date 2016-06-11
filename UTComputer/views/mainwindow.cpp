@@ -15,8 +15,14 @@ MainWindow::MainWindow(Calculator *calc, Database *db, QWidget *parent) :
     // init with data in database
     vector<vector<string>> progs = db->getPrograms();
     qDebug() << "Get programs from DB = " << progs.size() <<endl;
-    calc->init_program_map(progs);
-    calc->init_atom_map(db->getAtoms());
+
+    try{
+        calc->init_program_map(progs);
+        calc->init_atom_map(db->getAtoms());
+    } catch(UTComputerException e){
+        qDebug() << QString::fromStdString(e.getMessage());
+    }
+
 
     ui->setupUi(this);
 }
@@ -271,4 +277,10 @@ void MainWindow::on_toolButtonProgram_clicked(){
     if(progDial != 0) delete progDial;
     progDial = new ProgramDialog(calc);
     progDial->show();
+}
+
+void MainWindow::on_toolButtonVariable_clicked(){
+    if(atomDial != 0) delete atomDial;
+    atomDial = new AtomDialog(calc);
+    atomDial->show();
 }

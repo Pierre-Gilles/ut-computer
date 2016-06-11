@@ -10,6 +10,7 @@
 #include "../Calculator.h"
 #include "../db/Database.h"
 #include "./programdialog.h"
+#include "./atomdialog.h"
 
 using namespace std;
 
@@ -87,10 +88,13 @@ private slots:
 
   void on_toolButtonProgram_clicked();
 
+  void on_toolButtonVariable_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     ProgramDialog *progDial = 0;
+    AtomDialog *atomDial = 0;
 
     Calculator *calc;
     Database *db;
