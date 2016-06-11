@@ -11,6 +11,7 @@
 #include "../db/Database.h"
 #include "./programdialog.h"
 #include "./atomdialog.h"
+#include "../sounds/sound.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(Calculator *calc, Database *db, QWidget *parent = 0);
+    explicit MainWindow(Calculator *calc, Database *db, Sound *sound, QWidget *parent = 0);
 
     ~MainWindow();
 
@@ -98,6 +99,7 @@ private:
 
     Calculator *calc;
     Database *db;
+    Sound *sound;
 
     // lock
     bool expressionLocked = false;

@@ -6,9 +6,10 @@
 
 using namespace std;
 
-MainWindow::MainWindow(Calculator *calc, Database *db, QWidget *parent) :
+MainWindow::MainWindow(Calculator *calc, Database *db, Sound *sound, QWidget *parent) :
         calc(calc),
         db(db),
+        sound(sound),
         QMainWindow(parent),
         ui(new Ui::MainWindow)
 {
@@ -59,6 +60,7 @@ void MainWindow::displayError(string s){
     QString qs = QString::fromStdString(s);
     ui->errorTextArea->setText(qs);
     qDebug() << qs << endl;
+    sound->play();
 }
 
 void MainWindow::refreshView(){

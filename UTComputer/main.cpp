@@ -4,6 +4,7 @@
 #include "stack/StackUTComputer.h"
 #include "db/Database.h"
 #include "Calculator.h"
+#include "sounds/sound.h"
 #include <QDebug>
 
 using namespace std;
@@ -17,9 +18,12 @@ int main(int argc, char *argv[]){
     // Creating Database
     Database db;
 
+    // Creating sound system
+    Sound sound;
+
     // Creating MainView
     QApplication a(argc, argv);
-    MainWindow w(&calc, &db);
+    MainWindow w(&calc, &db, &sound);
     w.show();
 
 

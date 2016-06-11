@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -61,7 +61,8 @@ SOURCES += main.cpp\
     Calculator.cpp \
     db/Database.cpp \
     views/programdialog.cpp \
-    views/atomdialog.cpp
+    views/atomdialog.cpp \
+    sounds/sound.cpp
 
 HEADERS  += views/mainwindow.h \
     exceptions/UTComputerException.h \
@@ -111,10 +112,13 @@ HEADERS  += views/mainwindow.h \
     Calculator.h \
     db/Database.h \
     views/programdialog.h \
-    views/atomdialog.h
+    views/atomdialog.h \
+    sounds/sound.h
 
 FORMS    +=  views/mainwindow.ui \
     views/programdialog.ui \
     views/atomdialog.ui
 
-RESOURCES += database.db
+RESOURCES += database.db \
+    sounds/que_trepasse.wav
+
