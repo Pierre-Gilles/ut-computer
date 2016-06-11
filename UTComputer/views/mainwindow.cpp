@@ -12,6 +12,10 @@ MainWindow::MainWindow(Calculator *calc, Database *db, QWidget *parent) :
         QMainWindow(parent),
         ui(new Ui::MainWindow)
 {
+    // init with data in database
+    calc->init_program_map(db->getPrograms());
+    calc->init_atom_map(db->getAtoms());
+
     ui->setupUi(this);
 }
 

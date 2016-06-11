@@ -6,10 +6,12 @@ ProgramDialog::ProgramDialog(Calculator *calc, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ProgramDialog)
 {
+
     programs = calc->save_program_map();
     qDebug() << programs.size() <<endl;
     //updateList();
     ui->setupUi(this);
+    ui->textEditError->setText("");
 }
 
 ProgramDialog::~ProgramDialog()
@@ -17,12 +19,31 @@ ProgramDialog::~ProgramDialog()
     delete ui;
 }
 
+void ProgramDialog::displayError(string e){
+    QString qs = QString::fromStdString(e);
+    ui->textEditError->setText(qs);
+}
 
 void ProgramDialog::updateList(){
-    ui->listWidget->clear();
     qDebug() << programs.size() <<endl;
-    /*for(int i = 0; i < programs.size(); i++){
+    for(int i = 0; i < programs.size(); i++){
         QString qs = QString::fromStdString(programs[i][0]);
-        ui->listWidget->addItem(qs);
-    }*/
+        ui->listPrograms->addItem(qs);
+    }
+}
+
+void ProgramDialog::injectPrograms(){
+    try{
+        calc->init_program_map(programs);
+    } catch(UTComputerException e){
+        displayError(e.getMessage());
+    }
+}
+
+void ProgramDialog::on_pushButtonCreateProgram_clicked(){
+    ui->textEditError->setText("");
+    vector<string> prog = {ui->textEditNewProgName->toPlainText().toStdString(), ""};
+    programs.push_back(prog);
+    //updateList();
+    injectPrograms();
 }

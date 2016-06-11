@@ -3,8 +3,8 @@
 void Database::createProgram(string name, string value){
     openDatabase();
     QSqlQuery query;
-    query.prepare("INSERT INTO program (name, text) "
-                  "VALUES (:name, :text)");
+    query.prepare("INSERT INTO program (name, value) "
+                  "VALUES (:name, :value)");
     QString qsValue = QString::fromStdString(value);
     QString qsName = QString::fromStdString(name);
     query.bindValue(0, qsName);
@@ -23,8 +23,8 @@ void Database::createProgram(string name, string value){
 void Database::createAtom(string name, string value){
     openDatabase();
     QSqlQuery query;
-    query.prepare("INSERT INTO atom (name, text) "
-                  "VALUES (:name, :text)");
+    query.prepare("INSERT INTO atom (name, value) "
+                  "VALUES (:name, :value)");
     QString qsValue = QString::fromStdString(value);
     QString qsName = QString::fromStdString(name);
     query.bindValue(0, qsName);
@@ -53,18 +53,16 @@ vector<vector <string>> Database::getPrograms(){
     QSqlQuery query("SELECT * FROM program;");
     bool result = query.exec();
     if(result){
-        qDebug() << "Successfully get program" <<endl;
+        qDebug() << "Successfully get program " <<endl;
     } else {
        qDebug() << "Error while getting program" << query.lastError() <<endl;
     }
     vector<vector <string>> array;
     int fieldValue = query.record().indexOf("value");
     int fieldName = query.record().indexOf("name");
-    int i = 0;
     while (query.next()) {
-            array[i][0] = query.value(fieldName).toString().toStdString();
-            array[i][1] = query.value(fieldValue).toString().toStdString();
-            i++;
+            vector<string> row = {  query.value(fieldName).toString().toStdString(), query.value(fieldValue).toString().toStdString()};
+            array.push_back(row);
     }
     qDebug() << db.lastError().text();
     query.finish();
@@ -100,11 +98,9 @@ vector<vector <string>> Database::getAtoms(){
     vector<vector <string>> array;
     int fieldValue = query.record().indexOf("value");
     int fieldName = query.record().indexOf("name");
-    int i = 0;
     while (query.next()) {
-            array[i][0] = query.value(fieldName).toString().toStdString();
-            array[i][1] = query.value(fieldValue).toString().toStdString();
-            i++;
+            vector<string> row = {query.value(fieldName).toString().toStdString(),query.value(fieldValue).toString().toStdString()};
+            array.push_back(row);
     }
     qDebug() << db.lastError().text();
     query.finish();
