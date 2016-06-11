@@ -93,7 +93,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1) {
         if(text.size() > 0){
             char lastElement = text[text.size()-1];
             if(!expressionLocked && !programLocked){
-                if(lastElement == '+' || lastElement == '-' || lastElement == '/' || lastElement == '$'){
+                if(lastElement == '+' || lastElement == '-' || lastElement == '/' || lastElement == '*' || lastElement == '$'){
                     calculate();
                 }
 

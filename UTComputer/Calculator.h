@@ -201,7 +201,7 @@ public:
 
 
     // ===============================================================================================================
-    // ======================                  Class useful functions                        =========================
+    // =================              MANAGING PROGRAMS ANS ATOMS(variables)                        ==================
     // ===============================================================================================================
 
     /**
@@ -228,7 +228,7 @@ public:
      * \param[in] s : the key of the atom
      * \return True if the atom is in fact a ComplexLiteral, false otherwise
      */
-    bool atomIsNumeric(const string &s) const;
+//    bool atomIsNumeric(const string &s) const;
 
 
     /**
@@ -237,7 +237,7 @@ public:
      * \param[in] s : the key of the atom
      * \return True if the atom is in fact a ProgramLiteral, false otherwise
      */
-    bool atomIsProgram(const string &s) const;
+//    bool atomIsProgram(const string &s) const;
 
 
     /**

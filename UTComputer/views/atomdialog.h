@@ -26,6 +26,8 @@ private slots:
 
     void on_listWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
+    void on_listWidget_clicked(const QModelIndex &index);
+
 private:
     Ui::AtomDialog *ui;
     Calculator *calc;

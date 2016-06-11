@@ -27,6 +27,8 @@ private slots:
     void on_listPrograms_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
 
+    void on_listPrograms_clicked(const QModelIndex &index);
+
 private:
     Ui::ProgramDialog *ui;
     Calculator *calc;

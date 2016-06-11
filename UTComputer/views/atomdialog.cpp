@@ -38,7 +38,9 @@ void AtomDialog::on_pushButtonCreateAtom_clicked(){
         vector<string> atom = {ui->lineEditNewAtomeName->text().toStdString(),  ui->lineEditNewAtomeValue->text().toStdString()};
         atoms.push_back(atom);
         updateList();
+        ui->lineEditNewAtomeValue->setText("");
         ui->lineEditNewAtomeName->setText("");
+        ui->lineEditNewAtomeName->setFocus();
     } catch(UTComputerException e){
         displayError(e.getMessage());
     }
@@ -56,8 +58,19 @@ void AtomDialog::on_textEdit_textChanged(){
 
 }
 
+
+/* Make the program crash when update of the list */
 void AtomDialog::on_listWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous){
-    int row = ui->listWidget->currentRow();
-    QString qs = QString::fromStdString(atoms[row][1]);
-    ui->textEdit->setText(qs);
+//    int row = ui->listWidget->currentRow();
+//    QString qs = QString::fromStdString(atoms[row][1]);
+//    ui->textEdit->setText(qs);
+}
+
+void AtomDialog::on_listWidget_clicked(const QModelIndex &index)
+{
+    if (ui->listWidget->count() > 0) {
+        int row = ui->listWidget->currentRow();
+        QString qs = QString::fromStdString(atoms[row][1]);
+        ui->textEdit->setText(qs);
+    }
 }
