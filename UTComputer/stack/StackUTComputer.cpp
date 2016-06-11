@@ -1,6 +1,6 @@
 #include "StackUTComputer.h"
 
-int StackUTComputer::maxMementoSize = 10;
+int StackUTComputer::maxMementoSize = 30;
 
 
 // ===============================================================================================================
