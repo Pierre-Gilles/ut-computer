@@ -264,7 +264,7 @@ public:
 
     /**
      * \fn bool addProgram(const string &key, const string &value)
-     * \brief Method that add a program to the \a atom_map attribute
+     * \brief Method that add a program to the \a program_map attribute
      * \param[in] key : the key of the program
      * \param[in] value : the value of the program
      * \return True if program can be added, false otherwise
@@ -273,7 +273,7 @@ public:
 
     /**
      * \fn bool updateProgram(const string &key, const string &value)
-     * \brief Method that update a program in the \a atom_map attribute
+     * \brief Method that update a program in the \a program_map attribute
      * \param[in] key : the key of the program
      * \param[in] value : the value of the program
      * \return True if program can be updated, false otherwise
