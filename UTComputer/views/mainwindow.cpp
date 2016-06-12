@@ -59,11 +59,13 @@ void MainWindow::displayError(string s){
     QString qs = QString::fromStdString(s);
     ui->errorTextArea->setText(qs);
     qDebug() << qs << endl;
-    sound->play();
+    if(soundActivated){
+       sound->play();
+    }
 }
 
 void MainWindow::refreshView(){
-    vector<string> elements = calc->getSt().getLastElementsString(120);
+    vector<string> elements = calc->getSt().getLastElementsString(nbElementStack);
     updateValueLineEdit("");
     updateStackDisplay(elements);
 }
@@ -349,4 +351,33 @@ void MainWindow::on_toolButtonVariable_clicked(){
     if(atomDial != 0) delete atomDial;
     atomDial = new AtomDialog(calc);
     atomDial->show();
+}
+
+void MainWindow::on_toolButtonParam_clicked(){
+    if(paramDial != 0) delete paramDial;
+    paramDial = new ParamDialog(calc, keyboardActivated, soundActivated, nbElementStack);
+    QObject::connect(paramDial, SIGNAL(soundStateChanged(bool)), this, SLOT(changeSoundState(bool)));
+    QObject::connect(paramDial, SIGNAL(keyboardStateChanged(bool)), this, SLOT(changeKeyboardState(bool)));
+    QObject::connect(paramDial, SIGNAL(nbElementChanged(int)), this, SLOT(changeNbElementStack(int)));
+    paramDial->show();
+}
+
+
+void MainWindow::changeSoundState(bool activated){
+    qDebug() << "Sound changed state" <<endl;
+    soundActivated = activated;
+}
+
+void MainWindow::changeKeyboardState(bool activated){
+    keyboardActivated = activated;
+    if(keyboardActivated){
+        ui->groupBox->show();
+    } else {
+        ui->groupBox->hide();
+    }
+}
+
+void MainWindow::changeNbElementStack(int nb){
+    nbElementStack = nb;
+    refreshView();
 }

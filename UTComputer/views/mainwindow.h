@@ -11,6 +11,7 @@
 #include "../db/Database.h"
 #include "./programdialog.h"
 #include "./atomdialog.h"
+#include "./paramdialog.h"
 #include "../sounds/sound.h"
 
 using namespace std;
@@ -26,9 +27,14 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(Calculator *calc, Database *db, Sound *sound, QWidget *parent = 0);
 
+
     ~MainWindow();
 
 private slots:
+
+  void changeSoundState(bool activated);
+  void changeKeyboardState(bool activated);
+  void changeNbElementStack(int nb);
 
   void on_lineEdit_textChanged(const QString &arg1);
 
@@ -91,15 +97,24 @@ private slots:
 
   void on_toolButtonVariable_clicked();
 
+  void on_toolButtonParam_clicked();
+
+
+
 private:
     Ui::MainWindow *ui;
 
     ProgramDialog *progDial = 0;
     AtomDialog *atomDial = 0;
+    ParamDialog *paramDial = 0;
 
     Calculator *calc;
     Database *db;
     Sound *sound;
+
+    bool soundActivated = true;
+    bool keyboardActivated = true;
+    int nbElementStack = 60;
 
     // lock
     bool expressionLocked = false;

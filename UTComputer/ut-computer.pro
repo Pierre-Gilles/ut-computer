@@ -62,7 +62,8 @@ SOURCES += main.cpp\
     db/Database.cpp \
     views/programdialog.cpp \
     views/atomdialog.cpp \
-    sounds/sound.cpp
+    sounds/sound.cpp \
+    views/paramdialog.cpp
 
 HEADERS  += views/mainwindow.h \
     exceptions/UTComputerException.h \
@@ -113,12 +114,13 @@ HEADERS  += views/mainwindow.h \
     db/Database.h \
     views/programdialog.h \
     views/atomdialog.h \
-    sounds/sound.h
+    sounds/sound.h \
+    views/paramdialog.h
 
 FORMS    +=  views/mainwindow.ui \
     views/programdialog.ui \
     views/atomdialog.ui \
-    views/setup.ui
+    views/paramdialog.ui
 
 RESOURCES += database.db \
     sounds/que_trepasse.wav
