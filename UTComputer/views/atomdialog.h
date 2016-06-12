@@ -28,6 +28,8 @@ private slots:
 
     void on_listWidget_clicked(const QModelIndex &index);
 
+    void on_pushButtonDeleteAtom_clicked();
+
 private:
     Ui::AtomDialog *ui;
     Calculator *calc;

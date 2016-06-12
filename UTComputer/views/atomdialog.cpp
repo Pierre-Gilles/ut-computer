@@ -50,8 +50,11 @@ void AtomDialog::on_textEdit_textChanged(){
     ui->textEditError->setText("");
     try{
         int row = ui->listWidget->currentRow();
-        atoms[row][1] = ui->textEdit->toPlainText().toStdString();
-        calc->updateAtom(atoms[row][0], atoms[row][1]);
+
+        if(row >= 0){
+            atoms[row][1] = ui->textEdit->toPlainText().toStdString();
+            calc->updateAtom(atoms[row][0], atoms[row][1]);
+        }
     } catch(UTComputerException e){
         displayError(e.getMessage());
     }
@@ -72,5 +75,15 @@ void AtomDialog::on_listWidget_clicked(const QModelIndex &index)
         int row = ui->listWidget->currentRow();
         QString qs = QString::fromStdString(atoms[row][1]);
         ui->textEdit->setText(qs);
+    }
+}
+
+void AtomDialog::on_pushButtonDeleteAtom_clicked(){
+    if (ui->listWidget->count() > 0) {
+        int row = ui->listWidget->currentRow();
+        calc->deleteAtom(atoms[row][0]);
+        atoms.erase(atoms.begin()+row);
+        updateList();
+        ui->textEdit->setText("");
     }
 }
