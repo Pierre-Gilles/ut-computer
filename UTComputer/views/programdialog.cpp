@@ -57,8 +57,11 @@ void ProgramDialog::on_pushButtonCreateProgram_clicked(){
 
 void ProgramDialog::on_textEdit_textChanged(){
     int row = ui->listPrograms->currentRow();
-    programs[row][1] = ui->textEdit->toPlainText().toStdString();
-    calc->updateProgram(programs[row][0], programs[row][1]);
+
+    if(row >= 0){
+        programs[row][1] = ui->textEdit->toPlainText().toStdString();
+        calc->updateProgram(programs[row][0], programs[row][1]);
+    }
 }
 
 
@@ -79,5 +82,15 @@ void ProgramDialog::on_listPrograms_clicked(const QModelIndex &index)
         int row = ui->listPrograms->currentRow();
         QString qs = QString::fromStdString(programs[row][1]);
         ui->textEdit->setText(qs);
+    }
+}
+
+void ProgramDialog::on_pushButtonDeleteProgram_clicked(){
+    if (ui->listPrograms->count() > 0) {
+        int row = ui->listPrograms->currentRow();
+        calc->deleteProgram(programs[row][0]);
+        programs.erase(programs.begin()+row);
+        updateList();
+        ui->textEdit->setText("");
     }
 }

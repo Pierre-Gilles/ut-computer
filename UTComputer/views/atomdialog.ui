@@ -167,6 +167,19 @@
     <string>Value of the variable</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButtonDeleteAtom">
+   <property name="geometry">
+    <rect>
+     <x>265</x>
+     <y>190</y>
+     <width>181</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete variable</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

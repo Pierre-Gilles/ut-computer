@@ -45,7 +45,7 @@
      <x>200</x>
      <y>100</y>
      <width>251</width>
-     <height>191</height>
+     <height>151</height>
     </rect>
    </property>
   </widget>
@@ -149,6 +149,19 @@
    </property>
    <property name="text">
     <string>A program is a list of postfix instructions separated by spaces, \t or \n</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonDeleteProgram">
+   <property name="geometry">
+    <rect>
+     <x>195</x>
+     <y>260</y>
+     <width>260</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete program</string>
    </property>
   </widget>
  </widget>

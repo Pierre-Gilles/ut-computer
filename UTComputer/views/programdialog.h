@@ -29,6 +29,8 @@ private slots:
 
     void on_listPrograms_clicked(const QModelIndex &index);
 
+    void on_pushButtonDeleteProgram_clicked();
+
 private:
     Ui::ProgramDialog *ui;
     Calculator *calc;
