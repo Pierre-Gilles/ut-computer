@@ -230,7 +230,7 @@ void Calculator::calculate(const vector<string> &tokens) {
             else if (*it == "IFT") {
                 if (st.size() < 2)
                     throw UTComputerException("Error in applying operator EVAL : stack size must be at least 2.");
-                
+                executeIfThenOperator();
             }
 
 
@@ -308,6 +308,30 @@ void Calculator::executeEvalOperator() {
     }
     else {
         throw UTComputerException("Error Calculator::executeEvalOperator() : call to EVAL and stack top isn't an Expression or Program.");
+    }
+}
+
+
+void Calculator::executeIfThenOperator() {
+    vector<shared_ptr<Literal>> arguments;
+    st.getArguments(2, arguments);
+
+    ComplexLiteral *cpx = dynamic_cast<ComplexLiteral*>(arguments[0].get());
+    ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(arguments[1].get());
+
+    /* IFT applies only on a numeric value and a programm */
+    if (cpx == nullptr || prgm == nullptr)
+        throw UTComputerException("Error in applying operator IFT : first argument must be numeric and the second must be a program");
+
+    /* if first argument (numeric) is true, evaluate second argument (program) */
+    if (cpx->getReal().getNumerator()) {
+        st.deleteArguments(2);
+        st.push(arguments[1]);
+        executeEvalOperator();
+    }
+    /* if first argument (numeric) is false, deletes both arguments */
+    else {
+        st.deleteArguments(2);
     }
 }
 
