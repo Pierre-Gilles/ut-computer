@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QShortcut>
 #include <QString>
+#include <QKeyEvent>
 #include <string>
 #include <iostream>
 #include <vector>
@@ -107,6 +109,8 @@ private:
     ProgramDialog *progDial = 0;
     AtomDialog *atomDial = 0;
     ParamDialog *paramDial = 0;
+    QShortcut *ctrlZ;
+    QShortcut *ctrlY;
 
     Calculator *calc;
     Database *db;

@@ -26,6 +26,10 @@ MainWindow::MainWindow(Calculator *calc, Database *db, Sound *sound, QWidget *pa
     }
     ui->setupUi(this);
     refreshView();
+
+    // shortcut
+    ctrlZ = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z), this, SLOT(on_pushButtonUndo_clicked()));
+    ctrlY = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y), this, SLOT(on_pushButtonRedo_clicked()));
 }
 
 MainWindow::~MainWindow()
@@ -277,6 +281,7 @@ void MainWindow::on_pushButtonEnter_clicked(){
 
 // UNDO
 void MainWindow::on_pushButtonUndo_clicked(){
+    qDebug() << "UNDO" <<endl;
     calculate(" UNDO");
 }
 
