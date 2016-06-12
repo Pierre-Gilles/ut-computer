@@ -14,7 +14,7 @@ Sound::Sound(){
     listOfSounds.push_back(":/sounds/que_trepasse.wav");
     listOfSounds.push_back(":/sounds/wou_pinaise.wav");
     listOfSounds.push_back(":/sounds/you_shall_not_pass.wav");
-
+    srand(time(NULL));
 }
 
 
