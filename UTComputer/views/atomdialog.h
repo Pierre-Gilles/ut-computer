@@ -24,11 +24,9 @@ private slots:
 
     void on_textEdit_textChanged();
 
-    void on_listWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
-
-    void on_listWidget_clicked(const QModelIndex &index);
-
     void on_pushButtonDeleteAtom_clicked();
+
+    void on_listWidget_itemSelectionChanged();
 
 private:
     Ui::AtomDialog *ui;

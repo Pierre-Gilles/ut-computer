@@ -62,28 +62,31 @@ void AtomDialog::on_textEdit_textChanged(){
 }
 
 
-/* Make the program crash when update of the list */
-void AtomDialog::on_listWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous){
-//    int row = ui->listWidget->currentRow();
-//    QString qs = QString::fromStdString(atoms[row][1]);
-//    ui->textEdit->setText(qs);
-}
-
-void AtomDialog::on_listWidget_clicked(const QModelIndex &index)
-{
-    if (ui->listWidget->count() > 0) {
-        int row = ui->listWidget->currentRow();
-        QString qs = QString::fromStdString(atoms[row][1]);
-        ui->textEdit->setText(qs);
-    }
-}
 
 void AtomDialog::on_pushButtonDeleteAtom_clicked(){
     if (ui->listWidget->count() > 0) {
         int row = ui->listWidget->currentRow();
-        calc->deleteAtom(atoms[row][0]);
-        atoms.erase(atoms.begin()+row);
-        updateList();
-        ui->textEdit->setText("");
+        if (row != -1) {
+            ui->listWidget->setCurrentRow(0); // set current row here in case of the program deleted is the last of the list -> evoid crash
+            calc->deleteAtom(atoms[row][0]);
+            atoms.erase(atoms.begin()+row);
+            updateList();
+            ui->textEdit->setText("");
+            if (ui->listWidget->count() > 0){
+                ui->listWidget->setCurrentRow(0);
+            }
+        }
+    }
+}
+
+void AtomDialog::on_listWidget_itemSelectionChanged() {
+    if (ui->listWidget->count() > 0) {
+        int row = ui->listWidget->currentRow();
+        if (row != -1) {
+            if (atoms.size() > row) {
+                QString qs = QString::fromStdString(atoms[row][1]);
+                ui->textEdit->setText(qs);
+            }
+        }
     }
 }
