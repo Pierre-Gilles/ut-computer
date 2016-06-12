@@ -94,6 +94,7 @@ void MainWindow::updateStackDisplay(vector<string> elems){
 
 void MainWindow::calculate(){
     try{
+       ui->errorTextArea->setText("");
        calc->run(getLineEditValue());
        refreshView();
     } catch(UTComputerException e){

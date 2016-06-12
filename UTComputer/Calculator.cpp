@@ -216,7 +216,7 @@ void Calculator::calculate(const vector<string> &tokens) {
             if (*it == "EVAL") {
                 if (st.size() == 0)
                     throw UTComputerException("Error in applying operator EVAL : stack is empty.");
-                
+
                 executeEvalOperator();
             }
 
@@ -224,6 +224,13 @@ void Calculator::calculate(const vector<string> &tokens) {
             // Special case for Operator EDIT
             else if (*it == "EDIT") {
                 throw UTComputerException("Sorry, operator EDIT is not implemented yet.");
+            }
+
+            // Special case for Operator IFT
+            else if (*it == "IFT") {
+                if (st.size() < 2)
+                    throw UTComputerException("Error in applying operator EVAL : stack size must be at least 2.");
+                
             }
 
 
