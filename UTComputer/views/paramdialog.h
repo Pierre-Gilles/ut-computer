@@ -20,9 +20,26 @@ public:
     ~ParamDialog();
 
 private slots:
+
+    /**
+     * \fn on_checkBoxSound_stateChanged
+     * \brief When the value of the checkBoxSound has changed
+     * \param[in] arg1: the new value
+     */
     void on_checkBoxSound_stateChanged(int arg1);
 
+    /**
+     * \fn on_checkBoxKeyboard_stateChanged
+     * \brief When the value of the checkBoxKeyboard has changed
+     * \param[in] arg1: the new value
+     */
     void on_checkBoxKeyboard_stateChanged(int arg1);
+
+    /**
+     * \fn on_lineEdit_textChanged
+     * \brief When the value of the textEdit "number of elements by stack" has changed
+     * \param[in] &arg1: the new value
+     */
     void on_lineEdit_textChanged(const QString &arg1);
 
 signals:

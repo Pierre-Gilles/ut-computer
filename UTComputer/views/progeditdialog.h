@@ -20,6 +20,11 @@ public:
     ~ProgEditDialog();
 
 private slots:
+
+    /**
+     * \fn on_buttonBox_accepted
+     * \brief When the user click on the accept button
+     */
     void on_buttonBox_accepted();
 
 signals:

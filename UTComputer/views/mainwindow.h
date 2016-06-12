@@ -35,10 +35,29 @@ public:
 
 private slots:
 
-  void changeSoundState(bool activated);
-  void changeKeyboardState(bool activated);
-  void changeNbElementStack(int nb);
-  void refreshStackView();
+    /**
+     * \fn changeSoundState
+     * \brief Triggered when soundState changed
+     */
+      void changeSoundState(bool activated);
+
+      /**
+       * \fn changeKeyboardState
+       * \brief Triggered when keyboardState changed
+       */
+      void changeKeyboardState(bool activated);
+
+      /**
+       * \fn changeNbElementStack
+       * \brief Triggered when nbElement to display in stack changed
+       */
+      void changeNbElementStack(int nb);
+
+      /**
+       * \fn refreshStackView
+       * \brief Refresh the stack view from a slot
+       */
+      void refreshStackView();
 
   void on_lineEdit_textChanged(const QString &arg1);
 
@@ -128,13 +147,58 @@ private:
     bool expressionLocked = false;
     bool programLocked = false;
 
+    /**
+     * \fn updateValueLineEdit
+     * \brief Update the value of the calcul bar
+     * \param[in] s : the new value
+     */
     void updateValueLineEdit(string s);
+
+    /**
+     * \fn addToLineEdit
+     * \brief Add text to the calcul bar
+     * \param[in] s: the string to add
+     */
     void addToLineEdit(string s);
+
+    /**
+     * \fn displayError
+     * \brief Display the error and emit a sound if needed
+     * \param[in] s : the error text
+     */
     void displayError(string s);
+
+    /**
+     * \fn updateStackDisplay
+     * \brief Update the stack with elements
+     * \param[in] elemens : the stack elements
+     */
     void updateStackDisplay(vector<string> elems);
+
+    /**
+     * \fn getLineEditValue
+     * \brief Return the value of the calcul bar
+     * \return the string value of the calcul bar
+     */
     string getLineEditValue();
+
+    /**
+     * \fn refreshView
+     * \brief Refresh the entire view
+     */
     void refreshView();
+
+    /**
+     * \fn calculate
+     * \brief Perform the calcul
+     * \param[in] tokenToAdd : the token to add at the end
+     */
     void calculate(string tokenToAdd = "");
+
+    /**
+     * \fn OperatorEdit
+     * \brief Edit program by opening a new window
+     */
     void OperatorEdit();
 };
 

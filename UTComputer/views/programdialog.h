@@ -32,9 +32,19 @@ private:
     Ui::ProgramDialog *ui;
     Calculator *calc;
     vector<vector<string>> programs;
+
+    /**
+     * \fn updateList
+     * \brief Update the program list
+     */
     void updateList();
+
+    /**
+     * \fn displayError
+     * \brief Display an error
+     * \param[in] e: the error to display
+     */
     void displayError(string e);
-    void injectPrograms();
 };
 
 #endif // PROGRAMDIALOG_H
