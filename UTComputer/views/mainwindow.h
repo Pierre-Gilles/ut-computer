@@ -99,7 +99,7 @@ private slots:
 
   void on_toolButtonParam_clicked();
 
-
+  void on_pushButtonIFThen_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -126,7 +126,7 @@ private:
     void updateStackDisplay(vector<string> elems);
     string getLineEditValue();
     void refreshView();
-    void calculate();
+    void calculate(string tokenToAdd = "");
 };
 
 #endif // MAINWINDOW_H

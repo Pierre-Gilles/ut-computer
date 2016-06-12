@@ -184,6 +184,12 @@ public:
     void executeEvalOperator();
 
     /**
+     * \fn void executeIfThenOperator()
+     * \brief Method dedicated to run the IFT operator
+     */
+    void executeIfThenOperator();
+
+    /**
      * \fn void handleAtom(const string& s);
      * \brief Method dedicated to process an Atom
      * \param[in] s : the string containing the atom
