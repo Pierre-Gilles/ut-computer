@@ -24,10 +24,11 @@ using namespace std;
  * \class LexerUTComputer
  */
 class LexerUTComputer {
-public:
-
     unordered_map<string, int> operator_weight_map; /*!< unordered_map containing the priority (int value) of each
                                                         * operator used in this application or add later on by an user. */
+public:
+
+
 
 
     // ===============================================================================================================
