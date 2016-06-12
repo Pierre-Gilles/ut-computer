@@ -15,6 +15,7 @@
 #include "./atomdialog.h"
 #include "./paramdialog.h"
 #include "../sounds/sound.h"
+#include "progeditdialog.h"
 
 using namespace std;
 
@@ -37,6 +38,7 @@ private slots:
   void changeSoundState(bool activated);
   void changeKeyboardState(bool activated);
   void changeNbElementStack(int nb);
+  void refreshStackView();
 
   void on_lineEdit_textChanged(const QString &arg1);
 
@@ -109,6 +111,8 @@ private:
     ProgramDialog *progDial = 0;
     AtomDialog *atomDial = 0;
     ParamDialog *paramDial = 0;
+    ProgEditDialog *progEditDial = 0;
+
     QShortcut *ctrlZ;
     QShortcut *ctrlY;
 
@@ -131,6 +135,7 @@ private:
     string getLineEditValue();
     void refreshView();
     void calculate(string tokenToAdd = "");
+    void OperatorEdit();
 };
 
 #endif // MAINWINDOW_H

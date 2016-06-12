@@ -466,6 +466,22 @@ bool Calculator::deleteProgram(const string &key){
     return true;
 }
 
+ProgramLiteral* Calculator::getFirstElementProgram(){
+
+    // if the stack is empty, return false;
+    if(st.size() == 0){
+       throw UTComputerException("Error in Calculator::getFirstElementProgram : stack is empty.");
+   }
+
+    ProgramLiteral * l;
+    l = dynamic_cast<ProgramLiteral*>(st.top().get());
+    if (l != nullptr){
+        return l;
+    } else {
+        throw UTComputerException("Error in Calculator::getFirstElementProgram : first element is not a program.");
+    }
+}
+
 // ===============================================================================================================
 
 
