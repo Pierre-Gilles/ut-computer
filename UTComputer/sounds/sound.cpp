@@ -3,15 +3,17 @@
 using namespace std;
 
 Sound::Sound(){
-//    listOfSounds.push_back(":/sounds/binz.wav");
-//    listOfSounds.push_back(":/sounds/c_est_cela_oui.wav");
-//    listOfSounds.push_back(":/sounds/Les_cons_tontons_flingeurs.wav");
-//    listOfSounds.push_back(":/sounds/monumentale_erreur.wav");
-//    listOfSounds.push_back(":/sounds/mortecouille.wav");
-//    listOfSounds.push_back(":/sounds/pas_jour_faire_chier_kamelott.wav");
+    listOfSounds.push_back(":/sounds/attention.wav");
+    listOfSounds.push_back(":/sounds/binz.wav");
+    listOfSounds.push_back(":/sounds/boule_merdasse.wav");
+    listOfSounds.push_back(":/sounds/c_est_cela_oui.wav");
+    listOfSounds.push_back(":/sounds/Les_cons_tontons_flingeurs.wav");
+    listOfSounds.push_back(":/sounds/monumentale_erreur.wav");
+    listOfSounds.push_back(":/sounds/mortecouille.wav");
+    listOfSounds.push_back(":/sounds/pas_jour_faire_chier_kamelott.wav");
     listOfSounds.push_back(":/sounds/que_trepasse.wav");
-//    listOfSounds.push_back(":/sounds/wou_pinaise.wav");
-//    listOfSounds.push_back(":/sounds/attention.wav");
+    listOfSounds.push_back(":/sounds/wou_pinaise.wav");
+    listOfSounds.push_back(":/sounds/you_shall_not_pass.wav");
 
 }
 

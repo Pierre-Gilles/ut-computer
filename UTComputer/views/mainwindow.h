@@ -113,7 +113,7 @@ private:
     void updateStackDisplay(vector<string> elems);
     string getLineEditValue();
     void refreshView();
-    void calculate();
+    void calculate(string tokenToAdd = "");
 };
 
 #endif // MAINWINDOW_H

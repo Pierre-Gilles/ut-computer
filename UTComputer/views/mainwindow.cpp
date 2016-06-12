@@ -92,10 +92,10 @@ void MainWindow::updateStackDisplay(vector<string> elems){
     }
 }
 
-void MainWindow::calculate(){
+void MainWindow::calculate(string tokenToAdd){
     try{
        ui->errorTextArea->setText("");
-       calc->run(getLineEditValue());
+       calc->run(getLineEditValue() + tokenToAdd);
        refreshView();
     } catch(UTComputerException e){
         displayError(e.getMessage());
@@ -193,73 +193,59 @@ void MainWindow::on_pushButton9_clicked(){
   */
 
 void MainWindow::on_pushButtonPlus_clicked(){
-     addToLineEdit(" +");
-     calculate();
+     calculate(" +");
 }
 
 void MainWindow::on_pushButtonMinus_clicked(){
-    addToLineEdit(" -");
-    calculate();
+    calculate(" -");
 }
 
 void MainWindow::on_pushButtonDivide_clicked(){
-    addToLineEdit(" /");
-    calculate();
+    calculate(" /");
 }
 
 void MainWindow::on_pushButtonMultiply_clicked(){
-    addToLineEdit(" *");
-    calculate();
+    calculate(" *");
 }
 
 void MainWindow::on_pushButtonNeg_clicked(){
-    addToLineEdit(" NEG");
-    calculate();
+    calculate(" NEG");
 }
 
 void MainWindow::on_pushButtonDollar_clicked(){
-    addToLineEdit(" $");
-    calculate();
+    calculate(" $");
 }
 
 void MainWindow::on_pushButtonAnd_clicked(){
-    addToLineEdit(" AND");
-    calculate();
+    calculate(" AND");
 }
 
 void MainWindow::on_pushButtonOr_clicked(){
-    addToLineEdit(" OR");
-    calculate();
+    calculate(" OR");
 }
 
 void MainWindow::on_pushButtonNot_clicked(){
-    addToLineEdit(" NOT");
-    calculate();
+    calculate(" NOT");
 }
 
 void MainWindow::on_pushButtonIFThen_clicked(){
-    addToLineEdit(" IFT");
-    calculate();
+    calculate(" IFT");
 }
 
 void MainWindow::on_pushButtonNum_clicked(){
-    addToLineEdit(" NUM");
-    calculate();
+    calculate(" NUM");
 }
 
 void MainWindow::on_pushButtonDen_clicked(){
-    addToLineEdit(" DEN");
-    calculate();
+    calculate(" DEN");
 }
 
 void MainWindow::on_pushButtonRe_clicked(){
-    addToLineEdit(" RE");
-    calculate();
+    calculate(" RE");
 }
 
 void MainWindow::on_pushButtonIm_clicked(){
-    addToLineEdit(" IM");
-    calculate();
+    calculate(" IM");
 }
 
 void MainWindow::on_pushButtonLeftParenthesis_clicked(){
@@ -275,8 +261,7 @@ void MainWindow::on_pushButtonPoint_clicked(){
 }
 
 void MainWindow::on_pushButtonEval_clicked(){
-    addToLineEdit(" EVAL");
-    calculate();
+    calculate(" EVAL");
 }
 
 
@@ -290,14 +275,12 @@ void MainWindow::on_pushButtonEnter_clicked(){
 
 // UNDO
 void MainWindow::on_pushButtonUndo_clicked(){
-    addToLineEdit(" UNDO");
-    calculate();
+    calculate(" UNDO");
 }
 
 // REDO
 void MainWindow::on_pushButtonRedo_clicked(){
-    addToLineEdit(" REDO");
-    calculate();
+    calculate(" REDO");
 }
 
 void MainWindow::on_lineEdit_returnPressed(){
@@ -305,38 +288,31 @@ void MainWindow::on_lineEdit_returnPressed(){
 }
 
 void MainWindow::on_pushButtonEdit_clicked(){
-    addToLineEdit(" EDIT");
-    calculate();
+    calculate(" EDIT");
 }
 
 void MainWindow::on_pushButtonClear_clicked(){
-    addToLineEdit(" CLEAR");
-    calculate();
+    calculate(" CLEAR");
 }
 
 void MainWindow::on_pushButtonSwap_clicked(){
-    addToLineEdit(" SWAP");
-    calculate();
+    calculate(" SWAP");
 }
 
 void MainWindow::on_pushButtonLastOp_clicked(){
-    addToLineEdit(" LASTOP");
-    calculate();
+    calculate(" LASTOP");
 }
 
 void MainWindow::on_pushButtonDrop_clicked(){
-    addToLineEdit(" DROP");
-    calculate();
+    calculate(" DROP");
 }
 
 void MainWindow::on_pushButtonDup_clicked(){
-    addToLineEdit(" DUP");
-    calculate();
+    calculate(" DUP");
 }
 
 void MainWindow::on_pushButtonLastArgs_clicked(){
-    addToLineEdit(" LASTARGS");
-    calculate();
+    calculate(" LASTARGS");
 }
 
 

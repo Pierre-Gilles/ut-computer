@@ -121,5 +121,15 @@ FORMS    +=  views/mainwindow.ui \
     views/setup.ui
 
 RESOURCES += database.db \
-    sounds/que_trepasse.wav
+    sounds/attention.wav \
+    sounds/binz.wav \
+    sounds/boule_merdasse.wav \
+    sounds/c_est_cela_oui.wav \
+    sounds/Les_cons_tontons_flingeurs.wav \
+    sounds/monumentale_erreur.wav \
+    sounds/mortecouille.wav \
+    sounds/pas_jour_faire_chier_kamelott.wav \
+    sounds/que_trepasse.wav \
+    sounds/wou_pinaise.wav \
+    sounds/you_shall_not_pass.wav \
 
