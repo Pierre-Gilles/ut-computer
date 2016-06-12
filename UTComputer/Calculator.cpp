@@ -223,7 +223,7 @@ void Calculator::calculate(const vector<string> &tokens) {
 
             // Special case for Operator EDIT
             else if (*it == "EDIT") {
-                throw UTComputerException("Sorry, operator EDIT should be handled in the view, nor here in the Calculator.");
+                throw UTComputerException("Sorry, operator EDIT should be handled in the view, nor here in the Calculator. Just click on the EDIT button :) ");
             }
 
             // Special case for Operator IFT
