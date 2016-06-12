@@ -306,6 +306,13 @@ public:
      */
     bool deleteProgram(const string &key);
 
+    /**
+     * \fn ProgramLiteral* getFirstElementProgram()
+     * \brief Method that returns a pointer of the first element of the stack if its a program
+     * \return a pointer to the first element of the stack. Throw an exception if it's not a program.
+     */
+    ProgramLiteral* getFirstElementProgram();
+
 
 
 

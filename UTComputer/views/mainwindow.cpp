@@ -26,6 +26,10 @@ MainWindow::MainWindow(Calculator *calc, Database *db, Sound *sound, QWidget *pa
     }
     ui->setupUi(this);
     refreshView();
+
+    // shortcut
+    ctrlZ = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z), this, SLOT(on_pushButtonUndo_clicked()));
+    ctrlY = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y), this, SLOT(on_pushButtonRedo_clicked()));
 }
 
 MainWindow::~MainWindow()
@@ -277,6 +281,7 @@ void MainWindow::on_pushButtonEnter_clicked(){
 
 // UNDO
 void MainWindow::on_pushButtonUndo_clicked(){
+    qDebug() << "UNDO" <<endl;
     calculate(" UNDO");
 }
 
@@ -290,7 +295,7 @@ void MainWindow::on_lineEdit_returnPressed(){
 }
 
 void MainWindow::on_pushButtonEdit_clicked(){
-    calculate(" EDIT");
+    OperatorEdit();
 }
 
 void MainWindow::on_pushButtonClear_clicked(){
@@ -365,4 +370,20 @@ void MainWindow::changeKeyboardState(bool activated){
 void MainWindow::changeNbElementStack(int nb){
     nbElementStack = nb;
     refreshView();
+}
+
+void MainWindow::refreshStackView(){
+    refreshView();
+}
+
+void MainWindow::OperatorEdit(){
+    try{
+        ProgramLiteral* l = calc->getFirstElementProgram();
+        if(progEditDial != 0) delete progEditDial;
+        progEditDial = new ProgEditDialog(l);
+        QObject::connect(progEditDial, SIGNAL(textChanged()), this, SLOT(refreshStackView()));
+        progEditDial->show();
+    } catch(UTComputerException e){
+        displayError(e.getMessage());
+    }
 }

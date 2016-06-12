@@ -63,7 +63,8 @@ SOURCES += main.cpp\
     views/programdialog.cpp \
     views/atomdialog.cpp \
     sounds/sound.cpp \
-    views/paramdialog.cpp
+    views/paramdialog.cpp \
+    views/progeditdialog.cpp
 
 HEADERS  += views/mainwindow.h \
     exceptions/UTComputerException.h \
@@ -115,12 +116,14 @@ HEADERS  += views/mainwindow.h \
     views/programdialog.h \
     views/atomdialog.h \
     sounds/sound.h \
-    views/paramdialog.h
+    views/paramdialog.h \
+    views/progeditdialog.h
 
 FORMS    +=  views/mainwindow.ui \
     views/programdialog.ui \
     views/atomdialog.ui \
-    views/paramdialog.ui
+    views/paramdialog.ui \
+    views/progeditdialog.ui
 
 RESOURCES += database.db \
     sounds/attention.wav \
