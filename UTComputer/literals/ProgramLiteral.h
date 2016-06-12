@@ -8,6 +8,7 @@
 
 
 #include "StringLiteral.h"
+#include <algorithm>
 
 
 /**

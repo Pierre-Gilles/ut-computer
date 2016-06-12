@@ -8,6 +8,7 @@
 
 #include <string>
 #include "../exceptions/UTComputerException.h"
+#include <memory>
 
 using namespace std;
 

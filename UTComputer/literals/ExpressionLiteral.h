@@ -12,6 +12,7 @@
 #include <vector>
 #include <algorithm>
 #include "StringLiteral.h"
+#include <memory>
 
 
 
