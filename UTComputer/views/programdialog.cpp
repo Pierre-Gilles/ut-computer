@@ -25,9 +25,14 @@ void ProgramDialog::displayError(string e){
 
 void ProgramDialog::updateList(){
     ui->listPrograms->clear();
+
+    QStringList listeOfItems;
     for (auto it = programs.cbegin(); it != programs.cend(); ++it) {
-        ui->listPrograms->addItem(QString::fromStdString(it->at(0)));
+        listeOfItems.push_back(QString::fromStdString(it->at(0)));
+        //ui->listPrograms->addItem(QString::fromStdString(it->at(0)));
     }
+    // test adding with a QStringList but on_listPrograms_currentItemChanged still make the application crash
+    ui->listPrograms->addItems(listeOfItems);
 }
 
 void ProgramDialog::on_pushButtonCreateProgram_clicked(){
