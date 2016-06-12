@@ -127,8 +127,6 @@ void Calculator::init_stack(vector<string> list) {
 
     for (auto it = list.cbegin(); it != list.cend(); ++it) {
         calculate(lx.tokenize(*it));
-//        shared_ptr<Literal> newLit = lf.createLiteral(*it);
-//        st.push(newLit);
     }
 }
 
@@ -216,6 +214,9 @@ void Calculator::calculate(const vector<string> &tokens) {
 
             // Special case for Operator EVAL
             if (*it == "EVAL") {
+                if (st.size() == 0)
+                    throw UTComputerException("Error in applying operator EVAL : stack is empty.");
+                
                 executeEvalOperator();
             }
 
