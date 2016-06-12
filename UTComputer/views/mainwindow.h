@@ -91,6 +91,8 @@ private slots:
 
   void on_toolButtonVariable_clicked();
 
+  void on_pushButtonIFThen_clicked();
+
 private:
     Ui::MainWindow *ui;
 

@@ -786,6 +786,19 @@
      <string>/</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButtonIFThen">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>495</y>
+      <width>70</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>IFT</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

@@ -223,7 +223,7 @@ void Calculator::calculate(const vector<string> &tokens) {
 
             // Special case for Operator EDIT
             else if (*it == "EDIT") {
-                throw UTComputerException("Sorry, operator EDIT is not implemented yet.");
+                throw UTComputerException("Sorry, operator EDIT should be handled in the view, nor here in the Calculator.");
             }
 
             // Special case for Operator IFT
@@ -319,7 +319,7 @@ void Calculator::executeIfThenOperator() {
     ComplexLiteral *cpx = dynamic_cast<ComplexLiteral*>(arguments[0].get());
     ProgramLiteral *prgm = dynamic_cast<ProgramLiteral*>(arguments[1].get());
 
-    /* IFT applies only on a numeric value and a programm */
+    /* IFT applies only on a numeric value and a program */
     if (cpx == nullptr || prgm == nullptr)
         throw UTComputerException("Error in applying operator IFT : first argument must be numeric and the second must be a program");
 

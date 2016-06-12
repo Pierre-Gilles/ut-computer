@@ -193,67 +193,72 @@ void MainWindow::on_pushButton9_clicked(){
   */
 
 void MainWindow::on_pushButtonPlus_clicked(){
-     addToLineEdit("+");
+     addToLineEdit(" +");
      calculate();
 }
 
 void MainWindow::on_pushButtonMinus_clicked(){
-    addToLineEdit("-");
+    addToLineEdit(" -");
     calculate();
 }
 
 void MainWindow::on_pushButtonDivide_clicked(){
-    addToLineEdit("/");
+    addToLineEdit(" /");
     calculate();
 }
 
 void MainWindow::on_pushButtonMultiply_clicked(){
-    addToLineEdit("*");
+    addToLineEdit(" *");
     calculate();
 }
 
 void MainWindow::on_pushButtonNeg_clicked(){
-    addToLineEdit("NEG");
+    addToLineEdit(" NEG");
     calculate();
 }
 
 void MainWindow::on_pushButtonDollar_clicked(){
-    addToLineEdit("$");
+    addToLineEdit(" $");
     calculate();
 }
 
 void MainWindow::on_pushButtonAnd_clicked(){
-    addToLineEdit("AND");
+    addToLineEdit(" AND");
     calculate();
 }
 
 void MainWindow::on_pushButtonOr_clicked(){
-    addToLineEdit("OR");
+    addToLineEdit(" OR");
     calculate();
 }
 
 void MainWindow::on_pushButtonNot_clicked(){
-    addToLineEdit("NOT");
+    addToLineEdit(" NOT");
+    calculate();
+}
+
+void MainWindow::on_pushButtonIFThen_clicked(){
+    addToLineEdit(" IFT");
     calculate();
 }
 
 void MainWindow::on_pushButtonNum_clicked(){
-    addToLineEdit("NUM");
+    addToLineEdit(" NUM");
     calculate();
 }
 
 void MainWindow::on_pushButtonDen_clicked(){
-    addToLineEdit("DEN");
+    addToLineEdit(" DEN");
     calculate();
 }
 
 void MainWindow::on_pushButtonRe_clicked(){
-    addToLineEdit("RE");
+    addToLineEdit(" RE");
     calculate();
 }
 
 void MainWindow::on_pushButtonIm_clicked(){
-    addToLineEdit("IM");
+    addToLineEdit(" IM");
     calculate();
 }
 
@@ -270,7 +275,7 @@ void MainWindow::on_pushButtonPoint_clicked(){
 }
 
 void MainWindow::on_pushButtonEval_clicked(){
-    addToLineEdit("EVAL");
+    addToLineEdit(" EVAL");
     calculate();
 }
 
@@ -285,13 +290,13 @@ void MainWindow::on_pushButtonEnter_clicked(){
 
 // UNDO
 void MainWindow::on_pushButtonUndo_clicked(){
-    addToLineEdit("UNDO");
+    addToLineEdit(" UNDO");
     calculate();
 }
 
 // REDO
 void MainWindow::on_pushButtonRedo_clicked(){
-    addToLineEdit("REDO");
+    addToLineEdit(" REDO");
     calculate();
 }
 
@@ -300,37 +305,37 @@ void MainWindow::on_lineEdit_returnPressed(){
 }
 
 void MainWindow::on_pushButtonEdit_clicked(){
-    addToLineEdit("EDIT");
+    addToLineEdit(" EDIT");
     calculate();
 }
 
 void MainWindow::on_pushButtonClear_clicked(){
-    addToLineEdit("CLEAR");
+    addToLineEdit(" CLEAR");
     calculate();
 }
 
 void MainWindow::on_pushButtonSwap_clicked(){
-    addToLineEdit("SWAP");
+    addToLineEdit(" SWAP");
     calculate();
 }
 
 void MainWindow::on_pushButtonLastOp_clicked(){
-    addToLineEdit("LASTOP");
+    addToLineEdit(" LASTOP");
     calculate();
 }
 
 void MainWindow::on_pushButtonDrop_clicked(){
-    addToLineEdit("DROP");
+    addToLineEdit(" DROP");
     calculate();
 }
 
 void MainWindow::on_pushButtonDup_clicked(){
-    addToLineEdit("DUP");
+    addToLineEdit(" DUP");
     calculate();
 }
 
 void MainWindow::on_pushButtonLastArgs_clicked(){
-    addToLineEdit("LASTARGS");
+    addToLineEdit(" LASTARGS");
     calculate();
 }
 
