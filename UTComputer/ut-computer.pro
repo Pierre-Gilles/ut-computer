@@ -138,3 +138,6 @@ RESOURCES += database.db \
     sounds/wou_pinaise.wav \
     sounds/you_shall_not_pass.wav \
 
+ICON = icone/icone.icns
+
+win32: RC_ICONS += icone/icone.ico
