@@ -24,15 +24,19 @@ void ProgramDialog::displayError(string e){
 }
 
 void ProgramDialog::updateList(){
+    qDebug() << "UL 1" << endl;
     ui->listPrograms->clear();
-
+    qDebug() << "UL 2" << endl;
     QStringList listeOfItems;
+    qDebug() << "UL 3" << endl;
     for (auto it = programs.cbegin(); it != programs.cend(); ++it) {
         listeOfItems.push_back(QString::fromStdString(it->at(0)));
         //ui->listPrograms->addItem(QString::fromStdString(it->at(0)));
     }
+    qDebug() << "UL 4" << endl;
     // test adding with a QStringList but on_listPrograms_currentItemChanged still make the application crash
     ui->listPrograms->addItems(listeOfItems);
+    qDebug() << "UL 5" << endl;
 }
 
 void ProgramDialog::on_pushButtonCreateProgram_clicked(){
@@ -66,31 +70,34 @@ void ProgramDialog::on_textEdit_textChanged(){
 
 
 
-/* Make the program crash when update of the list */
-void ProgramDialog::on_listPrograms_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous){
-    if (ui->listPrograms->count() != 0) {
-//        int row = ui->listPrograms->currentRow();
-//        QString qs = QString::fromStdString(programs[row][1]);
-//        ui->textEdit->setText(qs);
-    }
-}
 
 
-void ProgramDialog::on_listPrograms_clicked(const QModelIndex &index)
-{
-    if (ui->listPrograms->count() > 0) {
-        int row = ui->listPrograms->currentRow();
-        QString qs = QString::fromStdString(programs[row][1]);
-        ui->textEdit->setText(qs);
-    }
-}
 
 void ProgramDialog::on_pushButtonDeleteProgram_clicked(){
     if (ui->listPrograms->count() > 0) {
         int row = ui->listPrograms->currentRow();
-        calc->deleteProgram(programs[row][0]);
-        programs.erase(programs.begin()+row);
-        updateList();
-        ui->textEdit->setText("");
+        if (row != -1) {
+            ui->listPrograms->setCurrentRow(0); // set current row here in case of the program deleted is the last of the list -> evoid crash
+            calc->deleteProgram(programs[row][0]);
+            programs.erase(programs.begin()+row);
+            updateList();
+            ui->textEdit->setText("");
+            if (ui->listPrograms->count() > 0){
+                ui->listPrograms->setCurrentRow(0);
+            }
+        }
+    }
+}
+
+void ProgramDialog::on_listPrograms_itemSelectionChanged() {
+    if (ui->listPrograms->count() > 0) {
+        int row = ui->listPrograms->currentRow();
+        if (row != -1) {
+            if (programs.size() > row) {
+                QString qs = QString::fromStdString(programs[row][1]);
+                ui->textEdit->setText(qs);
+            }
+
+        }
     }
 }

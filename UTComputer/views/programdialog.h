@@ -24,12 +24,9 @@ private slots:
 
     void on_textEdit_textChanged();
 
-    void on_listPrograms_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
-
-
-    void on_listPrograms_clicked(const QModelIndex &index);
-
     void on_pushButtonDeleteProgram_clicked();
+
+    void on_listPrograms_itemSelectionChanged();
 
 private:
     Ui::ProgramDialog *ui;
