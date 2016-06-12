@@ -26,7 +26,7 @@ public:
      * \fn StringLiteral(const string &value)
      * \brief ExpressionLiteral constructor
      * \param[in] value : string from which the StringLiteral is created (subclasses will call this constructor)
-     * \return \a Nothing because the class is abstract and can't beinstantiated
+     * \return \a Nothing because the class is abstract and can't be instantiated
      */
     StringLiteral(const string &value) : value(value) { }
     virtual ~StringLiteral() { } /*!< virtual destructor is necessary with inheritance */
